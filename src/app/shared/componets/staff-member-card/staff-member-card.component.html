@@ -1,0 +1,16 @@
+<div class="staff-member-card">
+  <mat-expansion-panel expandedHeight="fit-content"
+                       collapsedHeight="fit-content"
+                       [expanded]="expanded">
+    <mat-expansion-panel-header class="staff-member-card-header">
+      <div fxFlex fxLayout="row">
+        <span class="staff-member-card-header-title bold-item">{{title | titlecase}}</span>
+        <span fxFlex="1 1 auto"></span>
+        <range-chip [present]="present" [total]="total"></range-chip>
+      </div>
+    </mat-expansion-panel-header>
+    <div class="staff-member-card-content">
+      <ng-content></ng-content>
+    </div>
+  </mat-expansion-panel>
+</div>

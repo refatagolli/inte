@@ -1,0 +1,15 @@
+$background_blue: rgba(58, 168, 255, 0.1);
+
+.daily-view-header {
+
+  .mat-chip.mat-standard-chip {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 30px;
+    background-color: $background_blue;
+
+    &.mat-chip-disabled {
+      opacity: 1;
+    }
+  }
+}

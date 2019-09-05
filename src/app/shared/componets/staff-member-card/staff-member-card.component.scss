@@ -1,0 +1,43 @@
+$header_background_color: #f2f5f8;
+$header_border_color: #cacaca;
+$header_font_color: #cacaca;
+
+.staff-member-card {
+  width: 433px;
+  border: 1px solid $header_border_color;
+  border-radius: 2px;
+
+  .staff-member-card-header {
+    box-shadow: unset;
+
+    &.mat-expansion-panel-header {
+      background-color: $header_background_color;
+      border-bottom: 1px solid $header_border_color;
+      border-radius: 2px;
+
+    }
+
+    ::ng-deep .range-chip {
+      margin-right: 20px !important;
+    }
+
+    .staff-member-card-header-title {
+      font-size: 16px;
+      color: $header_font_color;
+      height: inherit;
+      padding-top: 10px;
+    }
+  }
+
+  .staff-member-card-content {
+    margin-top: 16px;
+  }
+
+  ::ng-deep.mat-expansion-panel-content {
+
+    .mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
+
+}

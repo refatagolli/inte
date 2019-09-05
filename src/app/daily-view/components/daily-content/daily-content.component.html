@@ -1,0 +1,18 @@
+<div class="daily-content" fxLayout="column" fxLayoutGap="24px">
+  <app-staff-grouping-card [total]="10" [present]="5" [title]="'TEST_1'" [errorMessage]="'Test error'"
+                           [expanded]="false" *ngFor="let a of [1,2,3,4,5,6]; let i = index">
+    <div class="columns-wrapper" fxFlex fxLayout="row" fxLayoutGap="24px">
+      <app-staff-column [title]="'TEST_2'" [subtitle]="'TEST_3'" *ngFor="let b of [1,2,3,4,5]">
+        <div class="member-card-wrapper" fxLayout="column" fxLayoutGap="24px">
+          <app-staff-member-card [total]="10" [present]="5" [title]="'TEST_1'" [expanded]="false" *ngFor="let c of [1,2,3,4,5]">
+            <app-staff-card [openShift]="true"></app-staff-card>
+            <app-staff-card [title]="'John Doe'" [subtitle]="'full-time'" [initials]="'JD'"
+                            [isPresent]="true" [hasAction]="false"></app-staff-card>
+            <app-staff-card [title]="'Jenny Doe'" [subtitle]="'sick'" [initials]="'JD'"
+                            [isPresent]="false" [hasAction]="true"></app-staff-card>
+          </app-staff-member-card>
+        </div>
+      </app-staff-column>
+    </div>
+  </app-staff-grouping-card>
+</div>

@@ -1,0 +1,15 @@
+$background_color: #f2f5f8;
+$font_color: #0075ad;
+
+.chip-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: $background_color;
+  color: $font_color;
+
+  .chip-icon-content {
+    text-align: center;
+    padding-top: 8px;
+  }
+}

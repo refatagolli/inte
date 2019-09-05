@@ -1,0 +1,30 @@
+$background-color: mediumseagreen;
+
+
+.daily-view-header {
+
+  .view-type {
+
+    .view-type-toggle {
+
+      .mat-slide-toggle {
+
+        .mat-slide-toggle-bar {
+          background-color:$background-color;
+          height: 20px;
+          border-radius: 10px;
+        }
+        .mat-slide-toggle-thumb-container {
+          top: 0;
+
+          .mat-slide-toggle-thumb {
+            background-color: white;
+            border: 2px solid $background-color;
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+    }
+  }
+}

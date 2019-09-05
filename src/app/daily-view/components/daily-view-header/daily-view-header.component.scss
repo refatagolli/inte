@@ -1,0 +1,58 @@
+$select-color: mediumseagreen;
+$text_blue: rgb(58, 168, 255);
+$background_blue: rgba(58, 168, 255, 0.3);
+
+.daily-view-header {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+
+  .view-type {
+    //width: 40%;
+    display: block;
+    padding-top: 20px;
+
+    .view-type-toggle {
+      display: inline-block;
+      padding: 0 10px;
+
+      .mat-slide-toggle {
+        position: relative;
+        top: -5px;
+        margin: 0 8px;
+      }
+
+      .selected {
+        color: $select-color;
+      }
+    }
+  }
+
+  .date-range {
+    display: inline-block;
+
+    .chip-container {
+
+      .title {
+        font-size: 20px;
+        color: $text_blue;
+      }
+
+      .mat-flat-button {
+        background-color: transparent;
+      }
+
+      ::ng-deep.mat-flat-button:active {
+        background-color: transparent;
+      }
+    }
+  }
+
+  ::ng-deep .mat-button-focus-overlay {
+    background-color: transparent;
+  }
+}
+
+.itemSelected {
+  background-color: rgba(0, 0, 0, .2);
+}

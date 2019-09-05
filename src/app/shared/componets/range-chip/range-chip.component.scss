@@ -1,0 +1,13 @@
+$text_color: #84bb28;
+$background_color: #eceec9;
+
+.range-chip {
+  .mat-chip {
+    width: 56px;
+    height: 36px;
+    font-size: 16px;
+    color: $text_color;
+    background-color: $background_color;
+    border-radius: 2px;
+  }
+}

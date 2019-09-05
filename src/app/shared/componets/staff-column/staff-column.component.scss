@@ -1,0 +1,23 @@
+.staff-column {
+  width: fit-content;
+  margin: 8px 0;
+
+  .staff-column-wrapper {
+
+    .staff-column-title, .staff-column-subtitle {
+      flex: 1 1 auto;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .staff-column-title {
+      font-size: 25px;
+    }
+
+    .staff-column-subtitle {
+      font-size: 18px;
+      color: #cacaca;
+    }
+
+  }
+}

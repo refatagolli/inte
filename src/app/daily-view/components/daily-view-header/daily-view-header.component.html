@@ -1,0 +1,40 @@
+<div class="daily-view-header" fxLayout.gt-md="row" fxLayout.lt-sm="column"  fxLayoutGap.lt-sm="24px">
+  <div class="view-type" fxFlex.gt-md="40%" fxFlex.lt-sm="1 1 auto" >
+    <div class="view-type-wrapper" fxLayout="row" fxLayoutAlign.lt-sm="space-around">
+      <span class="bold-item">View by:</span>
+      <div class="view-type-toggle" fxLayout="row">
+        <span class="shift" [ngClass]="{'selected': dailyViewConfig.viewType === 'shift'}">Shift Time</span>
+        <mat-slide-toggle [formControl]="slideToggleContrl"></mat-slide-toggle>
+        <span class="unit" [ngClass]="{'selected': dailyViewConfig.viewType === 'unit'}">Unit</span>
+      </div>
+    </div>
+  </div>
+  <div class="date-range">
+    <mat-chip-list [disabled]="true" class="chip-container">
+      <mat-chip [disabled]="true">
+        <app-chip-icon>
+          <mat-icon>date_range</mat-icon>
+        </app-chip-icon>
+        <span class="title bold-item">{{ date | date : 'EEEE MMM d' | uppercase }}</span>
+        <button mat-flat-button [matMenuTriggerFor]="dateType">
+          <span>{{dailyViewConfig.dateRange | titlecase}}</span>
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #dateType="matMenu">
+          <button mat-menu-item (click)="changeDateRange('daily')"
+                  [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='daily'}"
+          >{{ 'daily' | titlecase}}
+          </button>
+          <button mat-menu-item (click)="changeDateRange('weekly')"
+                  [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='weekly'}"
+          >{{ 'weekly' | titlecase}}
+          </button>
+          <button mat-menu-item (click)="changeDateRange('monthly')"
+                  [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='monthly'}"
+          >{{ 'monthly' | titlecase}}
+          </button>
+        </mat-menu>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</div>

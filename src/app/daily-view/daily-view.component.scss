@@ -1,0 +1,10 @@
+.daily-view-wrapper {
+  //position: relative;
+  padding: 0 50px;
+  width: inherit;
+  max-width: inherit;
+
+  ::ng-deep.daily-calendar, ::ng-deep.daily-view-header {
+    margin-bottom: 24px;
+  }
+}

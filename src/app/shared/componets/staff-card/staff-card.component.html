@@ -1,0 +1,37 @@
+<div class="staff-card" [ngClass]="{removed: !isPresent || openShift}">
+  <mat-list-item>
+    <div class="staff-card-container" fxFlex fxLayout="row">
+      <ng-container *ngIf="openShift; then openShiftCard else showStaffData"></ng-container>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</div>
+
+<ng-template #showStaffData>
+  <div class="staff-card-chip">
+    <app-chip-icon><span class="bold-item">{{ initials | uppercase  }}</span></app-chip-icon>
+  </div>
+  <div class="staff-card-content" fxFlex="1 1 auto" fxLayout="column">
+    <span class="bold-item title">{{title | titlecase}}</span>
+    <span class="subtitle">{{subtitle}}</span>
+  </div>
+  <div class="staff-card-actions">
+    <button mat-icon-button *ngIf="hasAction">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #openShiftCard>
+  <div class="staff-card-chip">
+    <app-chip-icon></app-chip-icon>
+  </div>
+  <div class="staff-card-content" fxFlex="1 1 auto" fxLayout="column">
+    <span class="bold-item action-title">{{'open shift' | titlecase}}</span>
+  </div>
+  <div class="staff-card-actions">
+    <button mat-icon-button>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</ng-template>
