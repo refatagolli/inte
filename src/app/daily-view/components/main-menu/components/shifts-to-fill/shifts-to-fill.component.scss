@@ -1,0 +1,27 @@
+shifts-to-fill {
+
+  .shifts-to-fill {
+    height: 270px;
+    min-width: 256px;
+
+    .mat-card-header {
+      border-bottom: 1px solid #FFFFFF;
+      padding-bottom: 5px;
+
+      .mat-card-title {
+        color: rgb(114, 128, 138);
+        font-family: OpenSans-SemiBold;
+        font-size: 16px;
+        font-weight: 600;
+        height: 23px;
+        letter-spacing: 0;
+        line-height: 19px;
+      }
+    }
+
+    .mat-card-content {
+      height: 140px;
+    }
+
+  }
+}

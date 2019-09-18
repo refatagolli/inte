@@ -3,6 +3,7 @@ $subtitle_color: #98a7ba;
 $removed_text_color: #f45552;
 $removed_background_color: #ffe8e7;
 $removed_border_color: #ff6c68;
+$hover_background_color: #F7FBFF;
 
 .staff-card {
 
@@ -22,6 +23,27 @@ $removed_border_color: #ff6c68;
     .subtitle {
       color: $subtitle_color;
     }
+  }
+
+  .staff-card-hours {
+    color: rgb(152, 167, 180);
+    font-family: OpenSans-SemiBoldItalic;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    word-spacing: 1px;
+    height: 48px;
+    line-height: 24px;
+    text-align: right;
+    width: 107px;
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  &.clickable:hover {
+    background-color: $hover_background_color;
   }
 
   &.removed {

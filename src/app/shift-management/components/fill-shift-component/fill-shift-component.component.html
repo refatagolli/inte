@@ -1,0 +1,19 @@
+<div class="shift-management">
+  <div class="shift-management-wrapper" fxLayout="column" fxLayoutGap="20px">
+
+    <app-management-top-card title="Fill Shift" [shiftDetails]="shiftDetails">
+    </app-management-top-card>
+
+    <div class="fill-shift-content" fxFlex fxFlexFill>
+      <user-filter></user-filter>
+    </div>
+
+    <div class="actions">
+      <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutGap="8px">
+        <button mat-button class="action-button partial" fxFlexAlign="center">Remove From Shift</button>
+        <button mat-button class="action-button complete" fxFlexAlign="center">Request Intelypro</button>
+      </div>
+    </div>
+
+  </div>
+</div>

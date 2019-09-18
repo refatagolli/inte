@@ -1,0 +1,18 @@
+<mat-expansion-panel class="move">
+  <mat-expansion-panel-header expandedHeight="48px">
+    Change Unit
+  </mat-expansion-panel-header>
+  <div class="change-unit-body" fxLayout="column" fxLayoutGap="12px">
+    <mat-selection-list [formControl]="unitToMove">
+      <mat-list-option *ngFor="let el of elements | async" [value]="el.value"> {{ el.value }}
+      </mat-list-option>
+    </mat-selection-list>
+    <div class="actions">
+      <div class="actions-wrapper" fxFlex fxLayoutAlign="center">
+        <button mat-button class="action-button" [disabled]="!unitToMove.valid"
+        [ngClass]="unitToMove.valid ? 'complete' : 'disabled'" (click)="moveToUnit()"
+        >Move</button>
+      </div>
+    </div>
+  </div>
+</mat-expansion-panel>

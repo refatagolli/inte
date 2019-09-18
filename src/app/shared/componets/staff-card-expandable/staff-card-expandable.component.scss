@@ -1,0 +1,59 @@
+$title_color: #728cba;
+$subtitle_color: #98a7ba;
+$header_border_color: #cacaca;
+
+.staff-card-expandable {
+
+  .mat-expansion-panel {
+    box-shadow: unset;
+    border: 1px solid $header_border_color;
+
+    .header-content {
+      height: 60px;
+      padding-top: 12px;
+
+      div {
+        height: 60px;
+      }
+    }
+
+    .expansion-panel-body {
+      .user-info-title {
+        width: 90px;
+        font-size: 16px;
+        font-weight: bold;
+        color: $title_color;
+      }
+
+      .user-info-subtitle {
+        font-size: 14px;
+        color: $subtitle_color;
+      }
+    }
+  }
+
+  .staff-card-confirmation-content {
+    padding-left: 16px;
+    font-size: 16px;
+
+    .title {
+      color: $title_color;
+    }
+
+    .subtitle {
+      color: $subtitle_color;
+    }
+  }
+
+  .staff-card-hours {
+
+    span {
+      color: $subtitle_color;
+      display: block;
+      line-height: 2.9;
+      padding-right: 8px;
+      word-break: break-all;
+    }
+  }
+
+}

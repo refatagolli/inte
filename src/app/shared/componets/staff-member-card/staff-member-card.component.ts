@@ -18,5 +18,4 @@ export class StaffMemberCardComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

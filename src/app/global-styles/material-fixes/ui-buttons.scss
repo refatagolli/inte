@@ -1,0 +1,71 @@
+$select-color: #9fc53a;
+$blue: #1986b9;
+$cancel: #72808a;
+$danger: #d0021b;
+
+.selectable-button {
+  width: fit-content;
+  border: 1px solid $select-color !important;
+  background-color: transparent;
+  color: $select-color !important;
+  font-weight: bolder;
+  cursor: pointer;
+
+  .mat-list-item-ripple {
+    display: none;
+  }
+
+  .mat-list-item-content {
+    height: fit-content !important;
+  }
+
+  .mat-list-text {
+    line-height: 30px;
+    margin-right: 0;
+  }
+
+  .mat-pseudo-checkbox {
+    display: none !important;
+  }
+
+  &.selected {
+    background-color: $select-color !important;
+    color: white !important;
+  }
+}
+
+.action-button {
+  font-weight: bolder;
+  border-radius: 18px !important;
+  width: fit-content;
+
+  &.partial {
+    border: 1px solid $blue !important;
+    background-color: transparent !important;
+    color: $blue !important;
+  }
+
+  &.complete {
+    border: 1px solid $blue !important;
+    background-color: $blue !important;
+    color: white !important;
+  }
+
+  &.cancel {
+    border: 1px solid $cancel !important;
+    background-color: transparent !important;
+    color: $cancel !important;
+  }
+
+  &.disabled {
+    border: 1px solid $cancel !important;
+    background-color: $cancel !important;
+    color: white !important;
+  }
+
+  &.danger {
+    border: 1px solid $danger !important;
+    background-color: $danger !important;
+    color: white !important;
+  }
+}

@@ -1,0 +1,41 @@
+user-filter {
+  min-width: 491px;
+  position: relative;
+
+  .user-filter {
+    height: 48px;
+    min-width: 491px;
+    padding: 3px;
+    border-radius: 2px 2px 0 0;
+    border: 1px solid #7D818C;
+    .search-field {
+      margin-left: 5px;
+      margin-bottom: 5px;
+
+      .mat-form-field-underline {
+        display: none;
+      }
+    }
+  }
+
+  .filter-options {
+    position: absolute;
+    height: fit-content;
+    width: 491px;
+    top: 48px;
+    border-radius: 0;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: transparent;
+    opacity: 0.0;
+    z-index: -1;
+  }
+}

@@ -1,16 +1,25 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {UtilsService} from '../../../services/utils/utils.service';
 
 @Component({
   selector: 'app-chip-icon',
   templateUrl: './chip-icon.component.html',
   styleUrls: ['./chip-icon.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class ChipIconComponent implements OnInit {
 
-  constructor() { }
+  @Input() name: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  getContent() {
+    return UtilsService.getInitialsFromName(this.name);
   }
 
 }

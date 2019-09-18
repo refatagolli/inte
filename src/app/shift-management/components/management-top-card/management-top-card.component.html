@@ -1,0 +1,35 @@
+<div class="management-top-card" fxLayout="column" fxLayoutGap="40px">
+
+  <div class="management-top-card-title" fxFlex>
+    <div class="card-title-wrapper" fxLayout="row" fxLayoutGap="30%">
+      <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <div class="title">
+        <h2 class="bold-item">{{title | uppercase }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="management-top-card-content">
+    <div class="management-top-card-content-wrapper" fxFlex fxLayout="column" fxLayoutGap="15px">
+
+      <div class="top-card-line shift" fxFlex fxLayout="row" fxLayoutGap="20px">
+        <mat-icon class="test-icon">today</mat-icon>
+        <h3 class="bold-item">{{shiftDetails.shiftDate | date: ' EEEE MMMM dd, yyyy'}} &nbsp; {{shiftDetails.shiftHours}}</h3>
+      </div>
+
+      <div class="top-card-line unit" fxFlex fxLayout="row" fxLayoutGap="20px">
+        <mat-icon class="test-icon">gps_fixed</mat-icon>
+        <h3 class="bold-item">{{shiftDetails.unit}}</h3>
+      </div>
+
+      <div class="top-card-line  shiftType" fxFlex fxLayout="row" fxLayoutGap="20px">
+        <mat-icon class="test-icon">people</mat-icon>
+        <h3 class="bold-item">{{shiftDetails.staffType}}</h3>
+      </div>
+
+    </div>
+  </div>
+
+</div>

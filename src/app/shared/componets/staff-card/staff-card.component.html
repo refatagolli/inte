@@ -1,4 +1,4 @@
-<div class="staff-card" [ngClass]="{removed: !isPresent || openShift}">
+<div class="staff-card" [ngClass]="{removed: openShift, clickable: !openShift}">
   <mat-list-item>
     <div class="staff-card-container" fxFlex fxLayout="row">
       <ng-container *ngIf="openShift; then openShiftCard else showStaffData"></ng-container>
@@ -9,16 +9,14 @@
 
 <ng-template #showStaffData>
   <div class="staff-card-chip">
-    <app-chip-icon><span class="bold-item">{{ initials | uppercase  }}</span></app-chip-icon>
+    <app-chip-icon [name]="staffMember.fullName"></app-chip-icon>
   </div>
   <div class="staff-card-content" fxFlex="1 1 auto" fxLayout="column">
-    <span class="bold-item title">{{title | titlecase}}</span>
-    <span class="subtitle">{{subtitle}}</span>
+    <span class="bold-item title">{{staffMember.fullName | titlecase}}</span>
+    <span class="subtitle">{{staffMember.staffType}}</span>
   </div>
-  <div class="staff-card-actions">
-    <button mat-icon-button *ngIf="hasAction">
-      <mat-icon>add</mat-icon>
-    </button>
+  <div class="staff-card-hours">
+    <span>{{ staffMember.hoursThisWeek}} hours this week</span>
   </div>
 </ng-template>
 
@@ -30,8 +28,6 @@
     <span class="bold-item action-title">{{'open shift' | titlecase}}</span>
   </div>
   <div class="staff-card-actions">
-    <button mat-icon-button>
-      <mat-icon>add</mat-icon>
-    </button>
+    <button mat-button class="action-button danger" (click)="createShift()">{{'fill shift' | uppercase}}</button>
   </div>
 </ng-template>

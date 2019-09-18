@@ -1,0 +1,36 @@
+.user-tasks {
+  border-radius: 2px;
+  border: 1px solid rgb(212, 212, 212);
+  height: 270px;
+  width: 506px;
+
+  .mat-card-header {
+    border-bottom: 1px solid #FFFFFF;
+    padding-bottom: 5px;
+
+    .mat-card-title {
+      color: rgb(114, 128, 138);
+      font-family: OpenSans-SemiBold;
+      font-size: 16px;
+      font-weight: 600;
+      height: 23px;
+      letter-spacing: 0;
+      line-height: 19px;
+    }
+  }
+
+  .mat-card-content {
+    padding-top: 8px;
+    overflow: auto;
+    font-size: 16px;
+    max-height: 140px;
+    color: #72808a;
+
+    .single-task {
+
+      .completed {
+        text-decoration: line-through;
+      }
+    }
+  }
+}

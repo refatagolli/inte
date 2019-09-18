@@ -1,0 +1,10 @@
+<div class="selectable-button-group">
+  <mat-selection-list [formControl]="control" [disableRipple]="true">
+
+    <mat-list-option class="selectable-button" *ngFor="let el of elements "
+                     [value]="el.value" [ngClass]="{selected: selected.indexOf(el.value) >= 0}">
+      {{el.name | titlecase}}
+    </mat-list-option>
+
+  </mat-selection-list>
+</div>

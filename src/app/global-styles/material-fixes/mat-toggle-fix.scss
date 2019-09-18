@@ -1,4 +1,5 @@
-$background-color: mediumseagreen;
+$background-color: #9fc53a;
+
 
 
 .daily-view-header {
@@ -20,11 +21,15 @@ $background-color: mediumseagreen;
           .mat-slide-toggle-thumb {
             background-color: white;
             border: 2px solid $background-color;
-            width: 15px;
-            height: 15px;
+            width: 19px;
+            height: 19px;
           }
         }
       }
     }
+  }
+
+  .mat-button-focus-overlay {
+    background-color: transparent!important;
   }
 }

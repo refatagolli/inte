@@ -1,5 +1,5 @@
 $text_blue: rgb(58, 168, 255);
-$background_blue: rgba(124, 216, 255, 0.1);
+$background_blue: #F7FBFF;
 $border-color: #afeeee;
 
 .daily-calendar {
@@ -60,7 +60,7 @@ $border-color: #afeeee;
 
 
         &.selected {
-          background-color: $text_blue;
+          background-color: #1785B8;
           color: white;
         }
       }

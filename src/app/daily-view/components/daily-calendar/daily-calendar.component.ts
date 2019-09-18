@@ -23,8 +23,6 @@ export class DailyCalendarComponent implements OnInit {
   }
 
   ngOnInit() {
-    let a = Number('6666');
-    console.log(a);
   }
 
   getDateList() {

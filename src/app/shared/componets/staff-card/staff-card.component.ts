@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {StaffMember} from '../../../models/StaffMember';
 
 @Component({
   selector: 'app-staff-card',
@@ -8,16 +9,22 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 })
 export class StaffCardComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() subtitle: string;
-  @Input() initials: string;
-  @Input() isPresent: boolean;
-  @Input() hasAction: boolean;
-  @Input() openShift: boolean;
+  @Input() staffMember: StaffMember;
+  @Input() openShift = false;
+  @Output() itemSelected: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  @HostListener('click')
+  public onClick() {
+    this.itemSelected.emit();
+  }
+
+  createShift() {
+    this.itemSelected.emit();
+  }
 }

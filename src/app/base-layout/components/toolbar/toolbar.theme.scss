@@ -1,0 +1,29 @@
+$text_color: rgb(250, 250, 250);
+
+
+@mixin toolbar-theme($theme) {
+
+    $foreground: map-get($theme, foreground);
+
+    toolbar {
+
+        .toolbar-separator {
+            background: map-get($foreground, divider);
+        }
+    }
+
+  .mat-toolbar {
+    box-shadow: unset;
+  }
+
+
+  .navbar-toggle-button,
+  .current-route {
+    color: $text_color;
+
+    .mat-icon {
+      color: $text_color;
+
+    }
+  }
+}

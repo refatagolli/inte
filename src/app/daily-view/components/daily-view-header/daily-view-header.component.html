@@ -1,5 +1,5 @@
-<div class="daily-view-header" fxLayout.gt-md="row" fxLayout.lt-sm="column"  fxLayoutGap.lt-sm="24px">
-  <div class="view-type" fxFlex.gt-md="40%" fxFlex.lt-sm="1 1 auto" >
+<div class="daily-view-header" fxLayout.gt-md="row" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="24px">
+  <div class="view-type" fxFlex.gt-md="40%" fxFlex.lt-sm="1 1 auto">
     <div class="view-type-wrapper" fxLayout="row" fxLayoutAlign.lt-sm="space-around">
       <span class="bold-item">View by:</span>
       <div class="view-type-toggle" fxLayout="row">
@@ -12,14 +12,16 @@
   <div class="date-range">
     <mat-chip-list [disabled]="true" class="chip-container">
       <mat-chip [disabled]="true">
-        <app-chip-icon>
-          <mat-icon>date_range</mat-icon>
-        </app-chip-icon>
+
+        <mat-icon class="test-icon">date_range</mat-icon>
+
         <span class="title bold-item">{{ date | date : 'EEEE MMM d' | uppercase }}</span>
+
         <button mat-flat-button [matMenuTriggerFor]="dateType">
           <span>{{dailyViewConfig.dateRange | titlecase}}</span>
           <mat-icon>arrow_drop_down</mat-icon>
         </button>
+
         <mat-menu #dateType="matMenu">
           <button mat-menu-item (click)="changeDateRange('daily')"
                   [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='daily'}"

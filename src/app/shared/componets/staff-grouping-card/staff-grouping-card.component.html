@@ -6,13 +6,11 @@
       <span class="staff-grouping-card-header-title bold-item">{{title | titlecase}}</span>
       <div class="error-case" fxFlex="1 1 auto">
         <div fxFlex fxLayout="row" *ngIf="errorMessage">
-          <app-chip-icon>
-            <mat-icon>warning</mat-icon>
-          </app-chip-icon>
+          <mat-icon class="test-icon danger">warning</mat-icon>
           <span class="error-message"> {{errorMessage}}</span>
         </div>
       </div>
-      <range-chip [present]="present" [total]="total"></range-chip>
+      <range-chip [present]="present" [total]="total" [extraText]="'on staff'"></range-chip>
     </mat-expansion-panel-header>
     <div class="staff-grouping-card-content" *ngIf="a.expanded">
       <ng-content></ng-content>

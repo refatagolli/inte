@@ -1,14 +1,14 @@
-$select-color: mediumseagreen;
-$text_blue: rgb(58, 168, 255);
+$select-color: #9fc53a;
+$text_blue: #2c87b9;
 $background_blue: rgba(58, 168, 255, 0.3);
 
 .daily-view-header {
   flex: 1 1 auto;
   display: flex;
   flex-direction: row;
+  font-size: 16px;
 
   .view-type {
-    //width: 40%;
     display: block;
     padding-top: 20px;
 
@@ -34,6 +34,7 @@ $background_blue: rgba(58, 168, 255, 0.3);
     .chip-container {
 
       .title {
+        margin-left: 10px;
         font-size: 20px;
         color: $text_blue;
       }

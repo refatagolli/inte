@@ -1,0 +1,17 @@
+<div class="staff-card-checkbox">
+  <mat-list-item>
+    <div class="staff-card-checkbox-container" fxFlex fxLayout="row">
+      <div class="staff-card-checkbox-chip">
+        <app-chip-icon [name]="staffMember.fullName"></app-chip-icon>
+      </div>
+      <div class="staff-card-checkbox-content" fxFlex="1 1 auto" fxLayout="column">
+        <span class="bold-item title">{{staffMember.fullName | titlecase}}</span>
+        <span class="subtitle">{{staffMember.staffType}}</span>
+      </div>
+      <div class="staff-card-checkbox-actions">
+        <mat-checkbox [formControl]="control" ></mat-checkbox>
+      </div>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</div>

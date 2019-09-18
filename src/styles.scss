@@ -1,9 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-
 /* Custom global styles */
 @import "app/global-styles/global";
-
+// Import Theme core library
+@import "@theme/scss/core";
+// Import app.theme.scss
+@import "app/app.theme";
 
 body {
   margin: 0;
@@ -14,3 +14,20 @@ body {
 .bold-item {
   font-weight: bold;
 }
+
+.test-icon {
+  background-color: #eef8fe !important;
+  border: 3px solid #dcecf4 !important;
+  color: #1785B8 !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 20px !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+
+  &.danger {
+    color: #d0021b !important;
+  }
+}
+

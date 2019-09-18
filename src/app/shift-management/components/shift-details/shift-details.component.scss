@@ -1,0 +1,19 @@
+
+
+.shift-management {
+  padding: 10px;
+  width: fit-content;
+
+  .shift-management-wrapper {
+    width: fit-content;
+    min-width: 400px;
+    max-width: 600px;
+    height: inherit;
+
+  }
+
+  .required {
+    color: red
+  }
+
+}

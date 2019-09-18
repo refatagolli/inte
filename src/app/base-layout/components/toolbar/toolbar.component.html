@@ -1,0 +1,35 @@
+<mat-toolbar class="p-0 mat-elevation-z1">
+
+  <div fxFlex fxFill fxLayout="row" fxLayoutAlign="space-between center">
+
+    <div fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center">
+
+      <button mat-icon-button class="navbar-toggle-button"
+              (click)="toggleSidebarOpen('navbar')">
+        <mat-icon class="secondary-text">menu</mat-icon>
+      </button>
+
+
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="logo ml-16">
+          <span class="current-route">{{ currentRoute | async  | titlecase}}</span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="filter" fxShow.gt-md="true">
+      <div class="filter">
+        <user-filter></user-filter>
+      </div>
+    </div>
+
+
+    <div class="" fxFlex="0 1 auto">
+      <app-chip-icon name="First User"></app-chip-icon>
+    </div>
+
+  </div>
+
+</mat-toolbar>

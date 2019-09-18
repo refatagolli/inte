@@ -1,0 +1,41 @@
+@import "src/@theme/scss/fuse";
+
+$background-color:rgb(23, 133, 184);
+
+toolbar {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  z-index: 4;
+  padding: 0 50px;
+  background-color: $background-color;
+
+  &.below {
+    z-index: 2;
+  }
+
+  .mat-toolbar {
+    position: relative;
+    background: inherit !important;
+    color: inherit !important;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    .logo-icon {
+      width: 38px;
+    }
+  }
+
+  .navbar-toggle-button {
+    min-width: 56px;
+    height: 56px;
+  }
+
+  ::ng-deep.chip-icon {
+    cursor: pointer !important;
+  }
+
+}

@@ -1,7 +1,7 @@
 <div class="range-chip">
   <mat-chip-list>
-    <mat-chip>
-      <p>{{present}}/{{total}}</p>
+    <mat-chip [ngClass]="{'not-complete': total !== present}">
+      <p>{{present}}/{{total}} &nbsp; {{extraText}}</p>
     </mat-chip>
   </mat-chip-list>
 </div>

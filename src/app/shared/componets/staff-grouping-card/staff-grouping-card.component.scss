@@ -1,4 +1,4 @@
-$header_background_color: #3ca7ff;
+$header_background_color: #1785B8;
 $header_border_color: #cacaca;
 $header_font_color: #cacaca;
 
@@ -6,22 +6,6 @@ $header_font_color: #cacaca;
   flex: 1 1 auto;
   border-radius: 2px;
   position: relative;
-
-  .mat-expansion-panel {
-    box-shadow: unset;
-
-
-    ::ng-deep.mat-expansion-panel-content {
-      max-width: calc(100vw - (100px));
-      width: inherit;
-      overflow-x: auto;
-      overflow-y: hidden;
-
-      .mat-expansion-panel-body {
-        padding: 0;
-      }
-    }
-  }
 
   .staff-grouping-card-header {
     box-shadow: unset;
@@ -31,17 +15,44 @@ $header_font_color: #cacaca;
 
     &.expanded {
       background-color: $header_background_color;
+      color: white;
+
+      .error-case {
+        .error-message {
+          color: white;
+        }
+      }
     }
 
+    .mat-expansion-panel {
+      box-shadow: unset;
+
+      ::ng-deep.mat-expansion-panel-content {
+        max-width: calc(100vw - (100px));
+        width: inherit;
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        .mat-expansion-panel-body {
+          padding: 0;
+        }
+      }
+    }
     .error-case {
+      margin-top: 8px;
       margin-left: 10px;
 
       .error-message {
-        margin: 10px 0 0 5px;
-      }
-
-      ::ng-deep .chip-icon {
-        color: #ff0937;
+        color: rgb(152, 167, 180);
+        font-family: OpenSans-SemiBoldItalic;
+        font-size: 16px;
+        font-weight: bold;
+        font-style: italic;
+        height: 22px;
+        letter-spacing: 0;
+        width: 96px;
+        margin-left: 12px;
+        line-height: 1.5;
       }
     }
     ::ng-deep .range-chip {
@@ -52,8 +63,9 @@ $header_font_color: #cacaca;
       font-size: 16px;
       height: inherit;
       padding-top: 10px;
+      min-width: 120px;
+
     }
   }
-
 
 }

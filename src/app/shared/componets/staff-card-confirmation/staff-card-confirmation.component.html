@@ -1,0 +1,22 @@
+<div class="staff-card-confirmation">
+  <mat-list-item>
+    <div class="staff-card-confirmation-container" fxFlex fxLayout="row">
+      <div class="staff-card-confirmation-chip">
+        <app-chip-icon [name]="staffMember.fullName"></app-chip-icon>
+      </div>
+      <div class="staff-card-confirmation-content" fxFlex="1 1 auto" fxLayout="column">
+        <span class="bold-item title">{{staffMember.fullName | titlecase}}</span>
+        <span class="subtitle">{{staffMember.staffType}}</span>
+      </div>
+      <div class="staff-card-confirmation-response" fxFlex="1 1 auto" fxLayout="column">
+        <span class="bold-item title" [ngClass]="response">{{response | uppercase}}</span>
+      </div>
+      <div class="staff-card-confirmation-actions">
+        <button mat-button *ngIf="response === 'confirm'" (click)="openManagement()" color="primary">
+          CONFIRM
+        </button>
+      </div>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</div>

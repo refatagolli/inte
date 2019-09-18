@@ -14,7 +14,8 @@ export class StaffGroupingCardComponent implements OnInit {
   @Input() present: string;
   @Input() expanded: boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

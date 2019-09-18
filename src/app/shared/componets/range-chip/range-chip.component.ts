@@ -10,6 +10,7 @@ export class RangeChipComponent implements OnInit {
 
   @Input() present: number;
   @Input() total: number;
+  @Input() extraText: number;
 
   constructor() { }
 

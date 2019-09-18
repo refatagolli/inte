@@ -1,0 +1,35 @@
+[
+  {
+    "value": "Add more tasks",
+    "completed": true
+  },
+  {
+    "value": "Find motivation to complete the rest",
+    "completed": true
+  },
+  {
+    "value": "Get some sleep",
+    "completed": true
+  },
+  {
+    "value": "Remember you have more things to do",
+    "completed": false
+  },
+  {
+    "value": "Get up from bed",
+    "completed": true
+  },
+  {
+    "value": "Start doing some of the other tasks",
+    "completed": true
+  },
+  {
+    "value": "Forget you have to get more sleep",
+    "completed": false
+  },
+  {
+    "value": "Have fun ?!?!?!?!?!",
+    "completed": true
+  }
+]
+
