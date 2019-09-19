@@ -21,6 +21,8 @@ user-filter {
   .filter-options {
     position: absolute;
     height: fit-content;
+    overflow: scroll;
+    max-height: 400px;
     width: 491px;
     top: 48px;
     border-radius: 0;
