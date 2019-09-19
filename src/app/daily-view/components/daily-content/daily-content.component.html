@@ -1,13 +1,38 @@
-<div class="daily-content" fxLayout="column" fxLayoutGap="24px">
-  <app-staff-grouping-card [total]="10" [present]="5" [title]="a.shiftTime"
+<div class="daily-content" fxLayout="column" fxLayoutGap="24px" *ngIf="config.viewType === 'unit'">
+  <app-staff-grouping-card [total]="c.requiredStaff" [present]="getPresent(a)" [title]="a.value"
+                           [errorMessage]="'Test error'"
+                           *ngFor="let a of elements | async">
+    <div class="columns-wrapper" fxFlex fxLayout="row" fxLayoutGap="24px">
+      <app-staff-column [title]="b.shiftTime" [subtitle]="b.shiftTime" *ngFor="let b of a[primaryField]">
+        <div class="member-card-wrapper" fxLayout="column" fxLayoutGap="24px">
+          <app-staff-member-card [total]="b.requiredStaff" [present]="c.length" [title]="c.key"
+                                 [shiftDetails]="getShiftDetails(b.shiftTime, c.key, a.value)"
+                                 *ngFor="let c of b.staff | keyvalue">
+            <app-staff-card [openShift]="true" *ngIf="true"
+                            (itemSelected)="openFillShift(getShiftDetails(b.shiftTime, c.key, a.value))"></app-staff-card>
+            <app-staff-card *ngFor="let s of c.value.length" [staffMember]="s" (itemSelected)="openShiftDetails(s)"></app-staff-card>
+            <add-shift (addShift)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value))"></add-shift>
+          </app-staff-member-card>
+        </div>
+      </app-staff-column>
+    </div>
+  </app-staff-grouping-card>
+</div>
+
+<div class="daily-content" fxLayout="column" fxLayoutGap="24px" *ngIf="config.viewType === 'shift'">
+  <app-staff-grouping-card [total]="a.requiredStaff" [present]="getPresent(a)" [title]="a.shiftTime"
                            [errorMessage]="'Test error'"
                            *ngFor="let a of elements | async">
     <div class="columns-wrapper" fxFlex fxLayout="row" fxLayoutGap="24px">
       <app-staff-column [title]="b.value" [subtitle]="b.value" *ngFor="let b of a[primaryField]">
         <div class="member-card-wrapper" fxLayout="column" fxLayoutGap="24px">
-          <app-staff-member-card [total]="10" [present]="5" [title]="c.key" *ngFor="let c of b.staff | keyvalue">
-            <app-staff-card [openShift]="true" *ngIf="true" (itemSelected)="openFillShift()"></app-staff-card>
+          <app-staff-member-card [total]="b.requiredStaff" [present]="c.value.length" [title]="c.key"
+                                 [shiftDetails]="getShiftDetails(a.shiftTime, c.key, b.value)"
+                                 *ngFor="let c of b.staff | keyvalue">
+            <app-staff-card [openShift]="true" *ngIf="true"
+                            (itemSelected)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value))"></app-staff-card>
             <app-staff-card *ngFor="let s of c.value" [staffMember]="s" (itemSelected)="openShiftDetails(s)"></app-staff-card>
+            <add-shift (addShift)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value))"></add-shift>
           </app-staff-member-card>
         </div>
       </app-staff-column>

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {ShiftManagementService} from './shift-management.service';
 import {takeUntil} from 'rxjs/operators';
-import {ShiftDeatils} from '../models/ShiftDeatils';
+import {ShiftDetails} from '../models/ShiftDetails';
 import {StaffMember} from '../models/StaffMember';
 
 @Component({
@@ -12,7 +12,7 @@ import {StaffMember} from '../models/StaffMember';
 })
 export class ShiftManagementComponent implements OnInit {
 
-  public shiftManagementState: { shiftDetails: ShiftDeatils; staffMember?: StaffMember };
+  public shiftManagementState: { shiftDetails: ShiftDetails; staffMember?: StaffMember };
   private _unsubscribeAll: Subject<any> = new Subject();
 
   constructor(private _siftManagementService: ShiftManagementService) {

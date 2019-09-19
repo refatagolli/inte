@@ -3,7 +3,7 @@
     <div class="calendar-options">
       <div class="calendar-options-wrapper" fxFlex fxLayout="row" >
         <button mat-button class="date-cell" *ngFor="let date of dateList"
-                fxFlex="auto"[disableRipple]="true" (click)="changeDate(date)"
+                fxFlex="auto" [disableRipple]="true" (click)="changeDate(date)"
                 [ngClass]="{selected: date == config.date}">
           <div class="date-option-value-wrapper" fxFlex fxLayout="column">
             <span class="date-option-value bold-item" *ngFor="let v of (date | date : 'MMM d').split(' ')" >

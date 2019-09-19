@@ -1,4 +1,4 @@
-export interface ShiftDeatils {
+export interface ShiftDetails {
   shiftDate: string | number | Date;
   shiftHours: string;
   staffType: string;

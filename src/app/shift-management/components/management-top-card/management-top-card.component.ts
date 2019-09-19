@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {FuseSidebarService} from '@theme/components/sidebar/sidebar.service';
-import {ShiftDeatils} from '../../../models/ShiftDeatils';
+import {ShiftDetails} from '../../../models/ShiftDetails';
 import {ShiftManagementService} from '../../shift-management.service';
 
 @Component({
@@ -13,7 +13,7 @@ import {ShiftManagementService} from '../../shift-management.service';
 export class ManagementTopCardComponent implements OnInit {
 
   @Input() title: string;
-  @Input() shiftDetails: ShiftDeatils;
+  @Input() shiftDetails: ShiftDetails;
 
   constructor(private _shiftManagementService: ShiftManagementService) {
   }

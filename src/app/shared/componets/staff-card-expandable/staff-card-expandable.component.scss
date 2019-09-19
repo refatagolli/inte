@@ -1,5 +1,5 @@
-$title_color: #728cba;
-$subtitle_color: #98a7ba;
+$title_color: #72808a;
+$subtitle_color: #98a7b4;
 $header_border_color: #cacaca;
 
 .staff-card-expandable {
@@ -18,6 +18,8 @@ $header_border_color: #cacaca;
     }
 
     .expansion-panel-body {
+      margin-top: 20px;
+
       .user-info-title {
         width: 90px;
         font-size: 16px;
@@ -28,6 +30,11 @@ $header_border_color: #cacaca;
       .user-info-subtitle {
         font-size: 14px;
         color: $subtitle_color;
+      }
+    }
+    .notes {
+      textarea {
+        resize: none;
       }
     }
   }
@@ -46,7 +53,6 @@ $header_border_color: #cacaca;
   }
 
   .staff-card-hours {
-
     span {
       color: $subtitle_color;
       display: block;

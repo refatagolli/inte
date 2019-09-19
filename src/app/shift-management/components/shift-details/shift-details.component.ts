@@ -1,17 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {StaffMember} from '../../../models/StaffMember';
-import {ShiftDeatils} from '../../../models/ShiftDeatils';
+import {ShiftDetails} from '../../../models/ShiftDetails';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {flatMap, map, toArray} from 'rxjs/operators';
 
 @Component({
   selector: 'app-shift-details',
   templateUrl: './shift-details.component.html',
-  styleUrls: ['./shift-details.component.scss']
+  styleUrls: ['./shift-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShiftDetailsComponent implements OnInit {
 
-  @Input() shiftDetails: ShiftDeatils;
+  @Input() shiftDetails: ShiftDetails;
   @Input() staffMember: StaffMember;
 
   removingFromStaff = false;

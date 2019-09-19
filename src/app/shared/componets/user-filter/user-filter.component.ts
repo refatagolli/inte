@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {merge, Observable, Subject, Subscription} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {DailyViewService} from '../../../services/daily-view.service';
-import {flatMap, map, toArray} from 'rxjs/operators';
+import {flatMap, map, takeUntil, tap, toArray} from 'rxjs/operators';
 import {UtilsService} from '../../../services/utils/utils.service';
 
 @Component({
@@ -14,100 +14,111 @@ import {UtilsService} from '../../../services/utils/utils.service';
 export class UserFilterComponent implements OnInit {
   shiftBlockName: string;
   shiftOptions: Observable<any>;
-  shiftChange: Subject<string[]>;
 
   unitBlockName: string;
   unitOptions: Observable<any>;
-  unitChange: Subject<string[]>;
 
   dayBlockName: string;
   dayOptions: Observable<any>;
-  dayChange: Subject<string[]>;
 
   staffBlockName: string;
   staffOptions: Observable<any>;
-  staffChange: Subject<string[]>;
 
   employmentBlockName: string;
   employmentOptions: Observable<any>;
-  employmentChange: Subject<string[]>;
 
+  subject: Subject<any> = new Subject();
   control: FormControl = new FormControl('');
-  subscription: Subscription;
   filterOptions = false;
   first: string;
+  private _unsubscribeAll: Subject<any> = new Subject();
+  private applyedFilters: any;
 
   constructor(
     private _dailyService: DailyViewService,
-    private utils: UtilsService
-  ) {
+    private utils: UtilsService) {
   }
 
   ngOnInit() {
 
-    this.subscription = this.utils.getFilterConfiguration().subscribe(filterConfigs => {
-      const that = this;
-      filterConfigs.forEach(function (value) {
-        switch (value['key']) {
-          case 'shift_type':
-            that.shiftOptions = that._dailyService.getShifts().pipe(
-              flatMap(e => e),
-              map(e => ({
-                name: e.shiftTime,
-                value: e.shiftTime
-              })),
-              toArray());
-            that.shiftBlockName = value['name'];
-            break;
-          case 'unit_type':
-            that.unitOptions = that._dailyService.getUnits().pipe(flatMap(e => e),
-              map(e => ({
-                name: e.value,
-                value: e.value
-              })),
-              toArray());
-            that.unitBlockName = value['name'];
-            break;
-          case 'shift_days':
-            that.dayOptions = that._dailyService.getDays().pipe(
-              flatMap(e => e),
-              map(e => ({
-                name: e.name,
-                value: e.id
-              })),
-              toArray());
-            that.dayBlockName = value['name'];
-            break;
-          case 'staff_type':
-            that.staffOptions = that._dailyService.getStaffTypes().pipe(
-              flatMap(e => e),
-              map(e => ({
-                name: e.staffTypeName,
-                value: e.staffTypeId
-              })),
-              toArray());
-            that.staffBlockName = value['name'];
-            break;
-          case 'employment_type':
-            that.employmentOptions = that._dailyService.getEmploymentTypes().pipe(
-              flatMap(e => e),
-              map(e => ({
-                name: e.employmentTypeName,
-                value: e.employmentTypeId
-              })),
-              toArray());
-            that.employmentBlockName = value['name'];
-            break;
+    this.utils.getFilterConfiguration()
+      .pipe(
+        takeUntil(this._unsubscribeAll),
+        tap(e => this.applyedFilters = {}))
+      .subscribe(filterConfigs => {
+        filterConfigs.forEach((value) => {
+          switch (value['key']) {
+            case 'shift_type':
+              this.shiftOptions = this._dailyService.getShifts().pipe(
+                flatMap(e => e),
+                map(e => ({
+                  name: e.shiftTime,
+                  value: e.shiftTime
+                })),
+                toArray());
+              this.shiftBlockName = value['name'];
+              break;
+            case 'unit_type':
+              this.unitOptions = this._dailyService.getUnits().pipe(flatMap(e => e),
+                map(e => ({
+                  name: e.value,
+                  value: e.value
+                })),
+                toArray());
+              this.unitBlockName = value['name'];
+              break;
+            case 'shift_days':
+              this.dayOptions = this._dailyService.getDays().pipe(
+                flatMap(e => e),
+                map(e => ({
+                  name: e.name,
+                  value: e.id
+                })),
+                toArray());
+              this.dayBlockName = value['name'];
+              break;
+            case 'staff_type':
+              this.staffOptions = this._dailyService.getStaffTypes().pipe(
+                flatMap(e => e),
+                map(e => ({
+                  name: e.staffTypeName,
+                  value: e.staffTypeId
+                })),
+                toArray());
+              this.staffBlockName = value['name'];
+              break;
+            case 'employment_type':
+              this.employmentOptions = this._dailyService.getEmploymentTypes().pipe(
+                flatMap(e => e),
+                map(e => ({
+                  name: e.employmentTypeName,
+                  value: e.employmentTypeId
+                })),
+                toArray());
+              this.employmentBlockName = value['name'];
+              break;
+          }
+        });
+
+        if (filterConfigs.length > 0) {
+          this.first = filterConfigs[0]['name'];
         }
       });
 
-      if (filterConfigs.length > 0) {
-        this.first = filterConfigs[0]['name'];
-      }
-    });
+    this.subscribeToSubject();
   }
 
   toggleFilterOptions() {
     this.filterOptions = !this.filterOptions;
+  }
+
+  private subscribeToSubject(): void {
+    this.subject
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(e => {
+          this.applyedFilters[e[0]] = e[1];
+          this.utils.filterChangeSubject.next(this.applyedFilters);
+        }
+      );
   }
 }

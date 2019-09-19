@@ -1,7 +1,8 @@
 .daily-view-wrapper {
-  //position: relative;
-  padding: 20px 50px 0 50px;
   width: inherit;
   max-width: inherit;
 
+  daily-view-header, daily-content {
+    margin : 0 50px;
+  }
 }

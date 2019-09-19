@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ShiftDeatils} from '../../../models/ShiftDeatils';
+import {ShiftDetails} from '../../../models/ShiftDetails';
 
 @Component({
   selector: 'app-fill-shift-component',
@@ -8,7 +8,7 @@ import {ShiftDeatils} from '../../../models/ShiftDeatils';
 })
 export class FillShiftComponentComponent implements OnInit {
 
-  @Input() shiftDetails: ShiftDeatils;
+  @Input() shiftDetails: ShiftDetails;
 
   constructor() {
   }

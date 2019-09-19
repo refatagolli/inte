@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FuseSidebarService} from '@theme/components/sidebar/sidebar.service';
-import {ShiftDeatils} from '../models/ShiftDeatils';
+import {ShiftDetails} from '../models/ShiftDetails';
 import {Subject} from 'rxjs';
 import {StaffMember} from '../models/StaffMember';
 
@@ -9,13 +9,13 @@ import {StaffMember} from '../models/StaffMember';
 })
 export class ShiftManagementService {
 
-  public shiftChange: Subject<{ shiftDetails: ShiftDeatils, staffMember?: StaffMember }> = new Subject();
+  public shiftChange: Subject<{ shiftDetails: ShiftDetails, staffMember?: StaffMember }> = new Subject();
   private _sidebarName = 'shiftManagement';
 
   constructor(private _sidebareService: FuseSidebarService) {
   }
 
-  openShiftDetailsPanel(shiftDetails: ShiftDeatils, staffMember: StaffMember) {
+  openShiftDetailsPanel(shiftDetails: ShiftDetails, staffMember: StaffMember) {
     const sidebar = this._sidebareService.getSidebar(this._sidebarName);
     if (!sidebar.opened) {
       sidebar.toggleOpen();
@@ -23,7 +23,7 @@ export class ShiftManagementService {
     this.shiftChange.next({shiftDetails, staffMember});
   }
 
-  openFillShiftPanel(shiftDetails: ShiftDeatils) {
+  openFillShiftPanel(shiftDetails: ShiftDetails) {
     const sidebar = this._sidebareService.getSidebar(this._sidebarName);
     if (!sidebar.opened) {
       sidebar.toggleOpen();

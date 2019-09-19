@@ -1,6 +1,6 @@
 <div class="staff-card-expandable">
   <mat-expansion-panel>
-    <mat-expansion-panel-header  collapsedHeight="60px" expandedHeight="60px">
+    <mat-expansion-panel-header collapsedHeight="60px" expandedHeight="60px">
       <div class="header-content" fxFlex="1 1 auto" fxLayout="row">
         <div class="staff-card-expandable-checkbox" *ngIf="control">
           <mat-checkbox [formControl]="control"></mat-checkbox>
@@ -8,7 +8,7 @@
         <div class="staff-card-expandable-chip">
           <app-chip-icon [name]="staffMember.fullName"></app-chip-icon>
         </div>
-        <div class="staff-card-confirmation-content" fxFlex="1 1 auto"  fxLayout="column">
+        <div class="staff-card-confirmation-content" fxFlex="1 1 auto" fxLayout="column">
           <span class="bold-item title">{{staffMember.fullName | titlecase}}</span>
           <span class="subtitle">{{staffMember.staffType}}</span>
         </div>
@@ -49,14 +49,14 @@
         <span class="user-info-subtitle">{{staffMember.phone}}</span>
       </div>
 
-      <h2> Notes</h2>
+      <div class="notes" fxLayout="column">
+        <span class="user-info-title"> Notes</span>
 
-      <mat-form-field appearance="outline">
-        <textarea matInput #note placeholder="Add a Note ...." style="resize: none;"></textarea>
-        <mat-icon matSuffix>clear</mat-icon>
-        <mat-hint align="end">{{note.value.length}} / 256</mat-hint>
-      </mat-form-field>
-
+        <mat-form-field appearance="outline">
+          <textarea matInput #note placeholder="Add a Note ...."></textarea>
+          <mat-hint align="end">{{note.value.length}} / 256</mat-hint>
+        </mat-form-field>
+      </div>
     </div>
   </mat-expansion-panel>
 </div>

@@ -18,6 +18,8 @@ import {ShiftManagementModule} from '../shift-management/shift-management.module
 import {FuseSidebarModule} from '@theme/components';
 import {StaffCardCheckboxModule} from '../shared/componets/staff-card-checkbox/staff-card-checkbox.module';
 import {StaffCardConfirmationModule} from '../shared/componets/staff-card-confirmation/staff-card-confirmation.module';
+import {MainMenuModule} from './components/main-menu/main-menu.module';
+import {AddShiftModule} from '../shared/componets/add-shift/add-shift.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {StaffCardConfirmationModule} from '../shared/componets/staff-card-confir
     ShiftManagementModule,
     FuseSidebarModule,
     StaffCardCheckboxModule,
-    StaffCardConfirmationModule
+    StaffCardConfirmationModule,
+    MainMenuModule,
+    AddShiftModule
   ]
 })
 export class DailyViewModule {

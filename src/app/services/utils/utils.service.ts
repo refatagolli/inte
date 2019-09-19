@@ -6,9 +6,14 @@ import {FilterConfiguration} from '../../models/FilterConfiguration';
   providedIn: 'root'
 })
 export class UtilsService {
+  filterChangeSubject = new Subject<{}>();
   private subject = new Subject<FilterConfiguration[]>();
 
   constructor() {
+  }
+
+  get filterChanges(): Observable<{}> {
+    return this.filterChangeSubject.asObservable();
   }
 
   static getInitialsFromName(name: string): string {

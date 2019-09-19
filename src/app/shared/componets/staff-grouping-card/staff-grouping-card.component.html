@@ -5,9 +5,9 @@
                                 collapsedHeight="50px" color="primary">
       <span class="staff-grouping-card-header-title bold-item">{{title | titlecase}}</span>
       <div class="error-case" fxFlex="1 1 auto">
-        <div fxFlex fxLayout="row" *ngIf="errorMessage">
+        <div fxFlex fxLayout="row" *ngIf="total !== present">
           <mat-icon class="test-icon danger">warning</mat-icon>
-          <span class="error-message"> {{errorMessage}}</span>
+          <span class="error-message"> {{total > present? 'Understaffed' : 'Overstaffed'}}</span>
         </div>
       </div>
       <range-chip [present]="present" [total]="total" [extraText]="'on staff'"></range-chip>

@@ -1,27 +1,35 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {from, Observable, of, Subject, zip} from 'rxjs';
-import {filter, flatMap, groupBy, map, mergeMap, switchMap, takeUntil, tap, toArray} from 'rxjs/operators';
+import {filter, flatMap, groupBy, map, mergeMap, switchMap, takeUntil, toArray} from 'rxjs/operators';
 import {StaffMember} from '../../../models/StaffMember';
 import {ShiftManagementService} from '../../../shift-management/shift-management.service';
-import {ShiftDeatils} from '../../../models/ShiftDeatils';
+import {ShiftDetails} from '../../../models/ShiftDetails';
+import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
+import {flatten} from '@angular/compiler';
 
 @Component({
   selector: 'daily-content',
   templateUrl: './daily-content.component.html',
-  styleUrls: ['./daily-content.component.scss']
+  styleUrls: ['./daily-content.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DailyContentComponent implements OnInit, OnDestroy {
 
   public control = new FormControl(false);
   public elements: Observable<any> = new Observable();
+  config: DailyViewConfigModel;
   private _unsubscribeAll: Subject<any> = new Subject();
   private primaryField: string;
   private secondaryField: string;
 
   constructor(private _dailyViewService: DailyViewService,
               private _shiftManagementService: ShiftManagementService) {
+
+    this._dailyViewService.dailyViewConfig
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(e => this.config = e);
 
     this.elements = this._dailyViewService.dailyViewConfig.pipe(
       takeUntil(this._unsubscribeAll),
@@ -30,7 +38,6 @@ export class DailyContentComponent implements OnInit, OnDestroy {
   }
 
   private static _setStaffField(e) {
-    // const a = {...e[0]};
     e[0]['staff'] = {...e[1]};
     return {...e[0]};
   }
@@ -43,7 +50,7 @@ export class DailyContentComponent implements OnInit, OnDestroy {
   }
 
   openShiftDetails(staffMember: StaffMember) {
-    const shiftDetails: ShiftDeatils = {
+    const shiftDetails: ShiftDetails = {
       staffType: staffMember.staffType,
       shiftHours: staffMember.shiftHours,
       shiftDate: new Date().getTime(),
@@ -52,14 +59,16 @@ export class DailyContentComponent implements OnInit, OnDestroy {
     this._shiftManagementService.openShiftDetailsPanel(shiftDetails, staffMember);
   }
 
-  openFillShift() {
-    const shiftDetails: ShiftDeatils = {
-      staffType: 'test',
-      shiftHours: 'test',
-      shiftDate: new Date().getTime(),
-      unit: 'test'
-    };
+  openFillShift(shiftDetails: ShiftDetails) {
     this._shiftManagementService.openFillShiftPanel(shiftDetails);
+  }
+
+  getShiftDetails(shiftHours: string, unit: string, staffType: string): ShiftDetails {
+    return {shiftHours, staffType, unit, shiftDate: this.config.date};
+  }
+
+  getPresent(asmth) {
+    return flatten(asmth[this.primaryField].map( a => Object.values(a.staff))) .length;
   }
 
   private getStaff(config): Observable<any> {

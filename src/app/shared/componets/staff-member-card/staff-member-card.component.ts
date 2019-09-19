@@ -12,6 +12,7 @@ export class StaffMemberCardComponent implements OnInit {
   @Input() total: number;
   @Input() present: number;
   @Input() expanded: boolean;
+  @Input() shiftDetails: any;
 
   constructor() {
   }

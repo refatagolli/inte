@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
 
 @Component({
   selector: 'daily-calendar',
   templateUrl: './daily-calendar.component.html',
-  styleUrls: ['./daily-calendar.component.scss']
+  styleUrls: ['./daily-calendar.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DailyCalendarComponent implements OnInit {
 

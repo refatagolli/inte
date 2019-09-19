@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
@@ -6,7 +6,8 @@ import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
 @Component({
   selector: 'daily-view-header',
   templateUrl: './daily-view-header.component.html',
-  styleUrls: ['./daily-view-header.component.scss']
+  styleUrls: ['./daily-view-header.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DailyViewHeaderComponent implements OnInit {
   slideToggleContrl: FormControl = new FormControl(true);
