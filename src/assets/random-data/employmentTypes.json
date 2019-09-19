@@ -1,0 +1,14 @@
+[
+  {
+    "employmentTypeId": 1,
+    "employmentTypeName": "Part Time"
+  },
+  {
+    "employmentTypeId": 2,
+    "employmentTypeName": "Full Time"
+  },
+  {
+    "employmentTypeId": 3,
+    "employmentTypeName": "Other"
+  }
+]

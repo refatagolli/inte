@@ -17,7 +17,9 @@
   <div class="wrapper" fxFlex fxLayout="column">
     <h3>Shift Options</h3>
     <app-selectable-button-group [multiple]="true" [elements]="shiftOptions | async" (valueChange)="shiftChange.next($event)"></app-selectable-button-group>
+    <hr />
   </div>
+
   <div class="wrapper" fxFlex fxLayout="column">
     <h3>Unit Options</h3>
     <app-selectable-button-group [multiple]="true" [elements]="unitOptions | async" (valueChange)="unitChange.next($event)"></app-selectable-button-group>

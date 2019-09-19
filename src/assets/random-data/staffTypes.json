@@ -1,0 +1,14 @@
+[
+  {
+    "staffTypeId": 1,
+    "staffTypeName": "Nurse"
+  },
+  {
+    "staffTypeId": 2,
+    "staffTypeName": "CNA"
+  },
+  {
+    "staffTypeId": 3,
+    "staffTypeName": "Other"
+  }
+]

@@ -11,8 +11,7 @@ import {SelectableButtonGroupModule} from '../selectable-button-group/selectable
     CommonModule,
     SharedModule,
     MaterialModule,
-    SelectableButtonGroupModule
-
+    SelectableButtonGroupModule,
   ],
   exports: [
     UserFilterComponent
