@@ -1,0 +1,14 @@
+[
+  {
+    "shiftTypeId": 1,
+    "shiftTypeName": "7AM - 3PM"
+  },
+  {
+    "shiftTypeId": 2,
+    "shiftTypeName": "3PM - 11PM"
+  },
+  {
+    "shiftTypeId": 3,
+    "shiftTypeName": "11PM - 7AM"
+  }
+]

@@ -21,6 +21,8 @@ user-filter {
   .filter-options {
     position: absolute;
     height: fit-content;
+    overflow: scroll;
+    max-height: 400px;
     width: 491px;
     top: 48px;
     border-radius: 0;
@@ -37,5 +39,9 @@ user-filter {
     background-color: transparent;
     opacity: 0.0;
     z-index: -1;
+  }
+
+  hr{
+    width: 100%;
   }
 }

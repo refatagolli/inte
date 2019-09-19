@@ -14,14 +14,36 @@
 
 <mat-card class="filter-options" fxFlex *ngIf="filterOptions" fxFlex fxLayout="column">
 
-  <div class="wrapper" fxFlex fxLayout="column">
-    <h3>Shift Options</h3>
+  <div *ngIf="shiftOptions" class="wrapper" fxFlex fxLayout="column">
+    <hr *ngIf="shiftBlockName != first" />
+    <h3>{{ shiftBlockName }}</h3>
     <app-selectable-button-group [multiple]="true" [elements]="shiftOptions | async" (valueChange)="shiftChange.next($event)"></app-selectable-button-group>
   </div>
-  <div class="wrapper" fxFlex fxLayout="column">
-    <h3>Unit Options</h3>
+
+  <div *ngIf="unitOptions" class="wrapper" fxFlex fxLayout="column">
+    <hr />
+    <h3>{{ unitBlockName }}</h3>
     <app-selectable-button-group [multiple]="true" [elements]="unitOptions | async" (valueChange)="unitChange.next($event)"></app-selectable-button-group>
   </div>
+
+  <div *ngIf="dayOptions" class="wrapper" fxFlex fxLayout="column">
+    <hr />
+    <h3>{{ dayBlockName }}</h3>
+    <app-selectable-button-group [multiple]="true" [elements]="dayOptions | async" (valueChange)="dayChange.next($event)"></app-selectable-button-group>
+  </div>
+
+  <div *ngIf="staffOptions" class="wrapper" fxFlex fxLayout="column">
+    <hr />
+    <h3>{{ staffBlockName }}</h3>
+    <app-selectable-button-group [multiple]="true" [elements]="staffOptions | async" (valueChange)="staffChange.next($event)"></app-selectable-button-group>
+  </div>
+
+  <div *ngIf="employmentOptions" class="wrapper" fxFlex fxLayout="column">
+    <hr />
+    <h3>{{ employmentBlockName }}</h3>
+    <app-selectable-button-group [multiple]="true" [elements]="employmentOptions | async" (valueChange)="employmentChange.next($event)"></app-selectable-button-group>
+  </div>
+
 </mat-card>
 
 <div class="overlay" *ngIf="filterOptions" (click)="toggleFilterOptions()"></div>
