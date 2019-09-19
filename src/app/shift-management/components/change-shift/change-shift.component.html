@@ -4,14 +4,14 @@
   </mat-expansion-panel-header>
 
   <div fxFlex fxLayout="column" fxLayoutGap="20px">
-    <mat-card>
-      <div fxFlex fxLayout="row" fxLayoutGap="20px">
-        <div class="content" fxFlex="1 1 auto">
-          Move Date
-        </div>
-        <mat-icon>keyboard_arrow_down</mat-icon>
-      </div>
-    </mat-card>
+    <div fxFlex fxLayout="column" >
+      <h3> Change Date </h3>
+      <mat-form-field fxFlex [appearance]="'outline'">
+        <input matInput [matDatepicker]="myDatepicker">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
 
     <div>
       <h3> Shift Time </h3>
