@@ -1,10 +1,11 @@
 <div class="shift-management">
   <div class="shift-management-wrapper" fxLayout="column" fxLayoutGap="20px">
 
-    <app-management-top-card title="Shift Details" [shiftDetails]="shiftDetails">
-    </app-management-top-card>
+    <div class="header" fxFlex>
+      <app-management-top-card title="Shift Details" [shiftDetails]="shiftDetails"></app-management-top-card>
+    </div>
 
-    <div fxFlex fxFlexFill fxLayoutGap="20px">
+    <div class="content" fxFlexFill fxLayoutGap="20px" fxLayout="column">
 
       <app-staff-card-expandable [staffMember]="staffMember"></app-staff-card-expandable>
 
@@ -12,32 +13,32 @@
 
       <app-change-shift [currentShift]="staffMember.shiftHours"></app-change-shift>
 
+      <div class="remove-div" fxFlex fxLayout="column" fxLayoutGap="20px">
+
+        <div class="remove-div-content" [ngStyle]="{display : removingFromStaff ? '' : 'none'}">
+          <h3>Reason For Cancellation <span class="required">*Required</span></h3>
+          <app-selectable-button-group #cancelReason [elements]="elements | async" [maximumSelections]="1">
+          </app-selectable-button-group>
+        </div>
+
+      </div>
     </div>
 
-    <div class="remove-div" fxFlex fxLayout="column" fxLayoutGap="20px">
+    <div class="actions" fxFlex="120px">
+      <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutAlign="center" fxLayoutGap="12px">
+        <button mat-button class="action-button partial" *ngIf="!removingFromStaff"
+                fxFlexAlign="center" (click)="removingFromStaff = true">Remove From Shift
+        </button>
 
-      <div class="remove-div-content" [ngStyle]="{display : removingFromStaff ? '' : 'none'}">
-        <h3>Reason For Cancellation <span class="required">*Required</span></h3>
-        <app-selectable-button-group #cancelReason [elements]="elements | async" [maximumSelections]="1">
-        </app-selectable-button-group>
+        <button mat-button class="action-button" *ngIf="removingFromStaff" (click)="removeFromShift()"
+                [disabled]="!cancelReason.control.valid" fxFlexAlign="center"
+                [ngClass]="cancelReason.control.valid? 'complete' : 'disabled'">Remove From Shift
+        </button>
+
+        <button mat-button class="action-button cancel" *ngIf="removingFromStaff"
+                fxFlexAlign="center" (click)="removingFromStaff = false">Cancel
+        </button>
       </div>
-
-      <div class="actions" fxFlex>
-        <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutAlign="center" fxLayoutGap="12px">
-          <button mat-button class="action-button partial" *ngIf="!removingFromStaff"
-                  fxFlexAlign="center" (click)="removingFromStaff = true">Remove From Shift
-          </button>
-          <button mat-button class="action-button" *ngIf="removingFromStaff" (click)="removeFromShift()"
-                  [disabled]="!cancelReason.control.valid" fxFlexAlign="center"
-                  [ngClass]="cancelReason.control.valid? 'complete' : 'disabled'"
-          >Remove From Shift
-          </button>
-          <button mat-button class="action-button cancel" *ngIf="removingFromStaff"
-                  fxFlexAlign="center" (click)="removingFromStaff = false">Cancel
-          </button>
-        </div>
-      </div>
-
     </div>
 
   </div>
