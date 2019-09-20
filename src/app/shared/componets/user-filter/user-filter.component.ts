@@ -117,6 +117,9 @@ export class UserFilterComponent implements OnInit {
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(e => {
           this.applyedFilters[e[0]] = e[1];
+
+          console.log(this.applyedFilters);
+
           this.utils.filterChangeSubject.next(this.applyedFilters);
         }
       );
