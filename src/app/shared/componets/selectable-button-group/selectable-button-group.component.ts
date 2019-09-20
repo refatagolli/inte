@@ -13,6 +13,7 @@ export class SelectableButtonGroupComponent implements OnInit {
 
   @Output() valueChange: EventEmitter<any> = new EventEmitter();
   @Input() elements: { name: string, value: string }[];
+  @Input() selectedFilters = [];
   @Input() multiple = false;
   @Input() maximumSelections = 0;
 
@@ -24,6 +25,13 @@ export class SelectableButtonGroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if (this.selectedFilters) {
+      console.log('M', this.selectedFilters);
+      this.selected = this.selectedFilters;
+      this.control.setValue(this.selectedFilters, {emitEvent: true});
+    }
+
     this.control.setValidators(CustomFormGroupValidators.MinimumCheckboxesChecked(this.maximumSelections));
 
     this.control.valueChanges.pipe(

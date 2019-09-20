@@ -17,35 +17,35 @@
   <div *ngIf="shiftOptions" class="wrapper" fxFlex fxLayout="column">
     <hr *ngIf="shiftBlockName != first" />
     <h3>{{ shiftBlockName }}</h3>
-    <app-selectable-button-group [multiple]="true" [elements]="shiftOptions | async"
+    <app-selectable-button-group [multiple]="true" [elements]="shiftOptions | async" [selectedFilters]="applyedFilters['shift']"
                                  (valueChange)="subject.next(['shift', $event])"></app-selectable-button-group>
   </div>
 
   <div *ngIf="unitOptions" class="wrapper" fxFlex fxLayout="column">
     <hr />
     <h3>{{ unitBlockName }}</h3>
-    <app-selectable-button-group [multiple]="true" [elements]="unitOptions | async"
+    <app-selectable-button-group [multiple]="true" [elements]="unitOptions | async" [selectedFilters]="applyedFilters['unit']"
                                  (valueChange)="subject.next(['unit', $event])"></app-selectable-button-group>
   </div>
 
   <div *ngIf="dayOptions" class="wrapper" fxFlex fxLayout="column">
     <hr />
     <h3>{{ dayBlockName }}</h3>
-    <app-selectable-button-group [multiple]="true" [elements]="dayOptions | async"
+    <app-selectable-button-group [multiple]="true" [elements]="dayOptions | async" [selectedFilters]="applyedFilters['day']"
                                  (valueChange)="subject.next(['day', $event])"></app-selectable-button-group>
   </div>
 
   <div *ngIf="staffOptions" class="wrapper" fxFlex fxLayout="column">
     <hr />
     <h3>{{ staffBlockName }}</h3>
-    <app-selectable-button-group [multiple]="true" [elements]="staffOptions | async"
+    <app-selectable-button-group [multiple]="true" [elements]="staffOptions | async" [selectedFilters]="applyedFilters['staff']"
                                  (valueChange)="subject.next(['staff', $event])"></app-selectable-button-group>
   </div>
 
   <div *ngIf="employmentOptions" class="wrapper" fxFlex fxLayout="column">
     <hr />
     <h3>{{ employmentBlockName }}</h3>
-    <app-selectable-button-group [multiple]="true" [elements]="employmentOptions | async"
+    <app-selectable-button-group [multiple]="true" [elements]="employmentOptions | async" [selectedFilters]="applyedFilters['employmentType']"
                                  (valueChange)="subject.next(['employmentType', $event])"></app-selectable-button-group>
   </div>
 

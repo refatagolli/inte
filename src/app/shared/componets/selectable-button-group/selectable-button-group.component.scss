@@ -3,7 +3,11 @@
   .selectable-button {
     padding: 8px 16px;
     border-radius: 3px;
-    width: fit-content;
+  }
+
+  .selectable-button {
+    float: left;
+    width: 28%;
     height: 46px;
     text-align: center;
     font-size: 16px;
