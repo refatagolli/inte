@@ -1,8 +1,14 @@
 <div class="header">
-  <span class="header-text">Staff Directory (</span><span class="header-text-without-padding" *ngIf="filtered != total">{{filtered}} / </span><span class="header-text-without-padding">{{total}})</span>
-  <span>
-
-  </span>
+  <label class="header-text header-padding">
+    Staff Directory (</label><label class="header-text" *ngIf="filtered != total">{{filtered}} / </label>
+  <label class="header-text">{{total}})&nbsp;&nbsp;&nbsp;</label>
+  <div class="filters-wrapper" [ngStyle]="{'margin-top': appliedFilters.length <= 3 ? '35px' : '25px'}">
+    <div *ngFor="let item of appliedFilters| slice:0:6;" class="filter-wrapper">
+      <a><i (click)="removeFilter(item);utils.filterCardChanged.next(false);" class="material-icons cancel-icon">cancel</i></a><label class="filters"> {{ item['name'] }}</label>
+    </div>
+  </div>
+  <div class="more-icon" (click)="utils.filterCardChanged.next(true)" *ngIf="appliedFilters.length > 6">
+    <i class="material-icons cancel-icon">filter_{{ (appliedFilters.length - 6) < 10  ? (appliedFilters.length - 6) : 9 }}{{ (appliedFilters.length - 6) < 10 ? "" : "_plus" }}</i> More</div>
   <button mat-button class="action-button complete add-staff">ADD NEW STAFF</button>
   <div class="mat-elevation-z8">
 <!--    <table mat-table [dataSource]="dataSource" matSort>-->

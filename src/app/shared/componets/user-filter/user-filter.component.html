@@ -21,6 +21,13 @@
                                  (valueChange)="subject.next(['shift', $event])"></app-selectable-button-group>
   </div>
 
+  <div *ngIf="shiftTypes" class="wrapper" fxFlex fxLayout="column">
+    <hr *ngIf="shiftsBlockName != first" />
+    <h3>{{ shiftsBlockName }}</h3>
+    <app-selectable-button-group [multiple]="true" [elements]="shiftTypes | async" [selectedFilters]="applyedFilters['shift_type']"
+                                 (valueChange)="subject.next(['shift_type', $event])"></app-selectable-button-group>
+  </div>
+
   <div *ngIf="unitOptions" class="wrapper" fxFlex fxLayout="column">
     <hr />
     <h3>{{ unitBlockName }}</h3>

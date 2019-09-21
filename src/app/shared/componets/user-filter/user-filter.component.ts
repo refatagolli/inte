@@ -15,6 +15,9 @@ export class UserFilterComponent implements OnInit {
   shiftBlockName: string;
   shiftOptions: Observable<any>;
 
+  shiftsBlockName: string;
+  shiftTypes: Observable<any>;
+
   unitBlockName: string;
   unitOptions: Observable<any>;
 
@@ -41,6 +44,18 @@ export class UserFilterComponent implements OnInit {
 
   ngOnInit() {
 
+    this.utils.filterCardConfigChange
+      .pipe()
+      .subscribe(value => {
+        this.filterOptions = value;
+      });
+
+    this.utils.filterChanges
+      .pipe()
+      .subscribe(value => {
+        this.applyedFilters = value;
+      });
+
     this.utils.getFilterConfiguration()
       .pipe(
         takeUntil(this._unsubscribeAll),
@@ -48,6 +63,16 @@ export class UserFilterComponent implements OnInit {
       .subscribe(filterConfigs => {
         filterConfigs.forEach((value) => {
           switch (value['key']) {
+            case 'shift':
+              this.shiftTypes = this._dailyService.getShiftTypes().pipe(
+                flatMap(e => e),
+                map(e => ({
+                  name: e.shiftTypeName,
+                  value: e.shiftTypeId
+                })),
+                toArray());
+              this.shiftsBlockName = value['name'];
+              break;
             case 'shift_type':
               this.shiftOptions = this._dailyService.getShifts().pipe(
                 flatMap(e => e),
@@ -117,11 +142,7 @@ export class UserFilterComponent implements OnInit {
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(e => {
           this.applyedFilters[e[0]] = e[1];
-
-          console.log(this.applyedFilters);
-
           this.utils.filterChangeSubject.next(this.applyedFilters);
-        }
-      );
+        });
   }
 }
