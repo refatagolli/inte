@@ -7,6 +7,7 @@ import {FilterConfiguration} from '../../models/FilterConfiguration';
 })
 export class UtilsService {
   filterChangeSubject = new Subject<{}>();
+  usedComponentSubject = new Subject<string>();
   filterCardChanged = new Subject<boolean>();
   private subject = new Subject<FilterConfiguration[]>();
 
@@ -37,4 +38,11 @@ export class UtilsService {
     return this.subject.asObservable();
   }
 
+  setFilterUsedComponent(message: string) {
+    this.usedComponentSubject.next(message);
+  }
+
+  getFilterUsedComponent(): Observable<string> {
+    return this.usedComponentSubject.asObservable();
+  }
 }

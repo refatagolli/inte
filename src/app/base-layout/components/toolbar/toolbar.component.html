@@ -4,8 +4,13 @@
 
     <div fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center">
 
+<!--      <button mat-icon-button class="navbar-toggle-button"-->
+<!--              (click)="toggleSidebarOpen('navbar')">-->
+<!--        <mat-icon class="secondary-text">menu</mat-icon>-->
+<!--      </button>-->
+
       <button mat-icon-button class="navbar-toggle-button"
-              (click)="toggleSidebarOpen('navbar')">
+              (click)="_route.navigate(['/home']);">
         <mat-icon class="secondary-text">menu</mat-icon>
       </button>
 

@@ -18,6 +18,7 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
 
   private filters: any;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
+  usedIn = 'staff-management';
   appliedFilters: any[] = [];
   staffTypes: StaffType[];
   shiftTypes: ShiftType[];
@@ -41,6 +42,7 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.retrieveTypes();
     this.utils.setFilterConfiguration(this.filterConfig);
+    this.utils.setFilterUsedComponent(this.usedIn);
     this.utils.filterChanges.pipe(
       tap(e => this.appliedFilters = [])
     ).subscribe(value => {

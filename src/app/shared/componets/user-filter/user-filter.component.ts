@@ -33,7 +33,9 @@ export class UserFilterComponent implements OnInit {
   subject: Subject<any> = new Subject();
   control: FormControl = new FormControl('');
   filterOptions = false;
+  filterText = '';
   first: string;
+  usedIn: string;
   private _unsubscribeAll: Subject<any> = new Subject();
   private applyedFilters: any;
 
@@ -56,10 +58,28 @@ export class UserFilterComponent implements OnInit {
         this.applyedFilters = value;
       });
 
+    this.utils.getFilterUsedComponent()
+      .pipe(
+        tap(e => this.usedIn = '')
+      )
+      .subscribe(value => {
+        this.usedIn = value;
+    })
+
     this.utils.getFilterConfiguration()
       .pipe(
         takeUntil(this._unsubscribeAll),
-        tap(e => this.applyedFilters = {}))
+        tap(
+          e => {
+            this.applyedFilters = {};
+            this.shiftTypes = undefined;
+            this.shiftOptions = undefined;
+            this.staffOptions = undefined;
+            this.unitOptions = undefined;
+            this.dayOptions = undefined;
+            this.employmentOptions = undefined;
+          })
+      )
       .subscribe(filterConfigs => {
         filterConfigs.forEach((value) => {
           switch (value['key']) {
