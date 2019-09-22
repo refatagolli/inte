@@ -7,6 +7,8 @@ import {FilterConfiguration} from '../../models/FilterConfiguration';
 })
 export class UtilsService {
   filterChangeSubject = new Subject<{}>();
+  usedComponentSubject = new Subject<string>();
+  filterCardChanged = new Subject<boolean>();
   private subject = new Subject<FilterConfiguration[]>();
 
   constructor() {
@@ -14,6 +16,10 @@ export class UtilsService {
 
   get filterChanges(): Observable<{}> {
     return this.filterChangeSubject.asObservable();
+  }
+
+  get filterCardConfigChange(): Observable<boolean> {
+    return this.filterCardChanged.asObservable();
   }
 
   static getInitialsFromName(name: string): string {
@@ -32,4 +38,11 @@ export class UtilsService {
     return this.subject.asObservable();
   }
 
+  setFilterUsedComponent(message: string) {
+    this.usedComponentSubject.next(message);
+  }
+
+  getFilterUsedComponent(): Observable<string> {
+    return this.usedComponentSubject.asObservable();
+  }
 }

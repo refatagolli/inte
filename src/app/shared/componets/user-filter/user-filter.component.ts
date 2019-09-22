@@ -15,6 +15,9 @@ export class UserFilterComponent implements OnInit {
   shiftBlockName: string;
   shiftOptions: Observable<any>;
 
+  shiftsBlockName: string;
+  shiftTypes: Observable<any>;
+
   unitBlockName: string;
   unitOptions: Observable<any>;
 
@@ -30,7 +33,9 @@ export class UserFilterComponent implements OnInit {
   subject: Subject<any> = new Subject();
   control: FormControl = new FormControl('');
   filterOptions = false;
+  filterText = '';
   first: string;
+  usedIn: string;
   private _unsubscribeAll: Subject<any> = new Subject();
   private applyedFilters: any;
 
@@ -41,13 +46,53 @@ export class UserFilterComponent implements OnInit {
 
   ngOnInit() {
 
+    this.utils.filterCardConfigChange
+      .pipe()
+      .subscribe(value => {
+        this.filterOptions = value;
+      });
+
+    this.utils.filterChanges
+      .pipe()
+      .subscribe(value => {
+        this.applyedFilters = value;
+      });
+
+    this.utils.getFilterUsedComponent()
+      .pipe(
+        tap(e => this.usedIn = '')
+      )
+      .subscribe(value => {
+        this.usedIn = value;
+    })
+
     this.utils.getFilterConfiguration()
       .pipe(
         takeUntil(this._unsubscribeAll),
-        tap(e => this.applyedFilters = {}))
+        tap(
+          e => {
+            this.applyedFilters = {};
+            this.shiftTypes = undefined;
+            this.shiftOptions = undefined;
+            this.staffOptions = undefined;
+            this.unitOptions = undefined;
+            this.dayOptions = undefined;
+            this.employmentOptions = undefined;
+          })
+      )
       .subscribe(filterConfigs => {
         filterConfigs.forEach((value) => {
           switch (value['key']) {
+            case 'shift':
+              this.shiftTypes = this._dailyService.getShiftTypes().pipe(
+                flatMap(e => e),
+                map(e => ({
+                  name: e.shiftTypeName,
+                  value: e.shiftTypeId
+                })),
+                toArray());
+              this.shiftsBlockName = value['name'];
+              break;
             case 'shift_type':
               this.shiftOptions = this._dailyService.getShifts().pipe(
                 flatMap(e => e),
@@ -117,11 +162,7 @@ export class UserFilterComponent implements OnInit {
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(e => {
           this.applyedFilters[e[0]] = e[1];
-
-          console.log(this.applyedFilters);
-
           this.utils.filterChangeSubject.next(this.applyedFilters);
-        }
-      );
+        });
   }
 }

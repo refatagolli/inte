@@ -19,6 +19,7 @@ export class SelectableButtonGroupComponent implements OnInit {
 
   control: FormControl = new FormControl([]);
   selected: string[] = [];
+  hasDefaultVal: boolean;
   private _oldValue;
 
   constructor() {
@@ -28,19 +29,19 @@ export class SelectableButtonGroupComponent implements OnInit {
 
     if (this.selectedFilters) {
       this.selected = this.selectedFilters;
-      this.control.setValue(this.selectedFilters, {emitEvent: true});
+      this.hasDefaultVal = true;
     }
 
     this.control.setValidators(CustomFormGroupValidators.MinimumCheckboxesChecked(this.maximumSelections));
 
     this.control.valueChanges.pipe(
       map(value => this._removeIfRequiredNotMultiple(value)),
-      tap(e => this.selected = e),
-      tap(e => console.log(this.control.valid))
+      tap(e => this.selected = e)
     ).subscribe(e => this.valueChange.next(e));
   }
 
   private _removeIfRequiredNotMultiple(value: string[]) {
+
     if (!this.multiple) {
       if (value.length > 1) {
         value.splice(value.indexOf(this._oldValue), 1);
@@ -48,6 +49,22 @@ export class SelectableButtonGroupComponent implements OnInit {
       }
       this._oldValue = value[0];
     }
+
+    if (value.length === 1 && this.hasDefaultVal) {
+      this.selectedFilters.forEach(index => {
+        if (value.find(function (element) {
+          return element === index;
+        })) {
+          value.splice(value.indexOf(index), 1);
+        } else {
+          value.push(index);
+        }
+      });
+
+      this.control.setValue(value, {emitEvent: false});
+      this.hasDefaultVal = false;
+    }
+
     return value;
   }
 }

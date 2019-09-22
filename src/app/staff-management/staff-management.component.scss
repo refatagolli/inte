@@ -2,33 +2,65 @@ $background-color: linear-gradient(-180deg, rgb(23, 133, 184) 0%, rgb(113, 191, 
 $text-color: rgb(250, 250, 250);
 
 .header {
-  padding-top: 20px;
-  height: 376px;
   background-image: $background-color;
   overflow: auto;
   width: 100%;
-  height: 74px;
+  height: 107px;
+  padding: 17px 0;
   color: $text-color;
 }
 
-.header-text {
-  height: 36px;
-  color: rgb(255, 255, 255);
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: 0px;
+.header-padding {
   padding-left: 20px;
 }
 
-.header-text-without-padding {
-  height: 36px;
+.header-text {
+  margin-top: 35px;
+  font-family: OpenSans-SemiBold;
   color: rgb(255, 255, 255);
   font-size: 26px;
   font-weight: 600;
   letter-spacing: 0px;
+  float: left;
 }
 
 .add-staff {
+  margin-top: 30px;
   float: right;
+  display: inline-block;
   margin-right: 20px;
+}
+
+.filters {
+  color: rgb(255, 255, 255);
+  font-family: OpenSans-SemiBold;
+  font-size: 16px;
+  font-weight: 600;
+  height: 22px;
+  letter-spacing: 0px;
+  width: 82px;
+}
+
+.filters-wrapper {
+  width: 400px;
+  float: left;
+}
+
+.filter-wrapper {
+  display: inline-block;
+  width: 33%;
+}
+
+.more-icon {
+  margin-top: 35px;
+  display: inline-block;
+}
+
+.cancel-icon {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  color: white;
+  cursor: pointer;
+  top: 6px;
 }
