@@ -22,7 +22,6 @@ export class DailyContentComponent implements OnInit, OnDestroy {
   config: DailyViewConfigModel;
   private _unsubscribeAll: Subject<any> = new Subject();
   private primaryField: string;
-  private secondaryField: string;
 
   constructor(private _dailyViewService: DailyViewService,
               private _shiftManagementService: ShiftManagementService) {
@@ -68,14 +67,13 @@ export class DailyContentComponent implements OnInit, OnDestroy {
   }
 
   getPresent(asmth) {
-    return flatten(asmth[this.primaryField].map( a => Object.values(a.staff))) .length;
+    return flatten(asmth[this.primaryField].map(a => Object.values(a.staff))).length;
   }
 
   private getStaff(config): Observable<any> {
     const a = config.viewType === 'unit' ? this._dailyViewService.getUnits() : this._dailyViewService.getShifts();
     const b = config.viewType === 'unit' ? this._dailyViewService.getShifts() : this._dailyViewService.getUnits();
     this.primaryField = config.viewType === 'unit' ? 'shift' : 'unit';
-    this.secondaryField = config.viewType !== 'unit' ? 'shift' : 'unit';
 
     return zip(a, b).pipe(
       map(e => this._setSubGroup(e, this.primaryField)),

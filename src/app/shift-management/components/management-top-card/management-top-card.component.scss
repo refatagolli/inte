@@ -3,17 +3,25 @@ $background-color: #f7fbff;
 .management-top-card {
   background-color: $background-color;
   min-width: 433px;
-  padding-bottom: 10px;
-  padding-left: 10px;
+  padding-bottom: 17px;
+  padding-left: 17px;
 
-  .management-top-card-title .title {
+  .management-top-card-title{
+    padding: 20px;
+  .title {
     line-height: 8px;
   }
+}
 
   .management-top-card-content-wrapper {
 
     .bold-item {
-      line-height: 8px;
+      color: rgb(114, 128, 138);
+      font-family: OpenSans-SemiBold;
+      font-size: 16px;
+      font-weight: 600;
+      height: 22px;
+      letter-spacing: -0.67px
     }
   }
 }

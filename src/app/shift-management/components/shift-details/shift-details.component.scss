@@ -1,19 +1,43 @@
 .shift-management {
-  width: fit-content;
+  height: 100vh;
 
   .shift-management-wrapper {
-    padding: 0 10px;
     width: fit-content;
     min-width: 400px;
     max-width: 600px;
-    height: inherit;
 
     .content {
+      overflow-y: auto;
+      padding: 0 10px;
 
+      .remove-div-content {
+        color: rgb(114, 128, 138);
+        font-family: OpenSans-Regular;
+        font-size: 16px;
+        font-weight: normal;
+        letter-spacing: -0.49px;
+
+        .remove-div-title {
+          color: rgb(114, 128, 138);
+          font-family: OpenSans-SemiBold;
+          font-size: 18px;
+          font-weight: 600;
+          height: 24px;
+          letter-spacing: -0.55px;
+        }
+
+      }
     }
 
     .actions {
-      border-top: 1px solid red;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 0;
+      border: 1px solid rgb(228, 228, 228);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
+      .action-button {
+        width: 212px !important;
+      }
     }
   }
 

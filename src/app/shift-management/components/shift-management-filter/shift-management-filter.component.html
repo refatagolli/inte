@@ -1,0 +1,33 @@
+<div fxFlex fxLayout="column">
+  <div class="shift-management-filter" fxFlex fxLayout="row" fxLayoutGap="0" #trigger>
+    <mat-form-field [appearance]="'outline'" fxFlex>
+      <input matInput class="filter-input" fxFlex="1 1 auto" [formControl]="control">
+      <mat-label>
+        <mat-icon>search</mat-icon>
+        search staff ...
+      </mat-label>
+      <mat-icon matSuffix>clear</mat-icon>
+    </mat-form-field>
+
+    <button mat-button (click)="toggle()">
+      Filter
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+  </div>
+
+
+  <div class="filters" *ngIf="searchOpened" fxLayout="column" fxLayoutGap="20px">
+
+    <div class="unit" fxLayout="column" fxLayoutGap="12px">
+      <span class="unit">Unit</span>
+      <app-selectable-button-group [elements]="units | async" [multiple]="true"
+                                   (valueChange)="subject.next(['unit', $event])"></app-selectable-button-group>
+    </div>
+
+    <div class="shift" fxLayout="column" fxLayoutGap="12px">
+      <span class="shift">Shift</span>
+      <app-selectable-button-group [elements]="shifts | async" [multiple]="true"
+                                   (valueChange)="subject.next(['shift', $event])"></app-selectable-button-group>
+    </div>
+  </div>
+</div>

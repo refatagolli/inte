@@ -1,5 +1,5 @@
 <div class="daily-content" fxLayout="column" fxLayoutGap="24px" *ngIf="config.viewType === 'unit'">
-  <app-staff-grouping-card [total]="c.requiredStaff" [present]="getPresent(a)" [title]="a.value"
+  <app-staff-grouping-card [total]="a.requiredStaff" [present]="getPresent(a)" [title]="a.value"
                            [errorMessage]="'Test error'"
                            *ngFor="let a of elements | async">
     <div class="columns-wrapper" fxFlex fxLayout="row" fxLayoutGap="24px">
@@ -10,7 +10,7 @@
                                  *ngFor="let c of b.staff | keyvalue">
             <app-staff-card [openShift]="true" *ngIf="true"
                             (itemSelected)="openFillShift(getShiftDetails(b.shiftTime, c.key, a.value))"></app-staff-card>
-            <app-staff-card *ngFor="let s of c.value.length" [staffMember]="s" (itemSelected)="openShiftDetails(s)"></app-staff-card>
+            <app-staff-card *ngFor="let s of c.value" [staffMember]="s" (itemSelected)="openShiftDetails(s)"></app-staff-card>
             <add-shift (addShift)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value))"></add-shift>
           </app-staff-member-card>
         </div>

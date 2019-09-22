@@ -27,7 +27,6 @@ export class SelectableButtonGroupComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.selectedFilters) {
-      console.log('M', this.selectedFilters);
       this.selected = this.selectedFilters;
       this.control.setValue(this.selectedFilters, {emitEvent: true});
     }

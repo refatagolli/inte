@@ -4,8 +4,8 @@
   </mat-expansion-panel-header>
 
   <div fxFlex fxLayout="column" fxLayoutGap="20px">
-    <div fxFlex fxLayout="column" >
-      <h3> Change Date </h3>
+    <div fxFlex fxLayout="column">
+      <span class="title"> Change Date </span>
       <mat-form-field fxFlex [appearance]="'outline'">
         <input matInput [matDatepicker]="myDatepicker">
         <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
@@ -14,9 +14,10 @@
     </div>
 
     <div>
-      <h3> Shift Time </h3>
-      <app-selectable-button-group #shiftTime [elements]="elements | async" [multiple]="false"
-                                   [maximumSelections]="1"></app-selectable-button-group>
+      <span class="title"> Shift Time </span>
+      <app-selectable-button-group #shiftTime [elements]="elements | async"
+                                   [multiple]="false" [maximumSelections]="1"
+      ></app-selectable-button-group>
     </div>
 
     <div class="actions">

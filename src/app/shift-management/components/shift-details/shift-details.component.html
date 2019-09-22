@@ -1,11 +1,13 @@
 <div class="shift-management">
-  <div class="shift-management-wrapper" fxLayout="column" fxLayoutGap="20px">
+  <div class="shift-management-wrapper" fxLayout="column" fxFlex fxFlexFill>
 
     <div class="header" fxFlex>
       <app-management-top-card title="Shift Details" [shiftDetails]="shiftDetails"></app-management-top-card>
     </div>
 
-    <div class="content" fxFlexFill fxLayoutGap="20px" fxLayout="column">
+    <div class="content" fxFlexFill fxLayoutGap="20px" fxLayout="column" fxFlex="0 1 auto">
+
+      <br/>
 
       <app-staff-card-expandable [staffMember]="staffMember"></app-staff-card-expandable>
 
@@ -13,10 +15,12 @@
 
       <app-change-shift [currentShift]="staffMember.shiftHours"></app-change-shift>
 
-      <div class="remove-div" fxFlex fxLayout="column" fxLayoutGap="20px">
-
-        <div class="remove-div-content" [ngStyle]="{display : removingFromStaff ? '' : 'none'}">
-          <h3>Reason For Cancellation <span class="required">*Required</span></h3>
+      <div class="remove-div" [ngStyle]="{display : removingFromStaff ? '' : 'none'}"
+           fxFlex fxLayout="column" fxLayoutGap="20px">
+        <mat-divider></mat-divider>
+        <div class="remove-div-content" fxLayout="column" fxLayoutGap="12px">
+          <span class="remove-div-title">Remove from shift</span>
+          <span>Reason For Cancellation <span class="required">*Required</span></span>
           <app-selectable-button-group #cancelReason [elements]="elements | async" [maximumSelections]="1">
           </app-selectable-button-group>
         </div>
