@@ -9,6 +9,10 @@
   },
   {
     "employmentTypeId": 3,
-    "employmentTypeName": "Other"
+    "employmentTypeName": "Per Diem"
+  },
+  {
+    "employmentTypeId": 4,
+    "employmentTypeName": "Intelypro"
   }
 ]

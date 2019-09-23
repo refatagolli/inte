@@ -165,4 +165,8 @@ export class UserFilterComponent implements OnInit {
           this.utils.filterChangeSubject.next(this.applyedFilters);
         });
   }
+
+  searchChanged(): void {
+    this.utils.searchChanged.next(this.filterText);
+  }
 }
