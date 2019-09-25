@@ -12,6 +12,7 @@ export class CardSystemShiftDetailsComponent implements OnInit {
   @Output() selectionChange: EventEmitter<boolean> = new EventEmitter();
   @Input() shiftDetails: ShiftDetails;
   @Input() selectable = false;
+  @Input() selected = false;
 
   constructor() {
   }

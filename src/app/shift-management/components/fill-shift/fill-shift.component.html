@@ -14,19 +14,29 @@
         <shift-management-filter (filterChange)="filter.next($event)"></shift-management-filter>
       </div>
 
-      <div class="filter-options"
+      <div class="filter-options" fxLayout="column"
            *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">
-        {{shiftDetails.staffType | titlecase}}s not scheduled for this shift who work
-        <div *ngIf="filterOptions?.shift" style="display: inline-block">
-          <div class="f-option" *ngFor="let s of filterOptions.shift">
-            <mat-icon>cancel</mat-icon>
-            <span>{{s}}</span>
-          </div>
+
+        <div fxFlex="1 1 auto">
+          <span class="total">{{total}} Results</span>
         </div>
-        <div *ngIf="filterOptions?.unit" style="display: inline-block">
-          <div class="f-option" *ngFor="let u of filterOptions.unit">
-            <mat-icon>cancel</mat-icon>
-            <span>{{u}}</span>
+
+        <div fxLayout="row">
+          <span class="f-message">{{shiftDetails.staffType | titlecase}}s not scheduled for this shift who work: &nbsp;</span>
+
+          <div *ngIf="filterOptions?.shift">
+            <div class="f-option" *ngFor="let s of filterOptions.shift">
+              <div>
+                <mat-icon (click)="removeFilterOpt('shift', u)">cancel</mat-icon> &nbsp;
+                <span>{{s}}</span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="filterOptions?.unit">
+            <div class="f-option" *ngFor="let u of filterOptions.unit">
+              <mat-icon (click)="removeFilterOpt('unit', u)">cancel</mat-icon>
+              <span>{{u}}</span>
+            </div>
           </div>
         </div>
       </div>

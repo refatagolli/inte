@@ -1,6 +1,7 @@
 .selectable-button-group {
 
   .selectable-button {
+    font-size: 9px;
     padding: 8px 16px;
     border-radius: 3px;
   }
@@ -13,8 +14,8 @@
     font-size: 16px;
     font-weight: normal;
     letter-spacing: -0.49px;
-    //display: block;
-    //margin: 0 20px 12px 0;
+    display: inline-block;
+    margin: 0 20px 12px 0;
 
     ::ng-deep.mat-list-text, ::ng-deep.mat-list-item-content-reverse  {
       padding: 0 !important;

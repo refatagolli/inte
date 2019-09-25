@@ -5,9 +5,9 @@ $header_border_color: #cacaca;
   height: 100vh;
 
   .shift-management-wrapper {
-    width: fit-content;
-    min-width: 480px;
-    max-width: 600px;
+    width: 538px;
+    min-width: 538px;
+    max-width: 538px;
 
     ::ng-deep.management-top-card {
 
@@ -33,16 +33,25 @@ $header_border_color: #cacaca;
     }
   }
 
-
   .filter-options {
-    display: inline-block;
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 14px;
-    font-weight: 600;
-    height: 44px;
-    letter-spacing: -0.49px;
+
+    .total {
+      color: rgb(0, 117, 173);
+      font-size: 16px;
+      font-weight: 600;
+      height: 44px;
+      letter-spacing: -0.49px;
+    }
+
+    .f-message {
+      padding: 12px 0;
+      font-size: 16px;
+      font-style: italic;
+      color: #999999;
+    }
+
     .f-option {
-      display: inline-block;
+      padding: 12px 0;
 
       span {
         color: rgb(159, 197, 58);
@@ -51,8 +60,13 @@ $header_border_color: #cacaca;
         height: 22px;
         letter-spacing: 0;
       }
+
+      .mat-icon {
+        font-size: 16px;
+        color: #999999;
+        cursor: pointer;
+      }
     }
   }
-
 
 }

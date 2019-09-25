@@ -2,7 +2,7 @@
   <div class="card-system-shift-details-wrapper" fxFlex fxLayout="column">
 
     <div class="header" fxFlex>
-      <mat-checkbox (change)="selectionChange.next($event.checked)" *ngIf="selectable"></mat-checkbox>
+      <mat-checkbox (change)="selectionChange.next($event.checked)" *ngIf="selectable" [(ngModel)] = selected></mat-checkbox>
       <span class="header-title" fxFlex fxFlexAlign="center">{{shiftDetails.shiftDate | date : 'EEEE MMMM dd'}}</span>
     </div>
 

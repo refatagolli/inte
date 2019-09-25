@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ShiftDetails} from '../../../models/ShiftDetails';
 import {DailyViewService} from '../../../services/daily-view.service';
-import {from, Subject} from 'rxjs';
-import {delay, filter, flatMap, tap, toArray} from 'rxjs/operators';
+import {from, of, Subject} from 'rxjs';
+import {delay, filter, flatMap, map, take, tap, toArray} from 'rxjs/operators';
 import {StaffMember} from '../../../models/StaffMember';
 import {FormControl, Validators} from '@angular/forms';
+import {ShiftManagementFilterComponent} from '../shift-management-filter/shift-management-filter.component';
 
 @Component({
   selector: 'app-fill-shift-component',
@@ -15,12 +16,14 @@ export class FillShiftComponent implements OnInit {
 
   @Input() shiftDetails: ShiftDetails;
   @Input() replacing: StaffMember;
+  @ViewChild(ShiftManagementFilterComponent) private _smf: ShiftManagementFilterComponent;
   staff;
   staffList;
   filter = new Subject<any>();
   selectedStaff: StaffMember[] = [];
   message: FormControl = new FormControl('', Validators.required);
   filterOptions: any;
+  total: number;
 
   constructor(private _s: DailyViewService) {
   }
@@ -47,22 +50,27 @@ export class FillShiftComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._s.getStaff().subscribe(e => {
+    this._s.getStaff().pipe(
+      flatMap(e => e),
+      filter((s: { staffType: string }) => s.staffType.toLocaleLowerCase() === this.shiftDetails.staffType.toLocaleLowerCase()),
+      toArray()
+    ).subscribe(e => {
       this.staffList = e;
-      this.filter.next({});
-
       this.message.setValue(this.getStaffMessage(this.shiftDetails.shiftHours, new Date(this.shiftDetails.shiftDate).toDateString()));
+      this.filter.next({});
     });
 
     this.staff = this.filter.pipe(
       tap(e => this.filterOptions = e),
-      flatMap(e => from(this.staffList).pipe(
-        filter((s: { staffType: string }) => s.staffType.toLocaleLowerCase() === this.shiftDetails.staffType.toLocaleLowerCase()),
-        delay(100),
-        filter(s => FillShiftComponent.checkQ(s, e.q) &&
-          FillShiftComponent.checkUnit(s, e.unit) && FillShiftComponent.checkShift(s, e.shift)),
-        toArray(),
-      )),
+      flatMap(e => of(this.staffList).pipe(
+        flatMap(a => a),
+        delay(150),
+        filter(s => {
+          return FillShiftComponent.checkQ(s, this.filterOptions.q) &&
+            FillShiftComponent.checkUnit(s, this.filterOptions.unit) && FillShiftComponent.checkShift(s, this.filterOptions.shift);
+        }),
+        toArray())),
+      tap(e => this.total = e.length)
     );
   }
 
@@ -72,5 +80,10 @@ export class FillShiftComponent implements OnInit {
 
   getStaffMessage(shift, date: string) {
     return `Are you available to work the ${shift} Shift on ${date} ? Please respond http://`;
+  }
+
+  removeFilterOpt(key: string, u) {
+    this.filterOptions[key].splice(this.filterOptions[key].indexOf(u), 1);
+    this._smf.subject.next([key, this.filterOptions[key]]);
   }
 }
