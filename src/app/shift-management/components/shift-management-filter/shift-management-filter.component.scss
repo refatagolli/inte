@@ -3,6 +3,7 @@
   border-radius: 2px 0 0 2px;
   border: 1px solid rgb(239, 240, 244);
   height: fit-content;
+  position: relative;
 
   ::ng-deep.mat-form-field {
     background-color: transparent;
@@ -22,6 +23,26 @@
   }
 }
 
+.filters {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 99999;
+  padding: 8px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0;
+  border: 1px solid rgb(228, 228, 228);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
+  span {
+    color: rgb(114, 128, 138);
+    font-size: 16px;
+    font-weight: 600;
+    height: 22px;
+    letter-spacing: -0.49px;
+  }
+}
 
 .test1 {
   width: 200px;

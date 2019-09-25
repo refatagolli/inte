@@ -11,7 +11,7 @@ import {SharedModule} from '../../../shared/shared.module';
     CommonModule,
     SharedModule,
     MaterialModule,
-    ChipIconModule,
+    ChipIconModule
   ],
   exports: [
     ManagementTopCardComponent

@@ -1,13 +1,28 @@
-<!--<button class="sidebar-toggle">asdasdasd</button>-->
-
 <!-- SHIFT DETAILS -->
-<ng-container *ngIf="shiftManagementState && shiftManagementState.staffMember">
+<ng-container
+  *ngIf="shiftManagementState && shiftManagementState.viewType === TYPE_SHIFT_DETAILS">
   <app-shift-details [shiftDetails]="shiftManagementState.shiftDetails"
                      [staffMember]="shiftManagementState.staffMember"></app-shift-details>
 </ng-container>
 
+<!-- FILL SHIFT -->
+<ng-container
+  *ngIf="shiftManagementState && shiftManagementState.viewType === TYPE_FILL_SHIFT">
+  <app-fill-shift-component [shiftDetails]="shiftManagementState.shiftDetails" [replacing]="shiftManagementState.replacing"></app-fill-shift-component>
+</ng-container>
 
 <!-- FILL SHIFT -->
-<ng-container *ngIf="shiftManagementState && !shiftManagementState.staffMember">
-  <app-fill-shift-component [shiftDetails]="shiftManagementState.shiftDetails"></app-fill-shift-component>
+<ng-container *ngIf="shiftManagementState && shiftManagementState.viewType === TYPE_REQUESTS">
+  <requests></requests>
+</ng-container>
+
+<!-- FILL SHIFT -->
+<ng-container
+  *ngIf="shiftManagementState && shiftManagementState.viewType === TYPE_REQUEST_INTELYPRO">
+  <request-intelypro></request-intelypro>
+</ng-container>
+
+<!-- FILL SHIFT -->
+<ng-container *ngIf="shiftManagementState && shiftManagementState.viewType === TYPE_SHIFTS_TO_FILL">
+  <shifts-to-fill></shifts-to-fill>
 </ng-container>

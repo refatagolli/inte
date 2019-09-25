@@ -9,8 +9,11 @@
                                  [shiftDetails]="getShiftDetails(b.shiftTime, c.key, a.value)"
                                  *ngFor="let c of b.staff | keyvalue">
             <app-staff-card [openShift]="true" *ngIf="true"
-                            (itemSelected)="openFillShift(getShiftDetails(b.shiftTime, c.key, a.value))"></app-staff-card>
-            <app-staff-card *ngFor="let s of c.value" [staffMember]="s" (itemSelected)="openShiftDetails(s)"></app-staff-card>
+                            (fillShiftEvent)="openFillShift(getShiftDetails(b.shiftTime, c.key, a.value))"></app-staff-card>
+            <app-staff-card *ngFor="let s of c.value" [staffMember]="s"
+                            (fillShiftEvent)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value), $event)"
+                            (viewDetailsEvent)="openShiftDetails(getShiftDetails(a.shiftTime, c.key, b.value),s)"
+            ></app-staff-card>
             <add-shift (addShift)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value))"></add-shift>
           </app-staff-member-card>
         </div>
@@ -30,8 +33,11 @@
                                  [shiftDetails]="getShiftDetails(a.shiftTime, c.key, b.value)"
                                  *ngFor="let c of b.staff | keyvalue">
             <app-staff-card [openShift]="true" *ngIf="true"
-                            (itemSelected)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value))"></app-staff-card>
-            <app-staff-card *ngFor="let s of c.value" [staffMember]="s" (itemSelected)="openShiftDetails(s)"></app-staff-card>
+                            (fillShiftEvent)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value))"></app-staff-card>
+            <app-staff-card *ngFor="let s of c.value" [staffMember]="s"
+                            (fillShiftEvent)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value), $event)"
+                            (viewDetailsEvent)="openShiftDetails(getShiftDetails(a.shiftTime, c.key, b.value), s)"
+            ></app-staff-card>
             <add-shift (addShift)="openFillShift(getShiftDetails(a.shiftTime, c.key, b.value))"></add-shift>
           </app-staff-member-card>
         </div>

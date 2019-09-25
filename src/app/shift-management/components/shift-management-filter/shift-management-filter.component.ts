@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DynamicFloatingContentService} from '../../../shared/services/dynamic-floating-content.service';
 import {merge, Observable, Subject} from 'rxjs';
 import {DailyViewService} from '../../../services/daily-view.service';
@@ -10,7 +10,7 @@ import {FormControl} from '@angular/forms';
   templateUrl: './shift-management-filter.component.html',
   styleUrls: ['./shift-management-filter.component.scss']
 })
-export class ShiftManagementFilterComponent implements OnInit {
+export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   @Output() filterChange: EventEmitter<{}> = new EventEmitter();
 
@@ -22,7 +22,8 @@ export class ShiftManagementFilterComponent implements OnInit {
   private _filter: {} = {};
 
   constructor(private _dfcs: DynamicFloatingContentService,
-              private _s: DailyViewService) {
+              private _s: DailyViewService,
+              private _cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -61,6 +62,10 @@ export class ShiftManagementFilterComponent implements OnInit {
 
   toggle() {
     this.searchOpened = !this.searchOpened;
+  }
+
+  ngAfterViewInit(): void {
+    this._cdr.markForCheck();
   }
 
 }

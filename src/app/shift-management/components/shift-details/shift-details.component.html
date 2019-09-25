@@ -9,13 +9,13 @@
 
       <br/>
 
-      <app-staff-card-expandable [staffMember]="staffMember"></app-staff-card-expandable>
+      <app-staff-card-expandable [staffMembers]="[staffMember]" [control]="false"></app-staff-card-expandable>
 
       <app-change-unit></app-change-unit>
 
       <app-change-shift [currentShift]="staffMember.shiftHours"></app-change-shift>
 
-      <div class="remove-div" [ngStyle]="{display : removingFromStaff ? '' : 'none'}"
+      <div class="remove-div" [ngStyle]="{display : !removingFromStaff ? '' : 'none'}"
            fxFlex fxLayout="column" fxLayoutGap="20px">
         <mat-divider></mat-divider>
         <div class="remove-div-content" fxLayout="column" fxLayoutGap="12px">

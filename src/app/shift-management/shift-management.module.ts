@@ -5,6 +5,9 @@ import {SharedModule} from '../shared/shared.module';
 import {MaterialModule} from '../shared/material.module';
 import {ShiftDetailsModule} from './components/shift-details/shift-details.module';
 import {FillShiftModule} from './components/fill-shift/fill-shift.module';
+import {ShiftsToFillModule} from './components/shifts-to-fill/shifts-to-fill.module';
+import {RequestsModule} from './components/requests/requests.module';
+import {RequestIntelyproModule} from './components/request-intelypro/request-intelypro.module';
 
 @NgModule({
   declarations: [ShiftManagementComponent],
@@ -13,7 +16,10 @@ import {FillShiftModule} from './components/fill-shift/fill-shift.module';
     SharedModule,
     MaterialModule,
     ShiftDetailsModule,
-    FillShiftModule
+    FillShiftModule,
+    ShiftsToFillModule,
+    RequestsModule,
+    RequestIntelyproModule
   ],
   exports: [
     ShiftManagementComponent

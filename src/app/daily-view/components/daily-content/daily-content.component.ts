@@ -48,22 +48,16 @@ export class DailyContentComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
   }
 
-  openShiftDetails(staffMember: StaffMember) {
-    const shiftDetails: ShiftDetails = {
-      staffType: staffMember.staffType,
-      shiftHours: staffMember.shiftHours,
-      shiftDate: new Date().getTime(),
-      unit: staffMember.unit
-    };
+  openShiftDetails(shiftDetails: ShiftDetails, staffMember: StaffMember) {
     this._shiftManagementService.openShiftDetailsPanel(shiftDetails, staffMember);
   }
 
-  openFillShift(shiftDetails: ShiftDetails) {
-    this._shiftManagementService.openFillShiftPanel(shiftDetails);
+  openFillShift(shiftDetails: ShiftDetails, replacing?: StaffMember) {
+    this._shiftManagementService.openFillShiftPanel(shiftDetails, replacing);
   }
 
-  getShiftDetails(shiftHours: string, unit: string, staffType: string): ShiftDetails {
-    return {shiftHours, staffType, unit, shiftDate: this.config.date};
+  getShiftDetails(shiftHours: string, staffType: string, unit: string): ShiftDetails {
+    return {shiftHours, unit,  staffType, shiftDate: this.config.date};
   }
 
   getPresent(asmth) {

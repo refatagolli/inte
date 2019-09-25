@@ -1,0 +1,27 @@
+.shifts-to-fill {
+  height: 100vh;
+  width: fit-content;
+  max-width: fit-content;
+
+  .shifts-to-fill-wrapper {
+    width: fit-content;
+    min-width: 480px;
+    max-width: 600px;
+
+    .content {
+      padding: 12px 16px;
+      overflow: auto;
+
+      .shift-to-fill {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+
+        .shift-actions {
+
+          .action-button {
+            width: 212px !important;
+          }
+        }
+      }
+    }
+  }
+}

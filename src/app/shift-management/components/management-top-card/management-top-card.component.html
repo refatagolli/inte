@@ -3,7 +3,7 @@
   <div class="management-top-card-title" fxFlex>
     <div class="card-title-wrapper" fxLayout="row">
       <!--<button mat-icon-button (click)="toggleSidebar()">-->
-        <!--<mat-icon>close</mat-icon>-->
+      <!--<mat-icon>close</mat-icon>-->
       <!--</button>-->
       <div class="title" fxFlex fxLayoutAlign="center">
         <h2 class="bold-item">{{title | uppercase }}</h2>
@@ -16,18 +16,32 @@
 
       <mat-divider></mat-divider>
 
+      <span class="info-header">Shift Details</span>
+
+      <div class="replacing-staff" *ngIf="replacing">
+        <div class="replacing-staff-wrapper" fxLayout="row" fxLayoutGap="20px">
+          <app-chip-icon [name]="replacing.fullName"></app-chip-icon>
+          <div class="staff-data">
+            <div class="user-data-wrapper" fxFlex fxLayout="column">
+              <span class="title">{{replacing.fullName}}</span>
+              <span class="subtitle">{{replacing.staffType}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="top-card-line shift" fxFlex fxLayout="row" fxLayoutGap="20px">
         <mat-icon class="icon">today</mat-icon>
         <span class="bold-item">{{shiftDetails.shiftDate | date: ' EEEE MMMM dd, yyyy'}}</span>
       </div>
 
       <div class="top-card-line shift" fxFlex fxLayout="row" fxLayoutGap="20px">
-        <mat-icon class="icon">today</mat-icon>
+        <mat-icon class="icon">access_time</mat-icon>
         <span class="bold-item">{{shiftDetails.shiftHours}}</span>
       </div>
 
       <div class="top-card-line unit" fxFlex fxLayout="row" fxLayoutGap="20px">
-        <mat-icon class="icon">gps_fixed</mat-icon>
+        <mat-icon class="icon">person_pin</mat-icon>
         <span class="bold-item">{{shiftDetails.unit}}</span>
       </div>
 

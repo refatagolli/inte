@@ -1,6 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {StaffMember} from '../../../models/StaffMember';
-import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-staff-card-expandable',
@@ -10,12 +9,23 @@ import {FormControl} from '@angular/forms';
 })
 export class StaffCardExpandableComponent implements OnInit {
 
-  @Input() staffMember: StaffMember;
-  @Input() control: FormControl;
+  @Input() control = false;
+  @Input() staffMembers: StaffMember[];
+  @Output() selectionChange: EventEmitter<StaffMember[]> = new EventEmitter();
+  private _selectedValues: StaffMember[] = [];
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  toggleValue(checked: boolean, staffMember: StaffMember) {
+    if (checked) {
+      this._selectedValues.push(staffMember);
+    } else {
+      this._selectedValues.splice(this._selectedValues.indexOf(staffMember), 1);
+    }
+    this.selectionChange.emit(this._selectedValues);
   }
 }

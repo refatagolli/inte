@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {StaffMember} from '../../../models/StaffMember';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {UserResponse} from '../../../models/UserResponse';
 
 @Component({
   selector: 'app-staff-card-confirmation',
@@ -8,8 +8,8 @@ import {StaffMember} from '../../../models/StaffMember';
 })
 export class StaffCardConfirmationComponent implements OnInit {
 
-  @Input() staffMember: StaffMember;
-  @Input() response: 'pending' | 'reject' | 'confirm';
+  @Output() selectionChange: EventEmitter<boolean> = new EventEmitter();
+  @Input() response: UserResponse;
 
 
   constructor() {

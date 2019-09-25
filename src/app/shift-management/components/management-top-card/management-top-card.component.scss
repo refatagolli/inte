@@ -6,22 +6,57 @@ $background-color: #f7fbff;
   padding-bottom: 17px;
   padding-left: 17px;
 
-  .management-top-card-title{
+  .management-top-card-title {
     padding: 20px;
-  .title {
-    line-height: 8px;
+    .title {
+      line-height: 8px;
+    }
   }
-}
 
   .management-top-card-content-wrapper {
 
     .bold-item {
-      color: rgb(114, 128, 138);
-      font-family: OpenSans-SemiBold;
+      color: #72808a;
       font-size: 16px;
       font-weight: 600;
       height: 22px;
       letter-spacing: -0.67px
+    }
+
+    .info-header {
+      color: #72808a;
+      font-size: 18px;
+      font-weight: 600;
+      height: 24px;
+      letter-spacing: -0.75px;
+    }
+  }
+
+  .replacing-staff {
+
+    .chip-icon {
+      background-color: #d0021b;
+      color: white;
+    }
+
+    .staff-data {
+
+      .title {
+        color: #f45551;
+        font-size: 16px;
+        font-weight: 600;
+        height: 24px;
+        line-height: 24px;
+        text-decoration: line-through;
+      }
+
+      .subtitle {
+        color: #f4504b;
+        font-size: 16px;
+        font-weight: normal;
+        height: 20px;
+        line-height: 20px;
+      }
     }
   }
 }

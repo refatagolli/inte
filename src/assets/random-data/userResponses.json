@@ -1,0 +1,98 @@
+[
+  {
+    "phone": "234-324-234",
+    "hireDate": 123453662,
+    "shiftHours": "7-15",
+    "shiftDays": [
+      "Monday",
+      "Friday"
+    ],
+    "gender": "male",
+    "staffType": "Nurse",
+    "hoursThisWeek": 12,
+    "fullName": "Bad Luck Brian",
+    "unit": "Unit A",
+    "notes": [],
+    "response": "accept"
+  },
+  {
+    "phone": "234-324-234",
+    "hireDate": 123453662,
+    "shiftHours": "7-15",
+    "shiftDays": [
+      "Monday",
+      "Friday"
+    ],
+    "gender": "male",
+    "staffType": "CNA",
+    "hoursThisWeek": 12,
+    "fullName": "Ben Dover",
+    "unit": "Unit A",
+    "notes": [],
+    "response": "reject"
+  },
+  {
+    "phone": "234-324-234",
+    "hireDate": 123453662,
+    "shiftHours": "7-15",
+    "shiftDays": [
+      "Monday",
+      "Friday"
+    ],
+    "gender": "male",
+    "staffType": "Unit Manager",
+    "hoursThisWeek": 12,
+    "fullName": "Jesus Christ",
+    "unit": "Unit A",
+    "notes": [],
+    "response": "pending"
+  },
+  {
+    "phone": "234-324-234",
+    "hireDate": 123453662,
+    "shiftHours": "7-15",
+    "shiftDays": [
+      "Monday",
+      "Friday"
+    ],
+    "gender": "male",
+    "staffType": "Nurse",
+    "hoursThisWeek": 12,
+    "fullName": "Funny Name",
+    "unit": "Unit A",
+    "notes": [],
+    "response": "pending"
+  },
+  {
+    "phone": "234-324-234",
+    "hireDate": 123453662,
+    "shiftHours": "7-15",
+    "shiftDays": [
+      "Monday",
+      "Friday"
+    ],
+    "gender": "male",
+    "staffType": "Nurse",
+    "hoursThisWeek": 12,
+    "fullName": "Serious Name",
+    "unit": "Unit A",
+    "notes": [],
+    "response": "reject"
+  },
+  {
+    "phone": "234-324-234",
+    "hireDate": 123453662,
+    "shiftHours": "15-21",
+    "shiftDays": [
+      "Monday",
+      "Friday"
+    ],
+    "gender": "male",
+    "staffType": "Unit Manager",
+    "hoursThisWeek": 12,
+    "fullName": "Sam Dunbar",
+    "unit": "Unit A",
+    "notes": [],
+    "response": "accept"
+  }
+]

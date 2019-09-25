@@ -1,0 +1,31 @@
+<div class="request-intelypro">
+  <div class="request-intelypro-wrapper" fxFlex fxFlexFill fxLayout="column">
+
+    <div class="request-intelypro-header">
+      <card-system-top-header [title]="'Request IntelyPro'" [indicator]="4"
+                              [subtitle]="'Open Shifts'"></card-system-top-header>
+    </div>
+
+    <div class="content" fxFlex="0 1 auto" fxFlexFill>
+      <div class="content-wrapper" fxLayout="column" fxLayoutGap="20px">
+        <mat-checkbox>Select All</mat-checkbox>
+
+        <div class="opened-shifts" fxLayout="column" fxLayoutGap="20px">
+          <card-system-shift-details [shiftDetails]="shift" [selectable]="true"
+                                     (selectionChange)="shiftSelected($event, shift)"
+                                     *ngFor="let shift of openedShifts | async"></card-system-shift-details>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions" fxFlex="120px">
+      <div class="actions-wrapper" fxFlex="" fxLayout="column" fxLayoutAlign="center center">
+        <button mat-button class="action-button" [disabled]="selectedShifts.length === 0 " fxFlexAlign="center"
+                [ngClass]="selectedShifts.length ? 'complete' : 'disabled'" (click)="sendRequest()"
+        > Request IntelyPro
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

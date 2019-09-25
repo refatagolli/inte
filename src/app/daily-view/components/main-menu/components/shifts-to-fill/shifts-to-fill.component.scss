@@ -1,27 +1,78 @@
-shifts-to-fill {
+.shifts-to-fill {
+  height: 270px;
+  min-width: 256px;
+  max-width: 300px;
 
-  .shifts-to-fill {
-    height: 270px;
-    min-width: 256px;
+  .mat-card-header {
+    border-bottom: 1px solid #FFFFFF;
+    padding-bottom: 5px;
 
-    .mat-card-header {
-      border-bottom: 1px solid #FFFFFF;
-      padding-bottom: 5px;
+    .mat-card-title {
+      color: rgb(114, 128, 138);
+      font-family: OpenSans-SemiBold;
+      font-size: 16px;
+      font-weight: 600;
+      height: 23px;
+      letter-spacing: 0;
+      line-height: 19px;
+    }
+  }
 
-      .mat-card-title {
-        color: rgb(114, 128, 138);
+  .mat-card-content {
+    height: 140px;
+
+    .counter {
+      position: relative;
+
+      .marker {
+        color: rgb(208, 2, 27);
         font-family: OpenSans-SemiBold;
         font-size: 16px;
         font-weight: 600;
-        height: 23px;
+        height: 44px;
         letter-spacing: 0;
-        line-height: 19px;
+      }
+      .pager {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        button {
+          width: 24px;
+          height: 24px;
+          font-size: 16px;
+          padding: 0;
+          margin: 0;
+          background-color: transparent;
+          border: 1px solid #9EA1A9;
+          cursor: pointer;
+
+          .mat-icon {
+            font-size: 21px;
+          }
+        }
       }
     }
 
-    .mat-card-content {
-      height: 140px;
+    .content-wrapper {
+      color: rgb(114, 128, 138);
+      font-family: OpenSans-Regular;
+      font-size: 16px;
+      font-weight: normal;
+      height: 66px;
+      letter-spacing: 0;
+      padding: 15px 0;
+      text-align: center;
     }
 
+    .no-shifts {
+      color: rgb(114, 128, 138);
+      font-family: OpenSans-Regular;
+      font-size: 16px;
+      font-weight: normal;
+      height: 44px;
+      letter-spacing: 0;
+      text-align: center;
+    }
   }
 }

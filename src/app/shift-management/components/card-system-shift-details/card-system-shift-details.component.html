@@ -1,0 +1,31 @@
+<div class="card-system-shift-details">
+  <div class="card-system-shift-details-wrapper" fxFlex fxLayout="column">
+
+    <div class="header" fxFlex>
+      <mat-checkbox (change)="selectionChange.next($event.checked)" *ngIf="selectable"></mat-checkbox>
+      <span class="header-title" fxFlex fxFlexAlign="center">{{shiftDetails.shiftDate | date : 'EEEE MMMM dd'}}</span>
+    </div>
+
+    <div class="content" fxLayout="column" fxLayoutGap="10px">
+      <span class="title">Shifts Details</span>
+      <div class="shift-details" fxFlex fxLayout="column" fxLayoutGap="10px">
+
+        <div class="info" fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>access_time</mat-icon>
+          <span class="info-title">{{shiftDetails.shiftHours}}</span>
+        </div>
+
+        <div class="info" fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>person_pin</mat-icon>
+          <span class="info-title">{{shiftDetails.unit}}</span>
+        </div>
+
+        <div class="info" fxLayout="row" fxLayoutGap="20px">
+          <mat-icon>people</mat-icon>
+          <span class="info-title">{{shiftDetails.staffType}}</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

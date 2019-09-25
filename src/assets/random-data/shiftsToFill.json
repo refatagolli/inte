@@ -1,0 +1,32 @@
+[
+  {
+    "shiftHours": "7-13",
+    "unit": "Unit A",
+    "staffType": "Nurse",
+    "shiftDate": "12/07/2019"
+  },
+  {
+    "shiftHours": "7-13",
+    "unit": "Unit A",
+    "staffType": "CNA",
+    "shiftDate": "12/07/2019"
+  },
+  {
+    "shiftHours": "7-13",
+    "unit": "Unit A",
+    "staffType": "Unit Manager",
+    "shiftDate": "12/07/2019"
+  },
+  {
+    "shiftHours": "7-13",
+    "unit": "Unit A",
+    "staffType": "CNA",
+    "shiftDate": "12/07/2019"
+  },
+  {
+    "shiftHours": "7-13",
+    "unit": "Unit A",
+    "staffType": "Nurse",
+    "shiftDate": "12/07/2019"
+  }
+]

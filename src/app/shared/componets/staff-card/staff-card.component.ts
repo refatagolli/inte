@@ -11,7 +11,8 @@ export class StaffCardComponent implements OnInit {
 
   @Input() staffMember: StaffMember;
   @Input() openShift = false;
-  @Output() itemSelected: EventEmitter<any> = new EventEmitter();
+  @Output() viewDetailsEvent: EventEmitter<StaffMember> = new EventEmitter();
+  @Output() fillShiftEvent: EventEmitter<StaffMember> = new EventEmitter();
 
   constructor() {
   }
@@ -21,10 +22,16 @@ export class StaffCardComponent implements OnInit {
 
   @HostListener('click')
   public onClick() {
-    this.itemSelected.emit();
+    if (!this.openShift || this.staffMember.away) {
+      this.viewDetailsEvent.emit();
+    }
   }
 
   createShift() {
-    this.itemSelected.emit();
+    this.fillShiftEvent.emit();
+  }
+
+  fillShift() {
+    this.fillShiftEvent.emit(this.staffMember);
   }
 }

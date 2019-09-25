@@ -1,4 +1,5 @@
-<div class="staff-card" [ngClass]="{removed: openShift, clickable: !openShift}">
+<div class="staff-card"
+     [ngClass]="{removed: openShift || staffMember?.away, clickable: !openShift && !staffMember?.away}">
   <mat-list-item>
     <div class="staff-card-container" fxFlex fxLayout="row">
       <ng-container *ngIf="openShift; then openShiftCard else showStaffData"></ng-container>
@@ -15,8 +16,11 @@
     <span class="bold-item title">{{staffMember.fullName | titlecase}}</span>
     <span class="subtitle">{{staffMember.staffType}}</span>
   </div>
-  <div class="staff-card-hours">
+  <div class="staff-card-hours" *ngIf="!staffMember?.away">
     <span>{{ staffMember.hoursThisWeek}} hours this week</span>
+  </div>
+  <div class="staff-card-action" *ngIf="staffMember?.away">
+    <button mat-button class="action-button danger" (click)="$event.stopPropagation(); fillShift()">Fill</button>
   </div>
 </ng-template>
 
@@ -28,6 +32,8 @@
     <span class="bold-item action-title">{{'open shift' | titlecase}}</span>
   </div>
   <div class="staff-card-actions">
-    <button mat-button class="action-button danger" (click)="createShift()">{{'fill shift' | uppercase}}</button>
+    <button mat-button class="action-button danger" (click)="$event.stopPropagation(); createShift()">
+      {{'fill shift' | uppercase}}
+    </button>
   </div>
 </ng-template>

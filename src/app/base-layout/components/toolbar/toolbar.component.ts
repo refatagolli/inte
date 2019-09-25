@@ -36,7 +36,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   constructor(
     private _fuseConfigService: FuseConfigService,
     private _fuseSidebarService: FuseSidebarService,
-    private _route: Router
+    public route: Router
   ) {
     // Set the defaults
     this.userStatusOptions = [];
@@ -75,7 +75,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
         this.hiddenNavbar = settings.layout.navbar.hidden === true;
       });
 
-    this.currentRoute = this._route.events.pipe(
+    this.currentRoute = this.route.events.pipe(
       takeUntil(this._unsubscribeAll),
       filter((event) => event instanceof NavigationEnd),
       map((event: NavigationEnd) => event.url.replace('/', ''))

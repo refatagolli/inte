@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ShiftDetails} from '../../../models/ShiftDetails';
 import {DailyViewService} from '../../../services/daily-view.service';
-import {Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {FormControl} from '@angular/forms';
+import {from, Subject} from 'rxjs';
+import {delay, filter, flatMap, tap, toArray} from 'rxjs/operators';
+import {StaffMember} from '../../../models/StaffMember';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-fill-shift-component',
@@ -13,41 +14,63 @@ import {FormControl} from '@angular/forms';
 export class FillShiftComponent implements OnInit {
 
   @Input() shiftDetails: ShiftDetails;
+  @Input() replacing: StaffMember;
   staff;
   staffList;
   filter = new Subject<any>();
-  control = new FormControl('');
+  selectedStaff: StaffMember[] = [];
+  message: FormControl = new FormControl('', Validators.required);
+  filterOptions: any;
 
   constructor(private _s: DailyViewService) {
   }
 
   private static checkShift(s: any, shift: string[]) {
-    if (!shift) {
+    if (!shift || shift.length < 1) {
       return true;
     }
-    return shift.indexOf(s.shiftTime) > -1;
+    return shift.indexOf(s.shiftHours) > -1;
   }
 
   private static checkUnit(s: any, unit: string[]) {
-    if (!unit) {
+    if (!unit || unit.length < 1) {
       return true;
     }
     return unit.indexOf(s.unit) > -1;
   }
 
   private static checkQ(s: any, q: string) {
-    return s.fullName.indexOf(q) > -1;
+    if (!q) {
+      return true;
+    }
+    return s.fullName.toLocaleLowerCase().indexOf(q.toLocaleLowerCase()) > -1;
   }
 
   ngOnInit() {
-    this._s.getStaff().subscribe(e => this.staffList = e);
+    this._s.getStaff().subscribe(e => {
+      this.staffList = e;
+      this.filter.next({});
+
+      this.message.setValue(this.getStaffMessage(this.shiftDetails.shiftHours, new Date(this.shiftDetails.shiftDate).toDateString()));
+    });
 
     this.staff = this.filter.pipe(
-      map(e => this.staffList.filter(s => FillShiftComponent.checkQ(s, e.q) && FillShiftComponent.checkUnit(s, e.unit) && FillShiftComponent.checkShift(s, e.shift)))
+      tap(e => this.filterOptions = e),
+      flatMap(e => from(this.staffList).pipe(
+        filter((s: { staffType: string }) => s.staffType.toLocaleLowerCase() === this.shiftDetails.staffType.toLocaleLowerCase()),
+        delay(100),
+        filter(s => FillShiftComponent.checkQ(s, e.q) &&
+          FillShiftComponent.checkUnit(s, e.unit) && FillShiftComponent.checkShift(s, e.shift)),
+        toArray(),
+      )),
     );
   }
 
-  test(event) {
-    console.log(event);
+  selectStaff(staff: StaffMember[]) {
+    this.selectedStaff = staff;
+  }
+
+  getStaffMessage(shift, date: string) {
+    return `Are you available to work the ${shift} Shift on ${date} ? Please respond http://`;
   }
 }

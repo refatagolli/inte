@@ -1,22 +1,19 @@
 <div class="staff-card-confirmation">
   <mat-list-item>
-    <div class="staff-card-confirmation-container" fxFlex fxLayout="row">
+    <div class="staff-card-confirmation-container" fxFlex fxLayout="row" fxLayoutGap="8px">
       <div class="staff-card-confirmation-chip">
-        <app-chip-icon [name]="staffMember.fullName"></app-chip-icon>
+        <app-chip-icon [name]="response.fullName"></app-chip-icon>
       </div>
       <div class="staff-card-confirmation-content" fxFlex="1 1 auto" fxLayout="column">
-        <span class="bold-item title">{{staffMember.fullName | titlecase}}</span>
-        <span class="subtitle">{{staffMember.staffType}}</span>
+        <span class="bold-item title">{{response.fullName | titlecase}}</span>
+        <span class="subtitle">{{response.staffType}}</span>
       </div>
       <div class="staff-card-confirmation-response" fxFlex="1 1 auto" fxLayout="column">
-        <span class="bold-item title" [ngClass]="response">{{response | uppercase}}</span>
+        <span class="bold-item title" [ngClass]="response.response">{{response.response | uppercase}}</span>
       </div>
       <div class="staff-card-confirmation-actions">
-        <button mat-button *ngIf="response === 'confirm'" (click)="openManagement()" color="primary">
-          CONFIRM
-        </button>
+        <mat-radio-button (change)="selectionChange.next($event.source.checked)" *ngIf="response.response === 'accept'"></mat-radio-button>
       </div>
     </div>
   </mat-list-item>
-  <mat-divider></mat-divider>
 </div>

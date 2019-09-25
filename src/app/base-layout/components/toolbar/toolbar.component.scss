@@ -34,8 +34,8 @@ toolbar {
     height: 56px;
   }
 
-  ::ng-deep.chip-icon {
-    cursor: pointer !important;
+  .chip-icon .chip-icon-content{
+    padding-top: 5px;
   }
 
 }

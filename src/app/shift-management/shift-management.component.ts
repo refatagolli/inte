@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {ShiftManagementService} from './shift-management.service';
 import {takeUntil} from 'rxjs/operators';
@@ -10,9 +10,15 @@ import {StaffMember} from '../models/StaffMember';
   templateUrl: './shift-management.component.html',
   styleUrls: ['./shift-management.component.scss']
 })
-export class ShiftManagementComponent implements OnInit {
+export class ShiftManagementComponent implements OnInit, OnDestroy {
 
-  public shiftManagementState: { shiftDetails: ShiftDetails; staffMember?: StaffMember };
+  public TYPE_SHIFT_DETAILS = 'shiftDetails';
+  public TYPE_FILL_SHIFT = 'fillShift';
+  public TYPE_SHIFTS_TO_FILL = 'shiftsToFill';
+  public TYPE_REQUESTS = 'requests';
+  public TYPE_REQUEST_INTELYPRO = 'requestIntelypro';
+
+  public shiftManagementState: { shiftDetails?: ShiftDetails; staffMember?: StaffMember, replacing?: StaffMember, viewType: string };
   private _unsubscribeAll: Subject<any> = new Subject();
 
   constructor(private _siftManagementService: ShiftManagementService) {
@@ -25,5 +31,7 @@ export class ShiftManagementComponent implements OnInit {
       .subscribe(e => this.shiftManagementState = e);
   }
 
-
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+  }
 }
