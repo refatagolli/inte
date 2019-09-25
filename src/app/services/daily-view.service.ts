@@ -9,6 +9,7 @@ import {ShiftType} from '../models/ShiftType';
 import {StaffType} from '../models/StaffType';
 import {Days} from '../models/Days';
 import {ShiftDetails} from '../models/ShiftDetails';
+import {Gender} from '../models/Gender';
 
 @Injectable({
   providedIn: 'root'
@@ -66,5 +67,9 @@ export class DailyViewService {
 
   getStaffTypes(): Observable<StaffType[]> {
     return this._http.get<StaffType[]>('assets/random-data/staffTypes.json');
+  }
+
+  getGenderTypes(): Observable<Gender[]> {
+    return this._http.get<Gender[]>('assets/random-data/gender.json');
   }
 }

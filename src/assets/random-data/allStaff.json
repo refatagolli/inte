@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "firstName": "Olivia",
+    "lastName": "Evans",
+    "employmentType": {
+      "employmentTypeId": 2,
+      "employmentTypeName": "Full Time"
+    },
+    "gender": "F",
+    "phone": "245-694-747-079",
+    "hireDate": "16/09/2019",
+    "staffType": {
+      "staffTypeId": 3,
+      "staffTypeName": "Supervisor"
+    },
+    "shiftDays": [{
+      "day" :  {
+        "id": 1,
+        "name": "Monday"
+      },
+      "shiftType" : {
+        "shiftTypeId": 2,
+        "shiftTypeName": "3PM - 11PM"
+      }
+    },
+      {
+        "day" :  {
+          "id": 2,
+          "name": "Tuesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :  {
+          "id": 3,
+          "name": "Wednesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 4,
+          "name": "Thursday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 1,
+          "shiftTypeName": "7AM - 3PM"
+        }
+      }
+    ],
+    "notes": "Test notes"
+  },
+  {
+    "id": 2,
+    "firstName": "Heather",
+    "lastName": "Bloom",
+    "employmentType": {
+      "employmentTypeId": 1,
+      "employmentTypeName": "Part Time"
+    },
+    "gender": "F",
+    "phone": "343-444-246-342",
+    "hireDate": "16/09/2019",
+    "staffType": {
+      "staffTypeId": 3,
+      "staffTypeName": "Supervisor"
+    },
+    "shiftDays": [{
+      "day" :  {
+        "id": 1,
+        "name": "Monday"
+      },
+      "shiftType" : {
+        "shiftTypeId": 1,
+        "shiftTypeName": "7AM - 3PM"
+      }
+    },
+      {
+        "day" :  {
+          "id": 2,
+          "name": "Tuesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 1,
+          "shiftTypeName": "7AM - 3PM"
+        }
+      },
+      {
+        "day" :  {
+          "id": 3,
+          "name": "Wednesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 1,
+          "shiftTypeName": "7AM - 3PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 4,
+          "name": "Thursday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 3,
+          "shiftTypeName": "11PM - 7AM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 5,
+          "name": "Friday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 3,
+          "shiftTypeName": "11PM - 7AM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 6,
+          "name": "Saturday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 3,
+          "shiftTypeName": "11PM - 7AM"
+        }
+      }
+    ],
+    "notes": "Test 2 notes"
+  },
+  {
+    "id": 3,
+    "firstName": "Rahul",
+    "lastName": "Borden",
+    "employmentType": {
+      "employmentTypeId": 1,
+      "employmentTypeName": "Part Time"
+    },
+    "gender": "M",
+    "phone": "385-687-257-321",
+    "hireDate": "16/09/2019",
+    "staffType": {
+      "staffTypeId": 1,
+      "staffTypeName": "Nurse"
+    },
+    "shiftDays": [{
+      "day" :  {
+        "id": 1,
+        "name": "Monday"
+      },
+      "shiftType" : {
+        "shiftTypeId": 1,
+        "shiftTypeName": "7AM - 3PM"
+      }
+    },
+      {
+        "day" :  {
+          "id": 2,
+          "name": "Tuesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :  {
+          "id": 3,
+          "name": "Wednesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 1,
+          "shiftTypeName": "7AM - 3PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 4,
+          "name": "Thursday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 5,
+          "name": "Friday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 3,
+          "shiftTypeName": "11PM - 7AM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 6,
+          "name": "Saturday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      }
+    ],
+    "notes": "Test 3 notes"
+  },
+  {
+    "id": 4,
+    "firstName": "Derek",
+    "lastName": "Caspar",
+    "employmentType": {
+      "employmentTypeId": 2,
+      "employmentTypeName": "Full Time"
+    },
+    "gender": "M",
+    "phone": "232-423-654-345",
+    "hireDate": "16/09/2019",
+    "staffType": {
+      "staffTypeId": 2,
+      "staffTypeName": "CNA"
+    },
+    "shiftDays": [{
+      "day" :  {
+        "id": 1,
+        "name": "Monday"
+      },
+      "shiftType" : {
+        "shiftTypeId": 3,
+        "shiftTypeName": "11PM - 7AM"
+      }
+    },
+      {
+        "day" :  {
+          "id": 2,
+          "name": "Tuesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 4,
+          "name": "Thursday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 5,
+          "name": "Friday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 1,
+          "shiftTypeName": "7AM - 3PM"
+        }
+      }
+    ],
+    "notes": "Test 4 notes"
+  },
+  {
+    "id": 5,
+    "firstName": "Yen",
+    "lastName": "Chin",
+    "employmentType": {
+      "employmentTypeId": 4,
+      "employmentTypeName": "Intelypro"
+    },
+    "gender": "F",
+    "phone": "236-533-654-855",
+    "hireDate": "16/09/2019",
+    "staffType": {
+      "staffTypeId": 2,
+      "staffTypeName": "CNA"
+    },
+    "shiftDays": [{
+        "day" :  {
+          "id": 2,
+          "name": "Tuesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 4,
+          "name": "Thursday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 5,
+          "name": "Friday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 1,
+          "shiftTypeName": "7AM - 3PM"
+        }
+      }
+    ],
+    "notes": "Test 4 notes"
+  }
+]

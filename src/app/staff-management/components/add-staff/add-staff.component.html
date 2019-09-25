@@ -1,0 +1,175 @@
+<i (click)="closeSidebar()" class="material-icons cancel-icon">cancel</i>
+<div class="add-staff">
+  <div class="add-staff-wrapper" fxLayout="column" fxLayoutGap="20px">
+    <div class="title-wrapper">
+      <label class="title-text">
+        Add New Staff
+      </label>
+    </div>
+    <div class="main-container-wrapper">
+      <div class="required-block">
+        Required <span class="required">*</span>
+      </div>
+      <br />
+      <div style="display: inline-block">
+        <input type="text" placeholder="First Name *" class="custom-text-input-1" />
+        <input type="text" placeholder="Last Name *" class="custom-text-input-2" />
+      </div>
+      <br /><br />
+      <div >
+        <input type="text" placeholder="Phone Number *" class="custom-text-input-3" />
+        <br /><br />
+        <input type="text" placeholder="Email Address *" class="custom-text-input-3" />
+      </div>
+      <br />
+      <hr class="customized-divider" />
+      <br />
+      <div class="customized-label">
+        Gender <span class="required">*</span>
+      </div>
+      <div class="button-options">
+        <app-selectable-button-group [multiple]="false" [elements]="genderOptions | async"></app-selectable-button-group>
+      </div>
+
+      <hr class="customized-divider-margined" />
+      <br />
+
+      <div class="customized-label">
+        Staff Type <span class="required">*</span>
+      </div>
+      <br />
+      <div class="button-options">
+        <app-selectable-button-group [multiple]="false" [elements]="staffOptions | async"></app-selectable-button-group>
+      </div>
+
+      <hr class="customized-divider-margined" />
+      <br />
+
+      <div class="customized-label">
+        Employment Type <span class="required">*</span>
+      </div>
+      <br />
+      <div class="button-options">
+        <app-selectable-button-group [multiple]="false" [elements]="employmentOptions | async"></app-selectable-button-group>
+      </div>
+
+      <hr class="customized-divider-margined" />
+      <br />
+
+      <div class="customized-label">
+        Shift Day & Time
+      </div>
+      <br />
+<!--      <div *ngFor="let dummy of ' '.repeat(20).split(''), let x = index">-->
+
+      <div *ngIf="staffMember && staffMember.shiftDays.length > 0">
+        <div *ngFor="let shiftDay of staffMember.shiftDays">
+          <div class="shift-day-wrapper">
+
+            <div class="customized-optionset">
+              <button (click)="toggleDayOptions()" class="customised-checkbox-group">
+            <span class="button-label">
+                {{chosenDayName}}
+              <mat-icon *ngIf="!dayOptionsOpened;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+                <ng-template #dayArrowUp>
+                  <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+                </ng-template>
+              </span>
+              </button>
+              <mat-card fxFlex *ngIf="dayOptionsOpened" class="customized-card checkbox-alignment" fxFlex fxLayout="column">
+                <app-custom-option-set [multiple]="true" [elements]="dayOptions | async"></app-custom-option-set>
+              </mat-card>
+
+              <div class="overlay" *ngIf="dayOptionsOpened" (click)="toggleDayOptions()"></div>
+            </div>
+
+            <div class="customized-optionset">
+              <button (click)="toggleShiftOptions()" class="customised-radio-group">
+            <span class="button-label">
+              {{chosenShiftName}}
+              <mat-icon *ngIf="!shiftOptionsOpened;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+              <ng-template #shiftArrowUp>
+                <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+              </ng-template>
+            </span>
+
+              </button>
+
+              <mat-card fxFlex *ngIf="shiftOptionsOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                <app-custom-option-set [multiple]="false" [elements]="shiftOptions | async"></app-custom-option-set>
+              </mat-card>
+
+              <div class="overlay" *ngIf="shiftOptionsOpened" (click)="toggleShiftOptions()"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="shift-day-wrapper">
+        <div class="customized-optionset">
+          <button (click)="toggleDayOptions()" class="customised-checkbox-group">
+            <span class="button-label">
+                {{chosenDayName}}
+              <mat-icon *ngIf="!dayOptionsOpened;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+                <ng-template #dayArrowUp>
+                  <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+                </ng-template>
+              </span>
+          </button>
+          <mat-card fxFlex *ngIf="dayOptionsOpened" class="customized-card checkbox-alignment" fxFlex fxLayout="column">
+            <app-custom-option-set [multiple]="true" [elements]="dayOptions | async" [selectedCheckBox]="[]"
+                                   (valueChange)="check($event)"></app-custom-option-set>
+          </mat-card>
+          <div class="overlay" *ngIf="dayOptionsOpened" (click)="toggleDayOptions()"></div>
+        </div>
+        <div class="customized-optionset">
+          <button (click)="toggleShiftOptions()" class="customised-radio-group">
+            <span class="button-label">
+              {{chosenShiftName}}
+              <mat-icon *ngIf="!shiftOptionsOpened;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+              <ng-template #shiftArrowUp>
+                <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+              </ng-template>
+            </span>
+          </button>
+          <mat-card fxFlex *ngIf="shiftOptionsOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+            <app-custom-option-set [multiple]="false" [elements]="shiftOptions | async" [selectedRadioButton]="0"
+                                   (valueChange)="check($event)"></app-custom-option-set>
+          </mat-card>
+          <div class="overlay" *ngIf="shiftOptionsOpened" (click)="toggleShiftOptions()"></div>
+        </div>
+      </div>
+
+      <br />
+      <br />
+
+      <div class="customized-label">
+        Add Another Shift&nbsp;&nbsp; <span class="plus-character">+</span>
+      </div>
+
+      <hr class="customized-divider-margined" />
+      <br />
+
+      <div class="customized-label">
+        Hire Date
+      </div>
+      <br />
+      <div class="date-wrapper">
+        <mat-form-field appearance="outline" class="date-input">
+          <input matInput placeholder="Choose a date" [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <br />
+    <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutGap="8px">
+      <button mat-button class="action-button sidebar-buttons complete" fxFlexAlign="center">ADD</button>
+      <button (click)="closeSidebar()" mat-button class="action-button sidebar-buttons partial" fxFlexAlign="center">CANCEL</button>
+    </div>
+  </div>
+</div>

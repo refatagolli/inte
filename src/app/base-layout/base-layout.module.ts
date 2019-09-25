@@ -5,6 +5,8 @@ import {MatIconModule} from '@angular/material';
 import {FuseSidebarModule} from '@theme/components';
 import {VerticalLayout2Module} from './vertical/layout-2/layout-2.module';
 import {ShiftManagementModule} from '../shift-management/shift-management.module';
+import {AddStaffModule} from '../staff-management/components/add-staff/add-staff.module';
+
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import {ShiftManagementModule} from '../shift-management/shift-management.module
     VerticalLayout2Module,
     MatIconModule,
     FuseSidebarModule,
-    ShiftManagementModule
+    ShiftManagementModule,
+    AddStaffModule
   ],
   exports: [
     VerticalLayout2Module,
