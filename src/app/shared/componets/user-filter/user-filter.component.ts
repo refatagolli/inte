@@ -4,6 +4,8 @@ import {Observable, Subject} from 'rxjs';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {flatMap, map, takeUntil, tap, toArray} from 'rxjs/operators';
 import {UtilsService} from '../../../services/utils/utils.service';
+import {MatTableDataSource} from '@angular/material';
+import {AllStaff} from '../../../models/AllStaff';
 
 @Component({
   selector: 'user-filter',
@@ -149,6 +151,10 @@ export class UserFilterComponent implements OnInit {
           this.first = filterConfigs[0]['name'];
         }
       });
+
+    this.utils.searchChanges.pipe().subscribe(val => {
+      this.filterText = val;
+    });
 
     this.subscribeToSubject();
   }

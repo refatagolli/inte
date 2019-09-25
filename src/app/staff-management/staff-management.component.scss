@@ -85,9 +85,15 @@ $text-color: rgb(250, 250, 250);
     color: inherit;
   }
 
+  .not-found {
+    text-align: center;
+    height: 90%;
+  }
+
   .table-wrapper {
     width: 100%;
     background-color: white;
+    height: 75%;
 
     .table-customisation {
       width: 98%;

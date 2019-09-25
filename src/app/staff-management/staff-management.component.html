@@ -1,7 +1,7 @@
 <div class="staff-view">
   <div class="header">
   <label class="header-text header-padding">
-    Staff Directory (</label><label class="header-text" *ngIf="filtered != total">{{filtered}} / </label>
+    Directory (</label><label class="header-text" *ngIf="filtered != total">{{filtered}} / </label>
   <label class="header-text">{{total}})&nbsp;&nbsp;&nbsp;</label>
   <div class="filters-wrapper" [ngStyle]="{'margin-top': appliedFilters.length <= 3 ? '35px' : '25px'}">
     <div *ngFor="let item of appliedFilters| slice:0:6;" class="filter-wrapper">
@@ -10,7 +10,7 @@
   </div>
   <div class="more-icon" (click)="utils.filterCardChanged.next(true)" *ngIf="appliedFilters.length > 6">
     <i class="material-icons cancel-icon">filter_{{ (appliedFilters.length - 6) < 10  ? (appliedFilters.length - 6) : 9 }}{{ (appliedFilters.length - 6) < 10 ? "" : "_plus" }}</i> More</div>
-  <button mat-button class="action-button complete add-staff">ADD NEW STAFF</button>
+  <button (click)="addNewStaffPanel()" mat-button class="action-button complete add-staff">ADD NEW STAFF</button>
 </div>
   <div class="table-wrapper">
     <div class="table-container mat-elevation-z8">
@@ -79,6 +79,12 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;let i = index"></tr>
 
       </table>
+    </div>
+    <div *ngIf="dataSource && dataSource.filteredData.length == 0" class="not-found">
+      <br /><br /><br /><br /><br />
+      <img src="assets/NoResult.svg" alt="No Result" />
+      <br /><br />
+      <button mat-button (click)="clearSearch()" class="action-button complete">SHOW FULL STAFF</button>
     </div>
   </div>
 </div>

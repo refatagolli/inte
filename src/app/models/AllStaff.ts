@@ -2,7 +2,7 @@ import {EmploymentType} from './EmploymentType';
 import {StaffType} from './StaffType';
 import {ShiftDaysTypeRelation} from './ShiftDaysTypeRelation';
 
-export interface AllStaff {
+export class AllStaff {
   id: number;
   firstName: string;
   lastName: string;

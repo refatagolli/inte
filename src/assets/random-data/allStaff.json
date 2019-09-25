@@ -1,18 +1,18 @@
 [
   {
     "id": 1,
-    "firstName": "Emanuel",
-    "lastName": "Idrizi",
+    "firstName": "Olivia",
+    "lastName": "Evans",
     "employmentType": {
       "employmentTypeId": 2,
       "employmentTypeName": "Full Time"
     },
-    "gender": "M",
-    "phone": "+355 697 777 711",
+    "gender": "F",
+    "phone": "245-694-747-079",
     "hireDate": "16/09/2019",
     "staffType": {
-      "staffTypeId": 2,
-      "staffTypeName": "CNA"
+      "staffTypeId": 3,
+      "staffTypeName": "Supervisor"
     },
     "shiftDays": [{
       "day" :  {
@@ -218,8 +218,8 @@
     "firstName": "Derek",
     "lastName": "Caspar",
     "employmentType": {
-      "employmentTypeId": 4,
-      "employmentTypeName": "Intelypro"
+      "employmentTypeId": 2,
+      "employmentTypeName": "Full Time"
     },
     "gender": "M",
     "phone": "232-423-654-345",
@@ -239,6 +239,54 @@
       }
     },
       {
+        "day" :  {
+          "id": 2,
+          "name": "Tuesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 4,
+          "name": "Thursday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+      {
+        "day" :   {
+          "id": 5,
+          "name": "Friday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 1,
+          "shiftTypeName": "7AM - 3PM"
+        }
+      }
+    ],
+    "notes": "Test 4 notes"
+  },
+  {
+    "id": 5,
+    "firstName": "Yen",
+    "lastName": "Chin",
+    "employmentType": {
+      "employmentTypeId": 4,
+      "employmentTypeName": "Intelypro"
+    },
+    "gender": "F",
+    "phone": "236-533-654-855",
+    "hireDate": "16/09/2019",
+    "staffType": {
+      "staffTypeId": 2,
+      "staffTypeName": "CNA"
+    },
+    "shiftDays": [{
         "day" :  {
           "id": 2,
           "name": "Tuesday"

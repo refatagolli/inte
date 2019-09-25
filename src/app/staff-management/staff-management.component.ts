@@ -92,6 +92,7 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
       };
 
       this.dataSource.filter = JSON.stringify(filterJson);
+      this.filtered = this.dataSource.filteredData.length;
     });
     this.utils.filterChanges.pipe(tap(e => this.appliedFilters = [])).subscribe(value => {
       this.filters = value;
@@ -143,6 +144,7 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
       };
 
       this.dataSource.filter = JSON.stringify(filterJson);
+      this.filtered = this.dataSource.filteredData.length;
     });
   }
 
@@ -192,50 +194,55 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
       let allSelectedFilters = false;
       let daysNotChosen = false;
 
-      if (
-        !parsedFilter.appliedFilters.day ||
-        (parsedFilter.appliedFilters.day && parsedFilter.appliedFilters.day.length === 0)
-      ) {
-        daysNotChosen = true;
-      }
+      if (parsedFilter.appliedFilters) {
+        if (
+          !parsedFilter.appliedFilters.day ||
+          (parsedFilter.appliedFilters.day && parsedFilter.appliedFilters.day.length === 0)
+        ) {
+          daysNotChosen = true;
+        }
 
-      if (
-        !parsedFilter.appliedFilters.shift_type ||
-        (parsedFilter.appliedFilters.shift_type && parsedFilter.appliedFilters.shift_type.length === 0)
-      ) {
-        if (daysNotChosen) {
-          shift_days = true;
+        if (
+          !parsedFilter.appliedFilters.shift_type ||
+          (parsedFilter.appliedFilters.shift_type && parsedFilter.appliedFilters.shift_type.length === 0)
+        ) {
+          if (daysNotChosen) {
+            shift_days = true;
+          } else {
+            data.shiftDays.forEach(item => {
+              if (parsedFilter.appliedFilters.day.indexOf(item.day.id) !== -1) {
+                shift_days = true;
+              }
+            });
+          }
         } else {
           data.shiftDays.forEach(item => {
-            if (parsedFilter.appliedFilters.day.indexOf(item.day.id) !== -1) {
-              shift_days = true;
+            if (parsedFilter.appliedFilters.shift_type.indexOf(item.shiftType.shiftTypeId) !== -1) {
+              if (daysNotChosen) {
+                shift_days = true;
+              } else if (parsedFilter.appliedFilters.day.indexOf(item.day.id) !== -1) {
+                shift_days = true;
+              }
             }
           });
         }
-      } else {
-        data.shiftDays.forEach(item => {
-          if (parsedFilter.appliedFilters.shift_type.indexOf(item.shiftType.shiftTypeId) !== -1) {
-            if (daysNotChosen) {
-              shift_days = true;
-            } else if (parsedFilter.appliedFilters.day.indexOf(item.day.id) !== -1) {
-                shift_days = true;
-            }
-          }
-        });
-      }
 
-      if ((
-          !parsedFilter.appliedFilters.staff ||
-          (parsedFilter.appliedFilters.staff && parsedFilter.appliedFilters.staff.length === 0) ||
-          (parsedFilter.appliedFilters.staff && (parsedFilter.appliedFilters.staff.indexOf(data.staffType.staffTypeId) !== -1))
-        )
-        &&
-        (
-          !parsedFilter.appliedFilters.employmentType ||
-          (parsedFilter.appliedFilters.employmentType && parsedFilter.appliedFilters.employmentType.length === 0) ||
-          (parsedFilter.appliedFilters.employmentType && (parsedFilter.appliedFilters.employmentType.indexOf(data.employmentType.employmentTypeId) !== -1))
-        )
-        && shift_days) {
+        if ((
+            !parsedFilter.appliedFilters.staff ||
+            (parsedFilter.appliedFilters.staff && parsedFilter.appliedFilters.staff.length === 0) ||
+            (parsedFilter.appliedFilters.staff && (parsedFilter.appliedFilters.staff.indexOf(data.staffType.staffTypeId) !== -1))
+          )
+          &&
+          (
+            !parsedFilter.appliedFilters.employmentType ||
+            (parsedFilter.appliedFilters.employmentType && parsedFilter.appliedFilters.employmentType.length === 0) ||
+            (parsedFilter.appliedFilters.employmentType &&
+              (parsedFilter.appliedFilters.employmentType.indexOf(data.employmentType.employmentTypeId) !== -1))
+          )
+          && shift_days) {
+          allSelectedFilters = true;
+        }
+      } else {
         allSelectedFilters = true;
       }
 
@@ -247,4 +254,13 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
     return filterFunction;
   }
 
+  clearSearch() {
+    this.filters = {};
+    this.utils.searchChanged.next('');
+    this.utils.filterChangeSubject.next(this.filters);
+  }
+
+  addNewStaffPanel() {
+    this.staffService.openAddStaffPanel();
+  }
 }

@@ -22,6 +22,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   selectedLanguage: any;
   userStatusOptions: any[];
   currentRoute: Observable<String>;
+  routeNamesMapping: any;
 
   // Private
   private _unsubscribeAll: Subject<any>;
@@ -38,6 +39,12 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     private _fuseSidebarService: FuseSidebarService,
     private _route: Router
   ) {
+    this.routeNamesMapping = {
+      '': 'Daily',
+      'daily': 'Daily',
+      'home': 'Staff Directory'
+    };
+
     // Set the defaults
     this.userStatusOptions = [];
 
@@ -78,7 +85,10 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     this.currentRoute = this._route.events.pipe(
       takeUntil(this._unsubscribeAll),
       filter((event) => event instanceof NavigationEnd),
-      map((event: NavigationEnd) => event.url.replace('/', ''))
+      map((event: NavigationEnd) => {
+        console.log(event.url.replace('/', ''));
+        return this.routeNamesMapping[event.url.replace('/', '')];
+      })
     );
   }
 
