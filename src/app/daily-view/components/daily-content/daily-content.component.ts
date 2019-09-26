@@ -22,7 +22,6 @@ export class DailyContentComponent implements OnInit, OnDestroy {
   config: DailyViewConfigModel;
   private _unsubscribeAll: Subject<any> = new Subject();
   private primaryField: string;
-  private secondaryField: string;
 
   constructor(private _dailyViewService: DailyViewService,
               private _shiftManagementService: ShiftManagementService) {
@@ -49,33 +48,26 @@ export class DailyContentComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
   }
 
-  openShiftDetails(staffMember: StaffMember) {
-    const shiftDetails: ShiftDetails = {
-      staffType: staffMember.staffType,
-      shiftHours: staffMember.shiftHours,
-      shiftDate: new Date().getTime(),
-      unit: staffMember.unit
-    };
+  openShiftDetails(shiftDetails: ShiftDetails, staffMember: StaffMember) {
     this._shiftManagementService.openShiftDetailsPanel(shiftDetails, staffMember);
   }
 
-  openFillShift(shiftDetails: ShiftDetails) {
-    this._shiftManagementService.openFillShiftPanel(shiftDetails);
+  openFillShift(shiftDetails: ShiftDetails, replacing?: StaffMember) {
+    this._shiftManagementService.openFillShiftPanel(shiftDetails, replacing);
   }
 
-  getShiftDetails(shiftHours: string, unit: string, staffType: string): ShiftDetails {
-    return {shiftHours, staffType, unit, shiftDate: this.config.date};
+  getShiftDetails(shiftHours: string, staffType: string, unit: string): ShiftDetails {
+    return {shiftHours, unit,  staffType, shiftDate: this.config.date};
   }
 
   getPresent(asmth) {
-    return flatten(asmth[this.primaryField].map( a => Object.values(a.staff))) .length;
+    return flatten(asmth[this.primaryField].map(a => Object.values(a.staff))).length;
   }
 
   private getStaff(config): Observable<any> {
     const a = config.viewType === 'unit' ? this._dailyViewService.getUnits() : this._dailyViewService.getShifts();
     const b = config.viewType === 'unit' ? this._dailyViewService.getShifts() : this._dailyViewService.getUnits();
     this.primaryField = config.viewType === 'unit' ? 'shift' : 'unit';
-    this.secondaryField = config.viewType !== 'unit' ? 'shift' : 'unit';
 
     return zip(a, b).pipe(
       map(e => this._setSubGroup(e, this.primaryField)),

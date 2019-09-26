@@ -1,14 +1,46 @@
 <mat-card class="requests">
   <mat-card-header>
-    <mat-icon mat-card-avatar class="test-icon">check_circle</mat-icon>
+    <mat-icon mat-card-avatar class="test-icon">notifications</mat-icon>
     <mat-card-title>Requests</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
+    <div class="wrapper" fxFlex fxLayout="column" fxLayoutGap="10px" *ngIf="requests.length">
+      <div class="counter" fxLayoutAlign="center" *ngIf="requests.length > 1">
 
+        <span class="marker"> {{current}} / {{requests.length}} </span>
+
+        <div class="pager">
+          <button [disabled]="current === 1" (click)="goBack()">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+          </button>
+          <button [disabled]="current === requests.length" (click)="goForward()">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+
+      </div>
+      <div class="content-wrapper" fxFlex fxFlexFill fxLayoutAlign="center center" fxLayout="column">
+        <span class="bold-item">{{requests[current -1].shift.shiftDate | date: 'EEEE MMMM dd, yyyy'}}</span>
+        <span class="bold-item">{{requests[current -1].shift.shiftHours}}</span>
+
+        <div class="responses" fxFlex fxLayout="row" fxLayoutGap="10px">
+          <span class="rejected" *ngIf="requests[current -1].requests.rejected">
+            {{requests[current -1].requests.rejected}} REJECTED
+          </span>
+          <span class="pending" *ngIf="requests[current -1].requests.pending">
+            {{requests[current -1].requests.pending}} PENDING
+          </span>
+          <span class="accepted" *ngIf="requests[current -1].requests.accepted">
+            {{requests[current -1].requests.accepted}} ACCEPTED
+          </span>
+        </div>
+      </div>
+    </div>
   </mat-card-content>
 
   <mat-card-actions align="center">
-    <button mat-button class="action-button complete">View All</button>
+    <button mat-button class="action-button complete">View</button>
+    <button mat-button class="action-button partial" *ngIf="requests.length" (click)="openRequests()">View All</button>
   </mat-card-actions>
 </mat-card>

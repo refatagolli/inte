@@ -1,0 +1,21 @@
+<div class="staff-request-responses">
+  <div class="staff-request-responses-wrapper" fxLayout="column" fxLayoutGap="8px">
+    <mat-divider></mat-divider>
+    <div class="content">
+      <mat-list fxLayout="column" fxLayoutGap="12px">
+        <app-staff-card-confirmation [response]="response" (selectionChange)="setSelectedItem(response)"
+                                     *ngFor="let response of userResponses | async"></app-staff-card-confirmation>
+      </mat-list>
+    </div>
+
+    <div class="actions" fxFlex="82px">
+      <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutAlign="center center">
+        <button class="action-button" mat-button=""
+                [disabled]="!selectedItem"
+                [ngClass]="!!selectedItem ? 'complete' : 'disabled'"
+        >Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

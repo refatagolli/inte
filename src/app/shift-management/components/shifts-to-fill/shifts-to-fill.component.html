@@ -1,0 +1,23 @@
+<div class="shifts-to-fill">
+  <div class="shifts-to-fill-wrapper" fxFlex fxFlexFill fxLayout="column">
+
+    <div class="shifts-to-fill-header">
+      <card-system-top-header [title]="'Open Shifts To Fill (next 7 days)'" [indicator]="4"
+                              [subtitle]="'Open Shifts'"></card-system-top-header>
+    </div>
+
+    <div class="content" fxFlex="0 1 auto" fxLayout="column" fxFlexFill>
+      <div class="content-wrapper" fxLayout="column" fxLayoutGap="20px">
+
+        <div class="shift-to-fill" *ngFor="let shift of openedShifts | async " fxLayout="column" fxLayoutGap="12px">
+          <card-system-shift-details [shiftDetails]="shift" [selectable]="false"></card-system-shift-details>
+
+          <div class="shift-actions" fxFlex="60px" fxLayout="column" fxLayoutAlign="center center">
+            <button mat-button class="action-button complete" fxFlexAlign="center" (click)="requestStaff(shift)">Request</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

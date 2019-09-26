@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {FuseSidebarService} from '@theme/components/sidebar/sidebar.service';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ShiftDetails} from '../../../models/ShiftDetails';
 import {ShiftManagementService} from '../../shift-management.service';
+import {StaffMember} from '../../../models/StaffMember';
 
 @Component({
   selector: 'app-management-top-card',
@@ -14,11 +14,14 @@ export class ManagementTopCardComponent implements OnInit {
 
   @Input() title: string;
   @Input() shiftDetails: ShiftDetails;
+  @Input() replacing: StaffMember;
 
-  constructor(private _shiftManagementService: ShiftManagementService) {
+  constructor(private _shiftManagementService: ShiftManagementService,
+              private _cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
+    this._cdr.detectChanges();
   }
 
   toggleSidebar() {

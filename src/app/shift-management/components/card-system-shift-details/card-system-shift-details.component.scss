@@ -1,0 +1,47 @@
+$header_color: #1885b7;
+$text_color: #72808a;
+
+.card-system-shift-details {
+  position: relative;
+  padding: 12px;
+  border-radius: 0;
+  border: 1px solid rgb(228, 228, 228);
+
+  .header {
+    color: $header_color;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: center;
+    background-color: transparent;
+
+    .mat-checkbox {
+      position: absolute;
+      left: 10px;
+      top: 13px
+    }
+  }
+
+  .content {
+    padding-left: 12px;
+
+    .title {
+      color: $text_color;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.75px;
+      padding :12px 0;
+    }
+
+    .shift-details {
+
+      .info-title {
+        color: $text_color;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: -0.67px;
+        line-height: 1.7;
+      }
+    }
+  }
+}

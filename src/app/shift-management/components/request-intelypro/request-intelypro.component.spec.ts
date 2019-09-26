@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FillShiftComponentComponent } from './fill-shift-component.component';
+import { RequestIntelyproComponent } from './request-intelypro.component';
 
-describe('FillShiftComponentComponent', () => {
-  let component: FillShiftComponentComponent;
-  let fixture: ComponentFixture<FillShiftComponentComponent>;
+describe('RequestIntelyproComponent', () => {
+  let component: RequestIntelyproComponent;
+  let fixture: ComponentFixture<RequestIntelyproComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FillShiftComponentComponent ]
+      declarations: [ RequestIntelyproComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FillShiftComponentComponent);
+    fixture = TestBed.createComponent(RequestIntelyproComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

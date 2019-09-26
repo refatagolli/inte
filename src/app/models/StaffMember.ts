@@ -9,4 +9,5 @@ export interface StaffMember {
   notes: string[];
   unit: string;
   phone: string;
+  away: boolean;
 }

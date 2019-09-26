@@ -10,9 +10,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "John Doe",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -25,9 +26,10 @@
     "gender": "male",
     "staffType": "Unit Manager",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Jenny Doe",
     "unit": "Unit B",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -40,9 +42,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Anal Ist",
     "unit": "Unit C",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -55,9 +58,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Aaron Hank",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -70,9 +74,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Jane Ace",
     "unit": "Unit B",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -85,9 +90,10 @@
     "gender": "male",
     "staffType": "Unit Manager",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Breaking Bad",
     "unit": "Unit B",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -100,9 +106,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Jessy Pinkman",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -115,9 +122,10 @@
     "gender": "male",
     "staffType": "Unit Manager",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Rick And Morty",
     "unit": "Unit B",
-    "notes": []
+    "notes": [],
+    "away": true
   },
   {
     "phone": "234-324-234",
@@ -130,9 +138,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Family Guy",
     "unit": "Unit C",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -145,9 +154,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Joy Tribiani",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -160,9 +170,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Chandler Bing",
     "unit": "Unit B",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -175,9 +186,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Quentin Tarantino",
     "unit": "Unit C",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -190,9 +202,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Peter Griffin",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -205,9 +218,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Stewie Griffin",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -220,9 +234,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Megg Griffin",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": true
   },
   {
     "phone": "234-324-234",
@@ -235,9 +250,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Gregory House",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -250,9 +266,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Greys Anatomi",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -265,9 +282,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Game of Thrones",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": true
   },
   {
     "phone": "234-324-234",
@@ -280,9 +298,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "1 3",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -295,9 +314,10 @@
     "gender": "male",
     "staffType": "CNA",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Metallica Forever",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -310,9 +330,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Iron Maden",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -325,9 +346,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Scorpi Ons",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -340,9 +362,10 @@
     "gender": "male",
     "staffType": "CNA",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Deep Purple",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -355,9 +378,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Pink Floyd",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": true
   },
   {
     "phone": "234-324-234",
@@ -370,9 +394,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Tom aand Jerry",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -385,9 +410,10 @@
     "gender": "male",
     "staffType": "CNA",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Spongebob Squarepants",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -400,9 +426,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Johnny Cash",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -415,9 +442,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Nurse Jackie",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -430,9 +458,10 @@
     "gender": "male",
     "staffType": "CNA",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Elmer Hartman",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -445,9 +474,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Unknown Guy",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -457,12 +487,13 @@
       "Monday",
       "Friday"
     ],
-    "gender": "male",
+    "gender": "female",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Unknown Girl",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -475,9 +506,10 @@
     "gender": "male",
     "staffType": "CNA",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Psyco the Rapist",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -490,9 +522,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Area 51",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -505,9 +538,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Bad Luck Brian",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -520,9 +554,10 @@
     "gender": "male",
     "staffType": "CNA",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Ben Dover",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -535,9 +570,10 @@
     "gender": "male",
     "staffType": "Unit Manager",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Jesus Christ",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -550,9 +586,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Funny Name",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -565,9 +602,10 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Sam Dunbar",
+    "fullName": "Serious Name",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": false
   },
   {
     "phone": "234-324-234",
@@ -582,6 +620,7 @@
     "hoursThisWeek": 12,
     "fullName": "Sam Dunbar",
     "unit": "Unit A",
-    "notes": []
+    "notes": [],
+    "away": true
   }
 ]

@@ -96,8 +96,14 @@ $default-primary-palette: mat-palette($fuse-navy);
 $default-accent-palette: mat-palette($mat-light-blue, 600, 400, 700);
 $default-warn-palette: mat-palette($mat-red);
 
+$green-accent-palette : mat-palette((
+  400: #9fc53a,
+  contrast: (400: white)
+),400,400);
+
+
 // Create the Material theme object
-$theme: mat-light-theme($default-primary-palette, $default-accent-palette, $default-warn-palette);
+$theme: mat-light-theme($default-primary-palette, $green-accent-palette, $default-warn-palette);
 
 // Add ".theme-default" class to the body to activate this theme.
 // Class name must start with "theme-" !!!
@@ -115,7 +121,7 @@ body.theme-default {
   // Generate Fuse color classes for primary, accent and warn colors
   $palettes: (
     primary: $default-primary-palette,
-    accent: $default-accent-palette,
+    accent: $green-accent-palette,
     warn: $default-warn-palette
   );
 

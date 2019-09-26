@@ -16,6 +16,10 @@
     letter-spacing: -0.49px;
     display: inline-block;
     margin: 0 20px 12px 0;
+
+    ::ng-deep.mat-list-text, ::ng-deep.mat-list-item-content-reverse  {
+      padding: 0 !important;
+    }
   }
 
 }

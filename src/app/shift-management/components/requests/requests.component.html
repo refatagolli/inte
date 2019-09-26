@@ -1,0 +1,38 @@
+<div class="requests">
+  <div class="requests-wrapper" fxFlex fxFlexFill fxLayout="column">
+
+    <div class="requests-header">
+      <card-system-top-header [title]="'All Requests'" [indicator]="4"
+                              [subtitle]="'Pending Shifts'"></card-system-top-header>
+    </div>
+
+    <div class="content" fxFlex="0 1 auto" fxFlexFill>
+      <div class="content-wrapper" fxLayout="column" fxLayoutGap="20px">
+
+        <div class="request-entity" fxLayout="column" *ngFor="let request of allRequests | async">
+          <card-system-shift-details [shiftDetails]="request.shift" [selectable]="false"></card-system-shift-details>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <div class="responses" fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="space-around center">
+                 <span class="rejected" *ngIf="request.requests.rejected">
+                   {{request.requests.rejected}} REJECTED
+                  </span>
+                <span class="pending" *ngIf="request.requests.pending">
+                  {{request.requests.pending}} PENDING
+                </span>
+                <span class="accepted" *ngIf="request.requests.accepted">
+                  {{request.requests.accepted}} ACCEPTED
+                </span>
+              </div>
+            </mat-expansion-panel-header>
+
+            <staff-request-responses></staff-request-responses>
+
+          </mat-expansion-panel>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -3,17 +3,60 @@ $background-color: #f7fbff;
 .management-top-card {
   background-color: $background-color;
   min-width: 433px;
-  padding-bottom: 10px;
-  padding-left: 10px;
+  padding-bottom: 17px;
+  padding-left: 17px;
 
-  .management-top-card-title .title {
-    line-height: 8px;
+  .management-top-card-title {
+    padding: 20px;
+    .title {
+      line-height: 8px;
+    }
   }
 
   .management-top-card-content-wrapper {
 
     .bold-item {
-      line-height: 8px;
+      color: #72808a;
+      font-size: 16px;
+      font-weight: 600;
+      height: 22px;
+      letter-spacing: -0.67px
+    }
+
+    .info-header {
+      color: #72808a;
+      font-size: 18px;
+      font-weight: 600;
+      height: 24px;
+      letter-spacing: -0.75px;
+    }
+  }
+
+  .replacing-staff {
+
+    .chip-icon {
+      background-color: #d0021b;
+      color: white;
+    }
+
+    .staff-data {
+
+      .title {
+        color: #f45551;
+        font-size: 16px;
+        font-weight: 600;
+        height: 24px;
+        line-height: 24px;
+        text-decoration: line-through;
+      }
+
+      .subtitle {
+        color: #f4504b;
+        font-size: 16px;
+        font-weight: normal;
+        height: 20px;
+        line-height: 20px;
+      }
     }
   }
 }

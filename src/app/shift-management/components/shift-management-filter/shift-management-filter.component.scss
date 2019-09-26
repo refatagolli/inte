@@ -1,0 +1,59 @@
+.shift-management-filter {
+  background: rgb(242, 245, 248);
+  border-radius: 2px 0 0 2px;
+  border: 1px solid rgb(239, 240, 244);
+  height: fit-content;
+  position: relative;
+
+  ::ng-deep.mat-form-field {
+    background-color: transparent;
+
+    .mat-form-field-outline-start, .mat-form-field-outline-end {
+      border-radius: 0 !important;
+    }
+
+    .mat-form-field-wrapper {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .mat-button {
+    background-color: white;
+  }
+}
+
+.filters {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 99999;
+  padding: 8px;
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 0;
+  border: 1px solid rgb(228, 228, 228);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
+  span {
+    color: rgb(114, 128, 138);
+    font-size: 16px;
+    font-weight: 600;
+    height: 22px;
+    letter-spacing: -0.49px;
+  }
+
+  &.hidden {
+    display: none !important;
+  }
+}
+
+.test1 {
+  width: 200px;
+  height: 200px;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1200;
+}

@@ -21,7 +21,6 @@ export class ChangeShiftComponent implements OnInit {
 
     this.elements = this._dailyViewService.getShifts().pipe(
       flatMap(e => e),
-      tap(console.log),
       map((e: any) => ({
         name: e.shiftTime,
         value: e.shiftTime

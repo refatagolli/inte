@@ -1,0 +1,67 @@
+[
+  {
+    "shift": {
+      "shiftHours": "7-13",
+      "unit": "Unit A",
+      "staffType": "Nurse",
+      "shiftDate": "12/07/2019"
+    },
+    "requests": {
+      "pending": 2,
+      "rejected": 1,
+      "accepted": 2
+    }
+  },
+  {
+    "shift": {
+      "shiftHours": "7-13",
+      "unit": "Unit A",
+      "staffType": "Nurse",
+      "shiftDate": "12/07/2019"
+    },
+    "requests": {
+      "pending": 2,
+      "rejected": 1,
+      "accepted": 2
+    }
+  },
+  {
+    "shift": {
+      "shiftHours": "7-13",
+      "unit": "Unit A",
+      "staffType": "Nurse",
+      "shiftDate": "12/07/2019"
+    },
+    "requests": {
+      "pending": 2,
+      "rejected": 1,
+      "accepted": 2
+    }
+  },
+  {
+    "shift": {
+      "shiftHours": "7-13",
+      "unit": "Unit A",
+      "staffType": "Nurse",
+      "shiftDate": "12/07/2019"
+    },
+    "requests": {
+      "pending": 2,
+      "rejected": 1,
+      "accepted": 2
+    }
+  },
+  {
+    "shift": {
+      "shiftHours": "7-13",
+      "unit": "Unit A",
+      "staffType": "Nurse",
+      "shiftDate": "12/07/2019"
+    },
+    "requests": {
+      "pending": 2,
+      "rejected": 1,
+      "accepted": 2
+    }
+  }
+]

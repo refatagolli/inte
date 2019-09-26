@@ -43,10 +43,10 @@ $header_font_color: #59595b;
       }
     }
 
-    .mat-expansion-panel {
+    ::ng-deep.mat-expansion-panel {
       box-shadow: unset;
 
-      ::ng-deep.mat-expansion-panel-content {
+      .mat-expansion-panel-content {
         max-width: calc(100vw - (100px));
         width: inherit;
         overflow-x: auto;
@@ -54,6 +54,8 @@ $header_font_color: #59595b;
 
         .mat-expansion-panel-body {
           padding: 0;
+          overflow-x: auto;
+          overflow-y: hidden;
         }
       }
     }

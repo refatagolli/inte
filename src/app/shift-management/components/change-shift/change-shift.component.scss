@@ -19,7 +19,16 @@ $header_border_color: #cacaca;
 
       .mat-card {
         box-shadow: unset;
-        border :1px solid $header_border_color
+        border: 1px solid $header_border_color
+      }
+
+      .title {
+        color: rgb(114, 128, 138);
+        font-family: OpenSans-SemiBold;
+        font-size: 18px;
+        font-weight: 600;
+        height: 24px;
+        letter-spacing: -0.55px;
       }
     }
   }
