@@ -27,7 +27,7 @@ export class CustomOptionSetComponent implements OnInit {
 
     if (this.selectedCheckBox && this.multiple) {
       this.checkboxSelected = this.selectedCheckBox;
-    } else if (this.selectedRadioButton && this.multiple) {
+    } else if (this.selectedRadioButton !== 0 && !this.multiple) {
       this.radioSelected = this.selectedRadioButton;
     }
   }
@@ -47,7 +47,6 @@ export class CustomOptionSetComponent implements OnInit {
   }
 
   updateRadioOptions(option) {
-    console.log(option);
     this.radioSelected = option.value;
     this.valueChange.next(option.value);
   }

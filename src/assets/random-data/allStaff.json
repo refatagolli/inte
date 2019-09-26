@@ -8,6 +8,7 @@
       "employmentTypeName": "Full Time"
     },
     "gender": "F",
+    "email": "olivia.evans@yahoo.com",
     "phone": "245-694-747-079",
     "hireDate": "16/09/2019",
     "staffType": {
@@ -66,6 +67,7 @@
       "employmentTypeName": "Part Time"
     },
     "gender": "F",
+    "email": "heather.bloom@yahoo.com",
     "phone": "343-444-246-342",
     "hireDate": "16/09/2019",
     "staffType": {
@@ -144,6 +146,7 @@
       "employmentTypeName": "Part Time"
     },
     "gender": "M",
+    "email": "rahul.border@hotmail.com",
     "phone": "385-687-257-321",
     "hireDate": "16/09/2019",
     "staffType": {
@@ -222,6 +225,7 @@
       "employmentTypeName": "Full Time"
     },
     "gender": "M",
+    "email": "derek.casper@gmail.com",
     "phone": "232-423-654-345",
     "hireDate": "16/09/2019",
     "staffType": {
@@ -280,6 +284,7 @@
       "employmentTypeName": "Intelypro"
     },
     "gender": "F",
+    "email": "yen.chin@gmail.com",
     "phone": "236-533-654-855",
     "hireDate": "16/09/2019",
     "staffType": {
