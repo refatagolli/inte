@@ -8,7 +8,7 @@ import {StaffType} from '../models/StaffType';
 import {ShiftType} from '../models/ShiftType';
 import {EmploymentType} from '../models/EmploymentType';
 import {Days} from '../models/Days';
-import {tap} from 'rxjs/operators';
+import {flatMap, takeWhile, tap} from 'rxjs/operators';
 import {AllStaff} from '../models/AllStaff';
 import {StaffManagementService} from './staff-management.service';
 
@@ -24,13 +24,13 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   usedIn = 'staff-management';
   searched = '';
   dataSource: MatTableDataSource<AllStaff>;
-  allRecords: AllStaff[];
+  allRecords: AllStaff[] = [];
   appliedFilters: any[] = [];
-  staffTypes: StaffType[];
-  shiftTypes: ShiftType[];
-  employmentTypes: EmploymentType[];
+  staffTypes: StaffType[] = [];
+  shiftTypes: ShiftType[] = [];
+  employmentTypes: EmploymentType[] = [];
   displayedColumns: string[] = ['lastName', 'employmentType.employmentTypeName', 'staffType.staffTypeName', 'shifts', 'phone', 'view'];
-  days: Days[];
+  days: Days[] = [];
   total = 0;
   filtered = 0;
   test: string;
@@ -50,40 +50,10 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.retrieveTypes();
+    this.loadData();
     this.utils.setFilterConfiguration(this.filterConfig);
     this.utils.setFilterUsedComponent(this.usedIn);
-    this.staffService.getStaffMembers().pipe().subscribe(data => {
-        this.total = data.length;
-        this.filtered = data.length;
-        this.allRecords = data;
-        this.dataSource = new MatTableDataSource<AllStaff>(data);
-        this.dataSource.sortingDataAccessor = this.sortingDataAccessor;
-        this.dataSource.sort = this.sort;
-        this.sort.disableClear = true;
-        this.dataSource.filterPredicate = this.tableFilter();
 
-        data.forEach( staff => {
-          staff.shiftDaysString = '';
-          this.shiftTypes.forEach(item => {
-            let existsShift = false;
-
-            staff.shiftDays.forEach(eachShift => {
-              if (eachShift.shiftType.shiftTypeId === item.shiftTypeId) {
-                staff.shiftDaysString += eachShift.day.name.substring(0, 3) + ', ';
-                existsShift = true;
-              }
-            });
-
-            if (existsShift) {
-              staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 2);
-              staff.shiftDaysString += ': ' + item.shiftTypeName + '<br />';
-            }
-          });
-
-          staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 6);
-        });
-      });
     this.utils.searchChanges.pipe().subscribe(val => {
       this.searched = val;
       const filterJson = {
@@ -152,26 +122,72 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
   }
 
-  private retrieveTypes() {
-    this.dailyView.getShiftTypes().pipe()
-      .subscribe(shifts => {
-        this.shiftTypes = shifts;
-      });
+  private loadData() {
 
-    this.dailyView.getStaffTypes().pipe()
-      .subscribe(staffType => {
-        this.staffTypes = staffType;
-      });
+    this.dailyView.getShiftTypes().pipe(
+      tap(e => this.shiftTypes = e),
+      flatMap(e1 => this.dailyView.getStaffTypes().pipe(
+        tap(e => this.staffTypes = e),
+        flatMap( e2 => this.dailyView.getEmploymentTypes().pipe(
+          tap(e => this.employmentTypes = e),
+          flatMap( e3 => this.dailyView.getDays().pipe(
+            tap(e => this.days = e)
+          ))
+        ))
+      ))
+    ).subscribe(dt => {
+      this.staffService.getStaffMembers().pipe().subscribe(data => {
+        this.total = data.length;
+        this.filtered = data.length;
+        this.allRecords = data;
+        this.dataSource = new MatTableDataSource<AllStaff>(data);
+        this.dataSource.sortingDataAccessor = this.sortingDataAccessor;
+        this.dataSource.sort = this.sort;
+        this.sort.disableClear = true;
+        this.dataSource.filterPredicate = this.tableFilter();
 
-    this.dailyView.getEmploymentTypes().pipe()
-      .subscribe(employmentTypes => {
-        this.employmentTypes = employmentTypes;
-      });
+        data.forEach( staff => {
+          staff.shiftDaysString = '';
+          this.shiftTypes.forEach(item => {
+            let existsShift = false;
 
-    this.dailyView.getDays().pipe()
-      .subscribe(days => {
-        this.days = days;
+            staff.shiftDays.forEach(eachShift => {
+              if (eachShift.shiftType.shiftTypeId === item.shiftTypeId) {
+                staff.shiftDaysString += eachShift.day.name.substring(0, 3) + ', ';
+                existsShift = true;
+              }
+            });
+
+            if (existsShift) {
+              staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 2);
+              staff.shiftDaysString += ': ' + item.shiftTypeName + '<br />';
+            }
+          });
+
+          staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 6);
+        });
       });
+    });
+
+    // this.dailyView.getShiftTypes().pipe()
+    //   .subscribe(shifts => {
+    //     this.shiftTypes = shifts;
+    //   });
+    //
+    // this.dailyView.getStaffTypes().pipe()
+    //   .subscribe(staffType => {
+    //     this.staffTypes = staffType;
+    //   });
+    //
+    // this.dailyView.getEmploymentTypes().pipe()
+    //   .subscribe(employmentTypes => {
+    //     this.employmentTypes = employmentTypes;
+    //   });
+    //
+    // this.dailyView.getDays().pipe()
+    //   .subscribe(days => {
+    //     this.days = days;
+    //   });
   }
 
   removeFilter(item: any) {

@@ -29,6 +29,7 @@
     "lodash": "latest",
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
+    "ngx-mask": "^8.0.6",
     "perfect-scrollbar": "latest",
     "prismjs": "latest",
     "rxjs": "~6.3.3",

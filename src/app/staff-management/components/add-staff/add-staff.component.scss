@@ -30,10 +30,13 @@ $header_border_color: #cacaca;
       padding-top: 15px;
 
       .title-text {
+        width: 538px;
+        height: 24px;
         color: rgb(89, 89, 91);
         font-size: 20px;
         font-family: OpenSans-SemiBold;
         font-weight: 600;
+        text-align: center;
         letter-spacing: 0px;
       }
     }
@@ -44,6 +47,7 @@ $header_border_color: #cacaca;
       width: 100%;
 
       .required-block {
+        height: 22px;
         color: rgb(114, 128, 138);
         font-size: 16px;
         font-family: OpenSans-Regular;
@@ -107,10 +111,32 @@ $header_border_color: #cacaca;
         }
       }
 
+      .warning-label {
+        float: left;
+        margin: 10px;
+        color: red;
+        font-size: 12px;
+        font-family: OpenSans-Regular;
+      }
+
+      .date-validation-label {
+        margin-top: -10px;
+        margin-left: 0px;
+        margin-bottom: 10px;
+      }
+
       .button-options {
         margin-left: 10px;
         width: 100%;
         overflow-x: hidden;
+      }
+
+      .remove-shift-day-combination {
+        text-align: right;
+        float: right;
+        display: flex;
+        margin-right: 10px;
+        cursor: pointer;
       }
 
       .shift-day-wrapper {
@@ -138,7 +164,12 @@ $header_border_color: #cacaca;
           }
 
           .customized-card {
+            //position: absolute;
+            margin-left: 0px;
+            margin-right: 0px;
             padding: 0px;
+            //width: 50%;
+            //margin-top: 50px;
             z-index: 2;
             height: 150px;
             max-height: 250px;
@@ -150,10 +181,17 @@ $header_border_color: #cacaca;
           }
         }
 
+        .margin-right {
+          margin-right: 15px;
+        }
+
+        .margin-left {
+          margin-left: 5px;
+        }
+
         .customised-checkbox-group {
           height: 48px;
           width: 100%;
-          margin-left: 5px;
           background: rgb(247, 251, 255);
           border: 1px solid rgb(224, 224, 224);
           border-radius: 2px;
@@ -162,7 +200,6 @@ $header_border_color: #cacaca;
         .customised-radio-group {
           height: 48px;
           width: 100%;
-          margin-right: 10px;
           background: rgb(247, 251, 255);
           border: 1px solid rgb(224, 224, 224);
           border-radius: 2px;
