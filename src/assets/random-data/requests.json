@@ -1,7 +1,7 @@
 [
   {
     "shift": {
-      "shiftHours": "7-13",
+      "shiftHours": "3PM-11PM",
       "unit": "Unit A",
       "staffType": "Nurse",
       "shiftDate": "12/07/2019"
@@ -14,7 +14,7 @@
   },
   {
     "shift": {
-      "shiftHours": "7-13",
+      "shiftHours": "3PM-11PM",
       "unit": "Unit A",
       "staffType": "Nurse",
       "shiftDate": "12/07/2019"
@@ -27,7 +27,7 @@
   },
   {
     "shift": {
-      "shiftHours": "7-13",
+      "shiftHours": "3PM-11PM",
       "unit": "Unit A",
       "staffType": "Nurse",
       "shiftDate": "12/07/2019"
@@ -40,7 +40,7 @@
   },
   {
     "shift": {
-      "shiftHours": "7-13",
+      "shiftHours": "3PM-11PM",
       "unit": "Unit A",
       "staffType": "Nurse",
       "shiftDate": "12/07/2019"
@@ -53,7 +53,7 @@
   },
   {
     "shift": {
-      "shiftHours": "7-13",
+      "shiftHours": "3PM-11PM",
       "unit": "Unit A",
       "staffType": "Nurse",
       "shiftDate": "12/07/2019"

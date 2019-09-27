@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DailyViewHeaderComponent } from './daily-view-header.component';
+import { AllViewsHeaderComponent } from './all-views-header.component';
 
-describe('DailyViewHeaderComponent', () => {
-  let component: DailyViewHeaderComponent;
-  let fixture: ComponentFixture<DailyViewHeaderComponent>;
+describe('AllViewsHeaderComponent', () => {
+  let component: AllViewsHeaderComponent;
+  let fixture: ComponentFixture<AllViewsHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DailyViewHeaderComponent ]
+      declarations: [ AllViewsHeaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DailyViewHeaderComponent);
+    fixture = TestBed.createComponent(AllViewsHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

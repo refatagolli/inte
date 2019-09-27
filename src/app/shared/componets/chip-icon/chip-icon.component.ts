@@ -11,11 +11,13 @@ import {UtilsService} from '../../../services/utils/utils.service';
 export class ChipIconComponent implements OnInit {
 
   @Input() name: string;
+  @Input() iconMN: string;
 
   constructor() {
   }
 
   ngOnInit() {
+    console.log(this.iconMN);
   }
 
   getContent() {

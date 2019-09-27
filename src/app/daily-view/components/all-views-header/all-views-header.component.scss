@@ -1,4 +1,3 @@
-$select-color: #9fc53a;
 $text_blue: #2c87b9;
 $background_blue: rgba(58, 168, 255, 0.3);
 
@@ -7,24 +6,28 @@ $background_blue: rgba(58, 168, 255, 0.3);
   display: flex;
   flex-direction: row;
   font-size: 16px;
+  position: relative;
 
-  .view-type {
-    display: block;
-    padding-top: 20px;
+  .today {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: $text_blue;
+    margin-top: 10px;
 
-    .view-type-toggle {
-      display: inline-block;
-      padding: 0 10px;
+    .mat-button {
+      font-size: 20px;
+    }
+  }
 
-      .mat-slide-toggle {
-        position: relative;
-        top: -5px;
-        margin: 0 8px;
-      }
+  .print {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 10px;
 
-      .selected {
-        color: $select-color;
-      }
+    .mat-button {
+      font-size: 20px;
     }
   }
 

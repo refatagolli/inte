@@ -1,0 +1,20 @@
+$select-color: #9fc53a;
+
+.view-type {
+  display: block;
+
+  .view-type-toggle {
+    display: inline-block;
+    padding: 0 10px;
+
+    .mat-slide-toggle {
+      position: relative;
+      top: -5px;
+      margin: 3px 8px;
+    }
+
+    .selected {
+      color: $select-color;
+    }
+  }
+}

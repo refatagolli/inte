@@ -1,19 +1,18 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormControl} from '@angular/forms';
 import {DailyViewService} from '../../../services/daily-view.service';
+import {FormControl} from '@angular/forms';
 import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
 
 @Component({
-  selector: 'daily-view-header',
-  templateUrl: './daily-view-header.component.html',
-  styleUrls: ['./daily-view-header.component.scss'],
+  selector: 'view-type',
+  templateUrl: './view-type.component.html',
+  styleUrls: ['./view-type.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DailyViewHeaderComponent implements OnInit {
+export class ViewTypeComponent implements OnInit {
   slideToggleContrl: FormControl = new FormControl(true);
   dailyViewConfig: DailyViewConfigModel;
 
-  date: Date = new Date();
 
   constructor(private _dailyViewService: DailyViewService) {
   }
@@ -30,8 +29,4 @@ export class DailyViewHeaderComponent implements OnInit {
     });
   }
 
-  changeDateRange(dateRange: 'daily'| 'weekly' | 'monthly') {
-    this.dailyViewConfig.dateRange = dateRange;
-    this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
-  }
 }

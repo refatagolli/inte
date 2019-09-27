@@ -1,0 +1,11 @@
+<div class="view-type" fxFlex.lt-sm="1 1 auto">
+  <div class="view-type-wrapper" fxLayout="row" fxLayoutAlign.lt-sm="space-around">
+    <span class="bold-item">View by:</span>
+    <div class="view-type-toggle" fxLayout="row">
+      <span class="shift" [ngClass]="{'selected': dailyViewConfig.viewType === 'shift'}">Shift Time</span>
+      <mat-slide-toggle [formControl]="slideToggleContrl"></mat-slide-toggle>
+      <span class="unit" [ngClass]="{'selected': dailyViewConfig.viewType === 'unit'}">Unit</span>
+    </div>
+  </div>
+</div>
+

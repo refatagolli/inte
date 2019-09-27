@@ -4,6 +4,7 @@ import {FilterConfiguration} from '../models/FilterConfiguration';
 import {Subject} from 'rxjs';
 import {DailyViewService} from '../services/daily-view.service';
 import {takeUntil} from 'rxjs/operators';
+import {DailyViewConfigModel} from '../models/daily-view-config-model';
 
 @Component({
   selector: 'app-daily-view',
@@ -17,11 +18,15 @@ export class DailyViewComponent implements OnInit, OnDestroy {
     {key: 'unit_type', name: 'Unit Options'}
   ];
 
-  config;
+  config: DailyViewConfigModel;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(private utils: UtilsService,
               private _dailyViewService: DailyViewService) {
+
+    this._dailyViewService.dailyViewConfig.pipe(
+      takeUntil(this._unsubscribeAll)
+    ).subscribe(e => this.config = e);
   }
 
   ngOnInit() {

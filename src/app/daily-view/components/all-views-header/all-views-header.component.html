@@ -1,15 +1,14 @@
 <div class="daily-view-header" fxLayout.gt-md="row" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="24px">
-  <div class="view-type" fxFlex.gt-md="40%" fxFlex.lt-sm="1 1 auto">
-    <div class="view-type-wrapper" fxLayout="row" fxLayoutAlign.lt-sm="space-around">
-      <span class="bold-item">View by:</span>
-      <div class="view-type-toggle" fxLayout="row">
-        <span class="shift" [ngClass]="{'selected': dailyViewConfig.viewType === 'shift'}">Shift Time</span>
-        <mat-slide-toggle [formControl]="slideToggleContrl"></mat-slide-toggle>
-        <span class="unit" [ngClass]="{'selected': dailyViewConfig.viewType === 'unit'}">Unit</span>
-      </div>
-    </div>
+
+  <div class="today">
+    <button mat-button (click)="goToToday()">Today</button>
   </div>
-  <div class="date-range">
+
+  <div class="print">
+    <button mat-button (click)="openPrint()">Print <mat-icon>print</mat-icon></button>
+  </div>
+
+  <div class="date-range" fxFlex fxLayoutAlign="center center">
     <mat-chip-list [disabled]="true" class="chip-container">
       <mat-chip [disabled]="true">
 

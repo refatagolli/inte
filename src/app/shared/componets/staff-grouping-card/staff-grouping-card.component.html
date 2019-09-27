@@ -3,7 +3,7 @@
     <mat-expansion-panel-header class="staff-grouping-card-header" expandedHeight="50px"
                                 [ngClass]="{expanded: a.expanded}"
                                 collapsedHeight="50px" color="primary">
-      <span class="staff-grouping-card-header-title bold-item">{{title | titlecase}}</span>
+      <span class="staff-grouping-card-header-title bold-item">{{title}}</span>
       <div class="error-case" fxFlex="1 1 auto">
         <div fxFlex fxLayout="row" *ngIf="total !== present">
           <mat-icon class="test-icon danger">warning</mat-icon>

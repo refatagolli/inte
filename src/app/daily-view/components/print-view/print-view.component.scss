@@ -1,0 +1,19 @@
+.filter {
+
+}
+
+.name {
+  font-size: 16px;
+  font-weight: bold;
+  width: 250px;
+}
+.view-print {
+  padding: 0 50px;
+
+}
+
+::ng-deep.chip-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}

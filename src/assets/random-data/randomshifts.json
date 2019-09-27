@@ -1,17 +1,17 @@
 [
   {
     "shiftId": 123434324,
-    "shiftTime": "7-15",
+    "shiftTime": "7AM-3PM",
     "requiredStaff": 12
   },
   {
     "shiftId": 123434325,
-    "shiftTime": "15-21",
+    "shiftTime": "3PM-11PM",
     "requiredStaff": 12
   },
   {
     "shiftId": 123434326,
-    "shiftTime": "21-7",
+    "shiftTime": "11PM-7AM",
     "requiredStaff": 12
   }
 ]

@@ -4,10 +4,10 @@
 
     <div fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center">
 
-<!--      <button mat-icon-button class="navbar-toggle-button"-->
-<!--              (click)="toggleSidebarOpen('navbar')">-->
-<!--        <mat-icon class="secondary-text">menu</mat-icon>-->
-<!--      </button>-->
+      <!--      <button mat-icon-button class="navbar-toggle-button"-->
+      <!--              (click)="toggleSidebarOpen('navbar')">-->
+      <!--        <mat-icon class="secondary-text">menu</mat-icon>-->
+      <!--      </button>-->
 
       <button mat-icon-button class="navbar-toggle-button"
               (click)="route.navigate(['/home']);">
@@ -17,14 +17,14 @@
 
       <div fxLayout="row" fxLayoutAlign="start center">
         <div class="logo ml-16">
-          <span class="current-route">{{ currentRoute | async  | titlecase}}</span>
+          <span class="current-route">{{ currentRoute | async }}</span>
         </div>
       </div>
 
     </div>
 
 
-    <div class="filter" fxShow.gt-md="true">
+    <div class="filter" fxShow.gt-md="true" *ngIf="(currentRoute | async) !== 'Daily'">
       <div class="filter">
         <user-filter></user-filter>
       </div>

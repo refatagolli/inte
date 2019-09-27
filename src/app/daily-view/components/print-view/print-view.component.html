@@ -1,0 +1,115 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="end">
+  <button mat-icon-button (click)="close()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</div>
+
+<div mat-dialog-content>
+  <div class="view-print" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="12px">
+
+    <app-chip-icon [iconMN]="'edit'"></app-chip-icon>
+
+    <h1> Print Schedule </h1>
+
+    <div class="filter" fxFlex>
+      <mat-form-field [appearance]="'outline'" fxFlex>
+        <input matInput [formControl]="control" (focus)="showResults = true;"
+               placeholder="Search Staff ..." (input)="filter.next($event.target.value)">
+        <mat-icon matPrefix>search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="showResults">
+      <mat-list fxLayout="column" fxLayoutGap="12px">
+      <staff-card-radio *ngFor="let staff of users | async" [staffMember]="staff" [selectable]="true"
+                      [checked]="selected?.fullName === staff.fullName" (selectedChange)="selectedStaff = staff"></staff-card-radio>
+      </mat-list>
+    </div>
+
+    <div *ngIf="!showResults">
+      <ng-content *ngIf="selectedStaff;then forMember else forView"></ng-content>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions align="center">
+  <button mat-button class="action-button" *ngIf="showResults" (click)="addUser()"
+          [disabled]="!selectedStaff"
+          [ngClass]="selectedStaff ? 'complete' : 'disabled'"
+  >Add</button>
+  <button mat-button class="action-button cancel" *ngIf="showResults" (click)="cancel()">Cancel</button>
+  <button mat-button class="action-button complete" *ngIf="!showResults">Print</button>
+
+</div>
+
+
+<ng-template #forMember>
+  <table>
+    <tr>
+      <td class="name">Month</td>
+      <td>
+        <mat-form-field [appearance]="'outline'">
+          <input matInput [matDatepicker]="picker" placeholder="September">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td class="name">Scale</td>
+      <td>
+        <mat-form-field [appearance]="'outline'" fxFlex>
+          <mat-select fxFlex value="default">
+            <mat-option value="default">Default</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+</ng-template>
+
+<ng-template #forView>
+  <table fxFlex>
+    <tr>
+      <td class="name">Calendar View</td>
+      <td>
+        <mat-form-field [appearance]="'outline'" fxFlex>
+          <mat-select fxFlex value="daily">
+            <mat-option value="daily">Daily</mat-option>
+            <mat-option value="weekly">Weekly</mat-option>
+            <mat-option value="monthly">Monthly</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <view-type></view-type>
+      </td>
+    </tr>
+    <tr>
+      <td class="name">Unit</td>
+      <td>
+        <mat-form-field [appearance]="'outline'" fxFlex>
+          <mat-select fxFlex value="">
+            <mat-option value="">All</mat-option>
+            <mat-option value="Unit A">Unit A</mat-option>
+            <mat-option value="Unit B">Unit B</mat-option>
+            <mat-option value="Unit C">Unit C</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td class="name">Scale</td>
+      <td>
+        <mat-form-field [appearance]="'outline'" fxFlex>
+          <mat-select fxFlex value="default">
+            <mat-option value="default">Default</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+</ng-template>

@@ -43,23 +43,6 @@ $header_font_color: #59595b;
       }
     }
 
-    ::ng-deep.mat-expansion-panel {
-      box-shadow: unset;
-
-      .mat-expansion-panel-content {
-        max-width: calc(100vw - (100px));
-        width: inherit;
-        overflow-x: auto;
-        overflow-y: hidden;
-
-        .mat-expansion-panel-body {
-          padding: 0;
-          overflow-x: auto;
-          overflow-y: hidden;
-        }
-      }
-    }
-
     ::ng-deep .range-chip {
       margin-right: 20px;
     }
@@ -68,7 +51,24 @@ $header_font_color: #59595b;
       font-size: 16px;
       height: inherit;
       padding-top: 10px;
-      width: 78px;
+      width: 120px;
+    }
+  }
+
+  ::ng-deep.mat-expansion-panel {
+    box-shadow: unset !important;
+
+    .mat-expansion-panel-content {
+      max-width: calc(100vw - (100px));
+      width: inherit;
+      overflow-x: auto;
+      overflow-y: hidden;
+
+      .mat-expansion-panel-body {
+        padding: 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
     }
   }
 

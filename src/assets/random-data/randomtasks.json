@@ -1,35 +1,19 @@
 [
   {
-    "value": "Add more tasks",
+    "value": "Finish October Schedule",
     "completed": true
   },
   {
-    "value": "Find motivation to complete the rest",
+    "value": "Add 'name' to staff directory",
     "completed": true
   },
   {
-    "value": "Get some sleep",
+    "value": "Remove 'name' from staff directory",
     "completed": true
   },
   {
-    "value": "Remember you have more things to do",
+    "value": "Approve vacation time",
     "completed": false
-  },
-  {
-    "value": "Get up from bed",
-    "completed": true
-  },
-  {
-    "value": "Start doing some of the other tasks",
-    "completed": true
-  },
-  {
-    "value": "Forget you have to get more sleep",
-    "completed": false
-  },
-  {
-    "value": "Have fun ?!?!?!?!?!",
-    "completed": true
   }
 ]
 
