@@ -11,6 +11,7 @@ export class StaffCardComponent implements OnInit {
 
   @Input() staffMember: StaffMember;
   @Input() openShift = false;
+  @Input() showNotPresent = true;
   @Output() viewDetailsEvent: EventEmitter<StaffMember> = new EventEmitter();
   @Output() fillShiftEvent: EventEmitter<StaffMember> = new EventEmitter();
 

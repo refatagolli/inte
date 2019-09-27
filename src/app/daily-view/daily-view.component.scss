@@ -1,8 +1,13 @@
 .daily-view-wrapper {
   width: inherit;
   max-width: inherit;
+  padding-bottom: 120px;
 
   daily-view-header, daily-content {
     margin : 0 50px;
+  }
+
+  view-type {
+    margin: 10px 50px;
   }
 }

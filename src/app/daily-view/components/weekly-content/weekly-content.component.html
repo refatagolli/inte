@@ -1,0 +1,46 @@
+<div class="weekly-view">
+  <div class="weekly-view-wrapper" fxLayout="column">
+
+    <div class="weekly-view-header">
+      <div class="weekly-view-header-wrapper">
+
+        <div class="side-actions weekly-left-column" fxLayout="column">
+
+          <mat-form-field [appearance]="'outline'">
+            <mat-select #select>
+              <mat-option *ngFor="let el of selectOptions" [value]="el">{{el}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <view-type></view-type>
+        </div>
+
+        <div class="calendar" fxFlex="">
+          <div class="calendar-options-wrapper" fxFlex fxLayout="row">
+            <button mat-button class="date-cell" *ngFor="let date of weekdays"
+                    fxFlex="auto" [disableRipple]="true" (click)="selectDate(date)"
+                    [ngClass]="{selected: areDatesEquals(date,currentDate)}">
+              <div class="date-option-value-wrapper" fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="center center">
+                <span class="date-option-value bold-item day">{{(date | date : 'EEEE')| uppercase }}</span>
+                <span class="date-option-value bold-item date">{{(date | date : 'd') }}</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="weekly-view-content" fxFlex="">
+
+      <div class="results" *ngIf="currentElement" fxFlex fxLayout="column">
+
+        <weekly-data-container fxFlex *ngFor="let a of currentElement[primaryField]" [days]="weekdays"
+                               [data]="a" [primaryField]="primaryField"></weekly-data-container>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

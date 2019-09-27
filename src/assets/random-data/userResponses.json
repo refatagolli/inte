@@ -2,7 +2,7 @@
   {
     "phone": "234-324-234",
     "hireDate": 123453662,
-    "shiftHours": "7-15",
+    "shiftHours": "7AM-3PM",
     "shiftDays": [
       "Monday",
       "Friday"
@@ -10,7 +10,7 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Bad Luck Brian",
+    "fullName": "Jenny Doe",
     "unit": "Unit A",
     "notes": [],
     "response": "accept"
@@ -18,7 +18,7 @@
   {
     "phone": "234-324-234",
     "hireDate": 123453662,
-    "shiftHours": "7-15",
+    "shiftHours": "7AM-3PM",
     "shiftDays": [
       "Monday",
       "Friday"
@@ -34,7 +34,7 @@
   {
     "phone": "234-324-234",
     "hireDate": 123453662,
-    "shiftHours": "7-15",
+    "shiftHours": "7AM-3PM",
     "shiftDays": [
       "Monday",
       "Friday"
@@ -42,7 +42,7 @@
     "gender": "male",
     "staffType": "Unit Manager",
     "hoursThisWeek": 12,
-    "fullName": "Jesus Christ",
+    "fullName": "John Doe",
     "unit": "Unit A",
     "notes": [],
     "response": "pending"
@@ -50,7 +50,7 @@
   {
     "phone": "234-324-234",
     "hireDate": 123453662,
-    "shiftHours": "7-15",
+    "shiftHours": "7AM-3PM",
     "shiftDays": [
       "Monday",
       "Friday"
@@ -58,7 +58,7 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Funny Name",
+    "fullName": "Joseph Thomson",
     "unit": "Unit A",
     "notes": [],
     "response": "pending"
@@ -66,7 +66,7 @@
   {
     "phone": "234-324-234",
     "hireDate": 123453662,
-    "shiftHours": "7-15",
+    "shiftHours": "7AM-3PM",
     "shiftDays": [
       "Monday",
       "Friday"
@@ -74,7 +74,7 @@
     "gender": "male",
     "staffType": "Nurse",
     "hoursThisWeek": 12,
-    "fullName": "Serious Name",
+    "fullName": "Aaron Hank",
     "unit": "Unit A",
     "notes": [],
     "response": "reject"
@@ -82,7 +82,7 @@
   {
     "phone": "234-324-234",
     "hireDate": 123453662,
-    "shiftHours": "15-21",
+    "shiftHours": "3PM-11PM",
     "shiftDays": [
       "Monday",
       "Friday"

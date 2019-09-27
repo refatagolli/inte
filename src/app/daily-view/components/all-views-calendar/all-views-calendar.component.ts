@@ -4,11 +4,11 @@ import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
 
 @Component({
   selector: 'daily-calendar',
-  templateUrl: './daily-calendar.component.html',
-  styleUrls: ['./daily-calendar.component.scss'],
+  templateUrl: './all-views-calendar.component.html',
+  styleUrls: ['./all-views-calendar.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DailyCalendarComponent implements OnInit {
+export class AllViewsCalendarComponent implements OnInit {
 
   dateList: number[] = [];
   currentDate: number = new Date().getTime();
@@ -24,6 +24,10 @@ export class DailyCalendarComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  areDatesEquals(d1, d2) {
+    return new Date(d1).getDate() === new Date(d2).getDate();
   }
 
   getDateList() {

@@ -4,7 +4,7 @@
     <mat-card-title>My Tasks</mat-card-title>
   </mat-card-header>
 
-  <mat-card-content>
+  <mat-card-content id="test">
     <div class="user-tasks-content">
       <div class="single-task" fxFlex fxLayout="column" fxLayoutGap="17px">
         <mat-checkbox *ngFor="let task of tasks; let i = index" (change)="toggleTask(i)" [checked]="task.completed">

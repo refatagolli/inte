@@ -3,8 +3,8 @@ import {CommonModule} from '@angular/common';
 
 import {DailyViewRoutingModule} from './daily-view-routing.module';
 import {DailyViewComponent} from './daily-view.component';
-import {DailyViewHeaderComponent} from './components/daily-view-header/daily-view-header.component';
-import {DailyCalendarComponent} from './components/daily-calendar/daily-calendar.component';
+import {AllViewsHeaderComponent} from './components/all-views-header/all-views-header.component';
+import {AllViewsCalendarComponent} from './components/all-views-calendar/all-views-calendar.component';
 import {MaterialModule} from '../shared/material.module';
 import {DailyContentComponent} from './components/daily-content/daily-content.component';
 import {SharedModule} from '../shared/shared.module';
@@ -20,12 +20,15 @@ import {StaffCardCheckboxModule} from '../shared/componets/staff-card-checkbox/s
 import {StaffCardConfirmationModule} from '../shared/componets/staff-card-confirmation/staff-card-confirmation.module';
 import {MainMenuModule} from './components/main-menu/main-menu.module';
 import {AddShiftModule} from '../shared/componets/add-shift/add-shift.module';
+import {ViewTypeModule} from './components/view-type/view-type.module';
+import {WeeklyContentModule} from './components/weekly-content/weekly-content.module';
+import {PrintViewModule} from './components/print-view/print-view.module';
 
 @NgModule({
   declarations: [
     DailyViewComponent,
-    DailyViewHeaderComponent,
-    DailyCalendarComponent,
+    AllViewsHeaderComponent,
+    AllViewsCalendarComponent,
     DailyContentComponent
   ],
   imports: [
@@ -44,7 +47,10 @@ import {AddShiftModule} from '../shared/componets/add-shift/add-shift.module';
     StaffCardCheckboxModule,
     StaffCardConfirmationModule,
     MainMenuModule,
-    AddShiftModule
+    AddShiftModule,
+    ViewTypeModule,
+    WeeklyContentModule,
+    PrintViewModule
   ]
 })
 export class DailyViewModule {

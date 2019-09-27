@@ -1,5 +1,6 @@
 <div class="chip-icon">
   <div class="chip-icon-content">
-    <span>{{ getContent() }}</span>
+    <span *ngIf="name">{{ getContent() }}</span>
+    <mat-icon *ngIf="iconMN">{{icon}}</mat-icon>
   </div>
 </div>

@@ -86,7 +86,6 @@ export class ToolbarComponent implements OnInit, OnDestroy {
       takeUntil(this._unsubscribeAll),
       filter((event) => event instanceof NavigationEnd),
       map((event: NavigationEnd) => {
-        console.log(event.url.replace('/', ''));
         return this.routeNamesMapping[event.url.replace('/', '')];
       })
     );

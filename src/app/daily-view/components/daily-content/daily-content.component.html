@@ -5,7 +5,7 @@
     <div class="columns-wrapper" fxFlex fxLayout="row" fxLayoutGap="24px">
       <app-staff-column [title]="b.shiftTime" [subtitle]="b.shiftTime" *ngFor="let b of a[primaryField]">
         <div class="member-card-wrapper" fxLayout="column" fxLayoutGap="24px">
-          <app-staff-member-card [total]="b.requiredStaff" [present]="c.length" [title]="c.key"
+          <app-staff-member-card [total]="b.requiredStaff" [present]="c.length" [title]="c.key" [expanded]="true"
                                  [shiftDetails]="getShiftDetails(b.shiftTime, c.key, a.value)"
                                  *ngFor="let c of b.staff | keyvalue">
             <app-staff-card [openShift]="true" *ngIf="true"
@@ -29,7 +29,7 @@
     <div class="columns-wrapper" fxFlex fxLayout="row" fxLayoutGap="24px">
       <app-staff-column [title]="b.value" [subtitle]="b.value" *ngFor="let b of a[primaryField]">
         <div class="member-card-wrapper" fxLayout="column" fxLayoutGap="24px">
-          <app-staff-member-card [total]="b.requiredStaff" [present]="c.value.length" [title]="c.key"
+          <app-staff-member-card [total]="b.requiredStaff" [present]="c.value.length" [title]="c.key" [expanded]="true"
                                  [shiftDetails]="getShiftDetails(a.shiftTime, c.key, b.value)"
                                  *ngFor="let c of b.staff | keyvalue">
             <app-staff-card [openShift]="true" *ngIf="true"

@@ -1,0 +1,26 @@
+$title_color: #728cba;
+$subtitle_color: #98a7ba;
+
+.staff-card-confirmation {
+  border-radius: 2px;
+  border: 1px solid rgb(203, 203, 203);
+  box-shadow: 0 1px 4px 0 rgba(207, 207, 207, 0.5);
+
+  .mat-list-item {
+    height: 72px;
+    flex: 1 1 auto;
+  }
+
+  .staff-card-radio {
+    margin-top: 13px;
+    margin-right: 8px;
+
+    .title {
+      color: $title_color;
+    }
+
+    .subtitle {
+      color: $subtitle_color;
+    }
+  }
+}
