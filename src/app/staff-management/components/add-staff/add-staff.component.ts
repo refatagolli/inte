@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {flatMap, map, toArray} from 'rxjs/operators';
@@ -10,6 +10,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Gender} from '../../../models/Gender';
 import {EmploymentType} from '../../../models/EmploymentType';
 import {StaffType} from '../../../models/StaffType';
+import {ShiftDaysTypeRelation} from '../../../models/ShiftDaysTypeRelation';
+import {MatDialog} from '@angular/material';
+import {ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-add-staff',
@@ -18,7 +21,10 @@ import {StaffType} from '../../../models/StaffType';
 })
 export class AddStaffComponent implements OnInit {
 
-  staffMember: AllStaff;
+  @Input() staffMember: AllStaff;
+  @Input() shifts: ShiftType[];
+  @Input() days: Days[];
+  isUpdate = false;
   shiftDayValidated = true;
   shiftAlreadySelected = false;
   eachRowChosenData: any[];
@@ -27,13 +33,12 @@ export class AddStaffComponent implements OnInit {
   genderOptions: Observable<any>;
   shiftOptions: Observable<any>;
   dayOptions: Observable<any>;
-  days: Days[];
-  shifts: ShiftType[];
   genderTypes: Gender[];
   employmentTypes: EmploymentType[];
   staffTypes: StaffType[];
   chosenShiftName = 'Shift Time';
   chosenDayName = 'Shift Day';
+  buttonText = 'ADD';
   shiftOptionsOpened = false;
   dayOptionsOpened = false;
   allCardsCleared = true;
@@ -41,21 +46,17 @@ export class AddStaffComponent implements OnInit {
   selectedRadio = 0;
   submitted = false;
   staffMemberForm: FormGroup;
-  selectedGender: [];
-  selectedStaff: [];
-  selectedEmpType: [];
+  selectedGender: number[];
+  selectedStaff: number[];
+  selectedEmpType: number[];
 
   constructor(
+    public dialog: MatDialog,
     private formBuilder: FormBuilder,
     private _dailyService: DailyViewService,
     private staffManagementService: StaffManagementService
   ) {
-    this.staffMember = new AllStaff();
-    this.staffMember.shiftDays = [];
     this.eachRowChosenData = [];
-    this.selectedGender = [];
-    this.selectedStaff = [];
-    this.selectedEmpType = [];
     this.employmentTypes = [];
     this.days = [];
     this.shifts = [];
@@ -66,17 +67,62 @@ export class AddStaffComponent implements OnInit {
 
   ngOnInit() {
 
-    // To Do : Continue with update
+    if (this.staffMember) {
+      this.isUpdate = true;
+      this.buttonText = 'SAVE';
+      this.selectedGender = [this.staffMember.gender.id];
+      this.selectedStaff = [this.staffMember.staffType.staffTypeId];
+      this.selectedEmpType = [this.staffMember.employmentType.employmentTypeId];
+      this.shifts.forEach(shift => {
+        const daysPerShift = [];
+        let daysNameToShow = '';
+        this.staffMember.shiftDays.forEach(item => {
+          if (shift.shiftTypeId === item.shiftType.shiftTypeId) {
+            daysPerShift.push(item.day.id);
+            daysNameToShow +=  item.day.name.substr(0, 1) + ', ';
+          }
+        });
+        if (daysPerShift.length > 0) {
+          daysNameToShow = daysNameToShow.substr(0, daysNameToShow.length - 2);
+          const eachDayShiftChosenArray = {
+            id : this.eachRowChosenData ? this.eachRowChosenData.length + 1 : 1,
+            selectedDays : daysPerShift,
+            selectedShifts : shift.shiftTypeId,
+            chosenDaysName : daysNameToShow,
+            chosenShiftName : shift.shiftTypeName,
+            showDayCard : false,
+            showStaffCard : false
+          };
+          this.eachRowChosenData.push(eachDayShiftChosenArray);
+          this.selectedCheckBox = daysPerShift;
+          this.selectedRadio = shift.shiftTypeId;
+          this.chosenDayName = daysNameToShow;
+          this.chosenShiftName = shift.shiftTypeName;
+          this.dayOptionsOpened = false;
+          this.shiftOptionsOpened = false;
+        }
+      });
+      this.eachRowChosenData.pop();
+    } else {
+      this.staffMember = new AllStaff();
+      this.staffMember.firstName = '';
+      this.staffMember.lastName = '';
+      this.staffMember.hireDate = '';
+      this.staffMember.shiftDays = [];
+      this.selectedGender = [];
+      this.selectedStaff = [];
+      this.selectedEmpType = [];
+    }
 
     this.staffMemberForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      gender: [[], [Validators.required]],
-      employmentType: [[], [Validators.required]],
-      staffType: [[], [Validators.required]],
-      hireDate: ['']
+      name: [this.staffMember.firstName, [Validators.required]],
+      surname: [this.staffMember.lastName, [Validators.required]],
+      phone: [this.staffMember.phone, [Validators.required]],
+      email: [this.staffMember.email, [Validators.required, Validators.email]],
+      gender: [this.selectedGender, [Validators.required]],
+      employmentType: [this.selectedEmpType, [Validators.required]],
+      staffType: [this.selectedStaff, [Validators.required]],
+      hireDate: [this.staffMember.hireDate]
     });
 
     this.employmentOptions = this._dailyService.getEmploymentTypes().pipe(
@@ -129,7 +175,7 @@ export class AddStaffComponent implements OnInit {
           shiftTypeId: item.value,
           shiftTypeName: item.name
         };
-        this.shifts.push(shift);
+        // this.shifts.push(shift);
       });
     });
 
@@ -147,7 +193,7 @@ export class AddStaffComponent implements OnInit {
           id: item.value,
           name: item.name
         };
-        this.days.push(day);
+        // this.days.push(day);
       });
     });
 
@@ -168,12 +214,6 @@ export class AddStaffComponent implements OnInit {
         this.genderTypes.push(gender);
       });
     });
-
-
-    // genderTypes: Gender[];
-    // employmentTypes: EmploymentType[];
-    // staffTypes: StaffType[];
-
   }
 
   closeSidebar() {
@@ -293,6 +333,7 @@ export class AddStaffComponent implements OnInit {
 
       case 'radio' :
         // Updated or created record came from a change on Shifts radio button
+        this.clearAllCards();
         let shiftName = '';
         // Retrieve shift name from id
         this.shifts.forEach(shift => {
@@ -405,13 +446,75 @@ export class AddStaffComponent implements OnInit {
     this.staffMember.phone = this.staffMemberForm.controls.phone.value;
     this.staffMember.hireDate = this.staffMemberForm.controls.hireDate.value;
     this.staffMember.email = this.staffMemberForm.controls.email.value;
+    this.staffMember.shiftDays = [];
+
+    this.eachRowChosenData.forEach(row => {
+      let eachShift: ShiftType;
+        this.shifts.forEach(shift => {
+        if (shift.shiftTypeId === row.selectedShifts) {
+          eachShift = shift;
+        }
+      });
+
+      this.days.forEach(day => {
+        row.selectedDays.forEach(index => {
+          if (day.id === index) {
+            const shiftDay: ShiftDaysTypeRelation = {
+              id : this.staffMember.shiftDays.length + 1,
+              day : day,
+              shiftType : eachShift
+            };
+            this.staffMember.shiftDays.push(shiftDay);
+          }
+        });
+      });
+    });
+
+    if (this.selectedRadio !== 0 && (this.selectedCheckBox != null || this.selectedCheckBox.length !== 0)) {
+      let shift: ShiftType;
+      this.shifts.forEach(shiftType => {
+        if (shiftType.shiftTypeId === this.selectedRadio) {
+          shift = shiftType;
+        }
+      });
+
+      this.days.forEach(day => {
+        this.selectedCheckBox.forEach(index => {
+          if (day.id === index) {
+            const shiftDay: ShiftDaysTypeRelation = {
+              id : this.staffMember.shiftDays.length + 1,
+              day : day,
+              shiftType : shift
+            };
+            this.staffMember.shiftDays.push(shiftDay);
+          }
+        });
+      });
+    }
 
     const obj = this.staffManagementService.saveStaffMember(this.staffMember);
-    console.log(obj);
+    this.staffManagementService.closePanel();
 
+    let message = '';
+    if (obj.success) {
+      if (!this.isUpdate) {
+        message = 'New staff member \'' + this.staffMember.firstName + ' ' + this.staffMember.lastName + '\' was created successfully!';
+      } else {
+        message = this.staffMember.firstName + ' ' + this.staffMember.lastName + '\' was updated successfully!';
+      }
+    } else {
+      message = obj.message;
+    }
 
-    // To Do : Save user
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent
+      , {
+      width: '450px',
+      data: {message: message}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.staffManagementService.updateStaffTable.next(true);
+    });
   }
 
   clearAllCards() {

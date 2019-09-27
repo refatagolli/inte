@@ -1,0 +1,6 @@
+<!-- Add / Modify staff -->
+<ng-container
+  *ngIf="staffManagementState && staffManagementState.viewType === ADD_STAFF">
+  <app-add-staff [staffMember]="staffManagementState.staffMember" [shifts]="staffManagementState.shifts" [days]="staffManagementState.days"></app-add-staff>
+</ng-container>
+

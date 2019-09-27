@@ -43,6 +43,12 @@ export class SelectableButtonGroupComponent implements OnInit {
   private _removeIfRequiredNotMultiple(value: string[]) {
 
     if (!this.multiple) {
+
+      if (value.length === 1 && this.hasDefaultVal) {
+        this._oldValue = value[0];
+        this.hasDefaultVal = false;
+      }
+
       if (value.length > 1) {
         value.splice(value.indexOf(this._oldValue), 1);
         this.control.setValue(value, {emitEvent: false});

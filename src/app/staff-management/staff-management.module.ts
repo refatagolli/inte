@@ -6,6 +6,7 @@ import {StaffManagementRoutingModule} from './staff-management-routing.module';
 import {MaterialModule} from '../shared/material.module';
 import {MatSortModule, MatTableModule} from '@angular/material';
 import {FuseSidebarModule} from '@theme/components';
+import {StaffManagementSidebarsModule} from './components/staff-management-sidebars/staff-management-sidebars.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FuseSidebarModule} from '@theme/components';
     MatTableModule,
     MatSortModule,
     FuseSidebarModule,
-    StaffManagementRoutingModule
-]
+    StaffManagementRoutingModule,
+    StaffManagementSidebarsModule
+  ]
 })
 export class StaffManagementModule { }

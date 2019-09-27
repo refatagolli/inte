@@ -6,10 +6,13 @@ import {AddStaffComponent} from './add-staff.component';
 import {SelectableButtonGroupModule} from '../../../shared/componets/selectable-button-group/selectable-button-group.module';
 import {CustomOptionSetModule} from '../../../shared/componets/custom-option-set/custom-option-set.module';
 import {NgxMaskModule, IConfig} from 'ngx-mask';
+import {ConfirmationDialogModule} from '../confirmation-dialog/confirmation-dialog.module';
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
-  declarations: [AddStaffComponent],
+  declarations: [
+    AddStaffComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,
@@ -17,9 +20,10 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
     SelectableButtonGroupModule,
     CustomOptionSetModule,
     NgxMaskModule.forRoot(options),
+    ConfirmationDialogModule
   ],
   exports: [
     AddStaffComponent
-  ]
+  ],
 })
 export class AddStaffModule { }

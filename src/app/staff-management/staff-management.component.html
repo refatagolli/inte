@@ -68,18 +68,48 @@
         <!-- View -->
         <ng-container matColumnDef="view">
           <th mat-header-cell *matHeaderCellDef></th>
+<!--          <th mat-header-cell class="customized-headers-3" *matHeaderCellDef> Print <i class="material-icons">print</i></th>-->
           <td mat-cell class="customized-cell-1 column-6" *matCellDef="let row">
             <span>
-              Profile Details<i class="material-icons arrow-icon">arrow_forward_ios</i>
+              Profile Details<i class="material-icons arrow-icon" (click)="editStaff(row)">arrow_forward_ios</i>
             </span>
           </td>
         </ng-container>
 
+
+
+
+        <!-- Expanded Content Column - The detail row is made up of this one column -->
+<!--        <ng-container matColumnDef="expandedDetail">-->
+<!--          <mat-cell *matCellDef="let detail">-->
+<!--            The symbol for-->
+<!--          </mat-cell>-->
+<!--        </ng-container>-->
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;let i = index"></tr>
+<!--        <mat-row *matRowDef="let row; columns: displayedColumns;"-->
+<!--                 matRipple-->
+<!--                 class="element-row" style="width: 100%"-->
+<!--                 [class.expanded]="expandedElement == row"-->
+<!--                 (click)="expandedElement = row"></mat-row>-->
+<!--        <mat-row *matRowDef="let element; columns: ['expandedDetail']; when: isExpansionDetailRow" style="width: 100%"-->
+<!--                 [@detailExpand]="element.row == expandedElement ? 'expanded' : 'collapsed'"-->
+<!--                 style="overflow: hidden"> {{element.row}} </mat-row>-->
+
+        <!--            <mat-expansion-panel *ngFor="let item of staffService.getStaffMembers().pipe() | async">-->
+<!--              <mat-expansion-panel-header class="mat-row">-->
+<!--                <span class="mat-cell">{{item.lastName}}</span>-->
+<!--                <span class="mat-cell">{{item.firstName}}</span>-->
+<!--                <span class="mat-cell">{{item.phone}}</span>-->
+<!--                <span class="mat-cell">{{item.hireDate}}</span>-->
+<!--              </mat-expansion-panel-header>-->
+<!--              <div><pre>{{item | json}}</pre></div>-->
+<!--            </mat-expansion-panel>-->
 
       </table>
     </div>
+
     <div *ngIf="dataSource && dataSource.filteredData.length == 0" class="not-found">
       <br /><br /><br /><br /><br />
       <img src="assets/NoResult.svg" alt="No Result" />

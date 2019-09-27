@@ -11,11 +11,19 @@ import {Days} from '../models/Days';
 import {flatMap, takeWhile, tap} from 'rxjs/operators';
 import {AllStaff} from '../models/AllStaff';
 import {StaffManagementService} from './staff-management.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-staff-management',
   templateUrl: './staff-management.component.html',
-  styleUrls: ['./staff-management.component.scss']
+  styleUrls: ['./staff-management.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('void', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
+      state('*', style({ height: '*', visibility: 'visible' })),
+      transition('void <=> *', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class StaffManagementComponent implements OnInit, OnDestroy {
 
@@ -30,16 +38,21 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   shiftTypes: ShiftType[] = [];
   employmentTypes: EmploymentType[] = [];
   displayedColumns: string[] = ['lastName', 'employmentType.employmentTypeName', 'staffType.staffTypeName', 'shifts', 'phone', 'view'];
+  displayedColumns2: string[] = ['lastName'];
   days: Days[] = [];
   total = 0;
   filtered = 0;
   test: string;
+  panelOpenState: false;
   filterConfig: FilterConfiguration[] = [
     { key: 'shift', name: 'Shift Time' },
     { key: 'employment_type', name: 'Employment Type' },
     { key: 'staff_type', name: 'Staff Type' },
     { key: 'shift_days', name: 'Shift Days' }
   ];
+
+  expandedElement: any;
+  isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
 
   constructor(
     private utils: UtilsService,
@@ -53,6 +66,9 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
     this.loadData();
     this.utils.setFilterConfiguration(this.filterConfig);
     this.utils.setFilterUsedComponent(this.usedIn);
+    this.staffService.updateStaffTable.pipe().subscribe(item => {
+      this.retrieveStaffMembers();
+    });
 
     this.utils.searchChanges.pipe().subscribe(val => {
       this.searched = val;
@@ -136,58 +152,42 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
         ))
       ))
     ).subscribe(dt => {
-      this.staffService.getStaffMembers().pipe().subscribe(data => {
-        this.total = data.length;
-        this.filtered = data.length;
-        this.allRecords = data;
-        this.dataSource = new MatTableDataSource<AllStaff>(data);
-        this.dataSource.sortingDataAccessor = this.sortingDataAccessor;
-        this.dataSource.sort = this.sort;
-        this.sort.disableClear = true;
-        this.dataSource.filterPredicate = this.tableFilter();
+      this.retrieveStaffMembers();
+    });
+  }
 
-        data.forEach( staff => {
-          staff.shiftDaysString = '';
-          this.shiftTypes.forEach(item => {
-            let existsShift = false;
+  private retrieveStaffMembers () {
+    this.staffService.getStaffMembers().pipe().subscribe(data => {
+      this.total = data.length;
+      this.filtered = data.length;
+      this.allRecords = data;
+      this.dataSource = new MatTableDataSource<AllStaff>(data);
+      this.dataSource.sortingDataAccessor = this.sortingDataAccessor;
+      this.dataSource.sort = this.sort;
+      this.sort.disableClear = true;
+      this.dataSource.filterPredicate = this.tableFilter();
 
-            staff.shiftDays.forEach(eachShift => {
-              if (eachShift.shiftType.shiftTypeId === item.shiftTypeId) {
-                staff.shiftDaysString += eachShift.day.name.substring(0, 3) + ', ';
-                existsShift = true;
-              }
-            });
+      data.forEach( staff => {
+        staff.shiftDaysString = '';
+        this.shiftTypes.forEach(item => {
+          let existsShift = false;
 
-            if (existsShift) {
-              staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 2);
-              staff.shiftDaysString += ': ' + item.shiftTypeName + '<br />';
+          staff.shiftDays.forEach(eachShift => {
+            if (eachShift.shiftType.shiftTypeId === item.shiftTypeId) {
+              staff.shiftDaysString += eachShift.day.name.substring(0, 3) + ', ';
+              existsShift = true;
             }
           });
 
-          staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 6);
+          if (existsShift) {
+            staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 2);
+            staff.shiftDaysString += ': ' + item.shiftTypeName + '<br />';
+          }
         });
+
+        staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 6);
       });
     });
-
-    // this.dailyView.getShiftTypes().pipe()
-    //   .subscribe(shifts => {
-    //     this.shiftTypes = shifts;
-    //   });
-    //
-    // this.dailyView.getStaffTypes().pipe()
-    //   .subscribe(staffType => {
-    //     this.staffTypes = staffType;
-    //   });
-    //
-    // this.dailyView.getEmploymentTypes().pipe()
-    //   .subscribe(employmentTypes => {
-    //     this.employmentTypes = employmentTypes;
-    //   });
-    //
-    // this.dailyView.getDays().pipe()
-    //   .subscribe(days => {
-    //     this.days = days;
-    //   });
   }
 
   removeFilter(item: any) {
@@ -277,6 +277,14 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   }
 
   addNewStaffPanel() {
-    this.staffService.openAddStaffPanel();
+    this.staffService.openAddStaffPanel(this.shiftTypes, this.days);
+  }
+
+  editStaff(staffMember: AllStaff) {
+    this.staffService.openEditStaffPanel(this.shiftTypes, this.days, staffMember);
+  }
+
+  check (e) {
+    console.log(e);
   }
 }

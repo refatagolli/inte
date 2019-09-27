@@ -9,84 +9,86 @@
     <form [formGroup]="staffMemberForm">
       <div class="main-container-wrapper">
         <div class="required-block">
-          Required <span class="required">*</span>
+          Required <span [ngClass]="{'required' : submitted  && (staffMemberForm.invalid || validateForm.phone.status == 'INVALID' || validateForm.hireDate.status == 'INVALID')}">*</span>
         </div>
         <br />
         <div style="display: inline-block">
           <div style="display: inline-block;width: 50%">
-            <input type="text" formControlName="name" placeholder="First Name *" class="custom-text-input-1" />
-            <div *ngIf="submitted && validateForm.name.errors">
-              <label style="margin-left: 0px" class="warning-label" *ngIf="validateForm.name.errors.required">Name is mandatory *</label>
-            </div>
+            <input [ngStyle]="{'border-color' : (submitted && validateForm.name.errors) ? 'red' : ''}" type="text" formControlName="name" placeholder="First Name *" class="custom-text-input-1" />
+<!--            <div *ngIf="submitted && validateForm.name.errors">-->
+<!--              <label style="margin-left: 0px" class="warning-label" *ngIf="validateForm.name.errors.required">Name is mandatory *</label>-->
+<!--            </div>-->
           </div>
           <div style="display: inline-block;width: 50%">
-            <input type="text" formControlName="surname" placeholder="Last Name *" class="custom-text-input-2" />
-            <div *ngIf="submitted && validateForm.surname.errors">
-              <label class="warning-label" *ngIf="validateForm.surname.errors.required">Surname is mandatory *</label>
-            </div>
+            <input [ngStyle]="{'border-color' : (submitted && validateForm.surname.errors) ? 'red' : ''}" type="text" formControlName="surname" placeholder="Last Name *" class="custom-text-input-2" />
+<!--            <div *ngIf="submitted && validateForm.surname.errors">-->
+<!--              <label class="warning-label" *ngIf="validateForm.surname.errors.required">Surname is mandatory *</label>-->
+<!--            </div>-->
           </div>
         </div>
         <br /><br />
         <div >
-          <input type="text" formControlName="phone" [validation]="true" placeholder="Phone Number *" mask='(000) 000-0000' class="custom-text-input-3" />
-          <div *ngIf="submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')">
-            <label class="warning-label" *ngIf="validateForm.phone.errors.required">Phone number is mandatory *</label>
-            <label class="warning-label" *ngIf="!validateForm.phone.errors.required && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')">Phone format is invalid *</label>
-          </div>
+          <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}" type="text" [dropSpecialCharacters]="false" formControlName="phone" [validation]="true" placeholder="Phone Number *" mask='(000) 000-0000' class="custom-text-input-3" />
+<!--          <div *ngIf="submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')">-->
+<!--            <label class="warning-label" *ngIf="validateForm.phone.errors.required">Phone number is mandatory *</label>-->
+<!--            <label class="warning-label" *ngIf="!validateForm.phone.errors.required && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')">Phone format is invalid *</label>-->
+<!--          </div>-->
           <br /><br />
-          <input type="text" formControlName="email" placeholder="Email Address *" class="custom-text-input-3" />
-          <div *ngIf="submitted && validateForm.email.errors">
-            <label class="warning-label" *ngIf="validateForm.email.errors.required">Email is mandatory *</label>
-            <label class="warning-label" *ngIf="validateForm.email.errors.email">Please enter an email valid format *</label>
-          </div>
+          <input type="text" [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}" formControlName="email" placeholder="Email Address *" class="custom-text-input-3" />
+<!--          <div *ngIf="submitted && validateForm.email.errors">-->
+<!--            <label class="warning-label" *ngIf="validateForm.email.errors.required">Email is mandatory *</label>-->
+<!--            <label class="warning-label" *ngIf="validateForm.email.errors.email">Please enter an email valid format *</label>-->
+<!--          </div>-->
         </div>
         <br />
         <hr class="customized-divider" />
         <br />
         <div class="customized-label">
-          Gender <span class="required">*</span>
+          Gender <span [ngClass]="{'required' : (submitted && (!selectedGender || selectedGender.length === 0))}">*</span>
         </div>
         <div class="button-options">
           <app-selectable-button-group [multiple]="false" [elements]="genderOptions | async"
-                                       (valueChange)="selectedGender = $event;"></app-selectable-button-group>
+                                       [selectedFilters]="selectedGender" (valueChange)="selectedGender = $event;">
+          </app-selectable-button-group>
 
         </div>
-        <div *ngIf="submitted && (!selectedGender || selectedGender === [])">
-          <label class="warning-label">Please select gender *</label>
-          <br />
-        </div>
+<!--        <div *ngIf="submitted && (!selectedGender || selectedGender === [])">-->
+<!--          <label class="warning-label">Please select gender *</label>-->
+<!--          <br />-->
+<!--        </div>-->
 
         <hr class="customized-divider-margined" />
         <br />
 
         <div class="customized-label">
-          Staff Type <span class="required">*</span>
+          Staff Type <span [ngClass]="{'required' : (submitted && (!selectedStaff || selectedStaff.length === 0))}">*</span>
         </div>
         <br />
         <div class="button-options">
           <app-selectable-button-group [multiple]="false" [elements]="staffOptions | async"
-                                       (valueChange)="selectedStaff = $event;"></app-selectable-button-group>
+                                       [selectedFilters]="selectedStaff" (valueChange)="selectedStaff = $event;"></app-selectable-button-group>
         </div>
-        <div *ngIf="submitted && (!selectedStaff || selectedStaff === [])">
-          <label class="warning-label">Please select a staff type *</label>
-          <br />
-        </div>
+<!--        <div *ngIf="submitted && (!selectedStaff || selectedStaff === [])">-->
+<!--          <label class="warning-label">Please select a staff type *</label>-->
+<!--          <br />-->
+<!--        </div>-->
 
         <hr class="customized-divider-margined" />
         <br />
 
         <div class="customized-label">
-          Employment Type <span class="required">*</span>
+          Employment Type
+          <span [ngClass]="{'required' : (submitted && (!selectedEmpType || selectedEmpType.length === 0))}">*</span>
         </div>
         <br />
         <div class="button-options">
           <app-selectable-button-group [multiple]="false" [elements]="employmentOptions | async"
-                                       (valueChange)="selectedEmpType = $event;"></app-selectable-button-group>
+                                       [selectedFilters]="selectedEmpType" (valueChange)="selectedEmpType = $event;"></app-selectable-button-group>
         </div>
-        <div *ngIf="submitted && (!selectedEmpType || selectedEmpType === [])">
-          <label class="warning-label">Please select an employment type *</label>
-          <br />
-        </div>
+<!--        <div *ngIf="submitted && (!selectedEmpType || selectedEmpType === [])">-->
+<!--          <label class="warning-label">Please select an employment type *</label>-->
+<!--          <br />-->
+<!--        </div>-->
 
         <hr class="customized-divider-margined" />
         <br />
@@ -102,9 +104,9 @@
           <div class="shift-day-wrapper">
             <div class="customized-optionset margin-left">
               <button (click)="toggleDayOptions(shiftDay.id)" class="customised-checkbox-group">
-            <span class="button-label">
-                {{shiftDay.chosenDaysName}}
-              <mat-icon *ngIf="!shiftDay.showDayCard;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+              <span class="button-label">
+                  {{shiftDay.chosenDaysName}}
+                <mat-icon *ngIf="!shiftDay.showDayCard;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
                 <ng-template #dayArrowUp>
                   <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
                 </ng-template>
@@ -135,11 +137,10 @@
           </div>
           <br /><br />
         </div>
-
         <br />
         <div class="shift-day-wrapper">
-          <div class="customized-optionset margin-left">
-            <button (click)="toggleDayOptions()" class="customised-checkbox-group">
+            <div class="customized-optionset margin-left">
+              <button (click)="toggleDayOptions()" class="customised-checkbox-group">
             <span class="button-label">
                 {{chosenDayName}}
               <mat-icon *ngIf="!dayOptionsOpened;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
@@ -147,14 +148,14 @@
                   <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
                 </ng-template>
               </span>
-            </button>
-            <mat-card *ngIf="dayOptionsOpened" class="customized-card checkbox-alignment" fxFlex fxLayout="column">
-              <app-custom-option-set [multiple]="true" [elements]="dayOptions | async" [selectedCheckBox]="selectedCheckBox"
-                                     (valueChange)="selectedCheckBox = $event;manageChosenData('check', $event);"></app-custom-option-set>
-            </mat-card>
-          </div>
-          <div class="customized-optionset  margin-right">
-            <button (click)="toggleShiftOptions()" class="customised-radio-group">
+              </button>
+              <mat-card *ngIf="dayOptionsOpened" class="customized-card checkbox-alignment" fxFlex fxLayout="column">
+                <app-custom-option-set [multiple]="true" [elements]="dayOptions | async" [selectedCheckBox]="selectedCheckBox"
+                                       (valueChange)="selectedCheckBox = $event;manageChosenData('check', $event);"></app-custom-option-set>
+              </mat-card>
+            </div>
+            <div class="customized-optionset  margin-right">
+              <button (click)="toggleShiftOptions()" class="customised-radio-group">
             <span class="button-label">
               {{chosenShiftName}}
               <mat-icon *ngIf="!shiftOptionsOpened;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
@@ -162,12 +163,12 @@
                 <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
               </ng-template>
             </span>
-            </button>
-            <mat-card *ngIf="shiftOptionsOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
-              <app-custom-option-set [multiple]="false" [elements]="shiftOptions | async" [selectedRadioButton]="selectedRadio"
-                                     (valueChange)="selectedRadio = $event;manageChosenData('radio', $event);"></app-custom-option-set>
-            </mat-card>
-          </div>
+              </button>
+              <mat-card *ngIf="shiftOptionsOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                <app-custom-option-set [multiple]="false" [elements]="shiftOptions | async" [selectedRadioButton]="selectedRadio"
+                                       (valueChange)="selectedRadio = $event;manageChosenData('radio', $event);"></app-custom-option-set>
+              </mat-card>
+            </div>
         </div>
 
         <div class="overlay" *ngIf="!allCardsCleared" (click)="clearAllCards()"></div>
@@ -197,13 +198,13 @@
 
         <div class="date-wrapper">
           <mat-form-field appearance="outline" class="date-input">
-            <input formControlName="hireDate" matInput placeholder="Choose a date" [matDatepicker]="picker">
+            <input [ngStyle]="{'border-color' : (submitted && (validateForm.hireDate.errors || validateForm.hireDate.status == 'INVALID')) ? 'red' : ''}" formControlName="hireDate" matInput placeholder="Choose a date" [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          <div *ngIf="submitted && (validateForm.hireDate.errors || validateForm.hireDate.status == 'INVALID')">
-            <label class="warning-label date-validation-label" *ngIf="(validateForm.phone.status == 'INVALID')">Date format is invalid *</label>
-          </div>
+<!--          <div *ngIf="submitted && (validateForm.hireDate.errors || validateForm.hireDate.status == 'INVALID')">-->
+<!--            <label class="warning-label date-validation-label" *ngIf="(validateForm.phone.status == 'INVALID')">Date format is invalid *</label>-->
+<!--          </div>-->
         </div>
       </div>
     </form>
@@ -212,7 +213,7 @@
   <div class="actions">
     <br />
     <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutGap="8px">
-      <button (click)="saveUser()" mat-button class="action-button sidebar-buttons complete" fxFlexAlign="center">ADD</button>
+      <button (click)="saveUser()" mat-button class="action-button sidebar-buttons complete" fxFlexAlign="center">{{ buttonText }}</button>
       <button (click)="closeSidebar()" mat-button class="action-button sidebar-buttons partial" fxFlexAlign="center">CANCEL</button>
     </div>
   </div>
