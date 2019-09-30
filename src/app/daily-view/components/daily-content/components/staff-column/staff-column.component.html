@@ -1,0 +1,17 @@
+<div class="staff-column">
+  <div class="staff-column-wrapper" fxFlex fxLayout="column">
+    <span class="staff-column-title bold-item">{{primaryField === 'unit' ? element.value : element.shiftTime}}</span>
+    <span class="staff-column-subtitle bold-item">
+      Census &nbsp;<span class="census">16</span>
+    </span>
+    <br/>
+    <div class="staff-column-content" fxFlex fxLayout="column" fxLayoutGap="20px">
+
+        <app-staff-member-card [ratio]="getRatioStaff(c.value)" [title]="c.key" [expanded]="true" [staffList] = "c.value"
+                               *ngFor="let c of element.staff | keyvalue" [shiftDetails]="getShiftDetails">
+
+        </app-staff-member-card>
+
+    </div>
+  </div>
+</div>

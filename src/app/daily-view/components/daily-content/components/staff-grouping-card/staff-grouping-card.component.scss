@@ -61,13 +61,11 @@ $header_font_color: #59595b;
     .mat-expansion-panel-content {
       max-width: calc(100vw - (100px));
       width: inherit;
-      overflow-x: auto;
-      overflow-y: hidden;
+      overflow: scroll;
 
       .mat-expansion-panel-body {
         padding: 0;
-        overflow-x: auto;
-        overflow-y: hidden;
+        overflow: scroll;
       }
     }
   }

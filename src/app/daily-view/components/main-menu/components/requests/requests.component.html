@@ -21,8 +21,11 @@
 
       </div>
       <div class="content-wrapper" fxFlex fxFlexFill fxLayoutAlign="center center" fxLayout="column">
-        <span class="bold-item">{{requests[current -1].shift.shiftDate | date: 'EEEE MMMM dd, yyyy'}}</span>
-        <span class="bold-item">{{requests[current -1].shift.shiftHours}}</span>
+
+        <div fxLayout="column" fxFlexFill fxLayoutAlign="center center">
+          <span class="bold-item">{{requests[current -1].shift.shiftDate | date: 'EEEE MMMM dd, yyyy'}}</span>
+          <span class="bold-item">{{requests[current -1].shift.shiftHours}}</span>
+        </div>
 
         <div class="responses" fxFlex fxLayout="row" fxLayoutGap="10px">
           <span class="rejected" *ngIf="requests[current -1].requests.rejected">

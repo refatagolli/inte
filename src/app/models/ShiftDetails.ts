@@ -1,6 +1,6 @@
 export interface ShiftDetails {
-  shiftDate: string | number | Date;
-  shiftHours: string;
-  staffType: string;
-  unit: string;
+  shiftDate?: string | number | Date;
+  shiftHours?: string;
+  staffType?: string;
+  unit?: string;
 }

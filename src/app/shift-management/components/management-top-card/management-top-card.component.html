@@ -1,17 +1,7 @@
-<div class="management-top-card" fxLayout="column">
+<div class="management-top-card" fxLayout="column-reverse">
 
-  <div class="management-top-card-title" fxFlex>
-    <div class="card-title-wrapper" fxLayout="row">
-      <!--<button mat-icon-button (click)="toggleSidebar()">-->
-      <!--<mat-icon>close</mat-icon>-->
-      <!--</button>-->
-      <div class="title" fxFlex fxLayoutAlign="center">
-        <h2 class="bold-item">{{title | uppercase }}</h2>
-      </div>
-    </div>
-  </div>
 
-  <div class="management-top-card-content">
+  <div class="management-top-card-content" [@expandCollapse] *ngIf="expanded" style="z-index: 999">
     <div class="management-top-card-content-wrapper" fxFlex fxLayout="column" fxLayoutGap="15px">
 
       <mat-divider></mat-divider>
@@ -50,6 +40,18 @@
         <span class="bold-item">{{shiftDetails.staffType}}</span>
       </div>
 
+    </div>
+  </div>
+
+
+  <div class="management-top-card-title" fxFlex>
+    <div class="card-title-wrapper" fxLayout="row">
+      <!--<button mat-icon-button (click)="toggleSidebar()">-->
+      <!--<mat-icon>close</mat-icon>-->
+      <!--</button>-->
+      <div class="title" fxFlex fxLayoutAlign="center">
+        <h2 class="bold-item">{{title | uppercase }}</h2>
+      </div>
     </div>
   </div>
 

@@ -33,12 +33,12 @@
 
         <div class="user-info" fxFlex fxLayout="row" fxLayoutGap="12px">
           <span class="user-info-title">Gender:</span>
-          <span class="user-info-subtitle">{{staffMember.gender}}</span>
+          <span class="user-info-subtitle">{{staffMember.gender | titlecase}}</span>
         </div>
 
         <div class="user-info" fxFlex fxLayout="row" fxLayoutGap="12px">
           <span class="user-info-title">Shift Days:</span>
-          <span class="user-info-subtitle">{{staffMember.shiftDays}}</span>
+          <span class="user-info-subtitle">{{staffMember.shiftDays.join(", ")}}</span>
         </div>
 
         <div class="user-info" fxFlex fxLayout="row" fxLayoutGap="12px">
@@ -48,7 +48,12 @@
 
         <div class="user-info" fxFlex fxLayout="row" fxLayoutGap="12px">
           <span class="user-info-title">Hire Date:</span>
-          <span class="user-info-subtitle">{{staffMember.hireDate}}</span>
+          <span class="user-info-subtitle">{{staffMember.hireDate | date : 'mm/dd/yyyy'}}</span>
+        </div>
+
+        <div class="user-info" fxFlex fxLayout="row" fxLayoutGap="12px">
+          <span class="user-info-title">Email:</span>
+          <span class="user-info-subtitle">{{'info@intelycare.com'}}</span>
         </div>
 
         <div class="user-info" fxFlex fxLayout="row" fxLayoutGap="12px">

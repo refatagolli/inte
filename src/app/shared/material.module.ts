@@ -27,6 +27,7 @@ import {
 } from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {ScrollEventModule} from 'ngx-scroll-event';
 
 @NgModule({
   declarations: [],
@@ -59,7 +60,8 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
     MatSlideToggleModule,
     ScrollingModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    ScrollEventModule
   ]
 })
 export class MaterialModule {

@@ -2,10 +2,10 @@
   <div class="shift-management-wrapper" fxLayout="column" fxFlex fxFlexFill>
 
     <div class="header" fxFlex>
-      <app-management-top-card title="Shift Details" [shiftDetails]="shiftDetails"></app-management-top-card>
+      <app-management-top-card title="Shift Details" [shiftDetails]="shiftDetails" [expanded]="shiftDetailsExpanded"></app-management-top-card>
     </div>
 
-    <div class="content" fxFlexFill fxLayoutGap="20px" fxLayout="column" fxFlex="0 1 auto">
+    <div class="content" fxFlexFill fxLayoutGap="20px" fxLayout="column" fxFlex="0 1 auto" (mousewheel)="onScroll($event)">
 
       <br/>
 

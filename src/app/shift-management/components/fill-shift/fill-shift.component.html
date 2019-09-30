@@ -3,25 +3,24 @@
 
     <div class="header" fxFlex>
       <app-management-top-card [title]="!!replacing ? 'FIll Cancelled Shift' : 'Fill Open Shift'"
-                               [shiftDetails]="shiftDetails" [replacing]="replacing">
+                               [shiftDetails]="shiftDetails" [replacing]="replacing" [expanded]="shiftDetailsExpanded">
       </app-management-top-card>
     </div>
 
-    <div class="content" fxFlexFill fxLayoutGap="20px" fxLayout="column" fxFlex="0 1 auto">
+    <div class="content" fxFlexFill fxLayoutGap="15px" fxLayout="column" fxFlex="0 1 auto" (mousewheel)="onScroll($event)">
       <br/>
 
       <div class="filter" fxFlex="0 1 auto">
-        <shift-management-filter (filterChange)="filter.next($event)"></shift-management-filter>
+        <shift-management-filter (filterChange)="filter.next($event)" [selectedFilter]="filterOptions"></shift-management-filter>
       </div>
 
-      <div class="filter-options" fxLayout="column"
-           *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">
+      <div class="filter-options" fxLayout="column">
 
         <div fxFlex="1 1 auto">
           <span class="total">{{total}} Results</span>
         </div>
 
-        <div fxLayout="row">
+        <div fxLayout="row" *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">
           <span class="f-message">{{shiftDetails.staffType | titlecase}}s not scheduled for this shift who work: &nbsp;</span>
 
           <div *ngIf="filterOptions?.shift">
@@ -39,6 +38,13 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="useful-options" fxFlex>
+        <mat-checkbox class="opt left">Select All</mat-checkbox>
+        <button mat-button class="opt right">Filter By &nbsp; <mat-icon>arrow_drop_down</mat-icon></button>
       </div>
 
       <div class="results">

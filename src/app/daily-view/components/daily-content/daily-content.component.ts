@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {from, Observable, of, Subject, zip} from 'rxjs';
@@ -7,13 +7,13 @@ import {StaffMember} from '../../../models/StaffMember';
 import {ShiftManagementService} from '../../../shift-management/shift-management.service';
 import {ShiftDetails} from '../../../models/ShiftDetails';
 import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
-import {flatten} from '@angular/compiler';
 
 @Component({
   selector: 'daily-content',
   templateUrl: './daily-content.component.html',
   styleUrls: ['./daily-content.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DailyContentComponent implements OnInit, OnDestroy {
 
@@ -41,6 +41,7 @@ export class DailyContentComponent implements OnInit, OnDestroy {
     return {...e[0]};
   }
 
+
   ngOnInit() {
   }
 
@@ -48,21 +49,11 @@ export class DailyContentComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
   }
 
-  openShiftDetails(shiftDetails: ShiftDetails, staffMember: StaffMember) {
-    this._shiftManagementService.openShiftDetailsPanel(shiftDetails, staffMember);
-  }
-
-  openFillShift(shiftDetails: ShiftDetails, replacing?: StaffMember) {
-    this._shiftManagementService.openFillShiftPanel(shiftDetails, replacing);
-  }
-
   getShiftDetails(shiftHours: string, staffType: string, unit: string): ShiftDetails {
-    return {shiftHours, unit,  staffType, shiftDate: this.config.date};
+    return {shiftHours, unit, staffType, shiftDate: this.config.date.currentDate};
   }
 
-  getPresent(asmth) {
-    return flatten(asmth[this.primaryField].map(a => Object.values(a.staff))).length;
-  }
+
 
   private getStaff(config): Observable<any> {
     const a = config.viewType === 'unit' ? this._dailyViewService.getUnits() : this._dailyViewService.getShifts();
@@ -118,7 +109,9 @@ export class DailyContentComponent implements OnInit, OnDestroy {
       mergeMap(e => zip(of(e.key), e.pipe(toArray()))),
       toArray(),
       map(e => e.reduce((c, p) => {
-        c[p[0]] = p[1];
+        c[p[0]] = p[1].sort((pr, cr) => {
+          return cr.fullName < pr.fullName ? 1 : cr.fullName > pr.fullName ? -1 : 0;
+        });
         return c;
       }, {})),
     );

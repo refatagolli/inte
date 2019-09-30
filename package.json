@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --aot",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -30,6 +30,7 @@
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "ngx-mask": "^8.0.6",
+    "ngx-scroll-event": "^1.0.8",
     "perfect-scrollbar": "latest",
     "prismjs": "latest",
     "rxjs": "~6.3.3",

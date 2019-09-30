@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { WeeklyDataContainerComponent } from './weekly-data-container.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {WeeklyDataContainerComponent} from './weekly-data-container.component';
 import {MaterialModule} from '../../../../../shared/material.module';
 import {SharedModule} from '../../../../../shared/shared.module';
-import {StaffCardModule} from '../../../../../shared/componets/staff-card/staff-card.module';
-import {AddShiftModule} from '../../../../../shared/componets/add-shift/add-shift.module';
+import {PersonelContainerModule} from '../personel-container/personel-container.module';
 
 @NgModule({
   declarations: [WeeklyDataContainerComponent],
@@ -12,11 +11,11 @@ import {AddShiftModule} from '../../../../../shared/componets/add-shift/add-shif
     CommonModule,
     MaterialModule,
     SharedModule,
-    StaffCardModule,
-    AddShiftModule
+    PersonelContainerModule
   ],
   exports: [
     WeeklyDataContainerComponent
   ]
 })
-export class WeeklyDataContainerModule { }
+export class WeeklyDataContainerModule {
+}

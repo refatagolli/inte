@@ -13,22 +13,22 @@
   </ng-container>
 
   <!--  DAILY VIEW CALENDAR -->
-  <ng-container *ngIf="config.dateRange === 'daily'">
+  <ng-container *ngIf="config.dateRange === 'daily' || config.dateRange === 'today'">
     <daily-calendar></daily-calendar>
   </ng-container>
 
   <!--  VIEW TYPE CALENDAR -->
-  <ng-container *ngIf="config.dateRange === 'daily'">
+  <ng-container *ngIf="config.dateRange === 'daily' || config.dateRange === 'today'">
     <view-type></view-type>
   </ng-container>
 
   <!--  DAILY VIEW CONTENT -->
-  <ng-container *ngIf="config.dateRange === 'daily'">
+  <ng-container *ngIf="config.dateRange === 'daily' || config.dateRange === 'today'">
     <daily-content></daily-content>
   </ng-container>
 
   <!--  WEEKLY VIEW CONTENT -->
-  <ng-container *ngIf="config.dateRange === 'weekly'">
+  <ng-container *ngIf="config.dateRange !== 'daily' && config.dateRange !== 'today'">
     <weekly-content></weekly-content>
   </ng-container>
 

@@ -32,7 +32,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
    *
    * @param {FuseConfigService} _fuseConfigService
    * @param {FuseSidebarService} _fuseSidebarService
-   * @param activatedRoute
+   * @param route
    */
   constructor(
     private _fuseConfigService: FuseConfigService,
@@ -40,8 +40,8 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     public route: Router
   ) {
     this.routeNamesMapping = {
-      '': 'Daily',
-      'daily': 'Daily',
+      '': 'Home',
+      'daily': 'Home',
       'home': 'Staff Directory'
     };
 

@@ -55,12 +55,22 @@ $background_blue: #F7F9FB;
       }
 
       .item-row {
-        border-bottom:1px solid #D3D4D5;
+        border-bottom: 1px solid #D3D4D5;
 
         .right {
 
           .date-cell {
             border-right: 2px solid $background_blue;
+
+            &.removed-staff {
+              background-color: #FDE8E7;
+              border: 1px solid #F5827E;
+              cursor: pointer;
+
+              .mat-icon {
+                color: #D0381E;
+              }
+            }
           }
         }
       }

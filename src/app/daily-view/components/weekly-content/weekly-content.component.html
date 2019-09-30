@@ -20,8 +20,9 @@
             <button mat-button class="date-cell" *ngFor="let date of weekdays"
                     fxFlex="auto" [disableRipple]="true" (click)="selectDate(date)"
                     [ngClass]="{selected: areDatesEquals(date,currentDate)}">
-              <div class="date-option-value-wrapper" fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="center center">
-                <span class="date-option-value bold-item day">{{(date | date : 'EEEE')| uppercase }}</span>
+              <div class="date-option-value-wrapper" fxFlex="auto" fxLayout="column" fxLayoutAlign="center center">
+                <span class="date-option-value bold-item day">
+                  {{(weekdays.length > 8 ? (date | date : 'EEEE')[0] : (date | date : 'EEEE'))| uppercase }}</span>
                 <span class="date-option-value bold-item date">{{(date | date : 'd') }}</span>
               </div>
             </button>
@@ -36,6 +37,7 @@
       <div class="results" *ngIf="currentElement" fxFlex fxLayout="column">
 
         <weekly-data-container fxFlex *ngFor="let a of currentElement[primaryField]" [days]="weekdays"
+                               [shiftDetails]="getShiftDetails(a)"
                                [data]="a" [primaryField]="primaryField"></weekly-data-container>
 
       </div>
