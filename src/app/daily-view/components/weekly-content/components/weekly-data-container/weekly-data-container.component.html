@@ -6,7 +6,9 @@
       <div class="data  weekly-left-column">
         <div class="data-wrapper" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
           <span class="title">{{data[primaryField === 'shift' ? 'shiftTime' : 'value']}}</span>
-          <span class="subtitle">Census : <span class="census">16</span></span>
+          <div class="subtitle" fxLayout="row" fxLayoutAlign="center center">
+            <span>Census :</span> <input matInput [disabled]="false" value="16" class="census">
+          </div>
         </div>
       </div>
     </div>
@@ -14,54 +16,9 @@
     <div class="data-container" fxFlex>
       <div class="data-container" fxFlex fxLayout="column">
 
-        <div class="data" *ngFor="let d of data.staff | keyvalue">
-          <div class="expansion-panel" fxFlex fxLayout="column">
-
-            <div class="header">
-              <div class="header-content" fxLayoutAlign="center center">
-                <h1 class="header-title" fxFlex="1 1 auto">{{d.key}}</h1>
-                <mat-icon *ngIf="!expanded" (click)="expanded = true">expand_more</mat-icon>
-                <mat-icon *ngIf="expanded" (click)="expanded = false">expand_less</mat-icon>
-              </div>
-            </div>
-
-            <div class="content" *ngIf="expanded">
-              <div class="content-wrapper" fxFlex fxLayout="column">
-                <mat-list fxLayout="column" fxFlex="">
-                  <div fxFlex *ngFor="let el of d.value">
-
-                    <div fxFlex class="item-row">
-
-                      <div class="left weekly-left-column">
-                        <app-staff-card [staffMember]="el" [showNotPresent]="false"></app-staff-card>
-                      </div>
-
-                      <div class="right" fxLayout="row" fxFlex>
-                        <div class="date-cell" fxFlex="auto" *ngFor="let w of days">
-                          <div fxFlex="1 1 auto" fxLayoutAlign="center center">
-                            <!--<mat-icon>fiber_manual_record</mat-icon>-->
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div fxFlex class="item-row">
-                    <div class="left weekly-left-column">
-                      <add-shift></add-shift>
-                    </div>
-                    <div class="right">
-
-                    </div>
-                  </div>
-                </mat-list>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
+        <personel-container [expanded]="true" [staff]="staff.value" [title]="staff.key"
+                            [shiftDetails]="getShiftDetails(staff.key)"
+                            [days]="days" *ngFor="let staff of data.staff | keyvalue"></personel-container>
       </div>
     </div>
 

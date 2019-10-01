@@ -29,9 +29,12 @@ $background_blue: #F7FBFF;
       color: #333333;
       border-radius: 0;
       border-right: 2px solid $background_blue;
+      overflow: hidden;
+      padding: 0;
+      min-width: fit-content;
 
       .date-option-value {
-        font-size: 18px;
+        font-size: 16px;
         padding: 0;
 
       }
@@ -68,7 +71,6 @@ $background_blue: #F7FBFF;
   .weekly-view-content {
 
     .results {
-
 
     }
 

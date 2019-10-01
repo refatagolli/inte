@@ -17,7 +17,7 @@ export class RequestsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.allRequests = this._dailyService.getRequests();
+    this.allRequests = this._dailyService.getRequests().pipe();
   }
 
 }

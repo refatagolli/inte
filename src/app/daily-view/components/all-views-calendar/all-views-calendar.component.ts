@@ -20,7 +20,7 @@ export class AllViewsCalendarComponent implements OnInit {
     });
     // temporary code
     this.getDateList();
-    this.changeDate(this.currentDate);
+    // this.changeDate(this.currentDate);
   }
 
   ngOnInit() {
@@ -35,17 +35,17 @@ export class AllViewsCalendarComponent implements OnInit {
     let maxDate = this.currentDate + 3 * 24 * 60 * 60 * 1000;
     while (maxDate > minDate) {
       maxDate -= 24 * 60 * 60 * 1000;
-      this.dateList.push(maxDate);
+      this.dateList.unshift(maxDate);
     }
   }
 
   changeDate(date) {
-    this.config.date = date;
+    this.config.date.currentDate = date;
     this._dailyViewService.dailyViewConfig.next(this.config);
   }
 
   setToCurrent() {
-    this.config.date = this.currentDate;
+    this.config.date.currentDate = this.currentDate;
     this._dailyViewService.dailyViewConfig.next(this.config);
   }
 }

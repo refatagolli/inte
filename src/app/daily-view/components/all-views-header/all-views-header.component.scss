@@ -2,9 +2,7 @@ $text_blue: #2c87b9;
 $background_blue: rgba(58, 168, 255, 0.3);
 
 .daily-view-header {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: row;
+  width: 400px;
   font-size: 16px;
   position: relative;
 
@@ -35,6 +33,8 @@ $background_blue: rgba(58, 168, 255, 0.3);
     display: inline-block;
 
     .chip-container {
+      width: 400px;
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 
       .title {
         margin-left: 10px;
@@ -58,5 +58,24 @@ $background_blue: rgba(58, 168, 255, 0.3);
 }
 
 .itemSelected {
-  background-color: rgba(0, 0, 0, .2);
+  color: $text_blue !important;
+  font-weight: 600;
+
+}
+
+.top-header-menu {
+  width: 300px;
+  margin-top: 8px;
+  margin-right: -10px;
+
+  button {
+    width: 400px
+  }
+}
+
+#daterangepicker {
+
+  .e-date-range-wrapper {
+    //display: none;
+  }
 }

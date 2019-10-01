@@ -17,6 +17,7 @@ export class ShiftDetailsComponent implements OnInit {
 
   removingFromStaff = false;
   elements;
+  shiftDetailsExpanded = true;
 
   constructor(private _dailytViewService: DailyViewService) {
 
@@ -35,5 +36,11 @@ export class ShiftDetailsComponent implements OnInit {
 
   removeFromShift() {
     alert('removed');
+  }
+
+
+  onScroll($event) {
+    this.shiftDetailsExpanded = $event.wheelDelta > 0;
+    $event.stopPropagation();
   }
 }

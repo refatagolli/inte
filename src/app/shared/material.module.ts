@@ -27,6 +27,9 @@ import {
 } from '@angular/material';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {ScrollEventModule} from 'ngx-scroll-event';
+import {DailyViewModule} from '../daily-view/daily-view.module';
+import {DateRangePickerModule} from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
   declarations: [],
@@ -59,7 +62,9 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
     MatSlideToggleModule,
     ScrollingModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    ScrollEventModule,
+    DateRangePickerModule
   ]
 })
 export class MaterialModule {

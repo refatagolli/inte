@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DynamicFloatingContentService} from '../../../shared/services/dynamic-floating-content.service';
 import {merge, Observable, Subject} from 'rxjs';
 import {DailyViewService} from '../../../services/daily-view.service';
@@ -14,7 +14,10 @@ import {FormControl} from '@angular/forms';
 export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   @Output() filterChange: EventEmitter<{}> = new EventEmitter();
-
+  @Input() selectedFilter = {
+    unit: [],
+    shift: []
+  };
   searchOpened = false;
   units: Observable<any>;
   shifts: Observable<any>;
@@ -28,7 +31,6 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
     this.units = this._s.getUnits().pipe(
       flatMap(e => e),
       map(e => ({
@@ -56,6 +58,7 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
         return this._filter;
       })
     ).subscribe(e => {
+
       this.filterChange.emit(e);
     });
 

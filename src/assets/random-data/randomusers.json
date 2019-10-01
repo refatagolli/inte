@@ -1,6 +1,6 @@
 [
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -8,7 +8,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "John Doe",
     "unit": "Unit A",
@@ -16,7 +16,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "3PM-11PM",
     "shiftDays": [
@@ -32,7 +32,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -40,7 +40,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Joseph Thomson",
     "unit": "Unit C",
@@ -48,7 +48,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "3PM-11PM",
     "shiftDays": [
@@ -56,7 +56,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Aaron Hank",
     "unit": "Unit A",
@@ -64,7 +64,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -72,7 +72,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Jane Ace",
     "unit": "Unit B",
@@ -80,7 +80,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "3PM-11PM",
     "shiftDays": [
@@ -96,7 +96,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -104,7 +104,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Jessy Pinkman",
     "unit": "Unit A",
@@ -112,7 +112,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "3PM-11PM",
     "shiftDays": [
@@ -128,7 +128,7 @@
     "away": true
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -136,7 +136,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Jack Segal",
     "unit": "Unit C",
@@ -144,7 +144,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "3PM-11PM",
     "shiftDays": [
@@ -152,7 +152,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Joy Tribiani",
     "unit": "Unit A",
@@ -160,7 +160,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -168,7 +168,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Chandler Bing",
     "unit": "Unit B",
@@ -176,7 +176,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "3PM-11PM",
     "shiftDays": [
@@ -184,7 +184,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Quentin Tarantino",
     "unit": "Unit C",
@@ -192,7 +192,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "11PM-7AM",
     "shiftDays": [
@@ -200,7 +200,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Peter Griffin",
     "unit": "Unit A",
@@ -208,7 +208,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "11PM-7AM",
     "shiftDays": [
@@ -216,7 +216,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Stewie Griffin",
     "unit": "Unit A",
@@ -224,7 +224,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -232,7 +232,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Megg Griffin",
     "unit": "Unit A",
@@ -240,7 +240,7 @@
     "away": true
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "11PM-7AM",
     "shiftDays": [
@@ -248,7 +248,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Gregory House",
     "unit": "Unit A",
@@ -256,7 +256,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "11PM-7AM",
     "shiftDays": [
@@ -264,7 +264,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Grey Anthony",
     "unit": "Unit A",
@@ -272,7 +272,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -280,7 +280,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Peter Peterson",
     "unit": "Unit A",
@@ -288,7 +288,7 @@
     "away": true
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -296,7 +296,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Jesica Anderson",
     "unit": "Unit A",
@@ -304,7 +304,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "11PM-7AM",
     "shiftDays": [
@@ -312,7 +312,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "CNA",
+    "staffType": "CNAs",
     "hoursThisWeek": 12,
     "fullName": "James Nickelson",
     "unit": "Unit A",
@@ -320,7 +320,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -328,15 +328,15 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "John Dooran",
-    "unit": "Unit A",
+    "unit": "Unit C",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -344,15 +344,15 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Andric Ivo",
-    "unit": "Unit A",
+    "unit": "Unit B",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -360,15 +360,15 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "CNA",
+    "staffType": "CNAs",
     "hoursThisWeek": 12,
     "fullName": "Conan Cost",
-    "unit": "Unit A",
+    "unit": "Unit C",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -376,15 +376,15 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Herin Bethea",
-    "unit": "Unit A",
+    "unit": "Unit B",
     "notes": [],
     "away": true
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -392,15 +392,15 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Tom Astic",
-    "unit": "Unit A",
+    "unit": "Unit C",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -408,15 +408,15 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "CNA",
+    "staffType": "CNAs",
     "hoursThisWeek": 12,
     "fullName": "Richard Tomson",
-    "unit": "Unit A",
+    "unit": "Unit B",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -424,15 +424,15 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "John Cash",
-    "unit": "Unit A",
+    "unit": "Unit C",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -440,15 +440,15 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Jackie Tenery",
-    "unit": "Unit A",
+    "unit": "Unit B",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -456,7 +456,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "CNA",
+    "staffType": "CNAs",
     "hoursThisWeek": 12,
     "fullName": "Elmer Hartman",
     "unit": "Unit A",
@@ -464,7 +464,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -472,15 +472,15 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Simon Bolivar",
-    "unit": "Unit A",
+    "unit": "Unit C",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -488,15 +488,15 @@
       "Friday"
     ],
     "gender": "female",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Simon Bolivar",
-    "unit": "Unit A",
+    "unit": "Unit B",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -504,7 +504,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "CNA",
+    "staffType": "CNAs",
     "hoursThisWeek": 12,
     "fullName": "Simona Bolivar",
     "unit": "Unit A",
@@ -512,7 +512,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -520,7 +520,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Aaron Jackie",
     "unit": "Unit A",
@@ -528,7 +528,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -536,7 +536,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Brian Niels",
     "unit": "Unit A",
@@ -544,23 +544,23 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
-    "hireDate": 123453662,
+    "phone": "(234) 324-2345",
+    "hireDate": 123453662345,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
       "Monday",
       "Friday"
     ],
     "gender": "male",
-    "staffType": "CNA",
+    "staffType": "CNAs",
     "hoursThisWeek": 12,
-    "fullName": "Ben Dover",
+    "fullName": "Ben Donovan",
     "unit": "Unit A",
     "notes": [],
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -576,7 +576,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -584,7 +584,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Sam Cost",
     "unit": "Unit A",
@@ -592,7 +592,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "7AM-3PM",
     "shiftDays": [
@@ -600,7 +600,7 @@
       "Friday"
     ],
     "gender": "male",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "hoursThisWeek": 12,
     "fullName": "Niels Hang",
     "unit": "Unit A",
@@ -608,7 +608,7 @@
     "away": false
   },
   {
-    "phone": "234-324-234",
+    "phone": "(234) 324-2345",
     "hireDate": 123453662,
     "shiftHours": "3PM-11PM",
     "shiftDays": [

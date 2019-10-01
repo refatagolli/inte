@@ -30,7 +30,7 @@ export class WeeklyContentComponent implements OnInit, OnDestroy {
   }
 
   get currentElement() {
-     return this.elements[this.selectOptions.indexOf(this.select.value)];
+    return this.elements[this.selectOptions.indexOf(this.select.value)];
   }
 
   private static _setStaffField(e) {
@@ -44,24 +44,24 @@ export class WeeklyContentComponent implements OnInit, OnDestroy {
       takeUntil(this._unsubscribeAll)
     ).subscribe(e => this.config = e);
 
-    const b = 24 * 60 * 60 * 1000;
-    const a = new Date().getTime() - 3 * b;
-
-    for (let i = 1; i <= 7; i++) {
-      this.weekdays.push(new Date(a + i * b).getTime());
-    }
-    this.config.date = new Date().getTime();
-    this._dailyViewService.dailyViewConfig.next(this.config);
-
-
     this._dailyViewService.dailyViewConfig.pipe(
       tap(e => this.config = e),
       takeUntil(this._unsubscribeAll),
       flatMap(config => this.getStaff(config))
     ).subscribe(e => {
       this.elements = e;
-      this._cdr.detectChanges();
+      this.setWeekDays();
+      this._cdr.markForCheck();
     });
+  }
+
+  setWeekDays() {
+    this.weekdays = [];
+    let a = this.config.date.from;
+    while (a < this.config.date.to) {
+      this.weekdays.push(a);
+      a += 24 * 60 * 60 * 1000;
+    }
   }
 
   ngOnDestroy(): void {
@@ -72,16 +72,21 @@ export class WeeklyContentComponent implements OnInit, OnDestroy {
     this.currentDate = date;
   }
 
+  getShiftDetails(element): ShiftDetails {
+    let shiftHours = '';
+    let unit = '';
+    if (this.config.viewType === 'shift') {
+      shiftHours = this.currentElement.shiftTime;
+      unit = element.value;
+    } else {
+      shiftHours = element.shiftTime;
+      unit = this.currentElement.value;
+    }
+    return {shiftHours, unit};
+  }
+
   areDatesEquals(d1, d2) {
     return new Date(d1).getDate() === new Date(d2).getDate();
-  }
-
-  getShiftDetails(shiftHours: string, staffType: string, unit: string): ShiftDetails {
-    return {shiftHours, unit, staffType, shiftDate: this.config.date};
-  }
-
-  getPresent(asmth) {
-    return flatten(asmth[this.primaryField].map(a => Object.values(a.staff))).length;
   }
 
   setSelectOptions(e: any[]) {
@@ -144,7 +149,9 @@ export class WeeklyContentComponent implements OnInit, OnDestroy {
       mergeMap(e => zip(of(e.key), e.pipe(toArray()))),
       toArray(),
       map(e => e.reduce((c, p) => {
-        c[p[0]] = p[1];
+        c[p[0]] = p[1].sort((pr, cr) => {
+          return cr.fullName < pr.fullName ? 1 : cr.fullName > pr.fullName ? -1 : 0;
+        });
         return c;
       }, {})),
     );

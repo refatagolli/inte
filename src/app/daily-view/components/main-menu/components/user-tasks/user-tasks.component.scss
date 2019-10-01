@@ -3,11 +3,13 @@
   border: 1px solid rgb(212, 212, 212);
   height: 270px;
   width: 506px;
-  padding: 16px 0 16px 16px;
+  padding: 16px 0 0 0;
 
   .mat-card-header {
     border-bottom: 1px solid #FFFFFF;
     padding-bottom: 5px;
+    padding-left: 16px;
+    height: fit-content;
 
     .mat-card-title {
       color: rgb(114, 128, 138);
@@ -19,32 +21,101 @@
     }
   }
 
-  .mat-card-content {
-    padding-top: 8px;
+  .mat-card-content:hover {
     overflow: auto;
+
+  }
+
+  .mat-card-content {
+    padding-top: 0;
     font-size: 16px;
-    max-height: 140px;
     color: #72808a;
+    overflow: hidden;
+
+    .user-tasks-content, .user-tasks-completed-wrapper {
+      padding-top: 8px;
+      padding-left: 16px;
+    }
+
+    .user-tasks-content {
+      .task-row {
+        cursor: pointer;
+      }
+    }
+
+    .actions {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 3px 0;
+
+      .add-button {
+        text-align: left;
+        padding: 0 14px;
+      }
+
+      ::ng-deep.mat-form-field-wrapper {
+        padding: 0 !important;
+
+        .mat-form-field-infix {
+          padding: 8px 0;
+        }
+
+        .mat-icon {
+          cursor: pointer;
+        }
+      }
+    }
 
     .single-task {
+      height: 35px;
 
       .completed {
         text-decoration: line-through;
       }
+
+      .remove-task {
+        display: none;
+        cursor: pointer;
+      }
     }
+
+    .single-task:hover {
+
+      .remove-task {
+        display: block;
+      }
+    }
+
+    .user-tasks-completed {
+      opacity: 0.8;
+
+      ::ng-deep.mat-checkbox-background {
+        background-color: #90BAC5 !important;
+      }
+    }
+
   }
 }
 
-#test ::ng-deep ::-webkit-scrollbar {
-  height: 2px !important;
-  width: 2px !important;
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-#test ::ng-deep ::-webkit-scrollbar-track {
-  background-color: red !important;
-  //background-color: rgba(0, 0, 0, 0.26) !important;
+.cdk-drag-placeholder {
+  opacity: 0;
 }
 
-#test ::ng-deep ::-webkit-scrollbar-thumb {
- border:  4px solid transparent !important;
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

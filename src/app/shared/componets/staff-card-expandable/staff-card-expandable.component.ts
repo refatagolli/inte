@@ -11,6 +11,7 @@ export class StaffCardExpandableComponent implements OnInit {
 
   @Input() control = false;
   @Input() staffMembers: StaffMember[];
+  @Input() selected: boolean[];
   @Output() selectionChange: EventEmitter<StaffMember[]> = new EventEmitter();
   private _selectedValues: StaffMember[] = [];
 
@@ -20,12 +21,13 @@ export class StaffCardExpandableComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleValue(checked: boolean, staffMember: StaffMember) {
+  toggleValue(checked: boolean, staffMember: StaffMember, index?: number) {
     if (checked) {
       this._selectedValues.push(staffMember);
     } else {
       this._selectedValues.splice(this._selectedValues.indexOf(staffMember), 1);
     }
     this.selectionChange.emit(this._selectedValues);
+    this.selected[index] = !this.selected[index];
   }
 }

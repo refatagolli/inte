@@ -17,7 +17,6 @@ export class ChipIconComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.iconMN);
   }
 
   getContent() {

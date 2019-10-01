@@ -1,0 +1,25 @@
+<div class="staff-grouping-card">
+  <mat-expansion-panel [expanded]="expanded" #a class="staff-grouping">
+    <mat-expansion-panel-header class="staff-grouping-card-header" expandedHeight="50px"
+                                [ngClass]="{expanded: a.expanded}"
+                                collapsedHeight="50px" color="primary">
+      <span class="staff-grouping-card-header-title bold-item">{{primaryField ==='unit' ? element.shiftTime : element.value}}</span>
+      <div class="error-case" fxFlex="1 1 auto">
+        <div fxFlex fxLayout="row" *ngIf="ratio.total !== ratio.present">
+          <mat-icon class="test-icon danger">warning</mat-icon>
+          <span class="error-message"> {{ratio.total > ratio.present? 'Understaffed' : 'Overstaffed'}}</span>
+        </div>
+      </div>
+      <range-chip [present]="ratio.present" [total]="ratio.total" [extraText]="'on staff'"></range-chip>
+    </mat-expansion-panel-header>
+
+    <div class="staff-grouping-card-content" *ngIf="a.expanded" fxLayout="row" fxLayoutGap="20px">
+
+      <app-staff-column [element]="b" [primaryField]="primaryField" [shiftDetails]="shiftDetails"
+                        *ngFor="let b of element[primaryField]">
+      </app-staff-column>
+
+    </div>
+
+  </mat-expansion-panel>
+</div>

@@ -18,9 +18,11 @@ export class StaffRequestResponsesComponent implements OnInit {
   }
 
   private static orderResponses(res: UserResponse[]) {
-    const a = res.sort((e, f) => e.response === 'accept' ? 1 : e.response === 'pending' ? 0 : -1);
-  console.log(a)
-    return a ;
+    const a = res.sort((e, f) => {
+      return e.response > f.response ? 1 :
+        e.response < f.response ? -1 : 0;
+    });
+    return a;
 
   }
 

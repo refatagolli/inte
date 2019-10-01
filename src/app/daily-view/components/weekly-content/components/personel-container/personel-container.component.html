@@ -1,0 +1,48 @@
+<div class="data">
+  <div class="expansion-panel" fxFlex fxLayout="column">
+
+    <div class="header">
+      <div class="header-content" fxLayoutAlign="center center">
+        <h1 class="header-title" fxFlex="1 1 auto">{{title}}</h1>
+        <mat-icon *ngIf="!expanded" (click)="expanded = true">expand_more</mat-icon>
+        <mat-icon *ngIf="expanded" (click)="expanded = false">expand_less</mat-icon>
+      </div>
+    </div>
+
+    <div class="content" *ngIf="expanded">
+      <div class="content-wrapper" fxFlex fxLayout="column">
+        <mat-list fxLayout="column" fxFlex="">
+          <div fxFlex *ngFor="let el of staff">
+
+            <div fxFlex class="item-row">
+
+              <div class="left weekly-left-column">
+                <app-staff-card [staffMember]="el" [showNotPresent]="false"></app-staff-card>
+              </div>
+
+              <div class="right" fxLayout="row" fxFlex>
+                <div class="date-cell" fxFlex="auto" *ngFor="let w of days" [ngClass]="{'removed-staff': el.away}"
+                     (click)="el.away ? fillShift(el, w) : openShiftDetails(el, w)">
+                  <div fxFlex="1 1 auto" fxLayoutAlign="center center">
+                    <mat-icon>fiber_manual_record</mat-icon>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div fxFlex class="item-row">
+            <div class="left weekly-left-column">
+              <add-shift (addShift)="addStaff()"></add-shift>
+            </div>
+            <div class="right">
+
+            </div>
+          </div>
+        </mat-list>
+      </div>
+    </div>
+
+  </div>
+</div>

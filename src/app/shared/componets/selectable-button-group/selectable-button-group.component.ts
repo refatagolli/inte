@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {map, tap} from 'rxjs/operators';
 import {CustomFormGroupValidators} from '../../../helpers/custom-validators/CustomFormGroupValidators';
@@ -16,6 +16,7 @@ export class SelectableButtonGroupComponent implements OnInit {
   @Input() selectedFilters = [];
   @Input() multiple = false;
   @Input() maximumSelections = 0;
+
 
   control: FormControl = new FormControl([]);
   selected: string[] = [];
