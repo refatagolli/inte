@@ -2,7 +2,7 @@ import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Ev
 import {DynamicFloatingContentService} from '../../../shared/services/dynamic-floating-content.service';
 import {merge, Observable, Subject} from 'rxjs';
 import {DailyViewService} from '../../../services/daily-view.service';
-import {flatMap, map, toArray} from 'rxjs/operators';
+import {filter, flatMap, map, toArray} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -19,7 +19,7 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
     shift: []
   };
   searchOpened = false;
-  units: Observable<any>;
+  employmentType: Observable<any>;
   shifts: Observable<any>;
   control: FormControl = new FormControl('');
   subject: Subject<any[]> = new Subject();
@@ -31,11 +31,12 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.units = this._s.getUnits().pipe(
+    this.employmentType = this._s.getEmploymentTypes().pipe(
       flatMap(e => e),
+      filter(e => e.employmentTypeName !== 'Intelypro'),
       map(e => ({
-        name: e.value,
-        value: e.value
+        name: e.employmentTypeName,
+        value: e.employmentTypeName
       })),
       toArray()
     );

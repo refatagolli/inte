@@ -19,20 +19,21 @@
   <div class="filters" [ngClass]="{'hidden': !searchOpened}">
 
     <div fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="20px">
-      <div class="unit" fxLayout="column" fxLayoutGap="12px">
-        <span class="unit">Unit</span>
-        <app-selectable-button-group [elements]="units | async" [multiple]="true"
-                                     [selectedFilters]="selectedFilter.unit"
-                                     (valueChange)="subject.next(['unit', $event])"></app-selectable-button-group>
+
+      <div class="shift" fxLayout="column" fxLayoutGap="12px">
+        <span class="shift">Shift Time</span>
+        <app-selectable-button-group [elements]="shifts | async" [multiple]="true"
+                                     [selectedFilters]="selectedFilter.shift"
+                                     (valueChange)="subject.next(['shift', $event])"></app-selectable-button-group>
       </div>
 
       <mat-divider></mat-divider>
 
-      <div class="shift" fxLayout="column" fxLayoutGap="12px">
-        <span class="shift">Shift</span>
-        <app-selectable-button-group [elements]="shifts | async" [multiple]="true"
-                                     [selectedFilters]="selectedFilter.shift"
-                                     (valueChange)="subject.next(['shift', $event])"></app-selectable-button-group>
+      <div class="unit" fxLayout="column" fxLayoutGap="12px">
+        <span class="unit">Employment Type</span>
+        <app-selectable-button-group [elements]="employmentType | async" [multiple]="true"
+                                     [selectedFilters]="selectedFilter.unit"
+                                     (valueChange)="subject.next(['employmentType', $event])"></app-selectable-button-group>
       </div>
     </div>
 
