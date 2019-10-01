@@ -1,0 +1,42 @@
+.rating-modal-content {
+
+  .title-wrapper {
+
+    .first-line-header {
+
+      .header-image {
+        background: #f2f5f8;
+        color: #0075ad;
+        border-radius: 50%;
+        text-align: center;
+        width: 70px;
+        height: 70px;
+        padding-top: 18px;
+        padding-left: 18px;
+        display: inline-flex;
+      }
+
+      .close-icon {
+        float: right;
+        cursor: pointer;
+      }
+
+      .main-star-icon {
+        color: blue;
+        font-size: 35px;
+      }
+
+    }
+
+    .customized-header {
+      color: rgb(114, 128, 138);
+      font-size: 16px;
+      margin-left: 10px;
+      font-family: OpenSans-SemiBold;
+      font-weight: 600;
+      letter-spacing: -0.49px;
+    }
+
+  }
+
+}

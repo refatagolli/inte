@@ -1,0 +1,27 @@
+<div class="modal-content">
+  <label mat-dialog-title class="customized-header">Shift Day & Time</label>
+  <mat-dialog-content>
+    <div *ngFor="let shiftDay of eachRowChosenData; index as i;">
+      <div class="shift-day-wrapper">
+        <div class="customized-optionset margin-left">
+          <button class="customised-checkbox-group">
+              <span class="button-label">
+                  {{shiftDay.chosenDaysName}}
+              </span>
+          </button>
+        </div>
+        <div class="customized-optionset margin-right">
+          <button class="customised-radio-group">
+            <span class="button-label">
+              {{shiftDay.chosenShiftName}}
+            </span>
+          </button>
+        </div>
+      </div>
+      <br /><br />
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions style="justify-content: flex-end;">
+    <button class="action-button complete" mat-button [mat-dialog-close]="true">Close</button>
+  </mat-dialog-actions>
+</div>

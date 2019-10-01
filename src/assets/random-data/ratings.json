@@ -1,0 +1,408 @@
+[
+  {
+    "id": 1,
+    "comment": "Great employee!",
+    "rater": {
+      "id": 1,
+      "firstName": "Olivia",
+      "lastName": "Evans",
+      "employmentType": {
+        "employmentTypeId": 2,
+        "employmentTypeName": "Full Time"
+      },
+      "gender": {
+        "id": 2,
+        "name": "Female"
+      },
+      "email": "olivia.evans@yahoo.com",
+      "birthDate": "1994-12-27",
+      "ssn": "245-343-4346",
+      "location":  {
+        "id": 12334567434,
+        "value": "Unit B",
+        "requiredStaff": 12
+      },
+      "phone": "245-694-747-079",
+      "hireDate": "2019-06-20",
+      "staffType": {
+        "staffTypeId": 3,
+        "staffTypeName": "Supervisor"
+      },
+      "shiftDays": [{
+        "day" :  {
+          "id": 1,
+          "name": "Monday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+        {
+          "day" :  {
+            "id": 2,
+            "name": "Tuesday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 2,
+            "shiftTypeName": "3PM - 11PM"
+          }
+        },
+        {
+          "day" :  {
+            "id": 3,
+            "name": "Wednesday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 2,
+            "shiftTypeName": "3PM - 11PM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 4,
+            "name": "Thursday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 1,
+            "shiftTypeName": "7AM - 3PM"
+          }
+        }
+      ],
+      "notes": "Test notes"
+    },
+    "ratingDate": "2019-05-04",
+    "rate": "5"
+  },
+  {
+    "id": 2,
+    "comment": "Good employee!",
+    "rater": {
+      "id": 2,
+      "firstName": "Heather",
+      "lastName": "Bloom",
+      "employmentType": {
+        "employmentTypeId": 1,
+        "employmentTypeName": "Part Time"
+      },
+      "gender": {
+        "id": 2,
+        "name": "Female"
+      },
+      "birthDate": "1994-12-27",
+      "ssn": "245-343-4346",
+      "location":  {
+        "id": 12334567434,
+        "value": "Unit B",
+        "requiredStaff": 12
+      },
+      "email": "heather.bloom@yahoo.com",
+      "phone": "343-444-246-342",
+      "hireDate": "2019-05-04",
+      "staffType": {
+        "staffTypeId": 3,
+        "staffTypeName": "Supervisor"
+      },
+      "shiftDays": [{
+        "day" :  {
+          "id": 1,
+          "name": "Monday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 1,
+          "shiftTypeName": "7AM - 3PM"
+        }
+      },
+        {
+          "day" :  {
+            "id": 2,
+            "name": "Tuesday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 1,
+            "shiftTypeName": "7AM - 3PM"
+          }
+        },
+        {
+          "day" :  {
+            "id": 3,
+            "name": "Wednesday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 1,
+            "shiftTypeName": "7AM - 3PM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 4,
+            "name": "Thursday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 3,
+            "shiftTypeName": "11PM - 7AM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 5,
+            "name": "Friday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 3,
+            "shiftTypeName": "11PM - 7AM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 6,
+            "name": "Saturday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 3,
+            "shiftTypeName": "11PM - 7AM"
+          }
+        }
+      ],
+      "notes": "Test 2 notes"
+    },
+    "ratingDate": "2019-07-04",
+    "rate": "4"
+  },
+  {
+    "id": 3,
+    "comment": "Not very good employee!",
+    "rater": {
+      "id": 3,
+      "firstName": "Rahul",
+      "lastName": "Borden",
+      "employmentType": {
+        "employmentTypeId": 1,
+        "employmentTypeName": "Part Time"
+      },
+      "gender": {
+        "id": 1,
+        "name": "Male"
+      },
+      "email": "rahul.border@hotmail.com",
+      "birthDate": "1994-12-27",
+      "ssn": "245-343-4346",
+      "location":  {
+        "id": 12334567434,
+        "value": "Unit B",
+        "requiredStaff": 12
+      },
+      "phone": "385-687-257-321",
+      "hireDate": "2019-09-18",
+      "staffType": {
+        "staffTypeId": 1,
+        "staffTypeName": "Nurse"
+      },
+      "shiftDays": [{
+        "day" :  {
+          "id": 1,
+          "name": "Monday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 1,
+          "shiftTypeName": "7AM - 3PM"
+        }
+      },
+        {
+          "day" :  {
+            "id": 2,
+            "name": "Tuesday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 2,
+            "shiftTypeName": "3PM - 11PM"
+          }
+        },
+        {
+          "day" :  {
+            "id": 3,
+            "name": "Wednesday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 1,
+            "shiftTypeName": "7AM - 3PM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 4,
+            "name": "Thursday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 2,
+            "shiftTypeName": "3PM - 11PM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 5,
+            "name": "Friday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 3,
+            "shiftTypeName": "11PM - 7AM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 6,
+            "name": "Saturday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 2,
+            "shiftTypeName": "3PM - 11PM"
+          }
+        }
+      ],
+      "notes": "Test 3 notes"
+    },
+    "ratingDate": "2019-08-06",
+    "rate": "3"
+  },
+  {
+    "id": 4,
+    "comment": "Always does a great job!",
+    "rater": {
+      "id": 4,
+      "firstName": "Derek",
+      "lastName": "Caspar",
+      "employmentType": {
+        "employmentTypeId": 2,
+        "employmentTypeName": "Full Time"
+      },
+      "gender": {
+        "id": 1,
+        "name": "Male"
+      },
+      "email": "derek.casper@gmail.com",
+      "phone": "232-423-654-345",
+      "hireDate": "2019-01-10",
+      "birthDate": "1994-12-27",
+      "ssn": "245-343-4346",
+      "location":  {
+        "id": 12334567434,
+        "value": "Unit B",
+        "requiredStaff": 12
+      },
+      "staffType": {
+        "staffTypeId": 2,
+        "staffTypeName": "CNA"
+      },
+      "shiftDays": [{
+        "day" :  {
+          "id": 1,
+          "name": "Monday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 3,
+          "shiftTypeName": "11PM - 7AM"
+        }
+      },
+        {
+          "day" :  {
+            "id": 2,
+            "name": "Tuesday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 2,
+            "shiftTypeName": "3PM - 11PM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 4,
+            "name": "Thursday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 2,
+            "shiftTypeName": "3PM - 11PM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 5,
+            "name": "Friday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 1,
+            "shiftTypeName": "7AM - 3PM"
+          }
+        }
+      ],
+      "notes": "Test 4 notes"
+    },
+    "ratingDate": "2019-09-20",
+    "rate": "5"
+  },
+  {
+    "id": 4,
+    "comment": "Very bad staff member! He is very rude!",
+    "rater": {
+      "id": 5,
+      "firstName": "Yen",
+      "lastName": "Chin",
+      "employmentType": {
+        "employmentTypeId": 4,
+        "employmentTypeName": "Intelypro"
+      },
+      "gender": {
+        "id": 2,
+        "name": "Female"
+      },
+      "rating": 3,
+      "email": "yen.chin@gmail.com",
+      "phone": "236-533-654-855",
+      "hireDate": "2019-05-25",
+      "birthDate": "1994-12-27",
+      "ssn": "245-343-4346",
+      "location":  {
+        "id": 12334567434,
+        "value": "Unit B",
+        "requiredStaff": 12
+      },
+      "staffType": {
+        "staffTypeId": 2,
+        "staffTypeName": "CNA"
+      },
+      "shiftDays": [{
+        "day" :  {
+          "id": 2,
+          "name": "Tuesday"
+        },
+        "shiftType" : {
+          "shiftTypeId": 2,
+          "shiftTypeName": "3PM - 11PM"
+        }
+      },
+        {
+          "day" :   {
+            "id": 4,
+            "name": "Thursday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 2,
+            "shiftTypeName": "3PM - 11PM"
+          }
+        },
+        {
+          "day" :   {
+            "id": 5,
+            "name": "Friday"
+          },
+          "shiftType" : {
+            "shiftTypeId": 1,
+            "shiftTypeName": "7AM - 3PM"
+          }
+        }
+      ],
+      "notes": "Test 4 notes"
+    },
+    "ratingDate": "2019-01-24",
+    "rate": "1"
+  }
+]

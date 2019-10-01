@@ -93,7 +93,6 @@ $text-color: rgb(250, 250, 250);
   .table-wrapper {
     width: 100%;
     background-color: white;
-    height: 75%;
 
     .table-customisation {
       width: 99%;
@@ -104,6 +103,7 @@ $text-color: rgb(250, 250, 250);
       }
 
       ::ng-deep .mat-sort-header-arrow[style] {
+        display: none;
 
         // Hide default arrow stem
         .mat-sort-header-stem {
@@ -114,6 +114,7 @@ $text-color: rgb(250, 250, 250);
           opacity: 1;
           color: black;
           font-weight: bold;
+          display: none;
 
           // Hide default arrow as its composed of left, right and middle
           .mat-sort-header-pointer-left, .mat-sort-header-pointer-right, .mat-sort-header-pointer-middle  {
@@ -149,6 +150,21 @@ $text-color: rgb(250, 250, 250);
         font-weight: normal;
         line-height: 24px;
         height: 100px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .customized-cell-3 {
+        color: rgb(114, 128, 138);
+        font-size: 16px;
+        font-family: OpenSans-SemiBold;
+        font-weight: 600;
+        line-height: 24px;
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+        height: 100px;
       }
 
       .customized-headers-1 {
@@ -166,6 +182,8 @@ $text-color: rgb(250, 250, 250);
         font-family: OpenSans-SemiBold;
         font-weight: 600;
         text-transform: uppercase;
+        display: flex;
+        justify-content: center;
         text-align: center!important;
       }
 
@@ -179,47 +197,37 @@ $text-color: rgb(250, 250, 250);
         justify-content: flex-end;
       }
 
-      .customized-headers-4 {
-        color: rgb(89, 89, 91);
-        font-size: 16px;
-        font-family: OpenSans-SemiBold;
-        font-weight: 600;
-        text-transform: uppercase;
-        padding-left: 60px;
-      }
-
-      .column-1 {
+      .header-1 .column-1 {
         text-align: left;
         width: 19%;
       }
 
-      .column-2 {
+      .header-2 .column-2 {
         text-align: center;
         width: 15%;
       }
 
-      .column-3 {
+      .header-3 .column-3 {
         text-align: center;
         width: 13%;
       }
 
-      .column-4 {
+      .header-4 .column-4 {
         text-align: center;
         width: 23%;
       }
 
-      .column-5 {
+      .header-5 .column-5 {
         text-align: center;
         width: 15%;
       }
 
-      .column-6 {
+      .header-6 .column-6 {
         text-align: right;
         width: 15%;
+        display: flex;
+        justify-content: right;
       }
     }
   }
-
 }
-
-

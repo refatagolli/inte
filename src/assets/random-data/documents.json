@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "docType": "Physical Exam",
+    "approvedBy": "IntelyCare",
+    "expirationDate": "2020-06-15",
+    "status": "Completed (Jun 15, 2019)",
+    "orientation": "via IntelyCare"
+  },
+  {
+    "id": 2,
+    "docType": "TB Shot",
+    "approvedBy": "IntelyCare",
+    "expirationDate": "2020-06-15",
+    "status": "Completed (Jun 15, 2019)",
+    "orientation": "via IntelyCare"
+  },
+  {
+    "id": 3,
+    "docType": "Orientation",
+    "approvedBy": "IntelyCare",
+    "expirationDate": null,
+    "status": "Completed (Jun 15, 2019)",
+    "orientation": "via IntelyCare"
+  },
+  {
+    "id": 4,
+    "docType": "Training",
+    "approvedBy": "IntelyCare",
+    "expirationDate": null,
+    "status": "Completed (Jun 15, 2019)",
+    "orientation": "via IntelyCare"
+  }
+]

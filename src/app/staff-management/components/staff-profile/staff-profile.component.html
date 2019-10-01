@@ -1,0 +1,290 @@
+<div>
+  <mat-card class="staff-profile">
+    <mat-card-header class="staff-profile-header">
+      <label *ngIf="upcomingShifts && upcomingShifts.length > 0" class="next-shift-label">Next shift: {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'mediumDate' }}</label>
+      <i  class="material-icons cancel-icon" (click)="removed.next({})">cancel</i>
+      <div class="header-image">
+        {{ staffMember.firstName.substr(0, 1) + staffMember.lastName.substr(0, 1) }}
+      </div>
+      <mat-card-title>{{ staffMember.firstName + " " + staffMember.lastName }}</mat-card-title>
+      <mat-card-subtitle>{{ staffMember.staffType.staffTypeName }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="content-tabs">
+      <mat-tab-group (selectedTabChange)="handleTabChange($event)">
+        <mat-tab label="Profile"></mat-tab>
+        <mat-tab label="Schedule"></mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+    <mat-card-content class="content-data">
+      <div *ngIf="selectedContent == 'Profile'">
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-profile">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Profile
+            </mat-panel-title>
+            <mat-panel-description>
+              <u (click)="editPressed=true;$event.stopPropagation();" style="color: white;cursor: pointer">Edit</u>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <table *ngIf="!editPressed;else editProfile" class="profile-table">
+            <tr>
+              <td class="profile-table-headers">Staff Name</td>
+              <td class="profile-table-headers">Gender</td>
+              <td class="profile-table-headers">Birthdate</td>
+              <td class="profile-table-headers">SSN</td>
+              <td class="profile-table-headers">Location</td>
+              <td class="profile-table-headers">Phone Number</td>
+              <td class="profile-table-headers">Email</td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-data">{{ staffMember.firstName + " " + staffMember.lastName}}</td>
+              <td class="profile-table-data">{{ staffMember.gender.name }}</td>
+              <td class="profile-table-data">{{ staffMember.birthDate | date: "shortDate" }}</td>
+              <td class="profile-table-data">{{ staffMember.ssn }}</td>
+              <td class="profile-table-data">{{ staffMember.location ? staffMember.location.value : '' }}</td>
+              <td class="profile-table-data">{{ staffMember.phone }}</td>
+              <td class="profile-table-data">{{ staffMember.email }}</td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-headers">Staff Type</td>
+              <td class="profile-table-headers">Hire Date</td>
+              <td class="profile-table-headers">Employment Status</td>
+              <td class="profile-table-headers">Shifts</td>
+              <td colspan="3"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-data">{{ staffMember.staffType.staffTypeName }}</td>
+              <td class="profile-table-data">{{ staffMember.hireDate | date: "shortDate" }}</td>
+              <td class="profile-table-data">{{ staffMember.employmentType.employmentTypeName }}</td>
+              <td class="profile-table-data">
+                <div [innerHTML]="staffMember.shiftDaysString"></div>
+              </td>
+              <td colspan="3"></td>
+            </tr>
+          </table>
+          <ng-template #editProfile>
+            <form [formGroup]="staffMemberForm">
+              <table class="profile-table">
+              <tr>
+                <td class="profile-table-headers">Staff Name</td>
+                <td class="profile-table-headers">Gender</td>
+                <td class="profile-table-headers">Birthdate</td>
+                <td class="profile-table-headers">SSN</td>
+                <td class="profile-table-headers">Location</td>
+                <td class="profile-table-headers">Phone Number</td>
+                <td class="profile-table-headers">Email</td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td class="profile-table-data">
+                  <input [ngStyle]="{'border-color' : (submitted && validateForm.name.errors) ? 'red' : ''}"
+                         type="text" formControlName="fullName" placeholder="Full Name *" class="custom-text-input-1" />
+                </td>
+                <td class="profile-table-data">{{ staffMember.gender.name }}</td>
+                <td class="profile-table-data">
+                  <div class="date-wrapper">
+                    <mat-form-field appearance="outline" class="date-input">
+                      <input [ngStyle]="{'border-color' : (submitted && (validateForm.birthDate.errors || validateForm.birthDate.status == 'INVALID')) ? 'red' : ''}" formControlName="birthDate" matInput placeholder="Choose a date" [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </td>
+                <td class="profile-table-data">
+                  <input [ngStyle]="{'border-color' : (submitted && validateForm.ssn.errors) ? 'red' : ''}"
+                         type="text" formControlName="ssn" placeholder="Full Name *" class="custom-text-input-1" />
+                </td>
+                <td class="profile-table-data">{{ staffMember.location.value }}</td>
+                <td class="profile-table-data">
+<!--                  [validation]="true"-->
+<!--                  [dropSpecialCharacters]="false"-->
+                  <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}" type="text"
+                          formControlName="phone" placeholder="Phone Number *" mask='(000) 000-0000' class="custom-text-input-3" />
+                </td>
+                <td class="profile-table-data">
+                  <input type="text" [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"
+                         formControlName="email" placeholder="Email Address *" class="custom-text-input-3" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td class="profile-table-headers">Staff Type</td>
+                <td class="profile-table-headers">Hire Date</td>
+                <td class="profile-table-headers">Employment Status</td>
+                <td class="profile-table-headers">Shifts</td>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td class="profile-table-data">{{ staffMember.staffType.staffTypeName }}</td>
+                <td class="profile-table-data">
+                  <div class="date-wrapper">
+                    <mat-form-field appearance="outline" class="date-input">
+                      <input [ngStyle]="{'border-color' : (submitted && (validateForm.hireDate.errors || validateForm.hireDate.status == 'INVALID')) ? 'red' : ''}" formControlName="hireDate" matInput placeholder="Choose a date" [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </td>
+                <td class="profile-table-data">{{ staffMember.employmentType.employmentTypeName }}</td>
+                <td class="profile-table-data">
+                  <div [innerHTML]="staffMember.shiftDaysString"></div>
+                </td>
+                <td colspan="3"></td>
+              </tr>
+            </table>
+            </form>
+          </ng-template>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-contact">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Emergency Contacts & References
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <br />
+          <table class="customized-profile-tables">
+            <thead>
+            <tr>
+              <th class="contact-table-header">Contact Name</th>
+              <th class="contact-table-header">Contact Type</th>
+              <th class="contact-table-header">Phone Number</th>
+              <th class="contact-table-header">Relationship</th>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr class="table-divider">
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of contacts;">
+              <td class="contact-table-body">{{item.name}}</td>
+              <td class="contact-table-body">{{item.type}}</td>
+              <td class="contact-table-body">{{item.phone}}</td>
+              <td class="contact-table-body">{{item.relationship}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+        <br />
+      </div>
+      <div *ngIf="selectedContent == 'Schedule'">
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-profile">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Upcoming ({{ upcomingShifts.length }})
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <br />
+          <table class="customized-profile-tables">
+            <thead>
+              <tr>
+                <th class="table-header-labels">Shift Date</th>
+                <th class="table-header-labels">Shift Time</th>
+                <th class="table-header-labels headers-aligned-center">Location</th>
+                <th class="table-header-labels headers-aligned-center">Hours</th>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr class="table-divider">
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of upcomingShifts;">
+                <td class="table-body-custom-1">{{item.shiftDate | date:'mediumDate'}}</td>
+                <td class="table-body-custom-1">{{item.shiftType.shiftTypeName}}</td>
+                <td class="table-body-custom-2">{{item.location.value}}</td>
+                <td class="table-body-custom-2">{{item.shiftType.shiftHours}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-contact">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Recent ({{ recentShifts.length }})
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <br />
+          <table class="customized-profile-tables">
+            <thead>
+              <tr>
+                <th class="table-header-labels">Shift Date</th>
+                <th class="table-header-labels">Shift Time</th>
+                <th class="table-header-labels headers-aligned-center">Location</th>
+                <th class="table-header-labels headers-aligned-center">Hours</th>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr class="table-divider">
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of recentShifts;">
+                <td class="table-body-custom-1">{{item.shiftDate | date:'mediumDate'}}</td>
+                <td class="table-body-custom-1">{{item.shiftType.shiftTypeName}}</td>
+                <td class="table-body-custom-2">{{item.location.value}}</td>
+                <td class="table-body-custom-2">{{item.shiftType.shiftHours}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+        <br />
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

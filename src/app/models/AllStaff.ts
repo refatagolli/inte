@@ -2,6 +2,7 @@ import {EmploymentType} from './EmploymentType';
 import {StaffType} from './StaffType';
 import {ShiftDaysTypeRelation} from './ShiftDaysTypeRelation';
 import {Gender} from './Gender';
+import {Unit} from './Unit';
 
 export class AllStaff {
   id: number;
@@ -16,5 +17,9 @@ export class AllStaff {
   shiftDays: ShiftDaysTypeRelation[];
   shiftDaysString: string;
   notes: string;
+  rating?: number;
+  birthDate: string | Date | number;
+  ssn: string;
+  location: Unit;
 }
 
