@@ -8,7 +8,7 @@
 
     <div class="content" fxFlex="0 1 auto" fxFlexFill>
       <div class="content-wrapper" fxLayout="column" fxLayoutGap="20px">
-        <mat-checkbox (change)="toggleAll($event.checked)" [(ngModel)]="sel">Select All</mat-checkbox>
+        <mat-checkbox (change)="toggleAll($event.checked)" [(ngModel)]="areAllSelected">Select All</mat-checkbox>
 
         <div class="opened-shifts" fxLayout="column" fxLayoutGap="20px">
           <card-system-shift-details [shiftDetails]="shift" [selectable]="true"

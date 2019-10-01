@@ -42,14 +42,19 @@
 
       <mat-divider></mat-divider>
 
-      <div class="useful-options" fxFlex>
-        <mat-checkbox class="opt left">Select All</mat-checkbox>
-        <button mat-button class="opt right">Filter By &nbsp; <mat-icon>arrow_drop_down</mat-icon></button>
+      <div class="useful-options" fxFlex *ngIf="sel.length">
+        <mat-checkbox class="opt left" [checked]="areAllChecked" (change)="toggleAll($event.checked)">Select All</mat-checkbox>
+        <button mat-button class="opt right" [matMenuTriggerFor]="sortBy">Sort By &nbsp; <mat-icon>arrow_drop_down</mat-icon></button>
+        <mat-menu #sortBy>
+          <button mat-menu-item (click)="sortByField('hours')">Scheduled Hours</button>
+          <button mat-menu-item (click)="sortByField('firstName')">FirstName</button>
+          <button mat-menu-item (click)="sortByField('lastName')">Last Name</button>
+        </mat-menu>
       </div>
 
       <div class="results">
-        <app-staff-card-expandable [staffMembers]="staff | async" [control]="true"
-                                   (selectionChange)="selectStaff($event)"></app-staff-card-expandable>
+        <app-staff-card-expandable [staffMembers]="staff" [control]="true"
+                                   (selectionChange)="selectStaff($event)" [selected]="sel"></app-staff-card-expandable>
       </div>
 
       <div class="message" *ngIf="selectedStaff.length">

@@ -24,7 +24,7 @@
                 <div class="date-cell" fxFlex="auto" *ngFor="let w of days" [ngClass]="{'removed-staff': el.away}"
                      (click)="el.away ? fillShift(el, w) : openShiftDetails(el, w)">
                   <div fxFlex="1 1 auto" fxLayoutAlign="center center">
-                    <mat-icon *ngIf="el.away">fiber_manual_record</mat-icon>
+                    <mat-icon>fiber_manual_record</mat-icon>
                   </div>
                 </div>
               </div>

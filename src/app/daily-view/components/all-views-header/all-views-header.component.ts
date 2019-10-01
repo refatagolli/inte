@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
 import {MatDialog} from '@angular/material';
@@ -14,6 +14,7 @@ import {formatDate} from '@angular/common';
 })
 export class AllViewsHeaderComponent implements OnInit {
   dailyViewConfig: DailyViewConfigModel;
+
 
   constructor(private _dailyViewService: DailyViewService,
               private _dialog: MatDialog,
@@ -64,9 +65,72 @@ export class AllViewsHeaderComponent implements OnInit {
     this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
   }
 
+  openCustomModal(monthly: string) {
+
+  }
+
+  goForward() {
+    let newConfig;
+    switch (this.dailyViewConfig.dateRange) {
+      case 'today' :
+      case 'daily' :
+        newConfig = {
+          from: null,
+          to: null,
+          currentDate: this.dailyViewConfig.date.currentDate + 24 * 60 * 60 * 1000
+        };
+        break;
+      case 'weekly' :
+        newConfig = {
+          from: this.dailyViewConfig.date.from + 7 * 24 * 60 * 60 * 1000,
+          to: this.dailyViewConfig.date.to + 7 * 24 * 60 * 60 * 1000,
+          currentDate: this.dailyViewConfig.date.from + 7 * 24 * 60 * 60 * 1000
+        };
+        break;
+      case 'monthly' :
+        newConfig = {
+          from: this.dailyViewConfig.date.from + 31 * 24 * 60 * 60 * 1000,
+          to: this.dailyViewConfig.date.to + 31 * 24 * 60 * 60 * 1000,
+          currentDate: this.dailyViewConfig.date.from + 7 * 24 * 60 * 60 * 1000
+        };
+    }
+    this.dailyViewConfig.date = newConfig;
+    this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
+  }
+
+  goBackwards() {
+    let newConfig;
+    switch (this.dailyViewConfig.dateRange) {
+      case 'today' :
+      case 'daily' :
+        newConfig = {
+          from: null,
+          to: null,
+          currentDate: this.dailyViewConfig.date.currentDate - 24 * 60 * 60 * 1000
+        };
+        break;
+      case 'weekly' :
+        newConfig = {
+          from: this.dailyViewConfig.date.from - 7 * 24 * 60 * 60 * 1000,
+          to: this.dailyViewConfig.date.to - 7 * 24 * 60 * 60 * 1000,
+          currentDate: this.dailyViewConfig.date.from - 7 * 24 * 60 * 60 * 1000
+        };
+        break;
+      case 'monthly' :
+        newConfig = {
+          from: this.dailyViewConfig.date.from - 31 * 24 * 60 * 60 * 1000,
+          to: this.dailyViewConfig.date.to - 31 * 24 * 60 * 60 * 1000,
+          currentDate: this.dailyViewConfig.date.from - 31 * 24 * 60 * 60 * 1000
+        };
+    }
+    this.dailyViewConfig.date = newConfig;
+    this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
+  }
 
   private _setDaily() {
     this.dailyViewConfig.date.currentDate = new Date().getTime();
+    this.dailyViewConfig.date.to = null;
+    this.dailyViewConfig.date.from = null;
     this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
   }
 
@@ -87,9 +151,5 @@ export class AllViewsHeaderComponent implements OnInit {
     this.dailyViewConfig.date.to = new Date().setDate(30);
     this.dailyViewConfig.date.currentDate = new Date().getTime();
     this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
-  }
-
-  openCustomModal(monthly: string) {
-
   }
 }

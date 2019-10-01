@@ -16,7 +16,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() shiftDetails: ShiftDetails;
   @Input() replacing: StaffMember;
-  staff;
+  staff: StaffMember[];
   staffList;
   filter = new Subject<any>();
   selectedStaff: StaffMember[] = [];
@@ -24,11 +24,16 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   filterOptions: any = {};
   total: number;
   shiftDetailsExpanded = true;
+  sel = [];
   @ViewChild(ShiftManagementFilterComponent) private _smf: ShiftManagementFilterComponent;
   private _unsubscribeAll: Subject<any> = new Subject();
 
   constructor(private _s: DailyViewService,
               private _cdr: ChangeDetectorRef) {
+  }
+
+  get areAllChecked() {
+    return this.sel.filter(e => e).length === this.sel.length;
   }
 
   private static checkShift(s: any, shift: string[]) {
@@ -54,6 +59,8 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
 
+    this._subscribeToFilterChanges();
+
     this._s.getStaff().pipe(
       flatMap(e => e),
       filter((s: { staffType: string }) => s.staffType.toLocaleLowerCase() === this.shiftDetails.staffType.toLocaleLowerCase() + 's'),
@@ -67,13 +74,9 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
         unit: [this.shiftDetails.unit]
       };
       this.total = e.length;
+      this.sel = e.map(a => false);
       this.filter.next(this.filterOptions);
-
     });
-
-    this._subscribeToFilterChanges();
-
-
   }
 
   ngAfterViewInit(): void {
@@ -102,8 +105,39 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
     this._unsubscribeAll.next();
   }
 
+  toggleAll(newValue) {
+    this.sel = this.sel.map(e => newValue);
+    this.selectedStaff = newValue ? [...this.staff] : [];
+  }
+
+  sortByField(field: string) {
+    this.staff = this.staff.sort((first, next) => this._sortCondition(first, next, field));
+  }
+
+  private _sortCondition(first: StaffMember, next: StaffMember, field: string) {
+    let condition: number;
+    switch (field) {
+      case 'hours':
+        condition = first.hoursThisWeek - next.hoursThisWeek;
+        break;
+      case 'firstName':
+        const f = first.fullName.split(' ')[0];
+        const n = next.fullName.split(' ')[0];
+        condition = f > n ? 1 : f < n ? -1 : 0;
+        break;
+      case 'lastName':
+        const fl = first.fullName.split(' ')[1];
+        const nl = next.fullName.split(' ')[1];
+        condition = fl > nl ? 1 : f < n ? -1 : 0;
+        break;
+      default:
+        condition = 0;
+    }
+    return condition;
+  }
+
   private _subscribeToFilterChanges() {
-    this.staff = this.filter.pipe(
+    this.filter.pipe(
       filter(e => this.staffList.length > 0),
       takeUntil(this._unsubscribeAll),
       tap(e => this.filterOptions = e),
@@ -114,9 +148,14 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
           return FillShiftComponent.checkQ(s, this.filterOptions.q) &&
             FillShiftComponent.checkUnit(s, this.filterOptions.unit) && FillShiftComponent.checkShift(s, this.filterOptions.shift);
         }),
-        toArray())),
-      tap(e => this.total = e.length)
-    );
+        toArray()))
+    ).subscribe((e: StaffMember[]) => {
+      console.log(e);
+      this.staff = e;
+      this.total = e.length;
+      this.sel = e.map(a => false);
+      this.selectedStaff = [];
+    });
   }
 
 }

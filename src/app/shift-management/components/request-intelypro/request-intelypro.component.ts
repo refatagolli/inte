@@ -21,8 +21,8 @@ export class RequestIntelyproComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.openedShifts = this._dailyService.getShiftsToFill().pipe(map(e =>{
-      this.sel = e.map(e => false);
+    this.openedShifts = this._dailyService.getShiftsToFill().pipe(map(e => {
+      this.sel = e.map(a => false);
       return e;
     } ));
   }
@@ -50,4 +50,9 @@ export class RequestIntelyproComponent implements OnInit {
       return newValue;
     });
   }
+
+  get areAllSelected() {
+    return this.sel.filter(e => e).length === this.sel.length;
+  }
+
 }

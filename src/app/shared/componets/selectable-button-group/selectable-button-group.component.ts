@@ -1,18 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild, ViewChildren
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {map, tap} from 'rxjs/operators';
 import {CustomFormGroupValidators} from '../../../helpers/custom-validators/CustomFormGroupValidators';
-import {MatListOption} from '@angular/material';
 
 @Component({
   selector: 'app-selectable-button-group',
@@ -28,15 +17,17 @@ export class SelectableButtonGroupComponent implements OnInit {
   @Input() multiple = false;
   @Input() maximumSelections = 0;
 
+
   control: FormControl = new FormControl([]);
   selected: string[] = [];
   hasDefaultVal: boolean;
   private _oldValue;
 
-  constructor(private _cdr: ChangeDetectorRef) {
+  constructor() {
   }
 
   ngOnInit(): void {
+
     if (this.selectedFilters) {
       this.selected = this.selectedFilters;
       this.hasDefaultVal = true;
@@ -46,11 +37,8 @@ export class SelectableButtonGroupComponent implements OnInit {
 
     this.control.valueChanges.pipe(
       map(value => this._removeIfRequiredNotMultiple(value)),
-      tap(e => this.selectedFilters = e),
-    ).subscribe(e => {
-
-      this.valueChange.next(e);
-    });
+      tap(e => this.selected = e)
+    ).subscribe(e => this.valueChange.next(e));
   }
 
   private _removeIfRequiredNotMultiple(value: string[]) {

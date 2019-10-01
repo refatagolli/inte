@@ -6,7 +6,9 @@
       <div class="data  weekly-left-column">
         <div class="data-wrapper" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
           <span class="title">{{data[primaryField === 'shift' ? 'shiftTime' : 'value']}}</span>
-          <span class="subtitle">Census : <span class="census">16</span></span>
+          <div class="subtitle" fxLayout="row" fxLayoutAlign="center center">
+            <span>Census :</span> <input matInput [disabled]="false" value="16" class="census">
+          </div>
         </div>
       </div>
     </div>
@@ -14,9 +16,9 @@
     <div class="data-container" fxFlex>
       <div class="data-container" fxFlex fxLayout="column">
 
-        <personel-container [expanded]="true" [staff]="staff.value" [title]="staff.key" [shiftDetails]="getShiftDetails(staff.key)"
+        <personel-container [expanded]="true" [staff]="staff.value" [title]="staff.key"
+                            [shiftDetails]="getShiftDetails(staff.key)"
                             [days]="days" *ngFor="let staff of data.staff | keyvalue"></personel-container>
-
       </div>
     </div>
 

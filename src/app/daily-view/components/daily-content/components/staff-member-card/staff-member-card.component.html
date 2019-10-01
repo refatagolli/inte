@@ -1,5 +1,5 @@
 <div class="staff-member-card">
-  <mat-expansion-panel [expanded]="expanded">
+  <mat-expansion-panel [expanded]="expanded" >
     <mat-expansion-panel-header class="staff-member-card-header" expandedHeight="50px" collapsedHeight="50px">
 
       <div fxFlex fxLayout="row">
@@ -10,10 +10,9 @@
 
     </mat-expansion-panel-header>
 
-    <mat-list class="staff-member-card-content">
+    <mat-list class="staff-member-card-content" fxFlex fxLayout="column">
 
-      <app-staff-card [openShift]="true" *ngIf="addStaff"
-      (fillShiftEvent)="openFillShift()"></app-staff-card>
+      <app-staff-card [openShift]="true" *ngIf="addStaff" (fillShiftEvent)="openFillShift()"></app-staff-card>
       <app-staff-card *ngFor="let s of staffList" [staffMember]="s"
                       (fillShiftEvent)="openFillShift($event)"
                       (viewDetailsEvent)="openShiftDetails(s)"

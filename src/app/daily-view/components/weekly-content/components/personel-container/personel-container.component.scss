@@ -37,6 +37,10 @@ $background_blue: #F7F9FB;
         border-right: 2px solid $background_blue;
         cursor: pointer;
 
+        .mat-icon {
+          color: #9fc53a;
+        }
+
         &.removed-staff {
           background-color: #FDE8E7;
           border: 1px solid #F5827E;

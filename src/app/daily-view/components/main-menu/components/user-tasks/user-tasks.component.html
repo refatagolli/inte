@@ -8,7 +8,7 @@
 
     <div class="user-tasks-content" fxLayout="column" cdkDropList (cdkDropListDropped)="drop($event)">
       <div class="single-task" fxFlex="0 1 auto" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="center center"
-           cdkDrag *ngFor="let task of tasks.toDo; let i = index">
+            *ngFor="let task of tasks.toDo; let i = index" cdkDrag>
         <mat-checkbox (change)="toggleTask(i, false)" [checked]="task.completed"></mat-checkbox>
         <span class="task-row" [ngClass]="{completed: task.completed}" fxFlex="1 1 auto">{{task.value}}</span>
 
@@ -30,7 +30,7 @@
       </button>
     </div>
 
-    <div class="user-tasks-completed" fxFlex fxLayout="column">
+    <div class="user-tasks-completed-wrapper" fxFlex fxLayout="column">
       <span class="toggle bold-item">{{tasks.completed.length}} Completed
         <button mat-icon-button (click)="expanded = !expanded">
           <mat-icon>{{expanded ? 'expand_more' : 'chevron_right'}}</mat-icon>

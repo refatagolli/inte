@@ -3,7 +3,7 @@ $header_border_color: #cacaca;
 $header_font_color: #72808a;
 
 .staff-member-card {
-  width: 523px;
+  width: 465px;
   border: 1px solid $header_border_color;
   border-radius: 2px;
 
@@ -34,9 +34,15 @@ $header_font_color: #72808a;
   }
 
   ::ng-deep.mat-expansion-panel-content {
+    width: 100%;
 
     .mat-expansion-panel-body {
+      width: 100%;
       padding: 0;
+
+      .mat-list {
+
+      }
     }
   }
 
