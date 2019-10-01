@@ -1,0 +1,298 @@
+<div>
+  <mat-card class="staff-profile">
+    <mat-card-header class="staff-profile-header">
+      <label *ngIf="upcomingShifts && upcomingShifts.length > 0" class="next-shift-label">Next shift: {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'fullDate' }}</label>
+      <i class="material-icons cancel-icon" (click)="removed.next({})">cancel</i>
+      <div class="header-image">{{ staffMember.firstName.substr(0, 1) + staffMember.lastName.substr(0, 1) }}</div>
+      <mat-card-title>
+        {{ staffMember.firstName + " " + staffMember.lastName }}
+        <div class="rating-wrapper">
+          <i *ngFor="let index of [1,2,3,4,5]" class="material-icons" [ngClass]="staffMember.rating >= index ? 'star-icon-selected': 'star-icon'">star
+            {{staffMember.rating}}
+            {{index}}
+          </i>
+        </div>
+        <a class="view-rating" (click)="viewRatingsPanel()">Rating History</a>
+      </mat-card-title>
+      <mat-card-subtitle><span>{{ staffMember.staffType.staffTypeName }}</span><span style='font-size:13px;'> &#8226; </span><span>IntelyPro</span></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="content-tabs">
+      <mat-tab-group (selectedTabChange)="handleTabChange($event)">
+        <mat-tab label="Profile"></mat-tab>
+        <mat-tab label="Documents"></mat-tab>
+        <mat-tab label="Schedule"></mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+    <mat-card-content class="content-data">
+      <div *ngIf="selectedContent == 'Profile'">
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-profile">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Profile
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <table class="profile-table">
+            <tr>
+              <td class="profile-table-headers">Staff Name</td>
+              <td class="profile-table-headers">Gender</td>
+              <td class="profile-table-headers">Birthdate</td>
+              <td class="profile-table-headers">SSN</td>
+              <td class="profile-table-headers">Location</td>
+              <td class="profile-table-headers">Phone Number</td>
+              <td class="profile-table-headers">Staff Type</td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-data">{{ staffMember.firstName + " " + staffMember.lastName}}</td>
+              <td class="profile-table-data">{{ staffMember.gender.name }}</td>
+              <td class="profile-table-data">{{ staffMember.birthDate | date: "shortDate" }}</td>
+              <td class="profile-table-data">{{ staffMember.ssn }}</td>
+              <td class="profile-table-data">{{ staffMember.location ? staffMember.location.value : '' }}</td>
+              <td class="profile-table-data">{{ staffMember.phone }}</td>
+              <td class="profile-table-data">{{ staffMember.staffType.staffTypeName }}</td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-headers">Hire Date</td>
+              <td class="profile-table-headers">Employment Status</td>
+              <td class="profile-table-headers">Shifts</td>
+              <td colspan="4"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td class="profile-table-data top">{{ staffMember.hireDate | date: "shortDate" }}</td>
+              <td class="profile-table-data top">{{ staffMember.employmentType.employmentTypeName }}</td>
+              <td class="profile-table-data">
+                <div [innerHTML]="staffMember.shiftDaysString"></div>
+              </td>
+              <td colspan="4"></td>
+            </tr>
+          </table>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-contact">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Emergency Contacts & References
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <br />
+          <table class="customized-profile-tables">
+            <thead>
+              <tr>
+                <th class="contact-table-header">Contact Name</th>
+                <th class="contact-table-header">Contact Type</th>
+                <th class="contact-table-header">Phone Number</th>
+                <th class="contact-table-header">Relationship</th>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr class="table-divider">
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of contacts;">
+              <td class="contact-table-body">{{item.name}}</td>
+              <td class="contact-table-body">{{item.type}}</td>
+              <td class="contact-table-body">{{item.phone}}</td>
+              <td class="contact-table-body">{{item.relationship}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+        <br />
+      </div>
+      <div *ngIf="selectedContent == 'Documents'">
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-profile">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Work Eligibility
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <br />
+          <table class="customized-profile-tables">
+            <thead>
+              <tr>
+                <th class="contact-table-header">Form Type</th>
+                <th class="contact-table-header">Approved By</th>
+                <th class="contact-table-header">Expiration Date</th>
+                <th class="contact-table-header">Status</th>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr class="table-divider">
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of workEligibilityData;">
+              <td class="table-docs-body">{{item.formType}}</td>
+              <td class="table-docs-body">{{item.approvedBy}}</td>
+              <td class="table-docs-body">{{(item.expirationDate != null) ? (item.expirationDate | date:'mediumDate') : "-"}}</td>
+              <td class="table-docs-body">{{item.status}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-contact">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Documents & Certification
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <br />
+          <table class="customized-profile-tables">
+            <thead>
+            <tr>
+              <th class="table-docs-headers">Document Type</th>
+              <th class="table-docs-headers">Approved By</th>
+              <th class="table-docs-headers">Expiration Date</th>
+              <th class="table-docs-headers">Status</th>
+              <th class="table-docs-headers">Orientation</th>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr class="table-divider">
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            <tr>
+              <td colspan="100%"></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of documents;">
+              <td class="table-docs-body">{{item.docType}}</td>
+              <td class="table-docs-body">{{item.approvedBy}}</td>
+              <td class="table-docs-body">{{(item.expirationDate != null) ? (item.expirationDate | date:'mediumDate') : "-"}}</td>
+              <td class="table-docs-body">{{item.status}}</td>
+              <td class="table-docs-body">{{item.orientation}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+        <br />
+      </div>
+      <div *ngIf="selectedContent == 'Schedule'">
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-profile">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Upcoming ({{ upcomingShifts.length }})
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <br />
+          <table class="customized-profile-tables">
+            <thead>
+              <tr>
+                <th class="table-header-labels">Shift Date</th>
+                <th class="table-header-labels">Shift Time</th>
+                <th class="table-header-labels headers-aligned-center">Location</th>
+                <th class="table-header-labels headers-aligned-center">Hours</th>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr class="table-divider">
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of upcomingShifts;">
+                <td class="table-body-custom-1">{{item.shiftDate | date:'mediumDate'}}</td>
+                <td class="table-body-custom-1">{{item.shiftType.shiftTypeName}}</td>
+                <td class="table-body-custom-2">{{item.location.value}}</td>
+                <td class="table-body-custom-2">{{item.shiftType.shiftHours}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="custom-collapsed custom-collapsed-contact">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Recent ({{ recentShifts.length }})
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <br />
+          <table class="customized-profile-tables">
+            <thead>
+              <tr>
+                <th class="table-header-labels">Shift Date</th>
+                <th class="table-header-labels">Shift Time</th>
+                <th class="table-header-labels headers-aligned-center">Location</th>
+                <th class="table-header-labels headers-aligned-center">Hours</th>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr class="table-divider">
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+              <tr>
+                <td colspan="100%"></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of recentShifts;">
+                <td class="table-body-custom-1">{{item.shiftDate | date:'mediumDate'}}</td>
+                <td class="table-body-custom-1">{{item.shiftType.shiftTypeName}}</td>
+                <td class="table-body-custom-2">{{item.location.value}}</td>
+                <td class="table-body-custom-2">{{item.shiftType.shiftHours}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+        <br />
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

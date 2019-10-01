@@ -169,15 +169,15 @@ export class AddStaffComponent implements OnInit {
       })),
       toArray());
 
-    this.shiftOptions.subscribe(items => {
-      items.forEach(item => {
-        const shift: ShiftType = {
-          shiftTypeId: item.value,
-          shiftTypeName: item.name
-        };
-        // this.shifts.push(shift);
-      });
-    });
+    // this.shiftOptions.subscribe(items => {
+    //   items.forEach(item => {
+    //     const shift: ShiftType = {
+    //       shiftTypeId: item.value,
+    //       shiftTypeName: item.name
+    //     };
+    //     this.shifts.push(shift);
+    //   });
+    // });
 
     this.dayOptions = this._dailyService.getDays().pipe(
       flatMap(e => e),
@@ -187,15 +187,15 @@ export class AddStaffComponent implements OnInit {
       })),
       toArray());
 
-    this.dayOptions.subscribe(items => {
-      items.forEach(item => {
-        const day: Days = {
-          id: item.value,
-          name: item.name
-        };
-        // this.days.push(day);
-      });
-    });
+    // this.dayOptions.subscribe(items => {
+    //   items.forEach(item => {
+    //     const day: Days = {
+    //       id: item.value,
+    //       name: item.name
+    //     };
+    //     this.days.push(day);
+    //   });
+    // });
 
     this.genderOptions = this._dailyService.getGenderTypes().pipe(
       flatMap(e => e),
@@ -447,6 +447,10 @@ export class AddStaffComponent implements OnInit {
     this.staffMember.hireDate = this.staffMemberForm.controls.hireDate.value;
     this.staffMember.email = this.staffMemberForm.controls.email.value;
     this.staffMember.shiftDays = [];
+    // this.staffMember.ssn = '1';
+    // this.staffMember.birthDate = '2019-05-25';
+    // this.staffMember.location = null;
+    // this.staffMember.notes = '1';
 
     this.eachRowChosenData.forEach(row => {
       let eachShift: ShiftType;

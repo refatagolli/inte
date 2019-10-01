@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Zak Caspar",
+    "type": "Emergency",
+    "phone": "(555) 418-7979",
+    "relationship": "Husband"
+  },
+  {
+    "id": 2,
+    "name": "Jason Crittell",
+    "type": "Reference",
+    "phone": "(212) 457-9621",
+    "relationship": "Manager at TNT Post-Acute Care"
+  }
+]

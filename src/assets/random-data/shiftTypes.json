@@ -1,14 +1,17 @@
 [
   {
     "shiftTypeId": 1,
-    "shiftTypeName": "7AM - 3PM"
+    "shiftTypeName": "7AM - 3PM",
+    "shiftHours": "8h"
   },
   {
     "shiftTypeId": 2,
-    "shiftTypeName": "3PM - 11PM"
+    "shiftTypeName": "3PM - 11PM",
+    "shiftHours": "8h"
   },
   {
     "shiftTypeId": 3,
-    "shiftTypeName": "11PM - 7AM"
+    "shiftTypeName": "11PM - 7AM",
+    "shiftHours": "8h"
   }
 ]

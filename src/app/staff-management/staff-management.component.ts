@@ -38,12 +38,11 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   shiftTypes: ShiftType[] = [];
   employmentTypes: EmploymentType[] = [];
   displayedColumns: string[] = ['lastName', 'employmentType.employmentTypeName', 'staffType.staffTypeName', 'shifts', 'phone', 'view'];
-  displayedColumns2: string[] = ['lastName'];
   days: Days[] = [];
   total = 0;
   filtered = 0;
   test: string;
-  panelOpenState: false;
+  selectedRow: any;
   filterConfig: FilterConfiguration[] = [
     { key: 'shift', name: 'Shift Time' },
     { key: 'employment_type', name: 'Employment Type' },
@@ -63,6 +62,9 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
+
+    // localStorage.setItem('staffDirectory', null);
+
     this.loadData();
     this.utils.setFilterConfiguration(this.filterConfig);
     this.utils.setFilterUsedComponent(this.usedIn);
@@ -161,6 +163,8 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
       this.total = data.length;
       this.filtered = data.length;
       this.allRecords = data;
+      const ds = [];
+
       this.dataSource = new MatTableDataSource<AllStaff>(data);
       this.dataSource.sortingDataAccessor = this.sortingDataAccessor;
       this.dataSource.sort = this.sort;
@@ -168,6 +172,7 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
       this.dataSource.filterPredicate = this.tableFilter();
 
       data.forEach( staff => {
+        // ds.push(staff, { detailRow: true, element: staff });
         staff.shiftDaysString = '';
         this.shiftTypes.forEach(item => {
           let existsShift = false;

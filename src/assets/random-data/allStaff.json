@@ -7,8 +7,18 @@
       "employmentTypeId": 2,
       "employmentTypeName": "Full Time"
     },
-    "gender": "F",
+    "gender": {
+      "id": 2,
+      "name": "Female"
+    },
     "email": "olivia.evans@yahoo.com",
+    "birthDate": "1994-12-27",
+    "ssn": "245-343-4346",
+    "location":  {
+      "id": 12334567434,
+      "value": "Unit B",
+      "requiredStaff": 12
+    },
     "phone": "245-694-747-079",
     "hireDate": "2019-06-20",
     "staffType": {
@@ -66,7 +76,17 @@
       "employmentTypeId": 1,
       "employmentTypeName": "Part Time"
     },
-    "gender": "F",
+    "gender": {
+      "id": 2,
+      "name": "Female"
+    },
+    "birthDate": "1994-12-27",
+    "ssn": "245-343-4346",
+    "location":  {
+      "id": 12334567434,
+      "value": "Unit B",
+      "requiredStaff": 12
+    },
     "email": "heather.bloom@yahoo.com",
     "phone": "343-444-246-342",
     "hireDate": "2019-05-04",
@@ -145,8 +165,18 @@
       "employmentTypeId": 1,
       "employmentTypeName": "Part Time"
     },
-    "gender": "M",
+    "gender": {
+      "id": 1,
+      "name": "Male"
+    },
     "email": "rahul.border@hotmail.com",
+    "birthDate": "1994-12-27",
+    "ssn": "245-343-4346",
+    "location":  {
+      "id": 12334567434,
+      "value": "Unit B",
+      "requiredStaff": 12
+    },
     "phone": "385-687-257-321",
     "hireDate": "2019-09-18",
     "staffType": {
@@ -224,10 +254,20 @@
       "employmentTypeId": 2,
       "employmentTypeName": "Full Time"
     },
-    "gender": "M",
+    "gender": {
+      "id": 1,
+      "name": "Male"
+    },
     "email": "derek.casper@gmail.com",
     "phone": "232-423-654-345",
     "hireDate": "2019-01-10",
+    "birthDate": "1994-12-27",
+    "ssn": "245-343-4346",
+    "location":  {
+      "id": 12334567434,
+      "value": "Unit B",
+      "requiredStaff": 12
+    },
     "staffType": {
       "staffTypeId": 2,
       "staffTypeName": "CNA"
@@ -283,10 +323,21 @@
       "employmentTypeId": 4,
       "employmentTypeName": "Intelypro"
     },
-    "gender": "F",
+    "gender": {
+      "id": 2,
+      "name": "Female"
+    },
+    "rating": 3,
     "email": "yen.chin@gmail.com",
     "phone": "236-533-654-855",
     "hireDate": "2019-05-25",
+    "birthDate": "1994-12-27",
+    "ssn": "245-343-4346",
+    "location":  {
+      "id": 12334567434,
+      "value": "Unit B",
+      "requiredStaff": 12
+    },
     "staffType": {
       "staffTypeId": 2,
       "staffTypeName": "CNA"

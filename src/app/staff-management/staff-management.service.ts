@@ -7,6 +7,12 @@ import {tap} from 'rxjs/operators';
 import {FuseSidebarComponent} from '@theme/components/sidebar/sidebar.component';
 import {ShiftType} from '../models/ShiftType';
 import {Days} from '../models/Days';
+import {Gender} from '../models/Gender';
+import {StaffShifts} from '../models/StaffShifts';
+import {Contact} from '../models/Contact';
+import {WorkEligibility} from '../models/WorkEligibility';
+import {Document} from '../models/Document';
+import {Rating} from '../models/Rating';
 
 
 @Injectable({
@@ -17,6 +23,7 @@ export class StaffManagementService {
   public static ADD_STAFF = 'addStaff';
   public staffChange: Subject<{ staffMember: AllStaff, viewType: string, shifts: ShiftType[], days: Days[] }> = new Subject();
   public updateStaffTable: Subject<boolean> = new Subject();
+  public profileClicked: Subject<AllStaff> = new Subject();
   private _sidebarName = 'staffManagement';
   private _sidebar: FuseSidebarComponent;
 
@@ -29,15 +36,12 @@ export class StaffManagementService {
     let staff: AllStaff[] = JSON.parse(localStorage.getItem('staffDirectory'));
 
     if (staff !== undefined && staff != null) {
-      // console.log(staff);
+
       return Observable.create((observer: Subscriber<any>) => {
         observer.next(staff);
         observer.complete();
       });
 
-      // const arraySource = from(staff);
-      // this.next(staff);
-      // arraySource.subscribe(val => console.log(val));
     } else {
       return this._http.get<AllStaff[]>('assets/random-data/allStaff.json')
         .pipe(
@@ -51,6 +55,10 @@ export class StaffManagementService {
           })
         );
     }
+  }
+
+  getClickedProfile(): Observable<AllStaff> {
+    return this.profileClicked.asObservable();
   }
 
   saveStaffMember(staffMember: AllStaff): any {
@@ -93,6 +101,30 @@ export class StaffManagementService {
   openEditStaffPanel(shifts: ShiftType[], days: Days[], staffMember: AllStaff) {
     this._openIfClosed();
     this.staffChange.next({ staffMember: staffMember, viewType: StaffManagementService.ADD_STAFF, shifts: shifts, days: days });
+  }
+
+  getStaffMemberUpcomingShifts(id: number): Observable<StaffShifts[]> {
+    return this._http.get<StaffShifts[]>('assets/random-data/upcomingStaffShifts.json');
+  }
+
+  getStaffMemberRecentShifts(id: number): Observable<StaffShifts[]> {
+    return this._http.get<StaffShifts[]>('assets/random-data/recentStaffShifts.json');
+  }
+
+  getStaffContacts(id: number): Observable<Contact[]> {
+    return this._http.get<Contact[]>('assets/random-data/contacts.json');
+  }
+
+  getDocuments(id: number): Observable<Document[]> {
+    return this._http.get<Document[]>('assets/random-data/documents.json');
+  }
+
+  getWorkEligibilityData(id: number): Observable<WorkEligibility[]> {
+    return this._http.get<WorkEligibility[]>('assets/random-data/workEligibility.json');
+  }
+
+  getstaffMemberRatingHistory(id: number): Observable<Rating[]> {
+    return this._http.get<Rating[]>('assets/random-data/ratings.json');
   }
 
   closePanel() {
