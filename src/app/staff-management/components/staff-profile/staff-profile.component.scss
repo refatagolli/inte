@@ -245,6 +245,48 @@
           line-height: 18px;
         }
       }
+
+      .save-user {
+        margin-left: 25px;
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        font-family: OpenSans-SemiBold;
+        font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: -0.67px;
+      }
+
+      .cancel-save {
+        margin-left: 25px;
+        color: rgb(25, 134, 185);
+        font-size: 16px;
+        font-family: OpenSans-SemiBold;
+        font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: -0.67px;
+        cursor: pointer;
+      }
+
+      .notes-label {
+        margin-left: 25px;
+        color: rgb(114, 128, 138);
+        font-size: 16px;
+        font-family: OpenSans-SemiBold;
+        font-weight: 600;
+        letter-spacing: -0.49px;
+      }
+
+      .notes-area {
+        background-color: inherit;
+        padding: 10px;
+        margin-left: 25px;
+        width: 654.42px;
+        height: 76px;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 2px;
+      }
     }
 
     .custom-collapsed-profile {

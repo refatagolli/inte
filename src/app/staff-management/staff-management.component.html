@@ -83,7 +83,10 @@
 
     <ng-template #tpl let-element>
       <div class="mat-row detail-row" [@detailExpand] style="overflow: hidden">
-        <app-staff-profile *ngIf="element.employmentType.employmentTypeId !== 4" [staffMember]="element" [shifts]="shiftTypes" [days]="days" (removed)="staffService.profileClicked.next(element)"></app-staff-profile>
+        <app-staff-profile *ngIf="element.employmentType.employmentTypeId !== 4"
+                           [staffMember]="element" [shifts]="shiftTypes" [days]="days" [staffTypes]="staffTypes"
+                           [employmentTypes]="employmentTypes" [genderTypes]="genderTypes" [unit]="units"
+                           (removed)="staffService.profileClicked.next(element)"></app-staff-profile>
         <app-intelypro-profile *ngIf="element.employmentType.employmentTypeId === 4" [staffMember]="element" [shifts]="shiftTypes" (removed)="staffService.profileClicked.next(element)"></app-intelypro-profile>
       </div>
     </ng-template>

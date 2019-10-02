@@ -127,6 +127,37 @@ export class StaffManagementService {
     return this._http.get<Rating[]>('assets/random-data/ratings.json');
   }
 
+  updateNotes(staffId: number, note: string) {
+    let staffs: AllStaff[] = JSON.parse(localStorage.getItem('staffDirectory'));
+
+    let staffMember = null;
+    if (staffs === undefined && staffs == null) {
+      staffs = [];
+    }
+
+    if (staffId) {
+      let index = 0, i = 0;
+      staffs.forEach(staff => {
+        if (staff.id === staffId) {
+          i = index;
+          staffMember = staff;
+          staffMember.notes = note;
+        }
+        index++;
+      });
+      staffs[i] = staffMember;
+    }
+
+    localStorage.setItem('staffDirectory', JSON.stringify(staffs));
+
+    const resp: any = {
+      success : true,
+      message : 'Note was updated successfully'
+    };
+
+    return resp;
+  }
+
   closePanel() {
     if (this._sidebar.opened) {
       this._sidebareService.getSidebar(this._sidebarName).toggleOpen();

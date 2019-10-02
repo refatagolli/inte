@@ -73,7 +73,7 @@ export class IntelyproProfileComponent implements OnInit {
   viewRatingsPanel() {
     this.dialog.open(RatingHistoryComponent
       , {
-        width: '450px',
+        width: '650px',
         data: {
           id: this.staffMember.id
         }

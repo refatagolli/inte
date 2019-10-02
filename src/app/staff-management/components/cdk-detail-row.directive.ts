@@ -7,7 +7,7 @@ import {StaffManagementService} from '../staff-management.service';
 export class CdkDetailRowDirective {
   private row: any;
   private tRef: TemplateRef<any>;
-  private opened: boolean;
+  private opened = false;
 
   @HostBinding('class.expanded')
   get expended(): boolean {
@@ -40,15 +40,17 @@ export class CdkDetailRowDirective {
       .pipe()
       .subscribe(item => {
         if (this.row === item || ((this.row !== item) && this.opened)) {
-          this.onClick();
+          this.onClick(item);
         }
     });
   }
 
   // @HostListener('click')
-  onClick(): void {
+  onClick(item: any): void {
     this.toggle();
-    this.valueChange.next({ 'row' : this.row, 'opened' : this.opened } );
+    if (this.row === item) {
+      this.valueChange.next({ 'row' : this.row, 'opened' : this.opened } );
+    }
   }
 
   toggle(): void {
