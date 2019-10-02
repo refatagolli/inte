@@ -64,6 +64,13 @@
                                    (selectionChange)="selectStaff($event)" [selected]="sel"></app-staff-card-expandable>
       </div>
 
+
+      <div fxFlex *ngIf="!staff.length" class="no-results" fxLayoutGap="18px"
+           fxLayoutAlign="center" fxLayout="column">
+        <img src="assets/NoResult.svg">
+        <span class="no-results-message">No Results</span>
+      </div>
+
       <div class="message" *ngIf="selectedStaff.length">
         <mat-form-field [appearance]="'outline'" fxFlex="1 1 auto">
           <textarea matInput [rows]="2" [formControl]="message"></textarea>

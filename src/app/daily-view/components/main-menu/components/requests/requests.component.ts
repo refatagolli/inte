@@ -24,7 +24,7 @@ export class RequestsComponent implements OnInit {
 
   ngOnInit() {
     this._dailyService.getRequests().subscribe(e => {
-      this.requests = e;
+      // this.requests = e;
       this._cdr.detectChanges();
     });
   }
