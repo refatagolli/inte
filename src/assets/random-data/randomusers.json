@@ -13,7 +13,8 @@
     "fullName": "John Doe",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -29,7 +30,8 @@
     "fullName": "Jenny Doe",
     "unit": "Unit B",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -45,7 +47,8 @@
     "fullName": "Joseph Thomson",
     "unit": "Unit C",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -61,7 +64,8 @@
     "fullName": "Aaron Hank",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -77,7 +81,8 @@
     "fullName": "Jane Ace",
     "unit": "Unit B",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -93,7 +98,8 @@
     "fullName": "Adam Adams",
     "unit": "Unit B",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -109,7 +115,8 @@
     "fullName": "Jessy Pinkman",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -125,7 +132,8 @@
     "fullName": "Anthony Kale",
     "unit": "Unit B",
     "notes": [],
-    "away": true
+    "away": true,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -141,7 +149,8 @@
     "fullName": "Jack Segal",
     "unit": "Unit C",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -157,7 +166,8 @@
     "fullName": "Joy Tribiani",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -173,7 +183,8 @@
     "fullName": "Chandler Bing",
     "unit": "Unit B",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -189,7 +200,8 @@
     "fullName": "Quentin Tarantino",
     "unit": "Unit C",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -205,7 +217,8 @@
     "fullName": "Peter Griffin",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -221,7 +234,8 @@
     "fullName": "Stewie Griffin",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -237,7 +251,8 @@
     "fullName": "Megg Griffin",
     "unit": "Unit A",
     "notes": [],
-    "away": true
+    "away": true,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -253,7 +268,8 @@
     "fullName": "Gregory House",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -269,7 +285,8 @@
     "fullName": "Grey Anthony",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -285,7 +302,8 @@
     "fullName": "Peter Peterson",
     "unit": "Unit A",
     "notes": [],
-    "away": true
+    "away": true,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -301,7 +319,8 @@
     "fullName": "Jesica Anderson",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -317,7 +336,8 @@
     "fullName": "James Nickelson",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -333,7 +353,8 @@
     "fullName": "John Dooran",
     "unit": "Unit C",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -349,7 +370,8 @@
     "fullName": "Andric Ivo",
     "unit": "Unit B",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -365,7 +387,8 @@
     "fullName": "Conan Cost",
     "unit": "Unit C",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -381,7 +404,8 @@
     "fullName": "Herin Bethea",
     "unit": "Unit B",
     "notes": [],
-    "away": true
+    "away": true,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -397,7 +421,8 @@
     "fullName": "Tom Astic",
     "unit": "Unit C",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -413,7 +438,8 @@
     "fullName": "Richard Tomson",
     "unit": "Unit B",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -429,7 +455,8 @@
     "fullName": "John Cash",
     "unit": "Unit C",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -445,7 +472,8 @@
     "fullName": "Jackie Tenery",
     "unit": "Unit B",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -461,7 +489,8 @@
     "fullName": "Elmer Hartman",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -477,7 +506,8 @@
     "fullName": "Simon Bolivar",
     "unit": "Unit C",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -493,7 +523,8 @@
     "fullName": "Simon Bolivar",
     "unit": "Unit B",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -509,7 +540,8 @@
     "fullName": "Simona Bolivar",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -525,7 +557,8 @@
     "fullName": "Aaron Jackie",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Part Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -541,7 +574,8 @@
     "fullName": "Brian Niels",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -557,7 +591,8 @@
     "fullName": "Ben Donovan",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -573,7 +608,8 @@
     "fullName": "Casie Casie",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -589,7 +625,8 @@
     "fullName": "Sam Cost",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Full Time"
   },
   {
     "phone": "(234) 324-2345",
@@ -605,7 +642,8 @@
     "fullName": "Niels Hang",
     "unit": "Unit A",
     "notes": [],
-    "away": false
+    "away": false,
+    "employmentType": "Per Diem"
   },
   {
     "phone": "(234) 324-2345",
@@ -621,6 +659,7 @@
     "fullName": "Sam Dunbar",
     "unit": "Unit A",
     "notes": [],
-    "away": true
+    "away": true,
+    "employmentType": "Part Time"
   }
 ]

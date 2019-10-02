@@ -14,7 +14,7 @@
   </div>
   <div class="staff-card-content" fxFlex="1 1 auto" fxLayout="column">
     <span class="bold-item title">{{staffMember.fullName | titlecase}}</span>
-    <span class="subtitle">{{staffMember.staffType}}</span>
+    <span class="subtitle">{{staffMember.employmentType}}</span>
   </div>
   <div class="staff-card-hours" *ngIf="!staffMember?.away || !showNotPresent">
     <span>{{ staffMember.hoursThisWeek}} hrs sched. this week</span>

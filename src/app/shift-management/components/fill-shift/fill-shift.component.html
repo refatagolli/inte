@@ -7,33 +7,37 @@
       </app-management-top-card>
     </div>
 
-    <div class="content" fxFlexFill fxLayoutGap="15px" fxLayout="column" fxFlex="0 1 auto" (mousewheel)="onScroll($event)">
+    <div class="content" fxFlexFill fxLayoutGap="15px" fxLayout="column" fxFlex="0 1 auto"
+         (mousewheel)="onScroll($event)">
       <br/>
 
       <div class="filter" fxFlex="0 1 auto">
-        <shift-management-filter (filterChange)="filter.next($event)" [selectedFilter]="filterOptions"></shift-management-filter>
+        <shift-management-filter (filterChange)="filter.next($event)"
+                                 [selectedFilter]="filterOptions"></shift-management-filter>
       </div>
 
       <div class="filter-options" fxLayout="column">
 
         <div fxFlex="1 1 auto">
-          <span class="total">{{total}} Results</span>
+          <span class="total">{{staff.length}} Results</span>
         </div>
 
-        <div fxLayout="row" *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">
-          <span class="f-message">{{shiftDetails.staffType | titlecase}}s not scheduled for this shift who work: &nbsp;</span>
+        <div fxLayout="row"
+             *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">
+          <span
+            class="f-message">{{shiftDetails.staffType | titlecase}}s not scheduled for this shift who work: &nbsp;</span>
 
           <div *ngIf="filterOptions?.shift">
             <div class="f-option" *ngFor="let s of filterOptions.shift">
-              <div>
-                <mat-icon (click)="removeFilterOpt('shift', u)">cancel</mat-icon> &nbsp;
+              <div  fxLayout="row" >
+                <mat-icon (click)="removeFilterOpt('shift', u)"fxLayoutAlign="center center">cancel</mat-icon>
                 <span>{{s}}</span>
               </div>
             </div>
           </div>
           <div *ngIf="filterOptions?.unit">
             <div class="f-option" *ngFor="let u of filterOptions.unit">
-              <mat-icon (click)="removeFilterOpt('unit', u)">cancel</mat-icon>
+              <mat-icon (click)="removeFilterOpt('unit', u)" fxLayoutAlign="center center">cancel</mat-icon>
               <span>{{u}}</span>
             </div>
           </div>
@@ -42,9 +46,12 @@
 
       <mat-divider></mat-divider>
 
-      <div class="useful-options" fxFlex *ngIf="sel.length">
-        <mat-checkbox class="opt left" [checked]="areAllChecked" (change)="toggleAll($event.checked)">Select All</mat-checkbox>
-        <button mat-button class="opt right" [matMenuTriggerFor]="sortBy">Sort By &nbsp; <mat-icon>arrow_drop_down</mat-icon></button>
+      <div class="useful-options" fxFlex="0 1 auto" *ngIf="sel.length">
+        <mat-checkbox class="opt left" [checked]="areAllChecked" (change)="toggleAll($event.checked)">Select All
+        </mat-checkbox>
+        <button mat-button class="opt right" [matMenuTriggerFor]="sortBy">Sort By &nbsp;
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
         <mat-menu #sortBy>
           <button mat-menu-item (click)="sortByField('hours')">Scheduled Hours</button>
           <button mat-menu-item (click)="sortByField('firstName')">FirstName</button>

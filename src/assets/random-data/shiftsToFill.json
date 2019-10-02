@@ -2,13 +2,13 @@
   {
     "shiftHours": "7AM-3PM",
     "unit": "Unit A",
-    "staffType": "Nurse",
+    "staffType": "Nurses",
     "shiftDate": "12/07/2019"
   },
   {
     "shiftHours": "7AM-3PM",
     "unit": "Unit A",
-    "staffType": "CNA",
+    "staffType": "CNAs",
     "shiftDate": "12/07/2019"
   },
   {
@@ -20,7 +20,7 @@
   {
     "shiftHours": "7AM-3PM",
     "unit": "Unit A",
-    "staffType": "CNA",
+    "staffType": "CNAs",
     "shiftDate": "12/07/2019"
   },
   {

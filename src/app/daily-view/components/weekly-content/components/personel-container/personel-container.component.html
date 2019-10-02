@@ -21,10 +21,19 @@
               </div>
 
               <div class="right" fxLayout="row" fxFlex>
-                <div class="date-cell" fxFlex="auto" *ngFor="let w of days" [ngClass]="{'removed-staff': el.away}"
-                     (click)="el.away ? fillShift(el, w) : openShiftDetails(el, w)">
+                <div class="date-cell" fxFlex="1 0 auto" *ngFor="let w of days; let i = index"
+                     [ngClass]="{'removed-staff':isAway(el, w)}"
+                     (click)="isAway(el, w)? fillShift(el, w.date) : isPresent(el, w)? openShiftDetails(el, w.date) : ''">
                   <div fxFlex="1 1 auto" fxLayoutAlign="center center">
-                    <mat-icon>fiber_manual_record</mat-icon>
+                    <div class="single-day"
+                      *ngIf="isAway(el, w) || (isPresent(el, w) && !hasPresentOnRight(el, w, i) && !hasPresentOnLeft(el, w, i))">
+                    </div>
+                    <div class="line" fxFlex
+                         [ngClass]="{middle: hasPresentOnLeft(el, w , i) && hasPresentOnRight(el, w, i)}"
+                         *ngIf="hasPresentOnLeft(el, w , i) || hasPresentOnRight(el, w, i)">
+                      <div class="inner-left" *ngIf="hasPresentOnLeft(el, w, i)"></div>
+                      <div class="inner-right" *ngIf="hasPresentOnRight(el, w, i)"></div>
+                    </div>
                   </div>
                 </div>
               </div>

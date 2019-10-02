@@ -14,7 +14,7 @@
           <card-system-shift-details [shiftDetails]="shift" [selectable]="true"
                                      (selectionChange)="shiftSelected($event, shift, i)"
                                      [selected] = "sel[i]"
-                                     *ngFor="let shift of openedShifts | async; let i = index"></card-system-shift-details>
+                                     *ngFor="let shift of openedShifts; let i = index"></card-system-shift-details>
         </div>
       </div>
     </div>

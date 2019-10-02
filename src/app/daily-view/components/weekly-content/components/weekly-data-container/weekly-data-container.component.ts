@@ -10,7 +10,7 @@ export class WeeklyDataContainerComponent implements OnInit {
 
   @Input() data: any;
   @Input() primaryField: any;
-  @Input() days: number[];
+  @Input() days: any[];
   @Input() shiftDetails: ShiftDetails;
 
   expanded = true;

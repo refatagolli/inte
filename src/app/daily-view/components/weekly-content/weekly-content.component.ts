@@ -4,7 +4,6 @@ import {DailyViewService} from '../../../services/daily-view.service';
 import {filter, flatMap, groupBy, map, mergeMap, switchMap, takeUntil, tap, toArray} from 'rxjs/operators';
 import {from, Observable, of, Subject, zip} from 'rxjs';
 import {ShiftDetails} from '../../../models/ShiftDetails';
-import {flatten} from '@angular/compiler';
 import {StaffMember} from '../../../models/StaffMember';
 import {MatSelect} from '@angular/material';
 
@@ -57,9 +56,11 @@ export class WeeklyContentComponent implements OnInit, OnDestroy {
 
   setWeekDays() {
     this.weekdays = [];
+    let n;
     let a = this.config.date.from;
     while (a < this.config.date.to) {
-      this.weekdays.push(a);
+      n = Math.round(Math.random() * 10);
+      this.weekdays.push({date: a, state: n < 2 ? 0 : n > 7 ? -1 : 1});
       a += 24 * 60 * 60 * 1000;
     }
   }

@@ -3,15 +3,21 @@
     Change Unit
   </mat-expansion-panel-header>
   <div class="change-unit-body" fxLayout="column" fxLayoutGap="12px">
-    <mat-selection-list [formControl]="unitToMove">
-      <mat-list-option *ngFor="let el of elements | async" [value]="el.value"> {{ el.value }}
-      </mat-list-option>
-    </mat-selection-list>
+    <mat-radio-group [(ngModel)]="unitToMove">
+      <mat-list role="list" fxLayout="column">
+        <mat-list-item role="listitem" *ngFor="let el of elements | async">
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+            <mat-radio-button [value]="el.value">{{ el.value }}</mat-radio-button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-radio-group>
     <div class="actions">
       <div class="actions-wrapper" fxFlex fxLayoutAlign="center">
-        <button mat-button class="action-button" [disabled]="!unitToMove.valid"
-        [ngClass]="unitToMove.valid ? 'complete' : 'disabled'" (click)="moveToUnit()"
-        >Move</button>
+        <button mat-button class="action-button" [disabled]="!unitToMove"
+                [ngClass]="unitToMove ? 'complete' : 'disabled'" (click)="moveToUnit()"
+        >Move
+        </button>
       </div>
     </div>
   </div>

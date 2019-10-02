@@ -31,4 +31,20 @@ export class PersonelContainerComponent implements OnInit {
   addStaff() {
     // console.log()
   }
+
+  isAway(el, w) {
+    return !!(w.state === -1 && (el.away || (el.fullName[0] - 12) > 20));
+  }
+
+  isPresent(el, w) {
+    return !!(w.state === 1 && (!el.away || (el.fullName[0] - 12) > 20));
+  }
+
+  hasPresentOnLeft(el, w, i) {
+    return this.isPresent(el, w) && !this.isAway(el, w) && (i > 0 && this.isPresent(el, this.days[i - 1]));
+  }
+
+  hasPresentOnRight(el, w, i) {
+    return this.isPresent(el, w) && !this.isAway(el, w) && (i < this.days.length - 1 && this.isPresent(el, this.days[i + 1]));
+  }
 }

@@ -52,7 +52,7 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
     merge(
       this.subject,
-      this.control.valueChanges.pipe(flatMap(e => (['q', e])))
+      this.control.valueChanges.pipe(map(e => (['q', e])))
     ).pipe(
       map(e => {
         this._filter[e[0]] = e[1];

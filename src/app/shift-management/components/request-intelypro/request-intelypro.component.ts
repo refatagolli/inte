@@ -1,9 +1,7 @@
-import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShiftDetails} from '../../../models/ShiftDetails';
 import {DailyViewService} from '../../../services/daily-view.service';
-import {Observable} from 'rxjs';
-import {MatCheckbox} from '@angular/material';
-import {flatMap, map} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'request-intelypro',
@@ -12,7 +10,7 @@ import {flatMap, map} from 'rxjs/operators';
 })
 export class RequestIntelyproComponent implements OnInit {
 
-  openedShifts: Observable<ShiftDetails[]>;
+  openedShifts: ShiftDetails[];
   selectedShifts: ShiftDetails[] = [];
 
   sel = [];
@@ -20,11 +18,14 @@ export class RequestIntelyproComponent implements OnInit {
   constructor(private _dailyService: DailyViewService) {
   }
 
+  get areAllSelected() {
+    return this.sel.filter(e => e).length === this.sel.length;
+  }
+
   ngOnInit() {
-    this.openedShifts = this._dailyService.getShiftsToFill().pipe(map(e => {
-      this.sel = e.map(a => false);
-      return e;
-    } ));
+    this._dailyService.getShiftsToFill().pipe(
+      tap(e => this.sel = e.map(a => false))
+    ).subscribe(e => this.openedShifts = e);
   }
 
   shiftSelected(insert: boolean, shift: ShiftDetails, i) {
@@ -35,7 +36,6 @@ export class RequestIntelyproComponent implements OnInit {
       this.selectedShifts.splice(this.selectedShifts.indexOf(shift), 1);
       this.sel[i] = false;
     }
-    console.log(this.sel);
   }
 
   sendRequest() {
@@ -43,16 +43,8 @@ export class RequestIntelyproComponent implements OnInit {
   }
 
   toggleAll(newValue: boolean) {
-    console.log(newValue);
-    this.sel = this.sel.map(e => {
-      e = true;
-      console.log(e);
-      return newValue;
-    });
-  }
-
-  get areAllSelected() {
-    return this.sel.filter(e => e).length === this.sel.length;
+    this.sel = this.sel.map(e => newValue);
+    this.selectedShifts = newValue ? [...this.openedShifts] : [];
   }
 
 }

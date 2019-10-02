@@ -37,16 +37,46 @@ $background_blue: #F7F9FB;
         border-right: 2px solid $background_blue;
         cursor: pointer;
 
-        .mat-icon {
-          color: #9fc53a;
+        .single-day {
+          width: 16px;
+          height: 16px;
+          border-radius: 8px;
+          background-color: #9fc53a;
+          position: absolute;
+
         }
 
         &.removed-staff {
           background-color: #FDE8E7;
           border: 1px solid #F5827E;
 
-          .mat-icon {
-            color: #D0381E;
+          .single-day {
+            background-color: #D0381E;
+          }
+        }
+
+        .line {
+          height: 12px;
+
+          .inner-left {
+            height: 12px;
+            width: 50%;
+            background-color: #9fc53a;
+            float: left;
+            border-radius: 0 6px 6px 0;
+          }
+
+          .inner-right {
+            height: 12px;
+            width: 50%;
+            background-color: #9fc53a;
+            float: right;
+            border-radius: 6px 0 0 6px;
+          }
+          &.middle {
+            .inner-left, .inner-right {
+              border-radius: unset;
+            }
           }
         }
       }
