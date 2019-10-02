@@ -74,4 +74,11 @@ export class SelectableButtonGroupComponent implements OnInit {
 
     return value;
   }
+
+  forceSetSelected(newValues, pushEvent?: boolean) {
+    this.selected = newValues;
+    if(pushEvent) {
+      this.valueChange.next(this.selected);
+    }
+  }
 }

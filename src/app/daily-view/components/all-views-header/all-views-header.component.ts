@@ -43,7 +43,7 @@ export class AllViewsHeaderComponent implements OnInit {
       this.dailyViewConfig = dailyViewConfig;
     });
 
-    this.goToToday();
+    this._setWeekly();
   }
 
   changeDateRange(dateRange: 'daily' | 'weekly' | 'monthly') {

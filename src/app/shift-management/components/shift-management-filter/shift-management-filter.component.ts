@@ -1,9 +1,20 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import {DynamicFloatingContentService} from '../../../shared/services/dynamic-floating-content.service';
 import {merge, Observable, Subject} from 'rxjs';
 import {DailyViewService} from '../../../services/daily-view.service';
-import {flatMap, map, toArray} from 'rxjs/operators';
+import {filter, flatMap, map, toArray} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
+import {SelectableButtonGroupComponent} from '../../../shared/componets/selectable-button-group/selectable-button-group.component';
 
 @Component({
   selector: 'shift-management-filter',
@@ -14,12 +25,10 @@ import {FormControl} from '@angular/forms';
 export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   @Output() filterChange: EventEmitter<{}> = new EventEmitter();
-  @Input() selectedFilter = {
-    unit: [],
-    shift: []
-  };
+  @Input() selectedFilter = {};
+  @ViewChild(SelectableButtonGroupComponent) selectableButtonBroup: SelectableButtonGroupComponent;
   searchOpened = false;
-  units: Observable<any>;
+  employmentType: Observable<any>;
   shifts: Observable<any>;
   control: FormControl = new FormControl('');
   subject: Subject<any[]> = new Subject();
@@ -31,11 +40,12 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.units = this._s.getUnits().pipe(
+    this.employmentType = this._s.getEmploymentTypes().pipe(
       flatMap(e => e),
+      filter(e => e.employmentTypeName !== 'Intelypro'),
       map(e => ({
-        name: e.value,
-        value: e.value
+        name: e.employmentTypeName,
+        value: e.employmentTypeName
       })),
       toArray()
     );
@@ -51,7 +61,7 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
     merge(
       this.subject,
-      this.control.valueChanges.pipe(flatMap(e => (['q', e])))
+      this.control.valueChanges.pipe(map(e => (['q', e])))
     ).pipe(
       map(e => {
         this._filter[e[0]] = e[1];
@@ -71,6 +81,11 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this._cdr.markForCheck();
+  }
+
+  forceSetFilter(newValues, pushEvent?: boolean) {
+    this.selectedFilter = newValues;
+    this.selectableButtonBroup.forceSetSelected(newValues, pushEvent);
   }
 
 }

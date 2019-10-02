@@ -10,4 +10,5 @@ export interface StaffMember {
   unit: string;
   phone: string;
   away: boolean;
+  employmentType: string;
 }

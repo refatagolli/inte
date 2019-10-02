@@ -62,7 +62,7 @@ $header_border_color: #cacaca;
       }
 
       .mat-icon {
-        font-size: 16px;
+        font-size: 19px;
         color: #999999;
         cursor: pointer;
       }
@@ -79,6 +79,17 @@ $header_border_color: #cacaca;
     .right {
       float: right;
       margin-right: 8px;
+    }
+  }
+
+  .no-results {
+
+    .no-results-message {
+      color: rgb(114, 128, 138);
+      font-family: Helvetica;
+      font-size: 16px;
+      letter-spacing: 0;
+      text-align: center;
     }
   }
 

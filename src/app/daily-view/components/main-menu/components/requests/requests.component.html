@@ -40,10 +40,16 @@
         </div>
       </div>
     </div>
+
+    <div class="no-requests" fxFlex fxLayoutAlign="center center"
+         fxLayout="column" fxLayoutGap="18px" *ngIf="!requests.length">
+      <img src="assets/images/no_responses_graphic.svg">
+      <span class="no-requests-message">You have no new requests</span>
+    </div>
   </mat-card-content>
 
-  <mat-card-actions align="center">
+  <mat-card-actions align="center" *ngIf="requests.length">
     <button mat-button class="action-button complete">View</button>
-    <button mat-button class="action-button partial" *ngIf="requests.length" (click)="openRequests()">View All</button>
+    <button mat-button class="action-button partial"(click)="openRequests()">View All</button>
   </mat-card-actions>
 </mat-card>

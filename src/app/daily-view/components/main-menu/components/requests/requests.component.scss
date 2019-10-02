@@ -1,89 +1,101 @@
-  .requests {
-    height: 270px;
-    min-width: 336px;
-    max-width: 400px;
+.requests {
+  height: 270px;
+  min-width: 336px;
+  max-width: 400px;
 
-    .mat-card-header {
-      border-bottom: 1px solid #FFFFFF;
-      padding-bottom: 5px;
+  .mat-card-header {
+    border-bottom: 1px solid #FFFFFF;
+    padding-bottom: 5px;
 
-      .mat-card-title {
-        color: rgb(114, 128, 138);
+    .mat-card-title {
+      color: rgb(114, 128, 138);
+      font-family: OpenSans-SemiBold;
+      font-size: 16px;
+      font-weight: 600;
+      height: 23px;
+      letter-spacing: 0;
+      line-height: 19px;
+    }
+  }
+
+  .mat-card-content {
+    height: 140px;
+
+    .counter {
+      position: relative;
+
+      .marker {
+        color: #1885b7;
         font-family: OpenSans-SemiBold;
         font-size: 16px;
         font-weight: 600;
-        height: 23px;
+        height: 44px;
         letter-spacing: 0;
-        line-height: 19px;
       }
-    }
+      .pager {
+        position: absolute;
+        top: 0;
+        right: 0;
 
-    .mat-card-content {
-      height: 140px;
-
-      .counter {
-        position: relative;
-
-        .marker {
-          color: #1885b7;
-          font-family: OpenSans-SemiBold;
+        button {
+          width: 24px;
+          height: 24px;
           font-size: 16px;
-          font-weight: 600;
-          height: 44px;
-          letter-spacing: 0;
-        }
-        .pager {
-          position: absolute;
-          top: 0;
-          right: 0;
+          padding: 0;
+          margin: 0;
+          background-color: transparent;
+          border: 1px solid #9EA1A9;
+          cursor: pointer;
 
-          button {
-            width: 24px;
-            height: 24px;
-            font-size: 16px;
-            padding: 0;
-            margin: 0;
-            background-color: transparent;
-            border: 1px solid #9EA1A9;
-            cursor: pointer;
-
-            .mat-icon {
-              font-size: 21px;
-            }
+          .mat-icon {
+            font-size: 21px;
           }
         }
       }
-
-      .content-wrapper {
-        color: rgb(114, 128, 138);
-        font-family: OpenSans-Regular;
-        font-size: 16px;
-        font-weight: normal;
-        height: 66px;
-        letter-spacing: 0;
-        padding: 15px 0;
-      }
     }
 
-    .responses {
-      font-style: italic;
-      font-size: 14px;
-      font-weight: 600;
+    .content-wrapper {
+      color: rgb(114, 128, 138);
+      font-family: OpenSans-Regular;
+      font-size: 16px;
+      font-weight: normal;
+      height: 66px;
       letter-spacing: 0;
+      padding: 15px 0;
+    }
 
-      span {
-        white-space:nowrap;
-      }
-      .rejected {
-        color: #d0021b;
-      }
+    .no-requests {
+      padding-top: 50px;
 
-      .accepted {
-        color: #9fc53a;
-      }
-
-      .pending {
-        color: #1785b8;
+      .no-requests-message {
+        color: rgb(114, 128, 138);
+        font-size: 16px;
+        font-weight: normal;
+        letter-spacing: 0;
+        text-align: center;
       }
     }
   }
+
+  .responses {
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+
+    span {
+      white-space: nowrap;
+    }
+    .rejected {
+      color: #d0021b;
+    }
+
+    .accepted {
+      color: #9fc53a;
+    }
+
+    .pending {
+      color: #1785b8;
+    }
+  }
+}

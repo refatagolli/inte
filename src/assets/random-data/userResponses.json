@@ -13,7 +13,8 @@
     "fullName": "Jenny Doe",
     "unit": "Unit A",
     "notes": [],
-    "response": "accept"
+    "response": "accept",
+    "employmentType": "Full Time"
   },
   {
     "phone": "234-324-234",
@@ -29,7 +30,8 @@
     "fullName": "Ben Dover",
     "unit": "Unit A",
     "notes": [],
-    "response": "reject"
+    "response": "reject",
+    "employmentType": "Full Time"
   },
   {
     "phone": "234-324-234",
@@ -45,7 +47,8 @@
     "fullName": "John Doe",
     "unit": "Unit A",
     "notes": [],
-    "response": "pending"
+    "response": "pending",
+    "employmentType": "Per Diem"
   },
   {
     "phone": "234-324-234",
@@ -61,7 +64,8 @@
     "fullName": "Joseph Thomson",
     "unit": "Unit A",
     "notes": [],
-    "response": "pending"
+    "response": "pending",
+    "employmentType": "Part Time"
   },
   {
     "phone": "234-324-234",
@@ -77,7 +81,8 @@
     "fullName": "Aaron Hank",
     "unit": "Unit A",
     "notes": [],
-    "response": "reject"
+    "response": "reject",
+    "employmentType": "Full Time"
   },
   {
     "phone": "234-324-234",
@@ -93,6 +98,7 @@
     "fullName": "Sam Dunbar",
     "unit": "Unit A",
     "notes": [],
-    "response": "accept"
+    "response": "accept",
+    "employmentType": "Part Time"
   }
 ]

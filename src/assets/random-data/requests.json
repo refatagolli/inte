@@ -3,7 +3,7 @@
     "shift": {
       "shiftHours": "3PM-11PM",
       "unit": "Unit A",
-      "staffType": "Nurse",
+      "staffType": "Nurses",
       "shiftDate": "12/07/2019"
     },
     "requests": {
@@ -16,7 +16,7 @@
     "shift": {
       "shiftHours": "3PM-11PM",
       "unit": "Unit A",
-      "staffType": "Nurse",
+      "staffType": "Nurses",
       "shiftDate": "12/07/2019"
     },
     "requests": {
@@ -29,7 +29,7 @@
     "shift": {
       "shiftHours": "3PM-11PM",
       "unit": "Unit A",
-      "staffType": "Nurse",
+      "staffType": "Nurses",
       "shiftDate": "12/07/2019"
     },
     "requests": {
@@ -42,7 +42,7 @@
     "shift": {
       "shiftHours": "3PM-11PM",
       "unit": "Unit A",
-      "staffType": "Nurse",
+      "staffType": "Nurses",
       "shiftDate": "12/07/2019"
     },
     "requests": {
@@ -55,7 +55,7 @@
     "shift": {
       "shiftHours": "3PM-11PM",
       "unit": "Unit A",
-      "staffType": "Nurse",
+      "staffType": "Nurses",
       "shiftDate": "12/07/2019"
     },
     "requests": {

@@ -1,8 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DailyViewService} from '../../../services/daily-view.service';
-import {tap} from 'rxjs/operators';
-import {FormControl} from '@angular/forms';
-import {CustomFormGroupValidators} from '../../../helpers/custom-validators/CustomFormGroupValidators';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -14,7 +11,7 @@ export class ChangeUnitComponent implements OnInit {
 
   @Output() unitMoved: EventEmitter<any> = new EventEmitter();
   public elements: Observable<any>;
-  public unitToMove: FormControl = new FormControl([], CustomFormGroupValidators.MinimumCheckboxesChecked(1));
+  public unitToMove: any;
   private _oldValue: string;
 
   constructor(private _dailyViewService: DailyViewService) {
@@ -23,9 +20,9 @@ export class ChangeUnitComponent implements OnInit {
   ngOnInit() {
     this.elements = this._dailyViewService.getUnits();
 
-    this.unitToMove.valueChanges.pipe(
-      tap(e => this._removeIfMoreThenOne(e)),
-    ).subscribe(e => console.log(e));
+    // this.unitToMove.valueChanges.pipe(
+    //   tap(e => this._removeIfMoreThenOne(e)),
+    // ).subscribe(e => console.log(e));
   }
 
   public moveToUnit() {

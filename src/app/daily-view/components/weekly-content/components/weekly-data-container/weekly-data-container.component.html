@@ -6,8 +6,10 @@
       <div class="data  weekly-left-column">
         <div class="data-wrapper" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
           <span class="title">{{data[primaryField === 'shift' ? 'shiftTime' : 'value']}}</span>
-          <div class="subtitle" fxLayout="row" fxLayoutAlign="center center">
-            <span>Census :</span> <input matInput [disabled]="false" value="16" class="census">
+          <div class="subtitle" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px"
+               (mouseover)="census.disabled = false"
+               (mouseout)="census.disabled = true">
+            <span>Census :</span> <input matInput #census [disabled]="true" value="16" class="census">
           </div>
         </div>
       </div>

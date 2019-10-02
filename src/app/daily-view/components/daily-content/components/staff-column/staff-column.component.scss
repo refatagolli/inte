@@ -15,11 +15,15 @@
     }
 
     .staff-column-subtitle {
-      font-size: 18px;
-      color: #cacaca;
 
+      span {
+        color: #cacaca;
+        font-size: 18px;
+      }
       .census {
-        text-decoration: underline;
+        padding: 5px;
+        width: 38px;
+        border: 1px solid #D3D4D5;
       }
     }
 

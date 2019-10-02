@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ShiftDetails} from '../../../models/ShiftDetails';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {of, Subject} from 'rxjs';
@@ -10,25 +10,29 @@ import {ShiftManagementFilterComponent} from '../shift-management-filter/shift-m
 @Component({
   selector: 'app-fill-shift-component',
   templateUrl: './fill-shift.component.html',
-  styleUrls: ['./fill-shift.component.scss']
+  styleUrls: ['./fill-shift.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() shiftDetails: ShiftDetails;
   @Input() replacing: StaffMember;
-  staff: StaffMember[];
-  staffList;
-  filter = new Subject<any>();
+  @ViewChild(ShiftManagementFilterComponent) shiftManagementFilter: ShiftManagementFilterComponent;
+  staff: StaffMember[] = [];
+  staffList: StaffMember[] = [];
   selectedStaff: StaffMember[] = [];
-  message: FormControl = new FormControl('', Validators.required);
-  filterOptions: any = {};
-  total: number;
-  shiftDetailsExpanded = true;
   sel = [];
-  @ViewChild(ShiftManagementFilterComponent) private _smf: ShiftManagementFilterComponent;
+
+  filter = new Subject<any>();
+  filterOptions: any = {};
+
+  shiftDetailsExpanded = true;
+
+  message: FormControl = new FormControl('', Validators.required);
+
   private _unsubscribeAll: Subject<any> = new Subject();
 
-  constructor(private _s: DailyViewService,
+  constructor(private _dailyService: DailyViewService,
               private _cdr: ChangeDetectorRef) {
   }
 
@@ -36,46 +40,41 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.sel.filter(e => e).length === this.sel.length;
   }
 
-  private static checkShift(s: any, shift: string[]) {
+  private static checkShift(s: StaffMember, shift: string[]) {
     if (!shift || shift.length < 1) {
       return true;
     }
     return shift.indexOf(s.shiftHours) > -1;
   }
 
-  private static checkUnit(s: any, unit: string[]) {
-    if (!unit || unit.length < 1) {
+  private static checkEmploymentType(s: StaffMember, employmentType: string[]) {
+    if (!employmentType || employmentType.length < 1) {
       return true;
     }
-    return unit.indexOf(s.unit) > -1;
+    return employmentType.indexOf(s.employmentType) > -1;
   }
 
-  private static checkQ(s: any, staffType: string) {
-    if (!staffType) {
+  private static checkQ(s: StaffMember, q: string) {
+    if (!q) {
       return true;
     }
-    return s.staffType.toLocaleLowerCase() === staffType.toLocaleLowerCase();
+    return s.fullName.toLocaleLowerCase().indexOf(q.toLocaleLowerCase()) > -1;
   }
 
   ngOnInit() {
 
     this._subscribeToFilterChanges();
 
-    this._s.getStaff().pipe(
+    this._dailyService.getStaff().pipe(
       flatMap(e => e),
-      filter((s: { staffType: string }) => s.staffType.toLocaleLowerCase() === this.shiftDetails.staffType.toLocaleLowerCase() + 's'),
+      filter(s =>
+        s.staffType.toLocaleLowerCase() === this.shiftDetails.staffType.toLocaleLowerCase() &&
+        s.shiftHours.toLocaleLowerCase() !== this.shiftDetails.shiftHours.toLocaleLowerCase()),
       toArray()
     ).subscribe(e => {
       this.staffList = e;
       this.message.setValue(this.getStaffMessage(this.shiftDetails.shiftHours, new Date(this.shiftDetails.shiftDate).toDateString()));
-
-      this.filterOptions = {
-        shift: [this.shiftDetails.shiftHours],
-        unit: [this.shiftDetails.unit]
-      };
-      this.total = e.length;
-      this.sel = e.map(a => false);
-      this.filter.next(this.filterOptions);
+      this.filter.next({});
     });
   }
 
@@ -93,7 +92,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   removeFilterOpt(key: string, u) {
     this.filterOptions[key].splice(this.filterOptions[key].indexOf(u), 1);
-    this._smf.subject.next([key, this.filterOptions[key]]);
+    this.filter.next(this.filterOptions);
   }
 
   onScroll($event) {
@@ -111,7 +110,9 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   sortByField(field: string) {
-    this.staff = this.staff.sort((first, next) => this._sortCondition(first, next, field));
+    const a = this.staff.sort((first, next) => this._sortCondition(first, next, field));
+    this.staff = [...a];
+    this._cdr.detectChanges();
   }
 
   private _sortCondition(first: StaffMember, next: StaffMember, field: string) {
@@ -128,7 +129,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
       case 'lastName':
         const fl = first.fullName.split(' ')[1];
         const nl = next.fullName.split(' ')[1];
-        condition = fl > nl ? 1 : f < n ? -1 : 0;
+        condition = fl > nl ? 1 : fl < nl ? -1 : 0;
         break;
       default:
         condition = 0;
@@ -138,6 +139,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _subscribeToFilterChanges() {
     this.filter.pipe(
+      tap(console.log),
       filter(e => this.staffList.length > 0),
       takeUntil(this._unsubscribeAll),
       tap(e => this.filterOptions = e),
@@ -146,15 +148,16 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
         delay(150),
         filter(s => {
           return FillShiftComponent.checkQ(s, this.filterOptions.q) &&
-            FillShiftComponent.checkUnit(s, this.filterOptions.unit) && FillShiftComponent.checkShift(s, this.filterOptions.shift);
+            FillShiftComponent.checkEmploymentType(s, this.filterOptions.employmentType) &&
+            FillShiftComponent.checkShift(s, this.filterOptions.shift);
         }),
         toArray()))
     ).subscribe((e: StaffMember[]) => {
-      console.log(e);
       this.staff = e;
-      this.total = e.length;
       this.sel = e.map(a => false);
       this.selectedStaff = [];
+
+      this._cdr.markForCheck();
     });
   }
 
