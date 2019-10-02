@@ -12,6 +12,8 @@ import {flatMap, takeWhile, tap} from 'rxjs/operators';
 import {AllStaff} from '../models/AllStaff';
 import {StaffManagementService} from './staff-management.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import {Gender} from '../models/Gender';
+import {Unit} from '../models/Unit';
 
 @Component({
   selector: 'app-staff-management',
@@ -35,8 +37,10 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   allRecords: AllStaff[] = [];
   appliedFilters: any[] = [];
   staffTypes: StaffType[] = [];
+  units: Unit[] = [];
   shiftTypes: ShiftType[] = [];
   employmentTypes: EmploymentType[] = [];
+  genderTypes: Gender[] = [];
   displayedColumns: string[] = ['lastName', 'employmentType.employmentTypeName', 'staffType.staffTypeName', 'shifts', 'phone', 'view'];
   days: Days[] = [];
   total = 0;
@@ -149,7 +153,13 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
         flatMap( e2 => this.dailyView.getEmploymentTypes().pipe(
           tap(e => this.employmentTypes = e),
           flatMap( e3 => this.dailyView.getDays().pipe(
-            tap(e => this.days = e)
+            tap(e => this.days = e),
+            flatMap(e4 => this.dailyView.getGenderTypes().pipe(
+              tap(e => this.genderTypes = e),
+              flatMap(e5 => this.dailyView.getUnits().pipe(
+                tap(e => this.units = e)
+              ))
+            ))
           ))
         ))
       ))

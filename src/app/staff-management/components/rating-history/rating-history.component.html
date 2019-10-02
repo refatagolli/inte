@@ -11,7 +11,35 @@
     <label class="customized-header">Rating History</label>
   </div>
   <mat-dialog-content>
-    
+    <div class="comment-wrapper" *ngFor="let rating of ratings; index as i;">
+      <div class="rating-header">
+        <div class="header-image">
+          <label class="initials">{{ rating.rater.firstName.substr(0, 1) +  rating.rater.lastName.substr(0, 1) }}</label>
+        </div>
+        <div class="header-text">
+          <label class="title-name">{{ rating.rater.firstName + " " + rating.rater.lastName}}</label>
+          <label class="title-facility">{{ rating.rater.location.value }}</label>
+        </div>
+      </div>
+      <br />
+      <div class="rating-stars">
+        <span *ngFor="let i of [1, 2, 3, 4 ,5];">
+          <i *ngIf="i <= rating.rate" class="material-icons main-star-icon">star</i>
+        </span>
+        <label class="date-custom-label">{{ rating.ratingDate | date: 'medium'  }}</label>
+      </div>
+      <div class="comments">
+        <mat-form-field appearance="outline" style="width: 400px;">
+          <textarea class="comment-style" matInput disabled
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="3"
+                    cdkAutosizeMaxRows="5"> {{ rating.comment }}</textarea>
+        </mat-form-field>
+      </div>
+      <hr *ngIf="i < (ratings.length - 1)" style="width: 100%" />
+    </div>
+
   </mat-dialog-content>
 </div>
 
