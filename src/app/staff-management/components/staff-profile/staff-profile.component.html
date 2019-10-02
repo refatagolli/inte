@@ -76,7 +76,7 @@
           </table>
           <ng-template #editProfile>
             <form [formGroup]="staffMemberForm">
-              <table class="profile-table">
+              <table class="profile-table profile-table-edit">
               <tr>
                 <td class="profile-table-headers">Staff Name</td>
                 <td class="profile-table-headers">Gender</td>
@@ -84,25 +84,23 @@
                 <td class="profile-table-headers">SSN</td>
                 <td class="profile-table-headers">Location</td>
                 <td class="profile-table-headers">Phone Number</td>
-                <td class="profile-table-headers">Email</td>
               </tr>
               <tr>
                 <td colspan="100%"></td>
               </tr>
               <tr>
                 <td class="profile-table-data">
-                  <mat-form-field appearance="outline">
-                    <input [ngStyle]="{'border-color' : (submitted && validateForm.name.errors) ? 'red' : ''}" matInput formControlName="fullName" placeholder="Full Name *">
-                  </mat-form-field>
-
-
-<!--                  <input [ngStyle]="{'border-color' : (submitted && validateForm.name.errors) ? 'red' : ''}"-->
-<!--                         type="text" formControlName="fullName"  placeholder="Full Name *" class="custom-text-input-1" />-->
+                  <div class="staff-name-edit">
+                    <mat-form-field class="staff-name-edit" appearance="outline">
+                    <input [ngStyle]="{'border-color' : (submitted && validateForm.name.errors) ? 'red' : ''}"
+                           formControlName="fullName" placeholder="Full Name *" matInput>
+                    </mat-form-field>
+                  </div>
                 </td>
                 <td class="profile-table-data">{{ staffMember.gender.name }}</td>
                 <td class="profile-table-data">
-                  <div class="date-wrapper">
-                    <mat-form-field appearance="outline" class="date-input">
+                  <div class="birthDate-edit">
+                    <mat-form-field appearance="outline">
                       <input [ngStyle]="{'border-color' : (submitted && (validateForm.birthDate.errors || validateForm.birthDate.status == 'INVALID')) ? 'red' : ''}" formControlName="birthDate" matInput placeholder="Choose a date" [matDatepicker]="picker">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
@@ -110,33 +108,26 @@
                   </div>
                 </td>
                 <td class="profile-table-data">
-                  <mat-form-field appearance="outline">
-                    <input matInput formControlName="ssn" placeholder="SSN">
-                  </mat-form-field>
-
-                  <!--                  <input [ngStyle]="{'border-color' : (submitted && validateForm.ssn.errors) ? 'red' : ''}"-->
-<!--                         type="text" formControlName="ssn" placeholder="Full Name *" class="custom-text-input-1" />-->
+                  <div class="ssn-edit">
+                    <mat-form-field appearance="outline">
+                      <input formControlName="ssn" placeholder="SSN" matInput>
+                    </mat-form-field>
+                  </div>
                 </td>
-                <td class="profile-table-data">{{ staffMember.location.value }}</td>
+                <td class="profile-table-data">{{ staffMember.location ? staffMember.location.value : ''}}</td>
                 <td class="profile-table-data">
-                  <mat-form-field appearance="outline">
-                    <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}"
-                           matInput formControlName="phone" mask='(000) 000-0000' placeholder="Phone Number *">
-                  </mat-form-field>
+                  <div class="phone-edit">
+                    <mat-form-field appearance="outline">
+                      <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}"
+                             matInput formControlName="phone" mask='(000) 000-0000' placeholder="Phone Number *">
+                    </mat-form-field>
+                  </div>
+                </td>
+
+
 <!--                  [validation]="true"-->
 <!--                  [dropSpecialCharacters]="false"-->
-<!--                  <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}" type="text"-->
-<!--                          formControlName="phone" placeholder="Phone Number *" mask='(000) 000-0000' class="custom-text-input-3" />-->
-                </td>
-                <td class="profile-table-data">
 
-                  <mat-form-field appearance="outline">
-                    <input [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}" matInput formControlName="email" placeholder="Email Address *">
-                  </mat-form-field>
-
-<!--                  <input type="text" [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"-->
-<!--                         formControlName="email" placeholder="Email Address *" class="custom-text-input-3" />-->
-                </td>
               </tr>
               <tr>
                 <td colspan="100%"></td>
@@ -145,16 +136,28 @@
                 <td colspan="100%"></td>
               </tr>
               <tr>
+                <td class="profile-table-headers">Email</td>
                 <td class="profile-table-headers">Staff Type</td>
                 <td class="profile-table-headers">Hire Date</td>
                 <td class="profile-table-headers">Employment Status</td>
-                <td class="profile-table-headers">Shifts</td>
-                <td colspan="3"></td>
+                <td class="profile-table-headers center-view">Shifts</td>
+                <td colspan="2"></td>
               </tr>
               <tr>
                 <td colspan="100%"></td>
               </tr>
               <tr>
+                <td class="profile-table-data">
+                  <div class="email-edit">
+                    <mat-form-field appearance="outline">
+                      <input [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}" matInput formControlName="email" placeholder="Email Address *">
+                    </mat-form-field>
+                  </div>
+
+
+                  <!--                  <input type="text" [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"-->
+                  <!--                         formControlName="email" placeholder="Email Address *" class="custom-text-input-3" />-->
+                </td>
                 <td class="profile-table-data">{{ staffMember.staffType.staffTypeName }}</td>
                 <td class="profile-table-data">
 <!--                  <div class="date-wrapper">-->
@@ -166,10 +169,10 @@
 <!--                  </div>-->
                 </td>
                 <td class="profile-table-data">{{ staffMember.employmentType.employmentTypeName }}</td>
-                <td class="profile-table-data">
-                  <div [innerHTML]="staffMember.shiftDaysString"></div>
+                <td class="profile-table-data center-view">
+                  <button (click)="viewShiftsPanel()" mat-button class="action-button complete">VIEW SHIFTS</button>
                 </td>
-                <td colspan="3"></td>
+                <td colspan="2"></td>
               </tr>
             </table>
               <button (click)="updateProfile()" mat-button class="action-button complete save-user">CONFIRM CHANGE</button>

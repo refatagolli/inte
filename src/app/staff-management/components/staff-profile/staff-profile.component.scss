@@ -223,6 +223,14 @@
       margin-left: 32px;
       margin-right: 32px;
 
+      .profile-table-edit {
+        padding-right: 40px;
+      }
+
+      .center-view {
+        text-align: center;
+      }
+
       .profile-table {
         width: 100%;
         margin: 25px !important;
@@ -284,6 +292,87 @@
         margin-left: 25px;
         width: 654.42px;
         height: 76px;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 2px;
+      }
+
+      .staff-name-edit {
+        //width: 169px;
+        //height: 56px;
+        //background-color: inherit;
+        //margin-bottom: 23px;
+        //border: 1px solid rgba(0, 0, 0, 0.12);
+        //border-radius: 2px;
+
+        ::ng-deep .mat-form-field {
+          width: 170px !important;
+          height: 50px !important;
+          background-color: inherit !important;
+          margin-bottom: 23px;
+        }
+      }
+
+      .ssn-edit {
+
+        ::ng-deep .mat-form-field {
+          width: 137px !important;
+          height: 50px !important;
+          background-color: inherit !important;
+          margin-bottom: 23px;
+        }
+      }
+
+      .phone-edit {
+
+        ::ng-deep .mat-form-field {
+          width: 157px !important;
+          height: 50px !important;
+          background-color: inherit !important;
+          margin-bottom: 23px;
+        }
+      }
+
+      .email-edit {
+
+        ::ng-deep .mat-form-field {
+          width: 170px !important;
+          height: 50px !important;
+          background-color: inherit !important;
+          margin-bottom: 23px;
+        }
+      }
+
+      .birthDate-edit {
+
+        ::ng-deep .mat-form-field {
+          width: 152px !important;
+          height: 50px !important;
+          background-color: inherit !important;
+          margin-bottom: 23px;
+        }
+
+      }
+
+      //input outline color
+      ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+        opacity: 0.1!important;
+      }
+
+      //mat-input focused color
+      ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+        opacity: 0.1!important;
+      }
+
+      // mat-input error outline color
+      ::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+        opacity: 0.1!important;
+      }
+
+
+      .hireDate-edit {
+        width: 169px;
+        height: 56px;
+        background-color: inherit;
         border: 1px solid rgba(0, 0, 0, 0.12);
         border-radius: 2px;
       }

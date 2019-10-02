@@ -86,12 +86,16 @@ export class StaffProfileComponent implements OnInit {
   get validateForm() { return this.staffMemberForm.controls; }
 
   initializeStaffProfileForm() {
+    let locationId = 0;
+    if (this.staffMember.location) {
+      locationId = this.staffMember.location.id;
+    }
     this.staffMemberForm = this.formBuilder.group({
       fullName: [this.staffMember.firstName + ' ' + this.staffMember.lastName, [Validators.required]],
       gender: [this.staffMember.gender.id, [Validators.required]],
       birthDate: [this.staffMember.birthDate],
       ssn: [this.staffMember.ssn],
-      location: [this.staffMember.location.id],
+      location: [locationId],
       phone: [this.staffMember.phone, [Validators.required]],
       email: [this.staffMember.email, [Validators.required, Validators.email]],
       staffType: [this.staffMember.staffType.staffTypeId, [Validators.required]],
@@ -99,10 +103,6 @@ export class StaffProfileComponent implements OnInit {
       employmentType: [this.staffMember.employmentType.employmentTypeId, [Validators.required]],
       notes: [this.staffMember.notes]
     });
-  }
-
-  updateProfile() {
-
   }
 
   cancelUpdate() {
@@ -115,6 +115,12 @@ export class StaffProfileComponent implements OnInit {
 
   handleTabChange(e) {
     this.selectedContent = this.showContentOptions[e.index];
+  }
+
+  openShiftMockup() {
+
+
+
   }
 
 }

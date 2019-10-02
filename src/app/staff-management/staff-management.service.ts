@@ -79,7 +79,8 @@ export class StaffManagementService {
       });
       staffs[i] = staffMember;
     } else {
-      staffMember.id = staffs.length + 1;
+
+      staffMember['id'] = staffs.length + 1;
       staffs.push(staffMember);
     }
 
