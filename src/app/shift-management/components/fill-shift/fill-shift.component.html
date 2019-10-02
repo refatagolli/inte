@@ -35,9 +35,9 @@
               </div>
             </div>
           </div>
-          <div *ngIf="filterOptions?.unit">
-            <div class="f-option" *ngFor="let u of filterOptions.unit">
-              <mat-icon (click)="removeFilterOpt('unit', u)" fxLayoutAlign="center center">cancel</mat-icon>
+          <div *ngIf="filterOptions?.employmentType">
+            <div class="f-option" *ngFor="let u of filterOptions.employmentType">
+              <mat-icon (click)="removeFilterOpt('employmentType', u)" fxLayoutAlign="center center">cancel</mat-icon>
               <span>{{u}}</span>
             </div>
           </div>
@@ -54,7 +54,7 @@
         </button>
         <mat-menu #sortBy>
           <button mat-menu-item (click)="sortByField('hours')">Scheduled Hours</button>
-          <button mat-menu-item (click)="sortByField('firstName')">FirstName</button>
+          <button mat-menu-item (click)="sortByField('firstName')">First Name</button>
           <button mat-menu-item (click)="sortByField('lastName')">Last Name</button>
         </mat-menu>
       </div>

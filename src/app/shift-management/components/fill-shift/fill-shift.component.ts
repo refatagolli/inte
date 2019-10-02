@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ShiftDetails} from '../../../models/ShiftDetails';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {of, Subject} from 'rxjs';
@@ -9,7 +9,8 @@ import {FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-fill-shift-component',
   templateUrl: './fill-shift.component.html',
-  styleUrls: ['./fill-shift.component.scss']
+  styleUrls: ['./fill-shift.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -107,8 +108,9 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   sortByField(field: string) {
-    this.staff = this.staff.sort((first, next) => this._sortCondition(first, next, field));
-    this._cdr.markForCheck();
+    const a = this.staff.sort((first, next) => this._sortCondition(first, next, field));
+    this.staff = [...a];
+    this._cdr.detectChanges();
   }
 
   private _sortCondition(first: StaffMember, next: StaffMember, field: string) {
@@ -125,7 +127,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
       case 'lastName':
         const fl = first.fullName.split(' ')[1];
         const nl = next.fullName.split(' ')[1];
-        condition = fl > nl ? 1 : f < n ? -1 : 0;
+        condition = fl > nl ? 1 : fl < nl ? -1 : 0;
         break;
       default:
         condition = 0;
@@ -154,7 +156,6 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
       this.selectedStaff = [];
 
       this._cdr.markForCheck();
-
     });
   }
 
