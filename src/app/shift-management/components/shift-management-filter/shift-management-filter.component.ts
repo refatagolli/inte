@@ -1,9 +1,20 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import {DynamicFloatingContentService} from '../../../shared/services/dynamic-floating-content.service';
 import {merge, Observable, Subject} from 'rxjs';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {filter, flatMap, map, toArray} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
+import {SelectableButtonGroupComponent} from '../../../shared/componets/selectable-button-group/selectable-button-group.component';
 
 @Component({
   selector: 'shift-management-filter',
@@ -14,10 +25,8 @@ import {FormControl} from '@angular/forms';
 export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   @Output() filterChange: EventEmitter<{}> = new EventEmitter();
-  @Input() selectedFilter = {
-    unit: [],
-    shift: []
-  };
+  @Input() selectedFilter = {};
+  @ViewChild(SelectableButtonGroupComponent) selectableButtonBroup: SelectableButtonGroupComponent;
   searchOpened = false;
   employmentType: Observable<any>;
   shifts: Observable<any>;
@@ -72,6 +81,11 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this._cdr.markForCheck();
+  }
+
+  forceSetFilter(newValues, pushEvent?: boolean) {
+    this.selectedFilter = newValues;
+    this.selectableButtonBroup.forceSetSelected(newValues, pushEvent);
   }
 
 }

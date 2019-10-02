@@ -1,10 +1,11 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ShiftDetails} from '../../../models/ShiftDetails';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {of, Subject} from 'rxjs';
 import {delay, filter, flatMap, takeUntil, tap, toArray} from 'rxjs/operators';
 import {StaffMember} from '../../../models/StaffMember';
 import {FormControl, Validators} from '@angular/forms';
+import {ShiftManagementFilterComponent} from '../shift-management-filter/shift-management-filter.component';
 
 @Component({
   selector: 'app-fill-shift-component',
@@ -16,7 +17,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() shiftDetails: ShiftDetails;
   @Input() replacing: StaffMember;
-
+  @ViewChild(ShiftManagementFilterComponent) shiftManagementFilter: ShiftManagementFilterComponent;
   staff: StaffMember[] = [];
   staffList: StaffMember[] = [];
   selectedStaff: StaffMember[] = [];
@@ -91,6 +92,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   removeFilterOpt(key: string, u) {
     this.filterOptions[key].splice(this.filterOptions[key].indexOf(u), 1);
+    this.filter.next(this.filterOptions);
   }
 
   onScroll($event) {
