@@ -12,6 +12,8 @@ import {ShiftDayCombinationsComponent} from '../shift-day-combinations/shift-day
 import {MatDialog} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Unit} from '../../../models/Unit';
+import {Observable} from 'rxjs';
+import {flatMap, map, toArray} from 'rxjs/operators';
 
 @Component({
   selector: 'app-staff-profile',
@@ -34,10 +36,25 @@ export class StaffProfileComponent implements OnInit {
   upcomingShifts: StaffShifts[];
   contacts: Contact[];
   staffMemberForm: FormGroup;
-  selectedGender: number;
-  selectedUnit: number;
-  selectedStaffType: number;
-  selectedEmpType: number;
+  selectedGender: string;
+  genderOptionOpened = false;
+  genderOptions: Observable<any>;
+  selectedUnit: string;
+  unitOptionOpened = false;
+  unitOptions: Observable<any>;
+  selectedStaffType: string;
+  staffTypeOptionOpened = false;
+  staffOptions: Observable<any>;
+  selectedEmpType: string;
+  empTypeOptionOpened = false;
+  employmentOptions: Observable<any>;
+
+
+  shiftOptions: Observable<any>;
+  dayOptions: Observable<any>;
+
+
+
   editPressed = false;
   submitted = false;
 
@@ -53,6 +70,16 @@ export class StaffProfileComponent implements OnInit {
     this.retrieveStaffContacts();
     this.initializeStaffProfileForm();
   }
+
+  // initializeDropDowns() {
+  //   this.genderOptions = this._dailyService.getGenderTypes().pipe(
+  //     flatMap(e => e),
+  //     map(e => ({
+  //       name: e.name,
+  //       value: e.id
+  //     })),
+  //     toArray());
+  // }
 
   retrieveRecentShifts() {
     this.staffManagementService.getStaffMemberRecentShifts(this.staffMember.id).pipe().subscribe(item => {

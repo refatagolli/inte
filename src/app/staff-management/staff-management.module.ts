@@ -13,6 +13,8 @@ import {StaffProfileModule} from './components/staff-profile/staff-profile.modul
 import { IntelyproProfileComponent } from './components/intelypro-profile/intelypro-profile.component';
 import {IntelyproProfileModule} from './components/intelypro-profile/intelypro-profile.module';
 import {ShiftDayCombinationsModule} from './components/shift-day-combinations/shift-day-combinations.module';
+import {NgxMaskModule} from 'ngx-mask';
+import {CustomOptionSetModule} from '../shared/componets/custom-option-set/custom-option-set.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {ShiftDayCombinationsModule} from './components/shift-day-combinations/sh
     StaffManagementSidebarsModule,
     StaffProfileModule,
     IntelyproProfileModule,
-    ShiftDayCombinationsModule
+    ShiftDayCombinationsModule,
+    NgxMaskModule,
+    CustomOptionSetModule
   ]
 })
 export class StaffManagementModule { }

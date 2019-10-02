@@ -67,7 +67,7 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    localStorage.setItem('staffDirectory', null);
+    // localStorage.setItem('staffDirectory', null);
 
     this.loadData();
     this.utils.setFilterConfiguration(this.filterConfig);

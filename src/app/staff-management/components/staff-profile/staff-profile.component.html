@@ -97,7 +97,25 @@
                     </mat-form-field>
                   </div>
                 </td>
-                <td class="profile-table-data">{{ staffMember.gender.name }}</td>
+                <td class="profile-table-data">
+
+
+                  <div class="gender-edit">
+                    <button (click)="genderOptionOpened = !genderOptionOpened" class="customised-radio-group">
+                      <span class="button-label">
+                        {{selectedGender}}
+                        <mat-icon *ngIf="!genderOptionOpened;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+                        <ng-template #shiftArrowUp>
+                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+                        </ng-template>
+                      </span>
+                    </button>
+                    <mat-card *ngIf="genderOptionOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+<!--                      <app-custom-option-set formControlName="gender" [multiple]="false" [elements]="genderTypes | async" [selectedRadioButton]="staffMember.gender"-->
+<!--                                             (valueChange)="staffMember.gender = $event;manageChosenData('radio', $event);"></app-custom-option-set>-->
+                    </mat-card>
+                  </div>
+                </td>
                 <td class="profile-table-data">
                   <div class="birthDate-edit">
                     <mat-form-field appearance="outline">
@@ -119,15 +137,10 @@
                   <div class="phone-edit">
                     <mat-form-field appearance="outline">
                       <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}"
-                             matInput formControlName="phone" mask='(000) 000-0000' placeholder="Phone Number *">
+                             matInput [validation]="true" [dropSpecialCharacters]="false" formControlName="phone" mask='(000) 000-0000' placeholder="Phone Number *">
                     </mat-form-field>
                   </div>
                 </td>
-
-
-<!--                  [validation]="true"-->
-<!--                  [dropSpecialCharacters]="false"-->
-
               </tr>
               <tr>
                 <td colspan="100%"></td>
@@ -150,23 +163,20 @@
                 <td class="profile-table-data">
                   <div class="email-edit">
                     <mat-form-field appearance="outline">
-                      <input [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}" matInput formControlName="email" placeholder="Email Address *">
+                      <input [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"
+                             matInput formControlName="email" placeholder="Email Address *">
                     </mat-form-field>
                   </div>
-
-
-                  <!--                  <input type="text" [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"-->
-                  <!--                         formControlName="email" placeholder="Email Address *" class="custom-text-input-3" />-->
                 </td>
                 <td class="profile-table-data">{{ staffMember.staffType.staffTypeName }}</td>
                 <td class="profile-table-data">
-<!--                  <div class="date-wrapper">-->
-<!--                    <mat-form-field appearance="outline" class="date-input">-->
-<!--                      <input [ngStyle]="{'border-color' : (submitted && (validateForm.hireDate.errors || validateForm.hireDate.status == 'INVALID')) ? 'red' : ''}" formControlName="hireDate" matInput placeholder="Choose a date" [matDatepicker]="picker">-->
-<!--                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-<!--                      <mat-datepicker #picker></mat-datepicker>-->
-<!--                    </mat-form-field>-->
-<!--                  </div>-->
+                  <div class="birthDate-edit">
+                    <mat-form-field appearance="outline">
+                      <input formControlName="hireDate" matInput placeholder="Choose a date" [matDatepicker]="hireDatePicker">
+                      <mat-datepicker-toggle matSuffix [for]="hireDatePicker"></mat-datepicker-toggle>
+                      <mat-datepicker #hireDatePicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
                 </td>
                 <td class="profile-table-data">{{ staffMember.employmentType.employmentTypeName }}</td>
                 <td class="profile-table-data center-view">

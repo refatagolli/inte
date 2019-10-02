@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MaterialModule} from '../../../shared/material.module';
 import {SharedModule} from '../../../shared/shared.module';
-import {NgxMaskModule} from 'ngx-mask';
-import {options} from '../add-staff/add-staff.module';
+import {NgxMaskModule, IConfig} from 'ngx-mask';
+export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
   declarations: [],
