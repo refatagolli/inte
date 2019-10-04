@@ -1,0 +1,47 @@
+<div class="ah1-datepicker" fxFlex>
+
+  <div class="ah1-datepicker-header">
+    <div class="ah1-datepicker-header-wrapper" fxLayout="column">
+
+      <div class="operation-title" fxFlex fxLayoutAlign="center center">
+        <span>End</span>
+      </div>
+
+      <div class="date-info" fxLayout="row" fxLayoutGap="12px" fxFlex fxLayoutAlign="center center">
+
+        <div class="info month" fxLayoutAlign="center center">
+          <span> September</span>
+        </div>
+
+        <div class="info year" fxLayoutAlign="center center">
+          <span>2019</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ah1-datepicker-content">
+    <div class="ah1-datepicker-content-wrapper" fxLayout="column">
+
+      <div class="calendar-days" fxFlex>
+        <div class="calendar-days" fxFlex fxLayout="row">
+          <div class="calendar-day-cell" *ngFor="let d of calendarDays" fxFlex="auto" fxLayoutAlign="center center">
+            {{d}}
+          </div>
+        </div>
+      </div>
+
+      <div class="calendar-dates">
+        <div class="calendar-dates-wrapper">
+
+          <div class="calendar-dates-column" fxFlex fxLayout="column"></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

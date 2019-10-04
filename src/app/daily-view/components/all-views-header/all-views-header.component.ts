@@ -47,7 +47,7 @@ export class AllViewsHeaderComponent implements OnInit {
       this.dailyViewConfig = dailyViewConfig;
     });
 
-    this.changeDateRange('monthly');
+    this.changeDateRange('daily');
 
   }
 

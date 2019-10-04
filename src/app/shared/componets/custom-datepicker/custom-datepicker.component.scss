@@ -1,0 +1,44 @@
+.ah1-datepicker {
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  background-color: white;
+
+  .ah1-datepicker-header {
+    .operation-title, .month, .year {
+      color: rgb(25, 134, 185);
+      font-size: 20px;
+      font-weight: 600;
+      height: 27px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .operation-title {
+      padding: 18px;
+    }
+
+    .date-info {
+      .info {
+        border-radius: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        height: 48px;
+        padding: 12px;
+      }
+    }
+  }
+
+  .ah1-datepicker-content {
+    margin-top: 12px;
+    border-top: 1px solid #f3f3f3;
+    border-bottom: 1px solid #f3f3f3;
+
+    .ah1-datepicker-content-wrapper {
+      padding: 0 12px;
+
+      .calendar-days {
+
+      }
+    }
+  }
+}

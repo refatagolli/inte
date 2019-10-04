@@ -7,6 +7,7 @@ import {UserTasksModule} from './components/user-tasks/user-tasks.module';
 import {RequestIntelyproModule} from './components/request-intelypro/request-intelypro.module';
 import {ShiftsToFillModule} from './components/shifts-to-fill/shifts-to-fill.module';
 import {RequestsModule} from './components/requests/requests.module';
+import {CustomDatepickerModule} from '../../../shared/componets/custom-datepicker/custom-datepicker.module';
 
 @NgModule({
   declarations: [MainMenuComponent],
@@ -18,7 +19,8 @@ import {RequestsModule} from './components/requests/requests.module';
     UserTasksModule,
     RequestIntelyproModule,
     ShiftsToFillModule,
-    RequestsModule
+    RequestsModule,
+    CustomDatepickerModule
   ],
   exports: [
     MainMenuComponent
