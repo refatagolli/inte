@@ -23,6 +23,7 @@ export class StaffManagementService {
   public static ADD_STAFF = 'addStaff';
   public staffChange: Subject<{ staffMember: AllStaff, viewType: string, shifts: ShiftType[], days: Days[] }> = new Subject();
   public updateStaffTable: Subject<boolean> = new Subject();
+  public updateRow: Subject<AllStaff> = new Subject();
   public profileClicked: Subject<AllStaff> = new Subject();
   private _sidebarName = 'staffManagement';
   private _sidebar: FuseSidebarComponent;
@@ -32,6 +33,9 @@ export class StaffManagementService {
     private _sidebareService: FuseSidebarService
   ) { }
 
+  getUpdatedRow(): Observable<AllStaff> {
+    return this.updateRow.asObservable();
+  }
   getStaffMembers(): Observable<AllStaff[]> {
     let staff: AllStaff[] = JSON.parse(localStorage.getItem('staffDirectory'));
 
@@ -82,6 +86,34 @@ export class StaffManagementService {
 
       staffMember['id'] = staffs.length + 1;
       staffs.push(staffMember);
+    }
+
+    localStorage.setItem('staffDirectory', JSON.stringify(staffs));
+
+    const resp: any = {
+      success : true,
+      message : 'User saved successfully'
+    };
+
+    return resp;
+  }
+
+  updateStaffMember(staffMember: AllStaff): any {
+    let staffs: AllStaff[] = JSON.parse(localStorage.getItem('staffDirectory'));
+
+    if (staffs === undefined && staffs == null) {
+      staffs = [];
+    }
+
+    if (staffMember.id) {
+      let index = 0, i = 0;
+      staffs.forEach(staff => {
+        if (staff.id === staffMember.id) {
+          i = index;
+        }
+        index++;
+      });
+      staffs[i] = staffMember;
     }
 
     localStorage.setItem('staffDirectory', JSON.stringify(staffs));

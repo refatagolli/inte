@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {ShiftDayCombinationsComponent} from './shift-day-combinations.component';
 import {SharedModule} from '../../../shared/shared.module';
 import {MaterialModule} from '../../../shared/material.module';
+import {CustomOptionSetModule} from '../../../shared/componets/custom-option-set/custom-option-set.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {MaterialModule} from '../../../shared/material.module';
   imports: [
     CommonModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    CustomOptionSetModule
   ],
   exports: [
     ShiftDayCombinationsComponent

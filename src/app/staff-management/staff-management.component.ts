@@ -1,6 +1,6 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource, MatSort} from '@angular/material';
-import {Subject, Observable} from 'rxjs';
+import {Subject} from 'rxjs';
 import {UtilsService} from '../services/utils/utils.service';
 import {FilterConfiguration} from '../models/FilterConfiguration';
 import {DailyViewService} from '../services/daily-view.service';
@@ -8,7 +8,7 @@ import {StaffType} from '../models/StaffType';
 import {ShiftType} from '../models/ShiftType';
 import {EmploymentType} from '../models/EmploymentType';
 import {Days} from '../models/Days';
-import {flatMap, takeWhile, tap} from 'rxjs/operators';
+import {flatMap, tap} from 'rxjs/operators';
 import {AllStaff} from '../models/AllStaff';
 import {StaffManagementService} from './staff-management.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -60,7 +60,8 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   constructor(
     private utils: UtilsService,
     private dailyView: DailyViewService,
-    private staffService: StaffManagementService
+    private staffService: StaffManagementService,
+    private changeDetectorRefs: ChangeDetectorRef
               ) { }
 
   @ViewChild(MatSort) sort: MatSort;
@@ -145,7 +146,6 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
   }
 
   private loadData() {
-
     this.dailyView.getShiftTypes().pipe(
       tap(e => this.shiftTypes = e),
       flatMap(e1 => this.dailyView.getStaffTypes().pipe(
@@ -173,7 +173,7 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
       this.total = data.length;
       this.filtered = data.length;
       this.allRecords = data;
-      const ds = [];
+      // const ds = [];
 
       this.dataSource = new MatTableDataSource<AllStaff>(data);
       this.dataSource.sortingDataAccessor = this.sortingDataAccessor;
@@ -202,6 +202,23 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
 
         staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 6);
       });
+    });
+  }
+
+  updateUser(e) {
+    this.staffService.profileClicked.next(e);
+    const dt: AllStaff[] = this.dataSource.data;
+    let index = 0;
+    dt.forEach(item => {
+      if (item.id === e.id) {
+        dt[index] = e;
+        this.dataSource.data = dt;
+        const that = this;
+        setTimeout(function () {
+          that.staffService.profileClicked.next(e);
+        }, 500);
+      }
+      index++;
     });
   }
 
@@ -295,9 +312,9 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
     this.staffService.openAddStaffPanel(this.shiftTypes, this.days);
   }
 
-  editStaff(staffMember: AllStaff) {
-    this.staffService.openEditStaffPanel(this.shiftTypes, this.days, staffMember);
-  }
+  // editStaff(staffMember: AllStaff) {
+  //   this.staffService.openEditStaffPanel(this.shiftTypes, this.days, staffMember);
+  // }
 
   check (e) {
     console.log(e);

@@ -92,27 +92,26 @@
                 <td class="profile-table-data">
                   <div class="staff-name-edit">
                     <mat-form-field class="staff-name-edit" appearance="outline">
-                    <input [ngStyle]="{'border-color' : (submitted && validateForm.name.errors) ? 'red' : ''}"
+                    <input [ngStyle]="{'border-color' : (submitted && validateForm.fullName.errors) ? 'red' : ''}"
                            formControlName="fullName" placeholder="Full Name *" matInput>
                     </mat-form-field>
                   </div>
                 </td>
                 <td class="profile-table-data">
-
-
-                  <div class="gender-edit">
-                    <button (click)="genderOptionOpened = !genderOptionOpened" class="customised-radio-group">
+                  <div class="radio-edit">
+                    <button (click)="genderOptionOpened = !genderOptionOpened;allCardsCleared = false" class="customised-radio-group">
                       <span class="button-label">
                         {{selectedGender}}
-                        <mat-icon *ngIf="!genderOptionOpened;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
-                        <ng-template #shiftArrowUp>
-                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
-                        </ng-template>
+<!--                        *ngIf="!genderOptionOpened;else shiftArrowUp"-->
+                        <mat-icon class="arrow-drop-up">arrow_drop_down</mat-icon>
+<!--                        <ng-template #shiftArrowUp>-->
+<!--                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>-->
+<!--                        </ng-template>-->
                       </span>
                     </button>
                     <mat-card *ngIf="genderOptionOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
-<!--                      <app-custom-option-set formControlName="gender" [multiple]="false" [elements]="genderTypes | async" [selectedRadioButton]="staffMember.gender"-->
-<!--                                             (valueChange)="staffMember.gender = $event;manageChosenData('radio', $event);"></app-custom-option-set>-->
+                      <app-custom-option-set [multiple]="false" [elements]="genderOptions | async" [selectedRadioButton]="staffMemberForm.controls.gender.value"
+                                             (valueChange)="manageChosenData('gender', $event);"></app-custom-option-set>
                     </mat-card>
                   </div>
                 </td>
@@ -132,7 +131,24 @@
                     </mat-form-field>
                   </div>
                 </td>
-                <td class="profile-table-data">{{ staffMember.location ? staffMember.location.value : ''}}</td>
+                <td class="profile-table-data">
+                  <div class="radio-edit">
+                    <button (click)="unitOptionOpened = !unitOptionOpened;allCardsCleared = false" class="customised-radio-group">
+                      <span class="button-label">
+                        {{selectedUnit}}
+<!--                        *ngIf="!unitOptionOpened;else shiftArrowUp"-->
+                        <mat-icon [ngClass]="selectedUnit === '' ? 'arrow-alignment' : ''" class="arrow-drop-up">arrow_drop_down</mat-icon>
+<!--                        <ng-template #shiftArrowUp>-->
+<!--                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>-->
+<!--                        </ng-template>-->
+                      </span>
+                    </button>
+                    <mat-card *ngIf="unitOptionOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                      <app-custom-option-set [multiple]="false" [required]="false" [elements]="unitOptions | async" [selectedRadioButton]="staffMemberForm.controls.location.value"
+                                             (valueChange)="manageChosenData('unit', $event);"></app-custom-option-set>
+                    </mat-card>
+                  </div>
+                </td>
                 <td class="profile-table-data">
                   <div class="phone-edit">
                     <mat-form-field appearance="outline">
@@ -168,7 +184,24 @@
                     </mat-form-field>
                   </div>
                 </td>
-                <td class="profile-table-data">{{ staffMember.staffType.staffTypeName }}</td>
+                <td class="profile-table-data">
+                  <div class="radio-edit">
+                    <button (click)="staffTypeOptionOpened = !staffTypeOptionOpened;allCardsCleared = false" class="customised-radio-group">
+                      <span class="button-label">
+                        {{selectedStaffType}}
+<!--                        *ngIf="!staffTypeOptionOpened;else shiftArrowUp"-->
+                        <mat-icon class="arrow-drop-up">arrow_drop_down</mat-icon>
+<!--                        <ng-template #shiftArrowUp>-->
+<!--                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>-->
+<!--                        </ng-template>-->
+                      </span>
+                    </button>
+                    <mat-card *ngIf="staffTypeOptionOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                      <app-custom-option-set [multiple]="false" [elements]="staffOptions | async" [selectedRadioButton]="staffMemberForm.controls.staffType.value"
+                                             (valueChange)="manageChosenData('staff', $event);"></app-custom-option-set>
+                    </mat-card>
+                  </div>
+                </td>
                 <td class="profile-table-data">
                   <div class="birthDate-edit">
                     <mat-form-field appearance="outline">
@@ -178,14 +211,31 @@
                     </mat-form-field>
                   </div>
                 </td>
-                <td class="profile-table-data">{{ staffMember.employmentType.employmentTypeName }}</td>
+                <td class="profile-table-data">
+                  <div class="radio-edit">
+                    <button (click)="empTypeOptionOpened = !empTypeOptionOpened;allCardsCleared = false" class="customised-radio-group">
+                      <span class="button-label">
+                        {{selectedEmpType}}
+<!--                        *ngIf="!empTypeOptionOpened;else shiftArrowUp"-->
+                        <mat-icon class="arrow-drop-up">arrow_drop_down</mat-icon>
+<!--                        <ng-template #shiftArrowUp>-->
+<!--                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>-->
+<!--                        </ng-template>-->
+                      </span>
+                    </button>
+                    <mat-card *ngIf="empTypeOptionOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                      <app-custom-option-set [multiple]="false" [elements]="employmentOptions | async" [selectedRadioButton]="staffMemberForm.controls.employmentType.value"
+                                             (valueChange)="manageChosenData('employment', $event);"></app-custom-option-set>
+                    </mat-card>
+                  </div>
+                </td>
                 <td class="profile-table-data center-view">
                   <button (click)="viewShiftsPanel()" mat-button class="action-button complete">VIEW SHIFTS</button>
                 </td>
                 <td colspan="2"></td>
               </tr>
             </table>
-              <button (click)="updateProfile()" mat-button class="action-button complete save-user">CONFIRM CHANGE</button>
+              <button type="button" (click)="updateStaffMember()" mat-button class="action-button complete save-user">CONFIRM CHANGE</button>
               <a class="cancel-save" (click)="cancelUpdate()">CANCEL</a>
               <br />
               <br />
@@ -327,3 +377,6 @@
     </mat-card-content>
   </mat-card>
 </div>
+<div class="overlay" *ngIf="!allCardsCleared" (click)="clearAllCards()"></div>
+
+
