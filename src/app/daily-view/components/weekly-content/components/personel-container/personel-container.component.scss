@@ -34,8 +34,10 @@ $background_blue: #F7F9FB;
     .right {
 
       .date-cell {
-        border-right: 2px solid $background_blue;
+        //border-right: 2px solid $background_blue;
         cursor: pointer;
+        min-width: 45px;
+        position: relative;
 
         .single-day {
           width: 16px;
@@ -78,6 +80,10 @@ $background_blue: #F7F9FB;
               border-radius: unset;
             }
           }
+        }
+
+        &.isSunday {
+        border-right: 2px solid #F7FBFF;
         }
       }
     }

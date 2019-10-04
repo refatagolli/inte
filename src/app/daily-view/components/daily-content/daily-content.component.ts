@@ -49,12 +49,6 @@ export class DailyContentComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
   }
 
-  getShiftDetails(shiftHours: string, staffType: string, unit: string): ShiftDetails {
-    return {shiftHours, unit, staffType, shiftDate: this.config.date.currentDate};
-  }
-
-
-
   private getStaff(config): Observable<any> {
     const a = config.viewType === 'unit' ? this._dailyViewService.getUnits() : this._dailyViewService.getShifts();
     const b = config.viewType === 'unit' ? this._dailyViewService.getShifts() : this._dailyViewService.getUnits();

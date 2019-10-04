@@ -1,11 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {ShiftDetails} from '../../../../../models/ShiftDetails';
 import {ShiftManagementService} from '../../../../../shift-management/shift-management.service';
 
 @Component({
   selector: 'personel-container',
   templateUrl: './personel-container.component.html',
-  styleUrls: ['./personel-container.component.scss']
+  styleUrls: ['./personel-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonelContainerComponent implements OnInit {
   @Input() expanded = true;
@@ -46,5 +47,17 @@ export class PersonelContainerComponent implements OnInit {
 
   hasPresentOnRight(el, w, i) {
     return this.isPresent(el, w) && !this.isAway(el, w) && (i < this.days.length - 1 && this.isPresent(el, this.days[i + 1]));
+  }
+
+  isSunday(date) {
+    return new Date(date).getDay() === 0;
+  }
+
+  isSundayOnRight(index: number) {
+    return (index < this.days.length - 1 && (this.isSunday(this.days[index + 1].date)));
+  }
+
+  isSundayOnLeft(index: number) {
+    return (index > 0 && (this.isSunday(this.days[index - 1].date)));
   }
 }

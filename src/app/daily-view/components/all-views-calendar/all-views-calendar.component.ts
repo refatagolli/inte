@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'daily-calendar',
@@ -10,6 +11,7 @@ import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
 })
 export class AllViewsCalendarComponent implements OnInit {
 
+  private static DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
   dateList: number[] = [];
   currentDate: number = new Date().getTime();
   config: DailyViewConfigModel;
@@ -31,11 +33,17 @@ export class AllViewsCalendarComponent implements OnInit {
   }
 
   getDateList() {
-    const minDate = this.currentDate - 3 * 24 * 60 * 60 * 1000;
-    let maxDate = this.currentDate + 3 * 24 * 60 * 60 * 1000;
-    while (maxDate > minDate) {
-      maxDate -= 24 * 60 * 60 * 1000;
-      this.dateList.unshift(maxDate);
+    const current = moment();
+
+    const weekStart = current.clone().startOf('week');
+    const weekEnd = current.clone().endOf('week');
+
+    const first = weekStart.toDate().getTime() + AllViewsCalendarComponent.DAY_IN_MILLIS;
+    let last = weekEnd.toDate().getTime() + AllViewsCalendarComponent.DAY_IN_MILLIS;
+
+    while (last > first) {
+      last -= AllViewsCalendarComponent.DAY_IN_MILLIS;
+      this.dateList.unshift(last);
     }
   }
 

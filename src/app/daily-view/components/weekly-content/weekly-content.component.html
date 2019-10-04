@@ -18,7 +18,7 @@
         <div class="calendar" fxFlex="">
           <div class="calendar-options-wrapper" fxFlex fxLayout="row">
             <button mat-button class="date-cell" *ngFor="let date of weekdays"
-                    fxFlex="auto" [disableRipple]="true" (click)="selectDate(date)"
+                    fxFlex="auto" [disableRipple]="true" (click)="selectDate(date.date)"
                     [ngClass]="{selected: areDatesEquals(date.date,currentDate)}">
               <div class="date-option-value-wrapper" fxFlex="auto" fxLayout="column" fxLayoutAlign="center center">
                 <span class="date-option-value bold-item day">

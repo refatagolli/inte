@@ -11,6 +11,10 @@ body {
   overflow-x: hidden;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .bold-item {
   font-weight: bold;
 }
@@ -38,6 +42,8 @@ body {
 
 .weekly-left-column {
   width: 400px;
+  min-width: 400px;
+  max-width: 400px;
   border-right: 2px solid #F7FBFF;
 }
 

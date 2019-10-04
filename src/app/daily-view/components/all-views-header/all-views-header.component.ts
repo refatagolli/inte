@@ -4,6 +4,7 @@ import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
 import {MatDialog} from '@angular/material';
 import {PrintViewComponent} from '../print-view/print-view.component';
 import {formatDate} from '@angular/common';
+import * as moment from 'moment';
 
 @Component({
   selector: 'daily-view-header',
@@ -13,6 +14,9 @@ import {formatDate} from '@angular/common';
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AllViewsHeaderComponent implements OnInit {
+
+  private static DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
+
   dailyViewConfig: DailyViewConfigModel;
 
 
@@ -43,7 +47,8 @@ export class AllViewsHeaderComponent implements OnInit {
       this.dailyViewConfig = dailyViewConfig;
     });
 
-    this._setWeekly();
+    this.changeDateRange('monthly');
+
   }
 
   changeDateRange(dateRange: 'daily' | 'weekly' | 'monthly') {
@@ -77,21 +82,22 @@ export class AllViewsHeaderComponent implements OnInit {
         newConfig = {
           from: null,
           to: null,
-          currentDate: this.dailyViewConfig.date.currentDate + 24 * 60 * 60 * 1000
+          currentDate: this.dailyViewConfig.date.currentDate + AllViewsHeaderComponent.DAY_IN_MILLIS
         };
         break;
       case 'weekly' :
         newConfig = {
-          from: this.dailyViewConfig.date.from + 7 * 24 * 60 * 60 * 1000,
-          to: this.dailyViewConfig.date.to + 7 * 24 * 60 * 60 * 1000,
-          currentDate: this.dailyViewConfig.date.from + 7 * 24 * 60 * 60 * 1000
+          from: this.dailyViewConfig.date.from + 7 * AllViewsHeaderComponent.DAY_IN_MILLIS,
+          to: this.dailyViewConfig.date.to + 7 * AllViewsHeaderComponent.DAY_IN_MILLIS,
+          currentDate: this.dailyViewConfig.date.from + 7 * AllViewsHeaderComponent.DAY_IN_MILLIS
         };
         break;
       case 'monthly' :
+        const m = moment(this.dailyViewConfig.date.from).add(1, 'months');
         newConfig = {
-          from: this.dailyViewConfig.date.from + 31 * 24 * 60 * 60 * 1000,
-          to: this.dailyViewConfig.date.to + 31 * 24 * 60 * 60 * 1000,
-          currentDate: this.dailyViewConfig.date.from + 7 * 24 * 60 * 60 * 1000
+          from: m.clone().startOf('month').toDate().getTime(),
+          to: m.clone().endOf('month').toDate().getTime(),
+          currentDate: m.clone().startOf('month').toDate().getTime()
         };
     }
     this.dailyViewConfig.date = newConfig;
@@ -106,21 +112,22 @@ export class AllViewsHeaderComponent implements OnInit {
         newConfig = {
           from: null,
           to: null,
-          currentDate: this.dailyViewConfig.date.currentDate - 24 * 60 * 60 * 1000
+          currentDate: this.dailyViewConfig.date.currentDate - AllViewsHeaderComponent.DAY_IN_MILLIS
         };
         break;
       case 'weekly' :
         newConfig = {
-          from: this.dailyViewConfig.date.from - 7 * 24 * 60 * 60 * 1000,
-          to: this.dailyViewConfig.date.to - 7 * 24 * 60 * 60 * 1000,
-          currentDate: this.dailyViewConfig.date.from - 7 * 24 * 60 * 60 * 1000
+          from: this.dailyViewConfig.date.from - 7 * AllViewsHeaderComponent.DAY_IN_MILLIS,
+          to: this.dailyViewConfig.date.to - 7 * AllViewsHeaderComponent.DAY_IN_MILLIS,
+          currentDate: this.dailyViewConfig.date.from - 7 * AllViewsHeaderComponent.DAY_IN_MILLIS
         };
         break;
       case 'monthly' :
+        const m = moment(this.dailyViewConfig.date.from).add(-1, 'months');
         newConfig = {
-          from: this.dailyViewConfig.date.from - 31 * 24 * 60 * 60 * 1000,
-          to: this.dailyViewConfig.date.to - 31 * 24 * 60 * 60 * 1000,
-          currentDate: this.dailyViewConfig.date.from - 31 * 24 * 60 * 60 * 1000
+          from: m.clone().startOf('month').toDate().getTime(),
+          to: m.clone().endOf('month').toDate().getTime(),
+          currentDate: m.clone().startOf('month').toDate().getTime()
         };
     }
     this.dailyViewConfig.date = newConfig;
@@ -135,21 +142,34 @@ export class AllViewsHeaderComponent implements OnInit {
   }
 
   private _setWeekly() {
-    const curr = new Date();
-    const first = new Date(new Date().setDate(curr.getDate() - curr.getDay() + 1)).getTime();
-    const last = new Date(new Date().setDate(curr.getDate() - curr.getDay() + 8)).getTime();
+    const current = moment();
+
+    const weekStart = current.clone().startOf('week');
+    const weekEnd = current.clone().endOf('week');
+
+    const first = weekStart.toDate().getTime() + AllViewsHeaderComponent.DAY_IN_MILLIS;
+    const last = weekEnd.toDate().getTime() + AllViewsHeaderComponent.DAY_IN_MILLIS;
 
     this.dailyViewConfig.date.from = first;
     this.dailyViewConfig.date.to = last;
-    this.dailyViewConfig.date.currentDate = new Date().getTime();
+    this.dailyViewConfig.date.currentDate = current.toDate().getTime();
     this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
 
   }
 
   private _setMonthly() {
-    this.dailyViewConfig.date.from = new Date().setDate(1);
-    this.dailyViewConfig.date.to = new Date().setDate(30);
-    this.dailyViewConfig.date.currentDate = new Date().getTime();
+
+    const current = moment();
+
+    const monthStart = current.clone().startOf('month');
+    const monthEnd = current.clone().endOf('month');
+
+    const first = monthStart.toDate().getTime();
+    const last = monthEnd.toDate().getTime();
+    this.dailyViewConfig.date.from = first;
+    this.dailyViewConfig.date.to = last;
+    this.dailyViewConfig.date.currentDate = current.toDate().getTime();
     this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
   }
+
 }
