@@ -6,6 +6,10 @@ $background_blue: #F7F9FB;
     padding: 0;
   }
 
+  .content {
+    background-color: white;
+  }
+
   .header {
     background-color: #F1F5F8;
     border: 2px solid #D3D4D5;
@@ -34,10 +38,12 @@ $background_blue: #F7F9FB;
     .right {
 
       .date-cell {
-        //border-right: 2px solid $background_blue;
-        cursor: pointer;
         min-width: 45px;
         position: relative;
+
+        &.clickable {
+          cursor: pointer;
+        }
 
         .single-day {
           width: 16px;

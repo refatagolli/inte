@@ -66,7 +66,7 @@ export class AllViewsHeaderComponent implements OnInit {
     this.dailyViewConfig.date.currentDate = new Date().getTime();
     this.dailyViewConfig.date.to = null;
     this.dailyViewConfig.date.from = null;
-    this.dailyViewConfig.dateRange = 'today';
+    this.dailyViewConfig.dateRange = 'daily';
     this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
   }
 
@@ -77,7 +77,6 @@ export class AllViewsHeaderComponent implements OnInit {
   goForward() {
     let newConfig;
     switch (this.dailyViewConfig.dateRange) {
-      case 'today' :
       case 'daily' :
         newConfig = {
           from: null,
@@ -107,7 +106,6 @@ export class AllViewsHeaderComponent implements OnInit {
   goBackwards() {
     let newConfig;
     switch (this.dailyViewConfig.dateRange) {
-      case 'today' :
       case 'daily' :
         newConfig = {
           from: null,

@@ -34,7 +34,6 @@
 
     .user-tasks-content, .user-tasks-completed-wrapper {
       padding-top: 8px;
-      padding-left: 16px;
     }
 
     .user-tasks-content {
@@ -72,15 +71,21 @@
         text-decoration: line-through;
       }
 
-      .remove-task {
+      .sort-indicator {
+        width: 20px;
+        padding: 0 2px;
+      }
+
+      .remove-task, .drag-task {
         display: none;
         cursor: pointer;
       }
+
     }
 
     .single-task:hover {
 
-      .remove-task {
+      .remove-task, .drag-task {
         display: block;
       }
     }
@@ -93,6 +98,9 @@
       }
     }
 
+    .toggle {
+      padding-left: 20px;
+    }
   }
 }
 

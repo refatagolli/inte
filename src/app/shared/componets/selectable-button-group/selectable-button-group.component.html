@@ -3,7 +3,7 @@
 
     <mat-list-option class="selectable-button" *ngFor="let el of elements "
                      [value]="el.value" [ngClass]="{selected: selected.indexOf(el.value) >= 0}">
-      {{el.name | titlecase}}
+      {{el.name}}
     </mat-list-option>
 
   </mat-selection-list>

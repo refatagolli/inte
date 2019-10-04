@@ -38,8 +38,8 @@ export class AllViewsCalendarComponent implements OnInit {
     const weekStart = current.clone().startOf('week');
     const weekEnd = current.clone().endOf('week');
 
-    const first = weekStart.toDate().getTime() + AllViewsCalendarComponent.DAY_IN_MILLIS;
-    let last = weekEnd.toDate().getTime() + AllViewsCalendarComponent.DAY_IN_MILLIS;
+    const first = weekStart.toDate().getTime() + 2 * AllViewsCalendarComponent.DAY_IN_MILLIS;
+    let last = weekEnd.toDate().getTime() + 2 * AllViewsCalendarComponent.DAY_IN_MILLIS;
 
     while (last > first) {
       last -= AllViewsCalendarComponent.DAY_IN_MILLIS;

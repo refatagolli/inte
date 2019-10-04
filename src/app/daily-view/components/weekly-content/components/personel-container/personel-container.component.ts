@@ -1,11 +1,24 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {ShiftDetails} from '../../../../../models/ShiftDetails';
 import {ShiftManagementService} from '../../../../../shift-management/shift-management.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'personel-container',
   templateUrl: './personel-container.component.html',
   styleUrls: ['./personel-container.component.scss'],
+  animations: [
+    trigger('expandCollapse', [
+      state('void', style({
+        height: '0px'
+      })),
+      state('*', style({
+        height: '*'
+      })),
+      transition('void => *', animate('300ms ease-out')),
+      transition('* => void', animate('300ms ease-in'))
+    ])
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonelContainerComponent implements OnInit {

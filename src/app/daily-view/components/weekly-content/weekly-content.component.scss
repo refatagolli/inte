@@ -18,8 +18,14 @@ $background_blue: #F7FBFF;
         font-weight: bold;
       }
 
-      ::ng-deep.mat-form-field-outline {
+      ::ng-deep.mat-form-field-flex {
         background-color: $background_blue;
+        border: 1px solid #DADDE1;
+        border-radius: 3px;
+      }
+
+      ::ng-deep.mat-form-field-outline {
+        display: none;
       }
     }
   }
@@ -57,12 +63,12 @@ $background_blue: #F7FBFF;
       }
 
       &.selected {
-        background-color: $background_blue;
+        //background-color: $background_blue;
 
         .date {
-          background-color: #1785B8;
-          color: white;
-          border-radius: 50%;
+          //background-color: #1785B8;
+          //color: white;
+          //border-radius: 50%;
         }
       }
     }

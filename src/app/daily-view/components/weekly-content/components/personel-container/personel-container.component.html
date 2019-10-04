@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="content" *ngIf="expanded">
+    <div class="content" *ngIf="expanded" [@expandCollapse]>
       <div class="content-wrapper" fxFlex fxLayout="column">
         <mat-list fxLayout="column" fxFlex="">
           <div fxFlex *ngFor="let el of staff">
@@ -22,7 +22,10 @@
 
               <div class="right" fxLayout="row" fxFlex>
                 <div class="date-cell" fxFlex="1 0 auto" *ngFor="let w of days; let i = index"
-                     [ngClass]="{'removed-staff':isAway(el, w),isSunday: isSunday(w.date)}"
+                     [ngClass]="{
+                     'removed-staff':isAway(el, w),isSunday: isSunday(w.date),
+                     'clickable': isPresent(el, w) || isAway(el, w)
+                     }"
                      (click)="isAway(el, w)? fillShift(el, w.date) : isPresent(el, w)? openShiftDetails(el, w.date) : ''">
                   <div fxFlex="auto" fxLayoutAlign="center center">
                     <div class="single-day"

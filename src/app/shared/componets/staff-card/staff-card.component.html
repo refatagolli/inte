@@ -1,5 +1,8 @@
 <div class="staff-card"
-     [ngClass]="{removed: openShift || (staffMember?.away && showNotPresent), clickable: !openShift && !staffMember?.away}">
+     [ngClass]="{
+     removed: openShift || (staffMember?.away && showNotPresent),
+     clickable: !openShift && !staffMember?.away && showNotPresent
+     }">
   <mat-list-item>
     <div class="staff-card-container" fxFlex fxLayout="row">
       <ng-container *ngIf="openShift; then openShiftCard else showStaffData"></ng-container>
