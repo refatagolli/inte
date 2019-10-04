@@ -103,7 +103,7 @@ $green-accent-palette : mat-palette((
 
 
 // Create the Material theme object
-$theme: mat-light-theme($default-primary-palette, $green-accent-palette, $default-warn-palette);
+$theme: custom-light-theme($default-primary-palette, $green-accent-palette, $default-warn-palette);
 
 // Add ".theme-default" class to the body to activate this theme.
 // Class name must start with "theme-" !!!
@@ -138,7 +138,7 @@ $yellow-light-theme-accent-palette: mat-palette($mat-yellow, 600, 400, 700);
 $yellow-light-theme-warn-palette: mat-palette($mat-red);
 
 // Create the Material theme object
-$yellow-light-theme: mat-light-theme($yellow-light-theme-primary-palette, $yellow-light-theme-accent-palette, $yellow-light-theme-warn-palette);
+$yellow-light-theme: custom-light-theme($yellow-light-theme-primary-palette, $yellow-light-theme-accent-palette, $yellow-light-theme-warn-palette);
 
 // Add ".theme-yellow-light" class to the body to activate this theme.
 // Class name must start with "theme-" !!!
