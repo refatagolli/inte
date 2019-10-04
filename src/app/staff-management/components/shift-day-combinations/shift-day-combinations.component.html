@@ -1,27 +1,103 @@
 <div class="modal-content">
   <label mat-dialog-title class="customized-header">Shift Day & Time</label>
   <mat-dialog-content>
+
     <div *ngFor="let shiftDay of eachRowChosenData; index as i;">
+      <i class="material-icons remove-shift-day-combination" (click)="removeShiftDayCombination(shiftDay.id)">cancel</i>
+      <br />
       <div class="shift-day-wrapper">
         <div class="customized-optionset margin-left">
-          <button class="customised-checkbox-group">
+          <button (click)="toggleDayOptions(shiftDay.id)" class="customised-checkbox-group">
               <span class="button-label">
                   {{shiftDay.chosenDaysName}}
+                <mat-icon *ngIf="!shiftDay.showDayCard;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+                <ng-template #dayArrowUp>
+                  <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+                </ng-template>
               </span>
           </button>
+          <mat-card fxFlex *ngIf="shiftDay.showDayCard" class="customized-card checkbox-alignment" fxFlex fxLayout="column">
+            <app-custom-option-set [multiple]="true" [elements]="dayOptions | async" [selectedCheckBox]="shiftDay.selectedDays"
+                                   (valueChange)="manageChosenData('check', $event, shiftDay.id);"></app-custom-option-set>
+          </mat-card>
         </div>
         <div class="customized-optionset margin-right">
-          <button class="customised-radio-group">
+          <button (click)="toggleShiftOptions(shiftDay.id)" class="customised-radio-group">
             <span class="button-label">
               {{shiftDay.chosenShiftName}}
+              <mat-icon *ngIf="!shiftDay.showStaffCard;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+              <ng-template #shiftArrowUp>
+                <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+              </ng-template>
             </span>
+
           </button>
+
+          <mat-card fxFlex *ngIf="shiftDay.showStaffCard" class="customized-card radio-alignment" fxFlex fxLayout="column">
+            <app-custom-option-set [multiple]="false" [elements]="shiftOptions | async" [selectedRadioButton]="shiftDay.selectedShifts"
+                                   (valueChange)="manageChosenData('radio', $event, shiftDay.id);"></app-custom-option-set>
+          </mat-card>
         </div>
       </div>
       <br /><br />
     </div>
+    <br />
+
+    <div class="shift-day-wrapper">
+      <div class="customized-optionset margin-left">
+        <button (click)="toggleDayOptions()" class="customised-checkbox-group">
+            <span class="button-label">
+                {{chosenDayName}}
+              <mat-icon *ngIf="!dayOptionsOpened;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+                <ng-template #dayArrowUp>
+                  <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+                </ng-template>
+              </span>
+        </button>
+        <mat-card *ngIf="dayOptionsOpened" class="customized-card checkbox-alignment" fxFlex fxLayout="column">
+          <app-custom-option-set [multiple]="true" [elements]="dayOptions | async" [selectedCheckBox]="selectedCheckBox"
+                                 (valueChange)="selectedCheckBox = $event;manageChosenData('check', $event);"></app-custom-option-set>
+        </mat-card>
+      </div>
+      <div class="customized-optionset  margin-right">
+        <button (click)="toggleShiftOptions()" class="customised-radio-group">
+            <span class="button-label">
+              {{chosenShiftName}}
+              <mat-icon *ngIf="!shiftOptionsOpened;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+              <ng-template #shiftArrowUp>
+                <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+              </ng-template>
+            </span>
+        </button>
+        <mat-card *ngIf="shiftOptionsOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+          <app-custom-option-set [multiple]="false" [required]="false" [elements]="shiftOptions | async" [selectedRadioButton]="selectedRadio"
+                                 (valueChange)="selectedRadio = $event;manageChosenData('radio', $event);"></app-custom-option-set>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="overlay" *ngIf="!allCardsCleared" (click)="clearAllCards()"></div>
+
+    <div *ngIf="!shiftDayValidated">
+      <br />
+      <label class="warning-label">Please complete above shift day combination first *</label>
+    </div>
+
+    <div *ngIf="shiftAlreadySelected">
+      <br />
+      <label class="warning-label">This shift has already been selected *</label>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="customized-label">
+      Add Another Shift&nbsp;&nbsp; <span class="plus-character" (click)="addNewShiftDayCombination()">+</span>
+    </div>
+
   </mat-dialog-content>
   <mat-dialog-actions style="justify-content: flex-end;">
-    <button class="action-button complete" mat-button [mat-dialog-close]="true">Close</button>
+    <button class="action-button complete" mat-button [mat-dialog-close]="null">Close</button>
+    <button (click)="applySelected()" class="action-button complete" mat-button>Apply</button>
   </mat-dialog-actions>
 </div>

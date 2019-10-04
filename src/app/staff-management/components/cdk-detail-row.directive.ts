@@ -1,5 +1,6 @@
 import {Directive, EventEmitter, HostBinding, HostListener, Input, Output, TemplateRef, ViewContainerRef} from '@angular/core';
 import {StaffManagementService} from '../staff-management.service';
+import {Observable} from 'rxjs';
 
 @Directive({
   selector: '[cdkDetailRow]'
@@ -39,16 +40,25 @@ export class CdkDetailRowDirective {
     this._staffManagementService.getClickedProfile()
       .pipe()
       .subscribe(item => {
-        if (this.row === item || ((this.row !== item) && this.opened)) {
+        console.log('opened', this.opened);
+        console.log('row', this.row, item);
+        if (this.row && this.row.id === item.id || (this.row &&(this.row.id !== item.id) && this.opened)) {
           this.onClick(item);
+          console.log('opened', this.opened);
         }
     });
+
+    this._staffManagementService.getUpdatedRow()
+      .pipe()
+      .subscribe(item => {
+        this.row = item;
+      });
   }
 
   // @HostListener('click')
   onClick(item: any): void {
     this.toggle();
-    if (this.row === item) {
+    if (this.row.id === item.id) {
       this.valueChange.next({ 'row' : this.row, 'opened' : this.opened } );
     }
   }
@@ -61,6 +71,8 @@ export class CdkDetailRowDirective {
     }
     this.opened = this.vcRef.length > 0;
   }
+
+
 
   private render(): void {
     this.vcRef.clear();

@@ -15,6 +15,7 @@ export class CustomOptionSetComponent implements OnInit {
   @Input() selectedCheckBox = [];
   @Input() selectedRadioButton = 0;
   @Input() multiple = false;
+  @Input() required = true;
   @Input() maximumSelections = 0;
 
   control: FormControl = new FormControl([]);
@@ -47,7 +48,12 @@ export class CustomOptionSetComponent implements OnInit {
   }
 
   updateRadioOptions(option) {
-    this.radioSelected = option.value;
-    this.valueChange.next(option.value);
+    if (!this.required && (this.radioSelected === option.value)) {
+      this.radioSelected = 0;
+    } else {
+      this.radioSelected = option.value;
+    }
+
+    this.valueChange.next(this.radioSelected);
   }
 }
