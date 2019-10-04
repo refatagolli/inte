@@ -31,7 +31,6 @@ export class UserTasksComponent implements OnInit {
   }
 
   addNewTask() {
-    console.log(this.input.nativeElement.value);
     if (this.input.nativeElement.value) {
       this.tasks.toDo.unshift({value: this.input.nativeElement.value, selected: false});
       this.input.nativeElement.value = '';
@@ -42,7 +41,6 @@ export class UserTasksComponent implements OnInit {
   toggleTask(taskIndex: number, completed: boolean) {
     const toToggle: {completed: boolean; value: string} = completed ? this.tasks.completed[taskIndex] : this.tasks.toDo[taskIndex];
     toToggle.completed = !toToggle.completed;
-    console.log(toToggle)
     if (completed) {
       this.tasks.completed.splice(taskIndex, 1);
       this.tasks.toDo.push(toToggle);

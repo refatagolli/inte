@@ -76,7 +76,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row [ngStyle]="{display: (selectedRow && (row === selectedRow.row) && selectedRow.opened) ? 'none' : ''}"  (valueChange)="selectedRow = $event" *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl">
+        <mat-row [ngStyle]="{display: (selectedRow && (row.id === selectedRow.row.id) && selectedRow.opened) ? 'none' : ''}"  (valueChange)="selectedRow = $event" *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl">
         </mat-row>
       </mat-table>
     </div>
@@ -84,6 +84,7 @@
     <ng-template #tpl let-element>
       <div class="mat-row detail-row" [@detailExpand] style="overflow: hidden">
         <app-staff-profile *ngIf="element.employmentType.employmentTypeId !== 4"
+                           (userUpdated)="updateUser($event)"
                            [staffMember]="element" [shifts]="shiftTypes" [days]="days" [staffTypes]="staffTypes"
                            [employmentTypes]="employmentTypes" [genderTypes]="genderTypes" [unit]="units"
                            (removed)="staffService.profileClicked.next(element)"></app-staff-profile>

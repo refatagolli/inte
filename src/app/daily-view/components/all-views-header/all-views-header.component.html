@@ -11,7 +11,9 @@
   </div>
 
   <div class="date-range" fxFlex fxLayoutAlign="center center" fxLayout="row">
-    <button mat-icon-button (click)="goBackwards()"><mat-icon>keyboard_arrow_left</mat-icon> </button>
+    <button mat-icon-button (click)="goBackwards()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
     <mat-chip-list [disabled]="true" class="chip-container">
       <mat-chip [disabled]="true" fxFlex="1 1 auto">
 
@@ -26,11 +28,8 @@
 
         <!--<ejs-daterangepicker #dateRangePicker id='daterangepicker' placeholder='Select a range'></ejs-daterangepicker>-->
 
-        <mat-menu #dateType="matMenu" class="top-header-menu" [overlapTrigger]="false" [yPosition]="'below'" [xPosition]="'before'">
-          <button mat-menu-item (click)="goToToday()"
-                  [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='today'}"
-          >{{ 'today' | titlecase}}
-          </button>
+        <mat-menu #dateType="matMenu" class="top-header-menu" [overlapTrigger]="false" [yPosition]="'below'"
+                  [xPosition]="'before'">
           <button mat-menu-item (click)="changeDateRange('daily')"
                   [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='daily'}"
           >{{ 'daily' | titlecase}}
@@ -50,6 +49,8 @@
         </mat-menu>
       </mat-chip>
     </mat-chip-list>
-    <button mat-icon-button (click)="goForward()"><mat-icon>keyboard_arrow_right</mat-icon> </button>
+    <button mat-icon-button (click)="goForward()">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
   </div>
 </div>

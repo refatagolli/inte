@@ -521,6 +521,7 @@ export class AddStaffComponent implements OnInit {
     });
   }
 
+
   clearAllCards() {
     this.dayOptionsOpened = false;
     this.shiftOptionsOpened = false;
@@ -531,5 +532,4 @@ export class AddStaffComponent implements OnInit {
 
     this.allCardsCleared = true;
   }
-
 }

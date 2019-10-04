@@ -76,7 +76,7 @@
           </table>
           <ng-template #editProfile>
             <form [formGroup]="staffMemberForm">
-              <table class="profile-table">
+              <table class="profile-table profile-table-edit">
               <tr>
                 <td class="profile-table-headers">Staff Name</td>
                 <td class="profile-table-headers">Gender</td>
@@ -84,25 +84,40 @@
                 <td class="profile-table-headers">SSN</td>
                 <td class="profile-table-headers">Location</td>
                 <td class="profile-table-headers">Phone Number</td>
-                <td class="profile-table-headers">Email</td>
               </tr>
               <tr>
                 <td colspan="100%"></td>
               </tr>
               <tr>
                 <td class="profile-table-data">
-                  <mat-form-field appearance="outline">
-                    <input [ngStyle]="{'border-color' : (submitted && validateForm.name.errors) ? 'red' : ''}" matInput formControlName="fullName" placeholder="Full Name *">
-                  </mat-form-field>
-
-
-<!--                  <input [ngStyle]="{'border-color' : (submitted && validateForm.name.errors) ? 'red' : ''}"-->
-<!--                         type="text" formControlName="fullName"  placeholder="Full Name *" class="custom-text-input-1" />-->
+                  <div class="staff-name-edit">
+                    <mat-form-field class="staff-name-edit" appearance="outline">
+                    <input [ngStyle]="{'border-color' : (submitted && validateForm.fullName.errors) ? 'red' : ''}"
+                           formControlName="fullName" placeholder="Full Name *" matInput>
+                    </mat-form-field>
+                  </div>
                 </td>
-                <td class="profile-table-data">{{ staffMember.gender.name }}</td>
                 <td class="profile-table-data">
-                  <div class="date-wrapper">
-                    <mat-form-field appearance="outline" class="date-input">
+                  <div class="radio-edit">
+                    <button (click)="genderOptionOpened = !genderOptionOpened;allCardsCleared = false" class="customised-radio-group">
+                      <span class="button-label">
+                        {{selectedGender}}
+<!--                        *ngIf="!genderOptionOpened;else shiftArrowUp"-->
+                        <mat-icon class="arrow-drop-up">arrow_drop_down</mat-icon>
+<!--                        <ng-template #shiftArrowUp>-->
+<!--                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>-->
+<!--                        </ng-template>-->
+                      </span>
+                    </button>
+                    <mat-card *ngIf="genderOptionOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                      <app-custom-option-set [multiple]="false" [elements]="genderOptions | async" [selectedRadioButton]="staffMemberForm.controls.gender.value"
+                                             (valueChange)="manageChosenData('gender', $event);"></app-custom-option-set>
+                    </mat-card>
+                  </div>
+                </td>
+                <td class="profile-table-data">
+                  <div class="birthDate-edit">
+                    <mat-form-field appearance="outline">
                       <input [ngStyle]="{'border-color' : (submitted && (validateForm.birthDate.errors || validateForm.birthDate.status == 'INVALID')) ? 'red' : ''}" formControlName="birthDate" matInput placeholder="Choose a date" [matDatepicker]="picker">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
@@ -110,32 +125,37 @@
                   </div>
                 </td>
                 <td class="profile-table-data">
-                  <mat-form-field appearance="outline">
-                    <input matInput formControlName="ssn" placeholder="SSN">
-                  </mat-form-field>
-
-                  <!--                  <input [ngStyle]="{'border-color' : (submitted && validateForm.ssn.errors) ? 'red' : ''}"-->
-<!--                         type="text" formControlName="ssn" placeholder="Full Name *" class="custom-text-input-1" />-->
-                </td>
-                <td class="profile-table-data">{{ staffMember.location.value }}</td>
-                <td class="profile-table-data">
-                  <mat-form-field appearance="outline">
-                    <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}"
-                           matInput formControlName="phone" mask='(000) 000-0000' placeholder="Phone Number *">
-                  </mat-form-field>
-<!--                  [validation]="true"-->
-<!--                  [dropSpecialCharacters]="false"-->
-<!--                  <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}" type="text"-->
-<!--                          formControlName="phone" placeholder="Phone Number *" mask='(000) 000-0000' class="custom-text-input-3" />-->
+                  <div class="ssn-edit">
+                    <mat-form-field appearance="outline">
+                      <input formControlName="ssn" placeholder="SSN" matInput>
+                    </mat-form-field>
+                  </div>
                 </td>
                 <td class="profile-table-data">
-
-                  <mat-form-field appearance="outline">
-                    <input [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}" matInput formControlName="email" placeholder="Email Address *">
-                  </mat-form-field>
-
-<!--                  <input type="text" [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"-->
-<!--                         formControlName="email" placeholder="Email Address *" class="custom-text-input-3" />-->
+                  <div class="radio-edit">
+                    <button (click)="unitOptionOpened = !unitOptionOpened;allCardsCleared = false" class="customised-radio-group">
+                      <span class="button-label">
+                        {{selectedUnit}}
+<!--                        *ngIf="!unitOptionOpened;else shiftArrowUp"-->
+                        <mat-icon [ngClass]="selectedUnit === '' ? 'arrow-alignment' : ''" class="arrow-drop-up">arrow_drop_down</mat-icon>
+<!--                        <ng-template #shiftArrowUp>-->
+<!--                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>-->
+<!--                        </ng-template>-->
+                      </span>
+                    </button>
+                    <mat-card *ngIf="unitOptionOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                      <app-custom-option-set [multiple]="false" [required]="false" [elements]="unitOptions | async" [selectedRadioButton]="staffMemberForm.controls.location.value"
+                                             (valueChange)="manageChosenData('unit', $event);"></app-custom-option-set>
+                    </mat-card>
+                  </div>
+                </td>
+                <td class="profile-table-data">
+                  <div class="phone-edit">
+                    <mat-form-field appearance="outline">
+                      <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}"
+                             matInput [validation]="true" [dropSpecialCharacters]="false" formControlName="phone" mask='(000) 000-0000' placeholder="Phone Number *">
+                    </mat-form-field>
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -145,34 +165,77 @@
                 <td colspan="100%"></td>
               </tr>
               <tr>
+                <td class="profile-table-headers">Email</td>
                 <td class="profile-table-headers">Staff Type</td>
                 <td class="profile-table-headers">Hire Date</td>
                 <td class="profile-table-headers">Employment Status</td>
-                <td class="profile-table-headers">Shifts</td>
-                <td colspan="3"></td>
+                <td class="profile-table-headers center-view">Shifts</td>
+                <td colspan="2"></td>
               </tr>
               <tr>
                 <td colspan="100%"></td>
               </tr>
               <tr>
-                <td class="profile-table-data">{{ staffMember.staffType.staffTypeName }}</td>
                 <td class="profile-table-data">
-<!--                  <div class="date-wrapper">-->
-<!--                    <mat-form-field appearance="outline" class="date-input">-->
-<!--                      <input [ngStyle]="{'border-color' : (submitted && (validateForm.hireDate.errors || validateForm.hireDate.status == 'INVALID')) ? 'red' : ''}" formControlName="hireDate" matInput placeholder="Choose a date" [matDatepicker]="picker">-->
-<!--                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-<!--                      <mat-datepicker #picker></mat-datepicker>-->
-<!--                    </mat-form-field>-->
-<!--                  </div>-->
+                  <div class="email-edit">
+                    <mat-form-field appearance="outline">
+                      <input [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"
+                             matInput formControlName="email" placeholder="Email Address *">
+                    </mat-form-field>
+                  </div>
                 </td>
-                <td class="profile-table-data">{{ staffMember.employmentType.employmentTypeName }}</td>
                 <td class="profile-table-data">
-                  <div [innerHTML]="staffMember.shiftDaysString"></div>
+                  <div class="radio-edit">
+                    <button (click)="staffTypeOptionOpened = !staffTypeOptionOpened;allCardsCleared = false" class="customised-radio-group">
+                      <span class="button-label">
+                        {{selectedStaffType}}
+<!--                        *ngIf="!staffTypeOptionOpened;else shiftArrowUp"-->
+                        <mat-icon class="arrow-drop-up">arrow_drop_down</mat-icon>
+<!--                        <ng-template #shiftArrowUp>-->
+<!--                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>-->
+<!--                        </ng-template>-->
+                      </span>
+                    </button>
+                    <mat-card *ngIf="staffTypeOptionOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                      <app-custom-option-set [multiple]="false" [elements]="staffOptions | async" [selectedRadioButton]="staffMemberForm.controls.staffType.value"
+                                             (valueChange)="manageChosenData('staff', $event);"></app-custom-option-set>
+                    </mat-card>
+                  </div>
                 </td>
-                <td colspan="3"></td>
+                <td class="profile-table-data">
+                  <div class="birthDate-edit">
+                    <mat-form-field appearance="outline">
+                      <input formControlName="hireDate" matInput placeholder="Choose a date" [matDatepicker]="hireDatePicker">
+                      <mat-datepicker-toggle matSuffix [for]="hireDatePicker"></mat-datepicker-toggle>
+                      <mat-datepicker #hireDatePicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </td>
+                <td class="profile-table-data">
+                  <div class="radio-edit">
+                    <button (click)="empTypeOptionOpened = !empTypeOptionOpened;allCardsCleared = false" class="customised-radio-group">
+                      <span class="button-label">
+                        {{selectedEmpType}}
+<!--                        *ngIf="!empTypeOptionOpened;else shiftArrowUp"-->
+                        <mat-icon class="arrow-drop-up">arrow_drop_down</mat-icon>
+<!--                        <ng-template #shiftArrowUp>-->
+<!--                          <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>-->
+<!--                        </ng-template>-->
+                      </span>
+                    </button>
+                    <mat-card *ngIf="empTypeOptionOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                      <app-custom-option-set [multiple]="false" [elements]="employmentOptions | async" [selectedRadioButton]="staffMemberForm.controls.employmentType.value"
+                                             (valueChange)="manageChosenData('employment', $event);"></app-custom-option-set>
+                    </mat-card>
+                  </div>
+                </td>
+                <td class="profile-table-data center-view">
+                  <button (click)="viewShiftsPanel()" mat-button class="action-button complete">VIEW SHIFTS</button>
+                </td>
+                <td colspan="2"></td>
               </tr>
             </table>
-              <button (click)="updateProfile()" mat-button class="action-button complete save-user">CONFIRM CHANGE</button>
+              <button type="button" (click)="updateStaffMember()" mat-button class="action-button complete save-user">CONFIRM CHANGE</button>
               <a class="cancel-save" (click)="cancelUpdate()">CANCEL</a>
               <br />
               <br />
@@ -314,3 +377,6 @@
     </mat-card-content>
   </mat-card>
 </div>
+<div class="overlay" *ngIf="!allCardsCleared" (click)="clearAllCards()"></div>
+
+

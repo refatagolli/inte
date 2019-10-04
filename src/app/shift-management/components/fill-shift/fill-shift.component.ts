@@ -68,13 +68,13 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
     this._dailyService.getStaff().pipe(
       flatMap(e => e),
       filter(s =>
-        s.staffType.toLocaleLowerCase() === this.shiftDetails.staffType.toLocaleLowerCase() &&
-        s.shiftHours.toLocaleLowerCase() !== this.shiftDetails.shiftHours.toLocaleLowerCase()),
+        s.staffType.toLocaleLowerCase() === this.shiftDetails.staffType.toLocaleLowerCase()),
       toArray()
     ).subscribe(e => {
       this.staffList = e;
       this.message.setValue(this.getStaffMessage(this.shiftDetails.shiftHours, new Date(this.shiftDetails.shiftDate).toDateString()));
-      this.filter.next({});
+      this.filter.next({shift: [this.shiftDetails.shiftHours]});
+      this._cdr.markForCheck();
     });
   }
 

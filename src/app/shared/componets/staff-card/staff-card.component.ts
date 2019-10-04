@@ -23,7 +23,7 @@ export class StaffCardComponent implements OnInit {
 
   @HostListener('click')
   public onClick() {
-    if (!this.openShift || this.staffMember.away) {
+    if (!(this.openShift || this.staffMember.away)) {
       this.viewDetailsEvent.emit();
     }
   }
