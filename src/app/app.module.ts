@@ -10,6 +10,7 @@ import {ThemeModule} from '@theme/theme.module';
 import {theme_config} from './config/theme_config';
 import {BaseLayoutModule} from './base-layout/base-layout.module';
 import {HttpClientModule} from '@angular/common/http';
+import {MobileLoginModule} from './mobile-login/mobile-login.module';
 
 @NgModule({
   declarations: [
