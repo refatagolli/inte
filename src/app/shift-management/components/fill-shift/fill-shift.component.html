@@ -25,7 +25,7 @@
         <div fxLayout="row wrap"
              *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">
           <span
-            class="f-message">{{shiftDetails.staffType | titlecase}}s not scheduled for this shift who work: &nbsp;</span>
+            class="f-message">{{shiftDetails.staffType}}s not scheduled for this shift who work: &nbsp;</span>
 
           <div *ngIf="filterOptions?.shift" fxLayout="row wrap" fxLayoutGap="10px">
             <div class="f-option" *ngFor="let s of filterOptions.shift"  fxLayout="row"

@@ -1,12 +1,12 @@
 $background-color: linear-gradient(-180deg, rgb(23, 133, 184) 0%, rgb(113, 191, 228) 100%);
 $text-color: rgb(250, 250, 250);
 
-main-menu {
+.main-menu {
   //width: 1200px;
   height: 376px;
   background-image: $background-color;
   padding: 17px 0;
-  overflow: auto;
+  overflow: hidden;
 
   .main-menu-container {
     padding-left: 49px;
@@ -19,4 +19,7 @@ main-menu {
       }
     }
   }
+}
+.main-menu:hover {
+  overflow: auto;
 }

@@ -8,7 +8,11 @@
 
     <div class="user-tasks-content" fxLayout="column" cdkDropList (cdkDropListDropped)="drop($event)">
       <div class="single-task" fxFlex="0 1 auto" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="center center"
-            *ngFor="let task of tasks.toDo; let i = index" cdkDrag>
+           *ngFor="let task of tasks.toDo; let i = index" cdkDrag>
+
+        <div class="sort-indicator">
+          <mat-icon class="drag-task" (click)="removeTask(i)">drag_indicator</mat-icon>
+        </div>
         <mat-checkbox (change)="toggleTask(i, false)" [checked]="task.completed"></mat-checkbox>
         <span class="task-row" [ngClass]="{completed: task.completed}" fxFlex="1 1 auto">{{task.value}}</span>
 
@@ -36,12 +40,17 @@
           <mat-icon>{{expanded ? 'expand_more' : 'chevron_right'}}</mat-icon>
         </button>
       </span>
-      <div class="user-tasks-completed" fxFlex *ngIf="expanded">
-        <div class="single-task" fxFlex fxLayout="column" fxLayoutGap="8px">
-          <mat-checkbox *ngFor="let task of tasks.completed; let i = index" (change)="toggleTask(i, true)"
+      <div class="user-tasks-completed" fxFlex *ngIf="expanded" fxLayout="column">
+        <div class="single-task" fxFlex fxLayout="row" fxLayoutGap="8px"
+             *ngFor="let task of tasks.completed; let i = index">
+
+          <div class="sort-indicator"></div>
+
+          <mat-checkbox (change)="toggleTask(i, true)"
                         [checked]="task.completed">
             <span [ngClass]="{completed: task.completed}">{{task.value}}</span>
           </mat-checkbox>
+
         </div>
       </div>
     </div>
