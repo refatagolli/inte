@@ -40,11 +40,8 @@ export class CdkDetailRowDirective {
     this._staffManagementService.getClickedProfile()
       .pipe()
       .subscribe(item => {
-        console.log('opened', this.opened);
-        console.log('row', this.row, item);
         if (this.row && this.row.id === item.id || (this.row &&(this.row.id !== item.id) && this.opened)) {
           this.onClick(item);
-          console.log('opened', this.opened);
         }
     });
 

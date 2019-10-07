@@ -70,13 +70,16 @@
           <mat-header-cell class="customized-headers-3 header-6" *matHeaderCellDef> <button mat-button>Print <mat-icon>print</mat-icon></button></mat-header-cell>
           <mat-cell class="customized-cell-3 column-6" *matCellDef="let row">
             <span>
-              Profile Details <i class="material-icons arrow-icon" (click)="staffService.profileClicked.next(row)">arrow_forward_ios</i>
+              Profile Details <i class="material-icons arrow-icon">arrow_forward_ios</i>
             </span>
           </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row [ngStyle]="{display: (selectedRow && (row.id === selectedRow.row.id) && selectedRow.opened) ? 'none' : ''}"  (valueChange)="selectedRow = $event" *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl">
+        <mat-header-row class="header-background" *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row [ngStyle]="{display: (selectedRow && (row.id === selectedRow.row.id) && selectedRow.opened) ? 'none' : ''}"
+                 (valueChange)="selectedRow = $event" *matRowDef="let row; columns: displayedColumns;" matRipple
+                 (click)="staffService.profileClicked.next(row)" class="element-row"
+                 [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl">
         </mat-row>
       </mat-table>
     </div>
