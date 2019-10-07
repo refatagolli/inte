@@ -6,7 +6,9 @@ import {FuseSidebarModule} from '@theme/components';
 import {VerticalLayout2Module} from './vertical/layout-2/layout-2.module';
 import {ShiftManagementModule} from '../shift-management/shift-management.module';
 import {StaffManagementSidebarsModule} from '../staff-management/components/staff-management-sidebars/staff-management-sidebars.module';
-
+import {ManageMobileUserModule} from '../manage-mobile-user/manage-mobile-user.module';
+import {MobileLoginModule} from '../mobile-login/mobile-login.module';
+import {MobileForgotPasswordModule} from '../mobile-forgot-password/mobile-forgot-password.module';
 
 @NgModule({
   imports: [
@@ -15,7 +17,10 @@ import {StaffManagementSidebarsModule} from '../staff-management/components/staf
     MatIconModule,
     FuseSidebarModule,
     ShiftManagementModule,
-    StaffManagementSidebarsModule
+    StaffManagementSidebarsModule,
+    ManageMobileUserModule,
+    MobileLoginModule,
+    MobileForgotPasswordModule
   ],
   exports: [
     VerticalLayout2Module,

@@ -1,0 +1,72 @@
+<div class="user-form">
+
+  <div class="user-form-wrapper">
+
+    <div class="user-management-header">
+      <p>
+        Good afternoon! You need to create an account.
+        <br/>
+        <label class="sub-title">‘{{ facilityName }}’ has invited you to join this facility as a nurse.</label>
+      </p>
+    </div>
+
+    <form [formGroup]="registerForm">
+      <div class="user-management-body">
+        <div class="input-wrapper">
+          <label class="form-labels">Email address</label>
+          <input formControlName="email" placeholder="you@intelycare.com" type="text" class="form-inputs"
+                 [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}" />
+        </div>
+
+        <br />
+
+        <div class="input-wrapper">
+          <label class="form-labels">Password</label>
+          <input formControlName="password" placeholder="Enter password" type="password" class="form-inputs"
+                 [ngStyle]="{'border-color' : (submitted && validateForm.password.errors) ? 'red' : ''}" />
+        </div>
+
+        <br />
+
+        <div class="forgot-password-wrapper">
+          <a routerLink="/forgotPass" class="forgot-password">Forgot password?</a>
+        </div>
+
+        <br /><br /><br />
+
+        <div class="button-wrapper">
+          <button class="main-button action-button complete" type="button" (click)="register()" >
+            <label class="main-button-label">
+              Join ‘{{ facilityName }}’
+            </label>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <div class="user-management-footer">
+
+      <br />
+
+      <div class="divider-wrapper">
+        <span class="divider-label" >
+          OR
+        </span>
+      </div>
+
+      <br />
+
+      <div class="footer-text">
+        Have an existing account?  <div class="join"><a routerLink="/login" [queryParams]="{facility: facilityName}" >Join</a></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
