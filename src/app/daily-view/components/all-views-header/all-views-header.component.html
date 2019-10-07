@@ -42,7 +42,7 @@
                   [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='monthly'}"
           >{{ 'monthly' | titlecase}}
           </button>
-          <button mat-menu-item (click)="openCustomModal('monthly')"
+          <button mat-menu-item (click)="openCustomModal()"
                   [ngClass]="{'itemSelected': dailyViewConfig.dateRange ==='custom'}"
           >{{ 'custom' | titlecase}}
           </button>

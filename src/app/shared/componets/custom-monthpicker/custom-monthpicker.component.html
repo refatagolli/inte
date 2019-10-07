@@ -1,0 +1,9 @@
+<div class="custom-monthpicker">
+  <div class="custom-monthpicker" fxLayout="row wrap">
+    <div class="month-square" *ngFor="let m of months, let i = index" fxLayoutAlign="center center"
+         (click)="monthChange.next(i)"
+    [ngClass]="{selected: isMonthSelected(i)}"
+    >{{m}}</div>
+
+  </div>
+</div>

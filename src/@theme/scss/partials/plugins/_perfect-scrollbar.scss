@@ -1,12 +1,28 @@
 .ps {
-    position: relative;
+  position: relative;
 
-    > .ps__rail-x {
-        z-index: 99999;
-    }
+  > .ps__rail-x {
+    z-index: 99999;
+  }
 
-    > .ps__rail-y {
-        z-index: 99999;
-        left: auto !important;
+  > .ps__rail-y {
+    z-index: 99999;
+    left: auto !important;
+  }
+
+  .ps__rail-y:hover, .ps__rail-y.ps--clicking {
+    width: 10px;
+    .ps__thumb-y {
+      background-color: #999;
+      width: 7px;
     }
+  }
+
+  .ps__rail-x:hover, .ps__rail-x.ps--clicking {
+    height: 10px;
+    .ps__thumb-x {
+      background-color: #999;
+      height: 7px;
+    }
+  }
 }

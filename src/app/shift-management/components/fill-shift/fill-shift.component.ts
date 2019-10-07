@@ -142,7 +142,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
       tap(console.log),
       filter(e => this.staffList.length > 0),
       takeUntil(this._unsubscribeAll),
-      tap(e => this.filterOptions = e),
+      tap(e => this._setFilters(e)),
       flatMap(e => of(this.staffList).pipe(
         flatMap(as => as),
         delay(150),
@@ -161,4 +161,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  private _setFilters(e: any) {
+    this.filterOptions = {...this.filterOptions , ...e};
+  }
 }

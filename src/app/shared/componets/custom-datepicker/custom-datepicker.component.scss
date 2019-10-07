@@ -1,0 +1,77 @@
+.ah1-datepicker {
+  width: 497px;
+  min-width: 497px;
+  max-width: 497px;
+  height: 285px; //411-126
+  background-color: white;
+  padding:5px;
+
+  .ah1-datepicker-content {
+
+    .ah1-datepicker-content-wrapper {
+
+      .calendar-cell {
+        width: calc((400px - 24px) / 7);
+        height: 38px;
+
+
+        font-family: OpenSans-SemiBold, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 16px;
+      }
+
+      .calendar-days {
+        margin-top: 12px;
+        border-top: 1px solid #f3f3f3;
+        border-bottom: 1px solid #f3f3f3;
+        color: #72808a;
+      }
+
+      .calendar-dates {
+
+        .day {
+          height: 24px;
+          margin: 5px 0;
+
+          .inner-cell {
+            height: 24px;
+            width: 38px;
+            color: #59595b;
+            cursor: pointer;
+          }
+
+          &.left-is-selected {
+            border-radius: 0 22px 22px 0;
+          }
+
+          &.right-is-selected {
+            border-radius: 22px 0 0 22px;
+          }
+
+          &.right-is-selected.left-is-selected {
+            border-radius: 0;
+          }
+
+          &.selected {
+
+            .inner-cell {
+              background-color: #1986b9 !important;
+              border-radius: 12px;
+              color: #ffffff;
+            }
+          }
+
+          &.between {
+            background-color: #f2f5f8;
+          }
+
+          &.disabled {
+            background-color: red;
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}

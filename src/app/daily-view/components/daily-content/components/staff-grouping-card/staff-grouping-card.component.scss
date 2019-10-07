@@ -58,14 +58,18 @@ $header_font_color: #59595b;
   ::ng-deep.mat-expansion-panel.staff-grouping {
     box-shadow: unset !important;
 
+    .staff-grouping-card-content {
+      overflow: auto;
+    }
+
     .mat-expansion-panel-content {
       max-width: calc(100vw - (100px));
       width: inherit;
-      overflow-x: auto;
+      //overflow-x: auto;
 
       .mat-expansion-panel-body {
         padding: 0;
-        overflow-y: visible;
+        //overflow-y: visible;
       }
     }
   }

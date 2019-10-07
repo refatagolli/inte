@@ -1,0 +1,26 @@
+.shift-details-actions {
+
+  .shift-details-actions-wrapper.actionfull {
+    ::ng-deep.shift-info {
+      background-color: #ffe8e7 !important;
+    }
+  }
+  .actions {
+    padding: 16px 0;
+    border-bottom: 1px solid #e8e9ed;
+
+    .accept {
+      color: #9fc53a;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    .decline {
+      color: #989db3;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+  }
+}

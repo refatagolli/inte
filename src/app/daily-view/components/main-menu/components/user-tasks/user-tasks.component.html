@@ -4,7 +4,8 @@
     <mat-card-title>My Tasks</mat-card-title>
   </mat-card-header>
 
-  <mat-card-content id="test" fxFlex fxLayout="column" fxFlexFill>
+  <mat-card-content id="test" fxFlex fxLayout="column" fxFlexFill fusePerfectScrollbar
+                    [fusePerfectScrollbarOptions]="{suppressScrollX: false, updateOnRouteChange : true}">
 
     <div class="user-tasks-content" fxLayout="column" cdkDropList (cdkDropListDropped)="drop($event)">
       <div class="single-task" fxFlex="0 1 auto" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="center center"

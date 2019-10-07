@@ -1,0 +1,20 @@
+<div class="my-schedule" fxFlex>
+  <div class="my-schedule-wrapper" fxFlex="" fxLayout="column" fxLayoutGap="16px">
+
+    <div class="my-schedule-element" *ngFor="let a of dates" fxFlex="1 0 auto"
+         fxLayout="row">
+
+      <div class="date-indicator" fxLayout="column" fxLayoutAlign="center center">
+        <span class="month">{{ a | date : 'EEE'}}</span>
+        <span class="date">{{ a | date : 'dd' }}</span>
+      </div>
+
+      <div class="element-info" fxFlex>
+        <div class="element-info-wrapper" fxFlex="">
+         <shift-info [shiftDetails]="getShiftDetailsByDate(a)" fxFlex></shift-info>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

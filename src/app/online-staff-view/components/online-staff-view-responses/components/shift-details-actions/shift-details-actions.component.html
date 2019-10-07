@@ -1,0 +1,10 @@
+<div class="shift-details-actions">
+  <div class="shift-details-actions-wrapper" fxLayout="column" [ngClass]="{actionfull: !requestPending}">
+    <shift-info [shiftDetails]="shiftDetails" [requestPending]="showPending && requestPending"></shift-info>
+    <div class="actions" fxFlex fxLayout="row" fxLayoutGap="20px" *ngIf="!requestPending"
+         fxLayoutAlign="center center">
+      <button mat-button class="accept" (click)="acceptEvent.next(shiftDetails)">Accept</button>
+      <button mat-button class="decline" (click)="declineEvent.next(shiftDetails)">Decline</button>
+    </div>
+  </div>
+</div>
