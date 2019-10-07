@@ -1,0 +1,38 @@
+
+.shift-info {
+  background-color: #daf6f4;
+  padding: 13px;
+  border-radius: 2px;
+
+  &.no-shift {
+    background-color: #f2f5f8;
+  }
+
+  .shift-info-wrapper {
+
+    .shift-hours {
+      color: #333333;
+      font-size: 16px;
+      font-weight: normal;
+      letter-spacing: 0;
+    }
+
+    .shift-length {
+      color: #333333;
+      font-size: 14px;
+      font-weight: normal;
+      letter-spacing: 0;
+      font-style: italic;
+    }
+
+    .no-shift-message {
+      color: #333333;
+      font-family: OpenSans-Regular, sans-serif;
+      font-size: 16px;
+      font-weight: normal;
+      height: 22px;
+      letter-spacing: 0;
+    }
+
+  }
+}
