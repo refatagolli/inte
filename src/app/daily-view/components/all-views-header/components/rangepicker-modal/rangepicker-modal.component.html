@@ -1,3 +1,27 @@
-<p>
-  rangepicker-modal works!
-</p>
+<div class="range-picker" fxLayout="column">
+  <div class="range-picker-wrapper" fxFlex="" fxLayout="row">
+    <div class="start">
+      <div *ngIf="!chooseMonth">
+        <rangepicker-header [title]="'START'" [date]="currentDate"
+                            (monthChange)="chooseMonth = true"></rangepicker-header>
+        <custom-datepicker [selectRange]="true" [currentDate]="currentDate.clone()"
+                           [tempEndRange]="tempRange" [range]="currentRange"></custom-datepicker>
+      </div>
+      <div *ngIf="chooseMonth">
+        <custom-monthpicker [currentMonth]="currentDate" (monthChange)="changeMonthStart($event)"></custom-monthpicker>
+      </div>
+    </div>
+    <div class="end">
+      <div>
+        <rangepicker-header [title]="'END'" [date]="nextMonth" (monthChange)="chooseMonth = true"></rangepicker-header>
+        <custom-datepicker #nextMonthDatePicker [selectRange]="true" [currentDate]="nextMonth.clone()"
+                           (tempEndRangeChange)="tempRange = $event"
+                           [tempEndRange]="tempRange" [range]="currentRange"></custom-datepicker>
+      </div>
+    </div>
+
+  </div>
+  <div class="apply-container" fxFlex fxLayoutAlign="end">
+    <button class="apply" mat-button (click)="setRange()">apply</button>
+  </div>
+</div>

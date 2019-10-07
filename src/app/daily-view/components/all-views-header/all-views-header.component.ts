@@ -5,6 +5,8 @@ import {MatDialog} from '@angular/material';
 import {PrintViewComponent} from '../print-view/print-view.component';
 import {formatDate} from '@angular/common';
 import * as moment from 'moment';
+import {RangepickerModalComponent} from './components/rangepicker-modal/rangepicker-modal.component';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'daily-view-header',
@@ -70,8 +72,18 @@ export class AllViewsHeaderComponent implements OnInit {
     this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
   }
 
-  openCustomModal(monthly: string) {
-
+  openCustomModal() {
+    this._dialog.open(RangepickerModalComponent, {
+      panelClass: 'date-range-picker'
+    }).afterClosed().pipe(
+      filter(e => e)
+    ).subscribe(e => {
+      this.dailyViewConfig.date.currentDate = e.start;
+      this.dailyViewConfig.date.to = e.end;
+      this.dailyViewConfig.date.from = e.start;
+      this.dailyViewConfig.dateRange = 'custom';
+      this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
+    });
   }
 
   goForward() {

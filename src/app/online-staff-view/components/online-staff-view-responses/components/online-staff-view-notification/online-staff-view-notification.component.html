@@ -1,3 +1,20 @@
-<p>
-  online-staff-view-notification works!
-</p>
+<div class="online-staff-view-notification" fxFlex>
+  <div class="online-staff-view-notification-wrapper" fxLayout="row">
+
+    <div class="icon-container">
+        <div class="icon" fxLayoutAlign="center center" [ngClass]="operationIsAccept ? 'success' : 'fail'">
+          <mat-icon>{{operationIsAccept ? 'done' : 'close' }}</mat-icon>
+        </div>
+    </div>
+
+    <div class="message" fxFlex fxLayout="column" fxLayoutGap="9px">
+      <span class="message-title">You have {{ operationIsAccept? 'accepted' : 'declined' }} this shift.</span>
+      <div class="message-info" fxLayout="row" fxLayoutGap="5px">
+        <span class="shift-date">{{ shift.shiftDate | date: 'EEE d' }},</span>
+        <span class="shift-hours">{{ shift.shiftHours}}</span>
+        <span class="shift-length">(8 hours)</span>
+      </div>
+    </div>
+
+  </div>
+</div>

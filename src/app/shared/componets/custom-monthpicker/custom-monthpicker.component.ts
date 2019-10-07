@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
-  selector: 'app-custom-monthpicker',
+  selector: 'custom-monthpicker',
   templateUrl: './custom-monthpicker.component.html',
   styleUrls: ['./custom-monthpicker.component.scss']
 })
 export class CustomMonthpickerComponent implements OnInit {
 
-  constructor() { }
+  months: string[];
+  @Input() currentMonth: moment.Moment;
+  @Output() monthChange: EventEmitter<any> = new EventEmitter();
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.months = moment.months();
+  }
+
+  isMonthSelected(i: number) {
+    return this.currentMonth.month() === i;
   }
 
 }

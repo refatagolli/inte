@@ -1,42 +1,35 @@
 <div class="ah1-datepicker" fxFlex>
 
-  <div class="ah1-datepicker-header">
-    <div class="ah1-datepicker-header-wrapper" fxLayout="column">
-
-      <div class="operation-title" fxFlex fxLayoutAlign="center center">
-        <span>End</span>
-      </div>
-
-      <div class="date-info" fxLayout="row" fxLayoutGap="12px" fxFlex fxLayoutAlign="center center">
-
-        <div class="info month" fxLayoutAlign="center center">
-          <span> September</span>
-        </div>
-
-        <div class="info year" fxLayoutAlign="center center">
-          <span>2019</span>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
   <div class="ah1-datepicker-content">
     <div class="ah1-datepicker-content-wrapper" fxLayout="column">
 
       <div class="calendar-days" fxFlex>
-        <div class="calendar-days" fxFlex fxLayout="row">
-          <div class="calendar-day-cell" *ngFor="let d of calendarDays" fxFlex="auto" fxLayoutAlign="center center">
+        <div class="calendar-days-wrapper" fxFlex fxLayout="row">
+          <div class="day-cell calendar-cell" *ngFor="let d of calendarDays" fxFlex="auto"
+               fxLayoutAlign="center center">
             {{d}}
           </div>
         </div>
       </div>
 
       <div class="calendar-dates">
-        <div class="calendar-dates-wrapper">
+        <div class="calendar-dates-wrapper" fxLayout="column">
 
-          <div class="calendar-dates-column" fxFlex fxLayout="column"></div>
+          <div class="calendar-dates-column" fxFlex *ngFor="let w of weeks" fxLayout="row">
+            <div class="day calendar-cell" *ngFor="let d of w.days; let i = index" fxFlex fxLayoutAlign="center center"
+                 [ngClass]="{
+              'selected': d.isCurrentMonth && isSelectedDate(d),
+              'between': d.isCurrentMonth && isBetweenRange(d),
+              'left-is-selected': d.isCurrentMonth && isLeftSelected(w.days, i) && !isStartOfMonth(d.date),
+              'right-is-selected': d.isCurrentMonth && isRightSelected(w.days, i) && !isEndOfMonth(d.date),
+              'disabled': d.isCurrentMonth && isDateDisabled(d.date)
+              }">
+              <span class="inner-cell" fxLayoutAlign="center center" *ngIf="d.isCurrentMonth"
+                    (click)="selectDate(d.date)"
+                    (mouseover)="viewRange(d.date)"
+                    (mouseout)="viewRange(0)">{{d.number}}</span>
+            </div>
+          </div>
 
         </div>
       </div>

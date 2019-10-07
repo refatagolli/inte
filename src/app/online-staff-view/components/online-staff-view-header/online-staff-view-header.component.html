@@ -1,3 +1,27 @@
-<p>
-  online-staff-view-header works!
-</p>
+<div class="online-staff-view-header" fxFlex="1 1 auto">
+  <div class="online-staff-view-header-wrapper" fxFlex fxLayout="column" fxLayoutAlign="center">
+
+    <div class="route-name" fxFlex fxLayoutAlign="center center">
+      <span class="title">ACME Healthcare Facility</span>
+    </div>
+
+    <div class="tab" fxFlex fxLayoutAlign="center center">
+      <div class="tab" fxLayout="row" fxLayoutGap.gt-md="50px">
+
+        <div class="tab-option my-schedule" [ngClass]="selectedTab === 'scheduled' ? 'selected' : ''">
+          <button mat-button (click)="selectedTab = 'scheduled'">My Schedule ({{ scheduledShifts }})</button>
+        </div>
+
+        <div class="tab-option responses" [ngClass]="selectedTab === 'responses' ? 'selected' : ''">
+          <button mat-button (click)="selectedTab = 'responses'">Pending ({{ responses }})</button>
+        </div>
+
+        <div class="tab-option open" [ngClass]="selectedTab === 'openShifts' ? 'selected' : ''">
+          <button mat-button (click)="selectedTab = 'openShifts'">Open ({{ openShifts }})</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

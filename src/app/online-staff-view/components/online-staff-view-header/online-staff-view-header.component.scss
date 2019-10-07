@@ -1,0 +1,40 @@
+.online-staff-view-header {
+  background: linear-gradient(-180deg, rgb(23, 133, 184) 0%, rgb(113, 191, 228) 100%);
+  height: 133px;
+  padding: 16px 0 28px 0;
+
+  .title {
+    color: #FFFFFF;
+    font-family: OpenSans-SemiBold, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    height: 24px;
+    letter-spacing: -0.3px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .tab {
+
+    .tab-option {
+
+      .mat-button {
+        color: #FFFFFF;
+        font-family: OpenSans-SemiBold, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        height: 34px;
+        letter-spacing: -0.35px;
+      }
+
+      &.selected {
+
+        .mat-button {
+          background: #B1D8EA;
+          color: #1885b7;
+          border-radius: 17px;
+        }
+      }
+    }
+  }
+}

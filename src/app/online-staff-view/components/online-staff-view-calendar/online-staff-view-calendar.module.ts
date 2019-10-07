@@ -1,11 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { OnlineStaffViewCalendarComponent } from './online-staff-view-calendar.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {OnlineStaffViewCalendarComponent} from './online-staff-view-calendar.component';
+import {SharedModule} from '../../../shared/shared.module';
+import {MaterialModule} from '../../../shared/material.module';
 
 @NgModule({
   declarations: [OnlineStaffViewCalendarComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    MaterialModule
+  ],
+  exports: [
+    OnlineStaffViewCalendarComponent
   ]
 })
-export class OnlineStaffViewCalendarModule { }
+export class OnlineStaffViewCalendarModule {
+}

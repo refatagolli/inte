@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-online-staff-view-header',
+  selector: 'online-staff-view-header',
   templateUrl: './online-staff-view-header.component.html',
   styleUrls: ['./online-staff-view-header.component.scss']
 })
 export class OnlineStaffViewHeaderComponent implements OnInit {
 
-  constructor() { }
+  @Input() scheduledShifts: number;
+  @Input() responses: number;
+  @Input() openShifts: number;
+  selectedTab: 'scheduled' | 'responses' | 'openShifts' = 'responses';
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

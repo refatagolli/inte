@@ -1,3 +1,21 @@
-<p>
-  rangepicker-header works!
-</p>
+<div class="rangepicker-header" fxFlex>
+  <div class="rangepicker-header-wrapper" fxFlex="" fxLayout="column" fxLayoutGap="19px">
+
+    <div class="operation-title" fxFlex fxLayoutAlign="center center">
+      <span>{{title | uppercase}}</span>
+    </div>
+
+    <div class="date-info" fxLayout="row" fxLayoutGap="8px" fxFlex fxLayoutAlign="center center">
+
+      <div class="info month" fxLayoutAlign="center center" (click)="monthChange.emit()">
+        <span> {{date.toDate() | date : "MMMM"}}</span>
+      </div>
+
+      <div class="info year" fxLayoutAlign="center center">
+        <span>{{date.toDate() | date : "yyyy"}}</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+

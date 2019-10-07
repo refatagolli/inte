@@ -3,13 +3,15 @@ import {CommonModule} from '@angular/common';
 import {OnlineStaffViewMyScheduleComponent} from './online-staff-view-my-schedule.component';
 import {SharedModule} from '../../../shared/shared.module';
 import {MaterialModule} from '../../../shared/material.module';
+import {ShiftInfoModule} from '../shift-info/shift-info.module';
 
 @NgModule({
   declarations: [OnlineStaffViewMyScheduleComponent],
   imports: [
     CommonModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    ShiftInfoModule
   ],
   exports: [
     OnlineStaffViewMyScheduleComponent
