@@ -54,8 +54,8 @@
         <!-- Shifts -->
         <ng-container matColumnDef="shifts">
           <mat-header-cell class="customized-headers-2 header-4" *matHeaderCellDef> SHIFT DAYS & HOURS </mat-header-cell>
-          <mat-cell class="customized-cell-2 column-4" *matCellDef="let row">
-            <div [innerHTML]="row.shiftDaysString"></div>
+          <mat-cell [innerHTML]="row.shiftDaysString" class="customized-cell-2 column-4" *matCellDef="let row">
+<!--            <div></div>-->
           </mat-cell>
         </ng-container>
 

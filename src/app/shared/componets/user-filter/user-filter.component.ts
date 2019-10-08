@@ -66,7 +66,7 @@ export class UserFilterComponent implements OnInit {
       )
       .subscribe(value => {
         this.usedIn = value;
-    })
+    });
 
     this.utils.getFilterConfiguration()
       .pipe(

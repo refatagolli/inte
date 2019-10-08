@@ -62,7 +62,10 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
     private dailyView: DailyViewService,
     private staffService: StaffManagementService,
     private changeDetectorRefs: ChangeDetectorRef
-              ) { }
+              ) {
+    this.utils.setFilterConfiguration(this.filterConfig);
+    this.utils.setFilterUsedComponent(this.usedIn);
+  }
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -71,8 +74,10 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
     // localStorage.setItem('staffDirectory', null);
 
     this.loadData();
-    this.utils.setFilterConfiguration(this.filterConfig);
-    this.utils.setFilterUsedComponent(this.usedIn);
+    this.staffService.updateStaffTable.pipe().subscribe(item => {
+      this.retrieveStaffMembers();
+    });
+
     this.staffService.updateStaffTable.pipe().subscribe(item => {
       this.retrieveStaffMembers();
     });
