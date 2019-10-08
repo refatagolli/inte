@@ -25,14 +25,8 @@ export class OnlineStaffViewCalendarComponent implements OnInit {
     this._getMonthList();
   }
 
-  areDatesEquals(d1, d2) {
-    return new Date(d1).getDate() === new Date(d2).getDate();
-  }
-
-
-  changeDate(date) {
-    this.config.date.currentDate = date;
-    // this._dailyViewService.dailyViewConfig.next(this.config);
+  areDatesEquals(d) {
+    return new Date(d).getDate() === new Date().getDate();
   }
 
   private getDateList() {

@@ -25,8 +25,8 @@
               'disabled': d.isCurrentMonth && isDateDisabled(d.date)
               }">
               <span class="inner-cell" fxLayoutAlign="center center" *ngIf="d.isCurrentMonth"
-                    (click)="selectDate(d.date)"
-                    (mouseover)="viewRange(d.date)"
+                    (click)="!isDateDisabled(d.date) ? selectDate(d.date) : ''"
+                    (mouseover)="viewRange(!isDateDisabled(d.date) ? d.date : 0)"
                     (mouseout)="viewRange(0)">{{d.number}}</span>
             </div>
           </div>

@@ -12,11 +12,14 @@ $background_blue: #F7F9FB;
 
   .header {
     background-color: #F1F5F8;
-    border: 2px solid #D3D4D5;
+    border-top: 1px solid #D3D4D5;
+    border-bottom: 1px solid #D3D4D5;
 
     .header-content {
       width: 430px !important;
       border-right: 2px solid #D3D4D5;
+      position: sticky;
+      left: 0;
 
       .header-title {
         padding-left: 50px;

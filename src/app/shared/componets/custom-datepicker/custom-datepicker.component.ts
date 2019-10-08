@@ -11,7 +11,7 @@ export class CustomDatepickerComponent implements OnInit {
 
   private static DAY_LENGTH = 24 * 60 * 60 * 1000;
 
-  calendarDays = ['SU', 'M', 'T', 'W', 'TH', 'F', 'SA'];
+  calendarDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   weeks = [];
   selectedDate;
 
@@ -24,6 +24,7 @@ export class CustomDatepickerComponent implements OnInit {
   @Output() dateChange: EventEmitter<any> = new EventEmitter();
   @Input() tempEndRange;
   @Output() tempEndRangeChange: EventEmitter<any> = new EventEmitter();
+  @Input() maxRangeDays: number;
 
   constructor() {
   }
@@ -52,6 +53,7 @@ export class CustomDatepickerComponent implements OnInit {
       }
 
       this.dateChange.emit(this.range);
+      this.tempEndRangeChange.emit(0);
     }
   }
 
@@ -105,7 +107,9 @@ export class CustomDatepickerComponent implements OnInit {
   }
 
   isDateDisabled(date: any) {
-    // return this.range.start && this.range.start < date + 42 * CustomDatepickerComponent.DAY_LENGTH;
+    if (this.maxRangeDays) {
+      return this.range.start && this.range.start < date - this.maxRangeDays * CustomDatepickerComponent.DAY_LENGTH;
+    }
     return false;
   }
 
