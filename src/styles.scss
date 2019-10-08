@@ -46,10 +46,19 @@ body {
   min-width: 400px;
   max-width: 400px;
   border-right: 2px solid #F7FBFF;
+  background-color: white;
+  position: sticky;
+  z-index: 100001;
+  left:0;
 }
 
 .date-range-picker > .mat-dialog-container {
   padding: 5px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.invisible-backdrop {
+  background-color: transparent;
 }
 
 

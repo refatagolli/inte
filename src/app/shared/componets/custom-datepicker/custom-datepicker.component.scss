@@ -67,8 +67,11 @@
           }
 
           &.disabled {
-            background-color: red;
-            color: red;
+
+            .inner-cell {
+              color: #999999 !important;
+              cursor: initial;
+            }
           }
         }
       }

@@ -4,7 +4,7 @@
       <div *ngIf="!chooseMonth">
         <rangepicker-header [title]="'START'" [date]="currentDate"
                             (monthChange)="chooseMonth = true"></rangepicker-header>
-        <custom-datepicker [selectRange]="true" [currentDate]="currentDate.clone()"
+        <custom-datepicker [selectRange]="true" [currentDate]="currentDate.clone()" [maxRangeDays]="6 * 7"
                            [tempEndRange]="tempRange" [range]="currentRange"></custom-datepicker>
       </div>
       <div *ngIf="chooseMonth">
@@ -15,7 +15,7 @@
       <div>
         <rangepicker-header [title]="'END'" [date]="nextMonth" (monthChange)="chooseMonth = true"></rangepicker-header>
         <custom-datepicker #nextMonthDatePicker [selectRange]="true" [currentDate]="nextMonth.clone()"
-                           (tempEndRangeChange)="tempRange = $event"
+                           (tempEndRangeChange)="tempRange = $event" [maxRangeDays]="6 * 7"
                            [tempEndRange]="tempRange" [range]="currentRange"></custom-datepicker>
       </div>
     </div>
