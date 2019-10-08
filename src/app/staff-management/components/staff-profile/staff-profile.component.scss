@@ -198,7 +198,8 @@
           }
 
           .contact-table-header {
-            width: 88px;
+            //width: 88px;
+            width: 25%;
             height: 16px;
             color: rgb(106, 118, 128);
             font-size: 16px;
@@ -206,16 +207,20 @@
             font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 16px;
+            padding-left: 25px;
+            padding-right: 25px;
           }
           .contact-table-body {
-            width: 230px;
-            height: 16px;
+            //width: 230px;
+            //height: 16px;
             color: rgb(79, 79, 79);
             font-size: 16px;
             font-family: OpenSans-Regular;
             font-weight: normal;
             letter-spacing: -0.4px;
-            line-height: 16px;
+            line-height: 30px;
+            padding-left: 25px;
+            padding-right: 25px;
           }
         }
       }
@@ -250,6 +255,7 @@
 
         .profile-table-data {
           color: rgb(79, 79, 79);
+          vertical-align: top;
           font-size: 16px;
           font-family: OpenSans-SemiBold;
           font-weight: 600;
@@ -301,12 +307,12 @@
       }
 
       .staff-name-edit {
-        //width: 169px;
-        //height: 56px;
+        //width: 170px;
+        //height: 50px;
         //background-color: inherit;
-        //margin-bottom: 23px;
+        //margin-top: 5px;
         //border: 1px solid rgba(0, 0, 0, 0.12);
-        //border-radius: 2px;
+        //border-radius: 4px;
 
         ::ng-deep .mat-form-field {
           width: 170px !important;
@@ -361,9 +367,9 @@
 
 
         .customised-radio-group {
-          width: 150px;
+          width: 160px;
           height: 57px;
-          margin-bottom: 6px;
+          margin-top: 5px;
           background-color: inherit;
           border: 1px solid rgba(0, 0, 0, 0.12);
           border-radius: 5px;

@@ -1,7 +1,9 @@
 <div>
   <mat-card class="staff-profile">
     <mat-card-header class="staff-profile-header">
-      <label *ngIf="upcomingShifts && upcomingShifts.length > 0" class="next-shift-label">Next shift: {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'mediumDate' }}</label>
+      <label *ngIf="upcomingShifts && upcomingShifts.length > 0" class="next-shift-label">
+        Next shift: {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'MMMM' }} {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d' }}{{ (upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d')  | dateSuffix }}, {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'yyyy' }}
+      </label>
       <i  class="material-icons cancel-icon" (click)="removed.next({})">cancel</i>
       <div class="header-image">
         {{ staffMember.firstName.substr(0, 1) + staffMember.lastName.substr(0, 1) }}
@@ -18,7 +20,7 @@
     <mat-card-content class="content-data">
       <div *ngIf="selectedContent == 'Profile'">
         <mat-expansion-panel [expanded]="true" class="custom-collapsed custom-collapsed-profile">
-          <mat-expansion-panel-header>
+          <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'48px'">
             <mat-panel-title>
               Profile
             </mat-panel-title>
@@ -42,7 +44,9 @@
             <tr>
               <td class="profile-table-data">{{ staffMember.firstName + " " + staffMember.lastName }}</td>
               <td class="profile-table-data">{{ staffMember.gender.name }}</td>
-              <td class="profile-table-data">{{ staffMember.birthDate | date: "shortDate" }}</td>
+              <td class="profile-table-data">
+                {{ staffMember.birthDate | date: "MM" }} / {{ staffMember.birthDate | date: "dd" }} / {{ staffMember.birthDate | date: "yyyy" }}
+              </td>
               <td class="profile-table-data">{{ staffMember.ssn }}</td>
               <td class="profile-table-data">{{ staffMember.location ? staffMember.location.value : '' }}</td>
               <td class="profile-table-data">{{ staffMember.phone }}</td>
@@ -53,20 +57,18 @@
               <td class="profile-table-headers">Staff Type</td>
               <td class="profile-table-headers">Hire Date</td>
               <td class="profile-table-headers">Employment Status</td>
-              <td class="profile-table-headers">Shifts</td>
-              <td colspan="3"></td>
+              <td colspan="4" class="profile-table-headers">Shifts</td>
             </tr>
             <tr>
               <td colspan="100%"></td>
             </tr>
             <tr>
               <td class="profile-table-data">{{ staffMember.staffType.staffTypeName }}</td>
-              <td class="profile-table-data">{{ staffMember.hireDate | date: "shortDate" }}</td>
-              <td class="profile-table-data">{{ staffMember.employmentType.employmentTypeName }}</td>
               <td class="profile-table-data">
-                <div [innerHTML]="staffMember.shiftDaysString"></div>
+                {{ staffMember.hireDate | date: "MM" }} - {{ staffMember.hireDate | date: "dd" }} - {{ staffMember.hireDate | date: "yyyy" }}
               </td>
-              <td colspan="3"></td>
+              <td class="profile-table-data">{{ staffMember.employmentType.employmentTypeName }}</td>
+              <td colspan="4" [innerHTML]="staffMember.shiftDaysString" class="profile-table-data"></td>
             </tr>
           </table>
           <ng-template #editProfile>
@@ -85,7 +87,9 @@
               </tr>
               <tr>
                 <td class="profile-table-data">
-                  <div class="staff-name-edit">
+                  <div>
+<!--                    <input class="staff-name-edit" [ngStyle]="{'border-color' : (submitted && validateForm.fullName.errors) ? 'red' : ''}"-->
+<!--                           formControlName="fullName" placeholder="Full Name *" />-->
                     <mat-form-field class="staff-name-edit" appearance="outline">
                     <input [ngStyle]="{'border-color' : (submitted && validateForm.fullName.errors) ? 'red' : ''}"
                            formControlName="fullName" placeholder="Full Name *" matInput>
@@ -237,7 +241,7 @@
           </ng-template>
         </mat-expansion-panel>
         <mat-expansion-panel [expanded]="true" class="custom-collapsed custom-collapsed-contact">
-          <mat-expansion-panel-header>
+          <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'48px'">
             <mat-panel-title>
               Emergency Contacts & References
             </mat-panel-title>
@@ -281,7 +285,7 @@
       </div>
       <div *ngIf="selectedContent == 'Schedule'">
         <mat-expansion-panel [expanded]="true" class="custom-collapsed custom-collapsed-profile">
-          <mat-expansion-panel-header>
+          <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'48px'">
             <mat-panel-title>
               Upcoming ({{ upcomingShifts.length }})
             </mat-panel-title>
@@ -322,7 +326,7 @@
           </table>
         </mat-expansion-panel>
         <mat-expansion-panel [expanded]="true" class="custom-collapsed custom-collapsed-contact">
-          <mat-expansion-panel-header>
+          <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'48px'">
             <mat-panel-title>
               Recent ({{ recentShifts.length }})
             </mat-panel-title>

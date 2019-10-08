@@ -5,7 +5,7 @@
     "lastName": "Evans",
     "employmentType": {
       "employmentTypeId": 2,
-      "employmentTypeName": "Full Time"
+      "employmentTypeName": "Full-Time"
     },
     "gender": {
       "id": 2,
@@ -19,7 +19,7 @@
       "value": "Unit B",
       "requiredStaff": 12
     },
-    "phone": "245-694-747-079",
+    "phone": "(214) 452-9422",
     "hireDate": "2019-06-20",
     "staffType": {
       "staffTypeId": 3,
@@ -74,7 +74,7 @@
     "lastName": "Bloom",
     "employmentType": {
       "employmentTypeId": 1,
-      "employmentTypeName": "Part Time"
+      "employmentTypeName": "Part-Time"
     },
     "gender": {
       "id": 2,
@@ -88,7 +88,7 @@
       "requiredStaff": 12
     },
     "email": "heather.bloom@yahoo.com",
-    "phone": "343-444-246-342",
+    "phone": "(343) 524-9521",
     "hireDate": "2019-05-04",
     "staffType": {
       "staffTypeId": 3,
@@ -163,7 +163,7 @@
     "lastName": "Borden",
     "employmentType": {
       "employmentTypeId": 1,
-      "employmentTypeName": "Part Time"
+      "employmentTypeName": "Part-Time"
     },
     "gender": {
       "id": 1,
@@ -177,7 +177,7 @@
       "value": "Unit B",
       "requiredStaff": 12
     },
-    "phone": "385-687-257-321",
+    "phone": "(385) 953-9621",
     "hireDate": "2019-09-18",
     "staffType": {
       "staffTypeId": 1,
@@ -252,14 +252,14 @@
     "lastName": "Caspar",
     "employmentType": {
       "employmentTypeId": 2,
-      "employmentTypeName": "Full Time"
+      "employmentTypeName": "Full-Time"
     },
     "gender": {
       "id": 1,
       "name": "Male"
     },
     "email": "derek.casper@gmail.com",
-    "phone": "232-423-654-345",
+    "phone": "(312) 245-9621",
     "hireDate": "2019-01-10",
     "birthDate": "1994-12-27",
     "ssn": "245-343-4346",
@@ -329,7 +329,7 @@
     },
     "rating": 3,
     "email": "yen.chin@gmail.com",
-    "phone": "236-533-654-855",
+    "phone": "(236) 953-9621",
     "hireDate": "2019-05-25",
     "birthDate": "1994-12-27",
     "ssn": "245-343-4346",

@@ -15,13 +15,15 @@ import {IntelyproProfileModule} from './components/intelypro-profile/intelypro-p
 import {ShiftDayCombinationsModule} from './components/shift-day-combinations/shift-day-combinations.module';
 import {NgxMaskModule} from 'ngx-mask';
 import {CustomOptionSetModule} from '../shared/componets/custom-option-set/custom-option-set.module';
+import {DateSuffix} from '../shared/date-suffix';
 
 @NgModule({
   declarations: [
     StaffManagementComponent,
     CdkDetailRowDirective,
     StaffProfileComponent,
-    IntelyproProfileComponent
+    IntelyproProfileComponent,
+    DateSuffix
   ],
   imports: [
     CommonModule,
