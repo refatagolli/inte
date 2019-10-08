@@ -18,6 +18,7 @@
       <div class="element-info" fxFlex>
         <div class="element-info-wrapper" fxFlex="">
           <shift-details-actions [shiftDetails]="getShiftDetailsByDate(a)" [requestPending]="(i == 2 || i == 4)"
+                                 [isrq]="i==2"
                                  (acceptEvent)="acceptRequest($event)" [showPending]="showPending"
                                  (declineEvent)="declineRequest($event)"
                                  fxFlex></shift-details-actions>

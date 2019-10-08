@@ -28,7 +28,6 @@ export class ManagementTopCardComponent implements OnInit {
   @Input() title: string;
   @Input() shiftDetails: ShiftDetails;
   @Input() replacing: StaffMember;
-  @Input() expanded = true;
 
   constructor(private _shiftManagementService: ShiftManagementService,
               private _cdr: ChangeDetectorRef) {

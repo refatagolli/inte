@@ -1,10 +1,11 @@
 <div class="staff-card"
      [ngClass]="{
      removed: openShift || (staffMember?.away && showNotPresent),
-     clickable: !openShift && !staffMember?.away && showNotPresent
+     clickable: !openShift && !staffMember?.away && showNotPresent,
+     hoverable: showNotPresent
      }">
   <mat-list-item>
-    <div class="staff-card-container" fxFlex fxLayout="row">
+    <div class="staff-card-container" fxFlex fxLayout="row" fxLayoutAlign="center center">
       <ng-container *ngIf="openShift; then openShiftCard else showStaffData"></ng-container>
     </div>
   </mat-list-item>
@@ -22,8 +23,11 @@
   <div class="staff-card-hours" *ngIf="!staffMember?.away || !showNotPresent">
     <span>{{ staffMember.hoursThisWeek}} hrs sched. this week</span>
   </div>
+  <div class="staff-card-iindicator" *ngIf="!staffMember?.away || !showNotPresent">
+    <mat-icon>info</mat-icon>
+  </div>
   <div class="staff-card-action" *ngIf="staffMember?.away && showNotPresent">
-    <button mat-button class="action-button danger" (click)="$event.stopPropagation(); fillShift()">Fill</button>
+    <button mat-button class="action-button danger" (click)="$event.stopPropagation(); fillShift()">{{'fill shift' | uppercase}}</button>
   </div>
 </ng-template>
 

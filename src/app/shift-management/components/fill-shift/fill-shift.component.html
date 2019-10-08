@@ -1,85 +1,87 @@
 <div class="shift-management">
   <div class="shift-management-wrapper" fxLayout="column" fxFlex fxFlexFill>
 
-    <div class="header" fxFlex>
-      <app-management-top-card [title]="!!replacing ? 'FIll Cancelled Shift' : 'Fill Open Shift'"
-                               [shiftDetails]="shiftDetails" [replacing]="replacing" [expanded]="shiftDetailsExpanded">
-      </app-management-top-card>
-    </div>
+    <div class="content" fxFlexFill fxFlex="0 1 auto" fxLayout="column">
 
-    <div class="content" fxFlexFill fxLayoutGap="15px" fxLayout="column" fxFlex="0 1 auto"
-         (mousewheel)="onScroll($event)">
-      <br/>
-
-      <div class="filter" fxFlex="0 1 auto">
-        <shift-management-filter (filterChange)="filter.next($event)"
-                                 [selectedFilter]="filterOptions"></shift-management-filter>
+      <div class="header" fxFlex="0 1 auto">
+        <app-management-top-card [title]="!!replacing ? 'FIll Cancelled Shift' : 'Fill Open Shift'"
+                                 [shiftDetails]="shiftDetails" [replacing]="replacing">
+        </app-management-top-card>
       </div>
 
-      <div class="filter-options" fxLayout="column">
+      <div class="content-wrapper" fxLayoutGap="15px" fxLayout="column" fxFlex="0 1 auto">
+        <br/>
 
-        <div fxFlex="1 1 auto">
-          <span class="total">{{staff.length}} Results</span>
+        <div class="filter" fxFlex="0 1 auto">
+          <shift-management-filter (filterChange)="filter.next($event)"
+                                   [selectedFilter]="filterOptions"></shift-management-filter>
         </div>
 
-        <div fxLayout="row wrap"
-             *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">
+        <div class="filter-options" fxLayout="column">
+
+          <div fxFlex="1 1 auto">
+            <span class="total">{{staff.length}} Results</span>
+          </div>
+
+          <div fxLayout="row wrap"
+               *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">
           <span
             class="f-message">{{shiftDetails.staffType}}s not scheduled for this shift who work: &nbsp;</span>
 
-          <div *ngIf="filterOptions?.shift" fxLayout="row wrap" fxLayoutGap="10px">
-            <div class="f-option" *ngFor="let s of filterOptions.shift"  fxLayout="row"
-                 fxLayoutAlign="center center" fxLayoutGap="5px">
-                <mat-icon (click)="removeFilterOpt('shift', u)" >cancel</mat-icon>
+            <div *ngIf="filterOptions?.shift" fxLayout="row wrap" fxLayoutGap="10px">
+              <div class="f-option" *ngFor="let s of filterOptions.shift" fxLayout="row"
+                   fxLayoutAlign="center center" fxLayoutGap="5px">
+                <mat-icon (click)="removeFilterOpt('shift', u)">cancel</mat-icon>
                 <span>{{s}}</span>
+              </div>
             </div>
-          </div>
 
-          <div *ngIf="filterOptions?.employmentType" fxLayout="row wrap" fxLayoutGap="10px">
-            <div class="f-option" *ngFor="let u of filterOptions.employmentType" fxLayout="row wrap"
-                 fxLayoutAlign="center center" fxLayoutGap="5px">
-              <mat-icon (click)="removeFilterOpt('employmentType', u)" >cancel</mat-icon>
-              <span>{{u}}</span>
+            <div *ngIf="filterOptions?.employmentType" fxLayout="row wrap" fxLayoutGap="10px">
+              <div class="f-option" *ngFor="let u of filterOptions.employmentType" fxLayout="row wrap"
+                   fxLayoutAlign="center center" fxLayoutGap="5px">
+                <mat-icon (click)="removeFilterOpt('employmentType', u)">cancel</mat-icon>
+                <span>{{u}}</span>
+              </div>
             </div>
-          </div>
 
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="useful-options" fxFlex="0 1 auto" *ngIf="sel.length">
+          <mat-checkbox class="opt left" [checked]="areAllChecked" (change)="toggleAll($event.checked)">Select All
+          </mat-checkbox>
+          <button mat-button class="opt right" [matMenuTriggerFor]="sortBy">Sort By &nbsp;
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+          <mat-menu #sortBy>
+            <button mat-menu-item (click)="sortByField('hours')">Scheduled Hours</button>
+            <button mat-menu-item (click)="sortByField('firstName')">First Name</button>
+            <button mat-menu-item (click)="sortByField('lastName')">Last Name</button>
+          </mat-menu>
+        </div>
+
+        <div class="results">
+          <app-staff-card-expandable [staffMembers]="staff" [control]="true"
+                                     (selectionChange)="selectStaff($event)"
+                                     [selected]="sel"></app-staff-card-expandable>
+        </div>
+
+
+        <div fxFlex *ngIf="!staff.length" class="no-results" fxLayoutGap="18px"
+             fxLayoutAlign="center" fxLayout="column">
+          <img src="assets/NoResult.svg">
+          <span class="no-results-message">No Results</span>
+        </div>
+
+        <div class="message" *ngIf="selectedStaff.length">
+          <mat-form-field [appearance]="'outline'" fxFlex="1 1 auto">
+            <textarea matInput [rows]="2" [formControl]="message"></textarea>
+          </mat-form-field>
         </div>
       </div>
-
-      <mat-divider></mat-divider>
-
-      <div class="useful-options" fxFlex="0 1 auto" *ngIf="sel.length">
-        <mat-checkbox class="opt left" [checked]="areAllChecked" (change)="toggleAll($event.checked)">Select All
-        </mat-checkbox>
-        <button mat-button class="opt right" [matMenuTriggerFor]="sortBy">Sort By &nbsp;
-          <mat-icon>arrow_drop_down</mat-icon>
-        </button>
-        <mat-menu #sortBy>
-          <button mat-menu-item (click)="sortByField('hours')">Scheduled Hours</button>
-          <button mat-menu-item (click)="sortByField('firstName')">First Name</button>
-          <button mat-menu-item (click)="sortByField('lastName')">Last Name</button>
-        </mat-menu>
-      </div>
-
-      <div class="results">
-        <app-staff-card-expandable [staffMembers]="staff" [control]="true"
-                                   (selectionChange)="selectStaff($event)" [selected]="sel"></app-staff-card-expandable>
-      </div>
-
-
-      <div fxFlex *ngIf="!staff.length" class="no-results" fxLayoutGap="18px"
-           fxLayoutAlign="center" fxLayout="column">
-        <img src="assets/NoResult.svg">
-        <span class="no-results-message">No Results</span>
-      </div>
-
-      <div class="message" *ngIf="selectedStaff.length">
-        <mat-form-field [appearance]="'outline'" fxFlex="1 1 auto">
-          <textarea matInput [rows]="2" [formControl]="message"></textarea>
-        </mat-form-field>
-      </div>
     </div>
-
 
     <div class="actions" fxFlex="120px">
       <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutAlign="center" fxLayoutGap="12px">
@@ -91,6 +93,5 @@
         <button mat-button class="action-button partial" fxFlexAlign="center">Request Intelypro</button>
       </div>
     </div>
-
   </div>
 </div>

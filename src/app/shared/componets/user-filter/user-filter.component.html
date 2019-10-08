@@ -1,15 +1,15 @@
 
-<mat-card *ngIf="usedIn != 'staff-management'" class="user-filter" fxFlex>
-  <div class="content" fxFlex fxLayout="row">
-    <mat-form-field fxFlex class="search-field">
-      <input matInput placeholder="search users...." [formControl]="control" autocomplete="false">
-    </mat-form-field>
-    <button mat-button style="border-left: 1px solid #333333; border-radius: 0" (click)="toggleFilterOptions()">
-      <mat-icon>search</mat-icon>
-      <span>Filter</span>
-    </button>
-  </div>
-</mat-card>
+<!--<mat-card *ngIf="usedIn != 'staff-management'" class="user-filter" fxFlex>-->
+<!--  <div class="content" fxFlex fxLayout="row">-->
+<!--    <mat-form-field fxFlex class="search-field">-->
+<!--      <input matInput placeholder="search users...." [formControl]="control" autocomplete="false">-->
+<!--    </mat-form-field>-->
+<!--    <button mat-button style="border-left: 1px solid #333333; border-radius: 0" (click)="toggleFilterOptions()">-->
+<!--      <mat-icon>search</mat-icon>-->
+<!--      <span>Filter</span>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</mat-card>-->
 
 <mat-card *ngIf="usedIn == 'staff-management'" class="user-filter-staff" fxFlex>
   <div fxFlex class="content search-staff-wrapper" fxLayout="row">
