@@ -33,10 +33,12 @@ export class RangepickerModalComponent implements OnInit {
   }
 
   changeMonthStart(newMonthIndex: number) {
-    this.currentDate = moment().month(newMonthIndex);
-    this.nextMonth = this.currentDate.clone().add(1, 'months');
-    this._nextMonthDatePicker.rebuildView(this.nextMonth.clone());
-    this.currentRange = {start: 0, end: 0};
+    if (this.currentDate.month() !== newMonthIndex) {
+      this.currentDate = moment().month(newMonthIndex);
+      this.nextMonth = this.currentDate.clone().add(1, 'months');
+      this._nextMonthDatePicker.rebuildView(this.nextMonth.clone());
+      this.currentRange = {start: 0, end: 0};
+    }
     this.chooseMonth = false;
   }
 }

@@ -18,9 +18,8 @@ import {filter} from 'rxjs/operators';
 export class AllViewsHeaderComponent implements OnInit {
 
   private static DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
-
   dailyViewConfig: DailyViewConfigModel;
-
+  @ViewChild('container', {read: ElementRef}) container: ElementRef;
 
   constructor(private _dailyViewService: DailyViewService,
               private _dialog: MatDialog,
@@ -50,7 +49,7 @@ export class AllViewsHeaderComponent implements OnInit {
     });
 
     this.changeDateRange('daily');
-
+    this.getDateRangePickerTopOffset();
   }
 
   changeDateRange(dateRange: 'daily' | 'weekly' | 'monthly') {
@@ -74,7 +73,11 @@ export class AllViewsHeaderComponent implements OnInit {
 
   openCustomModal() {
     this._dialog.open(RangepickerModalComponent, {
-      panelClass: 'date-range-picker'
+      panelClass: 'date-range-picker',
+      backdropClass: 'invisible-backdrop',
+      position : {
+        top: this.getDateRangePickerTopOffset() + 'px'
+      }
     }).afterClosed().pipe(
       filter(e => e)
     ).subscribe(e => {
@@ -142,6 +145,11 @@ export class AllViewsHeaderComponent implements OnInit {
     }
     this.dailyViewConfig.date = newConfig;
     this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
+  }
+
+  getDateRangePickerTopOffset() {
+    console.log(this.container);
+    return this.container.nativeElement.offsetTop + window.pageYOffset;
   }
 
   private _setDaily() {
