@@ -1,8 +1,9 @@
 
 .shift-info {
   background-color: #daf6f4;
-  padding: 13px;
+  height: 48px!important;
   border-radius: 2px;
+  padding: 0 13px;
 
   &.no-shift {
     background-color: #f2f5f8;
@@ -30,17 +31,20 @@
       font-family: OpenSans-Regular, sans-serif;
       font-size: 16px;
       font-weight: normal;
-      height: 22px;
+      height: 48px;
       letter-spacing: 0;
+      margin-top: 5px;
     }
   }
 
   .pending {
     color: #1785b8;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     font-style: italic;
-    height: 22px;
+    height: 48px;
     letter-spacing: -0.4px;
+    max-width: 72px;
+    text-align: right;
   }
 }

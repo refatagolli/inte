@@ -12,6 +12,7 @@ export class ShiftDetailsActionsComponent implements OnInit {
   @Input() shiftDetails: ShiftDetails;
   @Input() requestPending: boolean;
   @Input() showPending: boolean;
+  @Input() isrq: boolean;
 
   @Output() acceptEvent: EventEmitter<ShiftDetails> = new EventEmitter();
   @Output() declineEvent: EventEmitter<ShiftDetails> = new EventEmitter();
