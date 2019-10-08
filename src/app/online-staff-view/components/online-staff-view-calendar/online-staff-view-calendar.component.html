@@ -1,0 +1,26 @@
+<div class="online-view-calendar">
+  <div class="online-view-calendar-wrapper" fxLayout="column">
+
+    <div class="month-selector" fxFlex fxLayoutAlign="center center">
+      <mat-form-field appearance="outline">
+        <mat-select [value]="monthList[0]">
+          <mat-option *ngFor="let m of monthList" [value]="m">{{m | titlecase}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="calendar-options">
+      <div class="calendar-options-wrapper" fxFlex fxLayout="row">
+        <button mat-button class="date-cell" *ngFor="let date of dateList"
+                fxFlex="auto" [disableRipple]="true" (click)="changeDate(date)"
+                [ngClass]="{selected: areDatesEquals(date, config.date.currentDate)}">
+          <div class="date-option-value-wrapper" fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="center center">
+            <span class="date-option-value bold-item day">{{(date | date : 'EEEE')[0]| uppercase }}</span>
+            <span class="date-option-value bold-item date">{{(date | date : 'd') }}</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

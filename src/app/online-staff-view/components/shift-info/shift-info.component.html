@@ -1,0 +1,17 @@
+<div class="shift-info" fxFlex fxLayoutAlign="space-between center" fxFlexFill
+     [ngClass]="{'no-shift' : !shiftDetails}">
+  <div class="shift-info-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
+      <ng-container *ngIf="!!shiftDetails; then hasShift else noShift"></ng-container>
+  </div>
+  <span class="pending" *ngIf="requestPending">Pending</span>
+</div>
+
+<ng-template #hasShift>
+  <div fxLayout="row" fxLayoutGap="3px">
+    <span class="shift-hours">{{shiftDetails.shiftHours}}</span>
+    <span class="shift-length">(8 hours)</span>
+  </div>
+</ng-template>
+<ng-template #noShift>
+  <span class="no-shift-message">You have no shifts today.</span>
+</ng-template>

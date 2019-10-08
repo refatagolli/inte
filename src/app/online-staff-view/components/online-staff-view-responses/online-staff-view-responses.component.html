@@ -1,0 +1,29 @@
+<div class="shift-requests" fxFlex>
+  <div class="shift-requests-wrapper" fxFlex="" fxLayout="column" fxLayoutGap="16px">
+
+    <div class="notifications-container" *ngIf="showNotification">
+      <online-staff-view-notification [operationIsAccept]="operationIsAccept"
+      [shift]="shiftConfirmed"
+      ></online-staff-view-notification>
+    </div>
+
+    <div class="my-schedule-element" *ngFor="let a of dates; let i = index" fxFlex="1 0 auto"
+         fxLayout="row">
+
+      <div class="date-indicator" fxLayout="column" fxLayoutAlign="center center">
+        <span class="month">{{ a | date : 'EEE'}}</span>
+        <span class="date">{{ a | date : 'dd' }}</span>
+      </div>
+
+      <div class="element-info" fxFlex>
+        <div class="element-info-wrapper" fxFlex="">
+          <shift-details-actions [shiftDetails]="getShiftDetailsByDate(a)" [requestPending]="(i == 2 || i == 4)"
+                                 (acceptEvent)="acceptRequest($event)" [showPending]="showPending"
+                                 (declineEvent)="declineRequest($event)"
+                                 fxFlex></shift-details-actions>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

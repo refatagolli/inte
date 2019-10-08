@@ -40,7 +40,8 @@ export class ShiftsToFillComponent implements OnInit {
     return c ? `
     You need to fill the <span class="bold-item">${c.shiftHours}</span>
     <span class="bold-item">${c.staffType} shift </span> for 
-    <span class="bold-item">${c.shiftDate} shift </span> 
+    <span class="bold-item">${c.shiftDate} shift </span> in 
+    <span class="bold-item">${c.unit} </span> 
     ` : '';
   }
 

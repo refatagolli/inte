@@ -13,6 +13,7 @@ body {
 
 * {
   box-sizing: border-box;
+  font-family: OpenSans, sans-serif;
 }
 
 .bold-item {
@@ -45,6 +46,10 @@ body {
   min-width: 400px;
   max-width: 400px;
   border-right: 2px solid #F7FBFF;
+}
+
+.date-range-picker > .mat-dialog-container {
+  padding: 5px;
 }
 
 

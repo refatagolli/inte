@@ -1,0 +1,23 @@
+.my-schedule {
+  padding: 16px 8px;
+
+  .my-schedule-element {
+    height: 51px;
+
+    .date-indicator {
+      padding: 5px 15px;
+
+      .month {
+        color: #59595b;
+        font-size: 12px;
+        font-weight: normal;
+      }
+
+      .date {
+        color: #59595b;
+        font-size: 19px;
+        font-weight: 600;
+      }
+    }
+  }
+}

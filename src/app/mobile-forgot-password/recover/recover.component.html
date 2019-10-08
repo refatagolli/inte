@@ -1,0 +1,47 @@
+<div class="user-form">
+
+  <div class="user-form-wrapper">
+
+    <div class="user-management-header">
+      <p>
+        Please insert a new password
+<!--        <br/>-->
+<!--        <label class="sub-title">Please enter your email below so that we could send you a recovery link.</label>-->
+      </p>
+    </div>
+
+    <form [formGroup]="recoverForm">
+      <div class="user-management-body">
+        <div class="input-wrapper">
+          <label class="form-labels">Password</label>
+          <input formControlName="pass"  placeholder="Enter password" type="password" class="form-inputs"
+                 [ngStyle]="{'border-color' : (submitted && validateForm.pass.errors) ? 'red' : ''}" />
+        </div>
+
+        <br />
+
+        <div class="input-wrapper">
+          <label class="form-labels">Confirm Password</label>
+          <input formControlName="confirmPass"  placeholder="Confirm password" type="password" class="form-inputs"
+                 [ngStyle]="{'border-color' : (submitted && validateForm.confirmPass.errors) ? 'red' : ''}" />
+        </div>
+
+        <br /><br /><br />
+
+        <div class="button-wrapper">
+          <button class="main-button action-button complete" type="button" (click)="reccover()" >
+            <label class="main-button-label">
+              Update password
+            </label>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+
+
+

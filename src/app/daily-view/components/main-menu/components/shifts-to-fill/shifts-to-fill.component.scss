@@ -9,7 +9,7 @@
 
     .mat-card-title {
       color: rgb(114, 128, 138);
-      font-family: OpenSans-SemiBold;
+      font-family: OpenSans-SemiBold, sans-serif;
       font-size: 16px;
       font-weight: 600;
       height: 23px;
@@ -26,7 +26,7 @@
 
       .marker {
         color: rgb(208, 2, 27);
-        font-family: OpenSans-SemiBold;
+        font-family: OpenSans-SemiBold, sans-serif;
         font-size: 16px;
         font-weight: 600;
         height: 44px;
@@ -56,18 +56,23 @@
 
     .content-wrapper {
       color: rgb(114, 128, 138);
-      font-family: OpenSans-Regular;
+      font-family: OpenSans-Regular, sans-serif;
       font-size: 16px;
       font-weight: normal;
       height: 66px;
       letter-spacing: 0;
-      padding: 15px 0;
+      padding: 15px 15px;
       text-align: center;
+
+      ::ng-deep.bold-item {
+        font-style: italic;
+        color: black !important;
+      }
     }
 
     .no-shifts {
       color: rgb(114, 128, 138);
-      font-family: OpenSans-Regular;
+      font-family: OpenSans-Regular, sans-serif;
       font-size: 16px;
       font-weight: normal;
       height: 44px;

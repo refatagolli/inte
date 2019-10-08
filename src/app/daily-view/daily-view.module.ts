@@ -17,6 +17,8 @@ import {ViewTypeModule} from './components/view-type/view-type.module';
 import {WeeklyContentModule} from './components/weekly-content/weekly-content.module';
 import {PrintViewModule} from './components/print-view/print-view.module';
 import {DailyContentModule} from './components/daily-content/daily-content.module';
+import {RangepickerModalModule} from './components/all-views-header/components/rangepicker-modal/rangepicker-modal.module';
+import {RangepickerModalComponent} from './components/all-views-header/components/rangepicker-modal/rangepicker-modal.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,11 @@ import {DailyContentModule} from './components/daily-content/daily-content.modul
     ViewTypeModule,
     DailyContentModule,
     WeeklyContentModule,
-    PrintViewModule
+    PrintViewModule,
+    RangepickerModalModule
+  ],
+  entryComponents: [
+    RangepickerModalComponent
   ]
 })
 export class DailyViewModule {

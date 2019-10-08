@@ -1,0 +1,20 @@
+.custom-monthpicker {
+  width: 477px;
+  //height: 400px;
+  background-color: white;
+
+  .month-square {
+    height: 137px;
+    width: 119.25px;
+    background: rgb(255, 255, 255);
+    border-radius: 0;
+    border: 1px solid rgb(232, 232, 232);
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &.selected {
+      background-color: #1986b9;
+      color: white;
+    }
+  }
+}
