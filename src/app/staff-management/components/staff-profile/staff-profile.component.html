@@ -17,7 +17,7 @@
     </mat-card-content>
     <mat-card-content class="content-data">
       <div *ngIf="selectedContent == 'Profile'">
-        <mat-expansion-panel class="custom-collapsed custom-collapsed-profile">
+        <mat-expansion-panel [expanded]="true" class="custom-collapsed custom-collapsed-profile">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Profile
@@ -40,7 +40,7 @@
               <td colspan="100%"></td>
             </tr>
             <tr>
-              <td class="profile-table-data">{{ staffMember.firstName + " " + staffMember.lastName}}</td>
+              <td class="profile-table-data">{{ staffMember.firstName + " " + staffMember.lastName }}</td>
               <td class="profile-table-data">{{ staffMember.gender.name }}</td>
               <td class="profile-table-data">{{ staffMember.birthDate | date: "shortDate" }}</td>
               <td class="profile-table-data">{{ staffMember.ssn }}</td>
@@ -48,12 +48,7 @@
               <td class="profile-table-data">{{ staffMember.phone }}</td>
               <td class="profile-table-data">{{ staffMember.email }}</td>
             </tr>
-            <tr>
-              <td colspan="100%"></td>
-            </tr>
-            <tr>
-              <td colspan="100%"></td>
-            </tr>
+            <tr><td style="height: 28px" colspan="100%"></td></tr>
             <tr>
               <td class="profile-table-headers">Staff Type</td>
               <td class="profile-table-headers">Hire Date</td>
@@ -158,12 +153,7 @@
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td colspan="100%"></td>
-              </tr>
-              <tr>
-                <td colspan="100%"></td>
-              </tr>
+              <tr><td style="height: 28px" colspan="100%"></td></tr>
               <tr>
                 <td class="profile-table-headers">Email</td>
                 <td class="profile-table-headers">Staff Type</td>
@@ -246,7 +236,7 @@
             </form>
           </ng-template>
         </mat-expansion-panel>
-        <mat-expansion-panel class="custom-collapsed custom-collapsed-contact">
+        <mat-expansion-panel [expanded]="true" class="custom-collapsed custom-collapsed-contact">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Emergency Contacts & References
@@ -290,7 +280,7 @@
         <br />
       </div>
       <div *ngIf="selectedContent == 'Schedule'">
-        <mat-expansion-panel class="custom-collapsed custom-collapsed-profile">
+        <mat-expansion-panel [expanded]="true" class="custom-collapsed custom-collapsed-profile">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Upcoming ({{ upcomingShifts.length }})
@@ -331,7 +321,7 @@
             </tbody>
           </table>
         </mat-expansion-panel>
-        <mat-expansion-panel class="custom-collapsed custom-collapsed-contact">
+        <mat-expansion-panel [expanded]="true" class="custom-collapsed custom-collapsed-contact">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Recent ({{ recentShifts.length }})

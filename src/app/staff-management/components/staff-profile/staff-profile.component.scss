@@ -21,7 +21,9 @@
   .next-shift-label {
     position: absolute;
     top: 67px;
-    left: 1000px;
+    display: flex;
+    justify-content: flex-end;
+    right: 150px;
     width: 506px;
     height: 24px;
     color: rgba(242, 245, 248, 0.8);
@@ -234,8 +236,10 @@
       .profile-table {
         width: 100%;
         margin: 25px !important;
+        padding-right: 45px;
 
         .profile-table-headers {
+          width: 14.3%;
           color: rgb(106, 118, 128);
           font-size: 16px;
           font-family: OpenSans-Regular;
