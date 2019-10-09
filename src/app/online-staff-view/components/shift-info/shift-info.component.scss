@@ -1,9 +1,13 @@
 
 .shift-info {
-  background-color: #daf6f4;
-  height: 48px!important;
+  background-color: #e0eec9;
+  min-height: 48px !important;
   border-radius: 2px;
-  padding: 0 13px;
+  padding: 13px;
+
+  //&.response {
+  //  background-color:#cfecff;
+  //}
 
   &.no-shift {
     background-color: #f2f5f8;
@@ -12,39 +16,47 @@
   .shift-info-wrapper {
 
     .shift-hours {
-      color: #333333;
+      color: #515151;
       font-size: 16px;
-      font-weight: normal;
+      font-weight: 500;
       letter-spacing: 0;
     }
 
     .shift-length {
-      color: #333333;
-      font-size: 14px;
+      color: #6E7071;
+      font-size: 16px;
       font-weight: normal;
       letter-spacing: 0;
       font-style: italic;
     }
 
     .no-shift-message {
-      color: #333333;
+      color: #515151;
       font-family: OpenSans-Regular, sans-serif;
       font-size: 16px;
       font-weight: normal;
-      height: 48px;
       letter-spacing: 0;
       margin-top: 5px;
     }
   }
 
-  .pending {
-    color: #1785b8;
-    font-size: 14px;
-    font-weight: 600;
-    font-style: italic;
-    height: 48px;
-    letter-spacing: -0.4px;
-    max-width: 72px;
-    text-align: right;
+  &.pending-request {
+
+    .pending {
+      color: #84bb28;
+      font-size: 16px;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: -0.4px;
+      text-align: right;
+      text-transform: uppercase;
+    }
+    &.confirmation {
+      background-color: #cfecff;
+      .pending {
+        color: #1785b8;
+      }
+    }
+
   }
 }

@@ -1,9 +1,12 @@
-<div class="shift-info" fxFlex="1 0 auto" fxLayoutAlign="space-between center" fxFlexFill
-     [ngClass]="{'no-shift' : !shiftDetails}">
+<div class="shift-info" fxFlex="1 0 auto" fxLayout="column"
+     fxLayoutAlign="center start" fxFlexFill fxLayoutGap="12px"
+     [ngClass]="{'no-shift' : !shiftDetails, confirmation: !isrq, 'pending-request': requestPending}">
   <div class="shift-info-wrapper" fxLayout="row" fxLayoutAlign="space-between center">
-      <ng-container *ngIf="!!shiftDetails; then hasShift else noShift"></ng-container>
+    <ng-container *ngIf="!!shiftDetails; then hasShift else noShift"></ng-container>
   </div>
-  <span class="pending" *ngIf="requestPending" fxLayoutAlign="center center">Pending  {{isrq? 'Response' : 'Confirmation'}}</span>
+  <div fxLayoutAlign="start center"  *ngIf="requestPending" >
+    <span class="pending">Pending  {{isrq? 'Response' : 'Confirmation'}}</span>
+  </div>
 </div>
 
 <ng-template #hasShift>

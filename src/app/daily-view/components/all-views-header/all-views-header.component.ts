@@ -26,7 +26,7 @@ export class AllViewsHeaderComponent implements OnInit {
               private _cdr: ChangeDetectorRef) {
   }
 
-  get date() {
+  get     date() {
     if (!this.dailyViewConfig.date.to && !this.dailyViewConfig.date.from) {
       return formatDate(this.dailyViewConfig.date.currentDate, 'EEEE MMM d', 'en');
     } else {
