@@ -12,6 +12,7 @@ export class OnlineStaffViewCalendarComponent implements OnInit {
   private static DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
   monthList: string[];
   dateList: any[] = [];
+  currentDate = moment();
   private config: DailyViewConfigModel;
 
   constructor(private _dailyViewService: DailyViewService) {
@@ -30,10 +31,9 @@ export class OnlineStaffViewCalendarComponent implements OnInit {
   }
 
   private getDateList() {
-    const current = moment();
-
-    const weekStart = current.clone().startOf('week');
-    const weekEnd = current.clone().endOf('week');
+    this.dateList = [];
+    const weekStart = this.currentDate.clone().startOf('week');
+    const weekEnd = this.currentDate.clone().endOf('week');
 
     const first = weekStart.toDate().getTime() + 2 * OnlineStaffViewCalendarComponent.DAY_IN_MILLIS;
     let last = weekEnd.toDate().getTime() + 2 * OnlineStaffViewCalendarComponent.DAY_IN_MILLIS;
@@ -46,5 +46,10 @@ export class OnlineStaffViewCalendarComponent implements OnInit {
 
   private _getMonthList() {
     this.monthList = moment.months();
+  }
+
+  changeWeek(forward: boolean) {
+    this.currentDate.add('week', forward ? 1 : -1);
+    this.getDateList();
   }
 }

@@ -16,6 +16,7 @@ export class ShiftDetailsActionsComponent implements OnInit {
 
   @Output() acceptEvent: EventEmitter<ShiftDetails> = new EventEmitter();
   @Output() declineEvent: EventEmitter<ShiftDetails> = new EventEmitter();
+  @Output() requestEvent: EventEmitter<ShiftDetails> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {

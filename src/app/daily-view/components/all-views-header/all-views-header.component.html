@@ -12,46 +12,47 @@
   </div>
 
   <div class="date-range" fxFlex fxLayoutAlign="center center" fxLayout="row">
-    <button mat-icon-button (click)="goBackwards()">
-      <mat-icon>keyboard_arrow_left</mat-icon>
-    </button>
-    <mat-chip-list [disabled]="true" class="chip-container">
-      <mat-chip [disabled]="true" fxFlex="1 1 auto">
 
-        <mat-icon class="test-icon">date_range</mat-icon>
+    <!--<mat-chip-list [disabled]="true" class="chip-container">-->
+    <!--<mat-chip [disabled]="true" fxFlex="1 1 auto">-->
+    <div fxFlex="0 1 auto" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="center center">
 
-        <span class="title bold-item" fxFlex="1 1 auto">{{ date | uppercase }}</span>
+      <!--<mat-icon class="test-icon" *ngIf="dailyViewConfig.dateRange === 'daily'">date_range</mat-icon>-->
 
-        <button mat-flat-button [matMenuTriggerFor]="dateType">
-          <span>{{dailyViewConfig.dateRange | titlecase}}</span>
-          <mat-icon>arrow_drop_down</mat-icon>
-        </button>
+      <mat-icon (click)="goBackwards()" *ngIf="dailyViewConfig.dateRange !== 'daily'">keyboard_arrow_left</mat-icon>
 
-        <!--<ejs-daterangepicker #dateRangePicker id='daterangepicker' placeholder='Select a range'></ejs-daterangepicker>-->
+      <span class="title bold-item" fxFlex="1 1 auto">{{ date | uppercase }}</span>
 
-        <mat-menu #dateType="matMenu" class="top-header-menu" [overlapTrigger]="false" [yPosition]="'below'"
-                  [xPosition]="'before'">
-          <button mat-menu-item (click)="changeDateRange('daily')"
-                  [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='daily'}"
-          >{{ 'daily' | titlecase}}
-          </button>
-          <button mat-menu-item (click)="changeDateRange('weekly')"
-                  [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='weekly'}"
-          >{{ 'weekly' | titlecase}}
-          </button>
-          <button mat-menu-item (click)="changeDateRange('monthly')"
-                  [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='monthly'}"
-          >{{ 'monthly' | titlecase}}
-          </button>
-          <button mat-menu-item (click)="openCustomModal()"
-                  [ngClass]="{'itemSelected': dailyViewConfig.dateRange ==='custom'}"
-          >{{ 'custom' | titlecase}}
-          </button>
-        </mat-menu>
-      </mat-chip>
-    </mat-chip-list>
-    <button mat-icon-button (click)="goForward()">
-      <mat-icon>keyboard_arrow_right</mat-icon>
-    </button>
+      <mat-icon (click)="goForward()" *ngIf="dailyViewConfig.dateRange !== 'daily'">keyboard_arrow_right</mat-icon>
+
+      <button mat-flat-button [matMenuTriggerFor]="dateType" class="date-range-menu-trigger">
+        <span>{{dailyViewConfig.dateRange | titlecase}}</span>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+    </div>
+    <!--</mat-chip>-->
+    <!--</mat-chip-list>-->
+
   </div>
 </div>
+
+
+<mat-menu #dateType="matMenu" class="top-header-menu" [overlapTrigger]="false" [yPosition]="'below'"
+          [xPosition]="'after'">
+  <button mat-menu-item (click)="changeDateRange('daily')"
+          [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='daily'}"
+  >{{ 'daily' | titlecase}}
+  </button>
+  <button mat-menu-item (click)="changeDateRange('weekly')"
+          [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='weekly'}"
+  >{{ 'weekly' | titlecase}}
+  </button>
+  <button mat-menu-item (click)="changeDateRange('monthly')"
+          [ngClass]="{'itemSelected': dailyViewConfig.dateRange==='monthly'}"
+  >{{ 'monthly' | titlecase}}
+  </button>
+  <button mat-menu-item (click)="openCustomModal()"
+          [ngClass]="{'itemSelected': dailyViewConfig.dateRange ==='custom'}"
+  >{{ 'custom' | titlecase}}
+  </button>
+</mat-menu>

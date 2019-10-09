@@ -12,10 +12,11 @@ export class OnlineStaffViewResponsesComponent implements OnInit {
   @Input() shiftList: ShiftDetails[];
   @Input() dates: string[];
   @Input() showPending: boolean;
+  @Input() ispending: boolean;
 
   showNotification = false;
   shiftConfirmed;
-  operationIsAccept;
+  operationType;
 
 
   constructor(private _cdr: ChangeDetectorRef) {
@@ -35,18 +36,23 @@ export class OnlineStaffViewResponsesComponent implements OnInit {
   acceptRequest(shift: ShiftDetails) {
     this.showNotification = true;
     this.shiftConfirmed = shift;
-    this.operationIsAccept = true;
-    // this.removeShift(shift);
+    this.operationType = 'accepted';
     this._cdr.detectChanges();
     setTimeout(() => this.showNotification = false, 2000);
   }
 
   declineRequest(shift: ShiftDetails) {
-
     this.showNotification = true;
     this.shiftConfirmed = shift;
-    this.operationIsAccept = false;
-    // this.removeShift(shift);
+    this.operationType = 'rejected';
+    this._cdr.detectChanges();
+    setTimeout(() => this.showNotification = false, 2000);
+  }
+
+  requestShift(shift: ShiftDetails) {
+    this.showNotification = true;
+    this.shiftConfirmed = shift;
+    this.operationType = 'requested';
     this._cdr.detectChanges();
     setTimeout(() => this.showNotification = false, 2000);
   }
