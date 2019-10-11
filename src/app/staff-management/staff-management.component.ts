@@ -62,10 +62,7 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
     private dailyView: DailyViewService,
     private staffService: StaffManagementService,
     private changeDetectorRefs: ChangeDetectorRef
-              ) {
-    this.utils.setFilterConfiguration(this.filterConfig);
-    this.utils.setFilterUsedComponent(this.usedIn);
-  }
+              ) { }
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -81,6 +78,9 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
     this.staffService.updateStaffTable.pipe().subscribe(item => {
       this.retrieveStaffMembers();
     });
+
+    this.utils.setFilterConfiguration(this.filterConfig);
+    this.utils.setFilterUsedComponent(this.usedIn);
 
     this.utils.searchChanges.pipe().subscribe(val => {
       this.searched = val;
@@ -191,17 +191,22 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
         staff.shiftDaysString = '';
         this.shiftTypes.forEach(item => {
           let existsShift = false;
+          let days = '';
 
           staff.shiftDays.forEach(eachShift => {
             if (eachShift.shiftType.shiftTypeId === item.shiftTypeId) {
-              staff.shiftDaysString += eachShift.day.name.substring(0, 3) + ', ';
+              if (eachShift.day.name === 'Thursday' || eachShift.day.name === 'Saturday' || eachShift.day.name === 'Sunday') {
+                days += eachShift.day.name.substring(0, 2) + ', ';
+              } else {
+                days += eachShift.day.name.substring(0, 1) + ', ';
+              }
               existsShift = true;
             }
           });
 
           if (existsShift) {
-            staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 2);
-            staff.shiftDaysString += ': ' + item.shiftTypeName + '<br />';
+            days = days.substring(0, days.length - 2);
+            staff.shiftDaysString += days + ': ' + item.shiftTypeName + '<br />';
           }
         });
 

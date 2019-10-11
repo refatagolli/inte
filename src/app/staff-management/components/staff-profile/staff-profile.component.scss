@@ -3,7 +3,7 @@
   margin-top: 13px !important;
   margin-left: 15px !important;
   padding: 0px!important;
-  //min-height: 452px;
+  min-height: 435px;
   background: #f7fbff;
   border: 1px solid #cbcbcb;
   border-radius: 2px;
@@ -80,17 +80,24 @@
   }
 
   .content-tabs {
-    height: 59px;
+    height: 59px!important;
     background: rgb(255, 255, 255);
     border-radius: 0px;
+    //width: 1405px;
+    //height: 59px;
+    //background: rgb(255, 255, 255);
+    //box-shadow: ;
+    //border-radius: 0px;
   }
 
   .content-data {
     min-height: 283px;
     background: rgb(247, 251, 255);
+    border-top: 0px!important;
     border: 1px solid rgb(203, 203, 203);
     box-shadow: 0px 1px 4px 0px rgba(207, 207, 207, 0.5);
-    border-radius: 2px;
+    //border-radius: 2px;
+    padding-top: 16px;
 
     .mat-expansion-panel {
       box-shadow: none !important;
@@ -388,8 +395,6 @@
             }
           }
 
-
-
         }
         .radio-alignment {
           min-height: 100px;
@@ -450,9 +455,7 @@
     .custom-collapsed-contact {
       margin-top: 15px;
     }
-
   }
-
 }
 
 .overlay {
@@ -472,6 +475,14 @@
   position: absolute;
   left: 145px;
   top: 137px;
+}
+
+//::ng-deep .mat-tab-body-wrapper {
+//  display: none!important;
+//}
+
+::ng-deep .mat-tab-header {
+  border-bottom: none!important;
 }
 
 ::ng-deep .mat-tab-label {

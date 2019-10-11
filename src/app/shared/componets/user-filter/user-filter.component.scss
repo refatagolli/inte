@@ -4,7 +4,7 @@ user-filter {
 
   .user-filter {
     height: 48px;
-    min-width: 491px;
+    width: 491px!important;
     padding: 0;
     border-radius: 2px 2px 0 0;
     border: 1px solid #7D818C;
@@ -24,7 +24,8 @@ user-filter {
     background-color: #1785b8;
     border-radius: 4px;
     height: 48px;
-    min-width: 491px;
+    width: 491px!important;
+    //min-width: 491px;
     padding: 0;
     border: 1px solid #7D818C;
 
@@ -38,6 +39,7 @@ user-filter {
     }
 
     .search-staff-wrapper {
+      font-weight: normal!important;
       background: rgb(242, 245, 248);
       color: rgb(114, 128, 138);
       z-index: 2!important;
@@ -47,43 +49,56 @@ user-filter {
         height: 17px;
         padding-top: 12px;
         padding-left: 7px;
-        margin-right: 7px;
+        margin-right: 3px;
       }
 
       .search-staff-input {
         background: rgb(242, 245, 248);
         color: rgb(114, 128, 138);
-        font-family: OpenSans-Regular;
+        font-family: OpenSans-Regular, sans-serif;
         font-size: 16px;
         width: 100%;
       }
 
-      .cancel-icon {
-        width: 24px;
-        height: 24px;
-        margin-top: 12px;
-        color: #BEC0C2;
-        margin-right: 8px;
-        cursor: pointer;
+      .icon-placeholder {
+        width: 50px;
+        height: 48px;
+        margin-right: 8px!important;
+
+        .cancel-icon {
+          width: 24px;
+          height: 24px;
+          margin-top: 12px;
+          color: #BEC0C2;
+          cursor: pointer;
+        }
       }
 
       .filter-button {
+        margin-top: 5px;
+        margin-bottom: 5px;
         border-left: 1px solid rgba(0, 0, 0, 0.12);
         border-radius: 0;
 
         .staff-filter-icon {
           border-radius: 0px;
-          margin-right: 20px;
-          height: 24px;
-          width: 24px;
+          margin-right: 30px!important;
+          //color: black;
+          width: 10px;
+          height: 5px;
+          color: rgb(89, 89, 91);
+          //height: 24px;
+          //width: 24px;
         }
 
         .staff-filter-text {
           width: 52px;
           height: 22px;
           font-size: 16px;
-          font-family: OpenSans-SemiBold;
-          font-weight: 600;
+          color: rgb(114, 128, 138);
+          font-family: OpenSans-SemiBold, sans-serif;
+          font-weight: normal;
+          //font-weight: 600;
           letter-spacing: 0.2px;
         }
       }
@@ -94,9 +109,9 @@ user-filter {
     width: 73px;
     height: 22px;
     color: rgb(114, 128, 138);
-    font-size: 20px;
-    font-family: OpenSans-SemiBold;
-    font-weight: 600;
+    font-size: 16px;
+    font-family: OpenSans-SemiBold, sans-serif;
+    font-weight: normal;
     letter-spacing: -0.49px;
     margin-bottom: 10px;
   }
@@ -120,6 +135,16 @@ user-filter {
     width: 491px;
     top: 52px;
     border-radius: 4px;
+
+    .custom-hr {
+      width: 444px;
+      margin-top: 30px!important;
+      margin-bottom: 30px!important;
+      height: 2px;
+      color: rgba(0, 0, 0, 0.12);
+      background-color: rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+    }
   }
 
   .overlay {
