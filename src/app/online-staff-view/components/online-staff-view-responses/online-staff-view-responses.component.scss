@@ -1,5 +1,5 @@
 .shift-requests {
-  padding: 16px 8px;
+  padding: 16px 16px 16px 8px;
 
   .my-schedule-element {
 
@@ -19,5 +19,9 @@
         font-weight: 600;
       }
     }
+  }
+
+  .notifications-container {
+    padding-left: 8px;
   }
 }

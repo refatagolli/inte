@@ -1,8 +1,7 @@
-$text_blue: #2c87b9;
+$text_blue: #1885B7;
 $background_blue: rgba(58, 168, 255, 0.3);
 
 .daily-view-header {
-  width: 400px;
   font-size: 16px;
   position: relative;
 
@@ -14,7 +13,9 @@ $background_blue: rgba(58, 168, 255, 0.3);
     margin-top: 10px;
 
     .mat-button {
-      font-size: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
     }
   }
 
@@ -25,31 +26,40 @@ $background_blue: rgba(58, 168, 255, 0.3);
     margin-top: 10px;
 
     .mat-button {
-      font-size: 20px;
+      font-size: 16px;
+      font-weight: 600;
     }
   }
 
   .date-range {
     display: inline-block;
 
-    .chip-container {
-      width: 400px;
-      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    //.chip-container {
+    //  width: 400px;
+    //  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 
-      .title {
-        margin-left: 10px;
-        font-size: 20px;
-        color: $text_blue;
-      }
-
-      .mat-flat-button {
-        background-color: transparent;
-      }
-
-      ::ng-deep.mat-flat-button:active {
-        background-color: transparent;
-      }
+    .title {
+      font-size: 18px;
+      color: $text_blue;
     }
+
+    .mat-flat-button {
+      background-color: transparent;
+      color: #59595B;
+      font-weight: normal;
+    }
+
+    .mat-icon {
+      cursor: pointer;
+      color: #59595B;
+    }
+
+    ::ng-deep.mat-flat-button:active {
+      background-color: transparent;
+      font-weight: normal;
+      font-size: 16px;
+    }
+    //}
   }
 
   ::ng-deep .mat-button-focus-overlay {
@@ -59,12 +69,12 @@ $background_blue: rgba(58, 168, 255, 0.3);
 
 .itemSelected {
   color: $text_blue !important;
-  font-weight: 600;
-
+  font-weight: normal;
+  background-color: #f2F5F8 !important;
 }
 
 .top-header-menu {
-  width: 300px;
+  width: 150px;
   margin-top: 8px;
   margin-right: -10px;
 

@@ -12,6 +12,7 @@ export class ShiftInfoComponent implements OnInit {
 
   @Input() shiftDetails: ShiftDetails ;
   @Input() requestPending: boolean ;
+  @Input() isrq: boolean ;
 
   constructor() { }
 

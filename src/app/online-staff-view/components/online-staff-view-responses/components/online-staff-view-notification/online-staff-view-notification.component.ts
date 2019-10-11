@@ -9,7 +9,7 @@ import {ShiftDetails} from '../../../../../models/ShiftDetails';
 export class OnlineStaffViewNotificationComponent implements OnInit {
 
   @Input() shift: ShiftDetails;
-  @Input() operationIsAccept: boolean;
+  @Input() operationType: string;
 
   constructor() {
   }

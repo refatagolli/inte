@@ -1,6 +1,6 @@
 <div class="range-chip">
-  <mat-chip-list>
-    <mat-chip [ngClass]="{'not-complete': total !== present}">
+  <mat-chip-list (click)="$event.stopPropagation()">
+    <mat-chip [ngClass]="{'not-complete': total !== present}" [disabled]="true">
       <p>{{present}}/{{total}} &nbsp; {{extraText}}</p>
     </mat-chip>
   </mat-chip-list>

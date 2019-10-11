@@ -14,7 +14,7 @@
     "unit": "Unit A",
     "notes": [],
     "response": "accept",
-    "employmentType": "Full Time"
+    "employmentType": "Full-Time"
   },
   {
     "phone": "234-324-234",
@@ -31,7 +31,7 @@
     "unit": "Unit A",
     "notes": [],
     "response": "reject",
-    "employmentType": "Full Time"
+    "employmentType": "Full-Time"
   },
   {
     "phone": "234-324-234",
@@ -65,7 +65,7 @@
     "unit": "Unit A",
     "notes": [],
     "response": "pending",
-    "employmentType": "Part Time"
+    "employmentType": "Part-Time"
   },
   {
     "phone": "234-324-234",
@@ -82,7 +82,7 @@
     "unit": "Unit A",
     "notes": [],
     "response": "reject",
-    "employmentType": "Full Time"
+    "employmentType": "Full-Time"
   },
   {
     "phone": "234-324-234",
@@ -99,6 +99,6 @@
     "unit": "Unit A",
     "notes": [],
     "response": "accept",
-    "employmentType": "Part Time"
+    "employmentType": "Part-Time"
   }
 ]

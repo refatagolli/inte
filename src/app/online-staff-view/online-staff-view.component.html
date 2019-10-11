@@ -17,13 +17,13 @@
     </div>
 
     <div class="responses" *ngIf="header.selectedTab === 'responses'">
-      <online-staff-view-responses  [shiftList]="responses" [showPending]="true"
-                                    [dates]="filterUseless(calendar.dateList)"></online-staff-view-responses>
+      <online-staff-view-responses [shiftList]="responses" [showPending]="true" [ispending]="true"
+                                   [dates]="calendar.dateList"></online-staff-view-responses>
     </div>
 
     <div class="openShifts" *ngIf="header.selectedTab === 'openShifts'">
-      <online-staff-view-responses [shiftList]="responses" [showPending]="false"
-                                   [dates]="filterUseless(calendar.dateList)"></online-staff-view-responses>
+      <online-staff-view-responses [shiftList]="responses" [showPending]="false" [ispending]="false"
+                                   [dates]="calendar.dateList"></online-staff-view-responses>
 
     </div>
 

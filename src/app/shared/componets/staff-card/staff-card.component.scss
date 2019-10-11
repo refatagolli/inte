@@ -37,12 +37,24 @@ $hover_background_color: #F7FBFF;
     width: 107px;
   }
 
-  &.clickable {
-    cursor: pointer;
+  .staff-card-iindicator {
+    color: $title_color;
+    display: none;
   }
 
-  &.clickable:hover {
-    background-color: $hover_background_color;
+  &.hoverable:hover {
+
+    .staff-card-iindicator {
+      display: block;
+    }
+
+    .staff-card-hours {
+      display: none;
+    }
+  }
+
+  &.clickable {
+    cursor: pointer;
   }
 
   &.removed {
@@ -63,7 +75,7 @@ $hover_background_color: #F7FBFF;
 
     .action-title {
       color: $title_color;
-      margin-top: 10px;
+      //margin-top: 10px;
     }
 
   }

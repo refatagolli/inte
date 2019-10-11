@@ -7,8 +7,8 @@
                 fxFlex="auto" [disableRipple]="true" (click)="changeDate(date)"
                 [ngClass]="{selected: areDatesEquals(date, config.date.currentDate)}">
           <div class="date-option-value-wrapper" fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="center center">
-            <span class="date-option-value bold-item day">{{(date | date : 'EEEE')| uppercase }}</span>
-            <span class="date-option-value bold-item date">{{(date | date : 'd') }}</span>
+            <span class="date-option-value bold-item day" fxLayoutAlign="center center">{{(date | date : 'EEEE')| uppercase }}</span>
+            <span class="date-option-value bold-item date" fxLayoutAlign="center center">{{(date | date : 'd') }}</span>
           </div>
         </button>
       </div>
