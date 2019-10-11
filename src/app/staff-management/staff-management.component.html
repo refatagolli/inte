@@ -1,17 +1,18 @@
 <div class="staff-view">
   <div class="header">
-  <label class="header-text header-padding">
-    Directory (</label><label class="header-text" *ngIf="filtered != total">{{filtered}} / </label>
-  <label class="header-text">{{total}})&nbsp;&nbsp;&nbsp;</label>
-  <div class="filters-wrapper" [ngStyle]="{'margin-top': appliedFilters.length <= 3 ? '35px' : '25px'}">
-    <div *ngFor="let item of appliedFilters| slice:0:6;" class="filter-wrapper">
-      <a><i (click)="removeFilter(item);utils.filterCardChanged.next(false);" class="material-icons cancel-icon">cancel</i></a><label class="filters"> {{ item['name'] }}</label>
+    <label class="header-text header-padding">
+      Directory (</label><label class="header-text" *ngIf="filtered != total">{{filtered}} / </label>
+    <label class="header-text">{{total}})&nbsp;&nbsp;&nbsp;</label>
+    <div class="filters-wrapper" [ngStyle]="{'margin-top': appliedFilters.length <= 3 ? '35px' : '25px'}">
+      <div *ngFor="let item of appliedFilters| slice:0:6;" class="filter-wrapper">
+        <a><i (click)="removeFilter(item);utils.filterCardChanged.next(false);" class="material-icons cancel-icon">cancel</i></a><label class="filters"> {{ item['name'] }}</label>
+      </div>
     </div>
+    <div class="more-icon" (click)="utils.filterCardChanged.next(true)" *ngIf="appliedFilters.length > 6">
+      <i class="material-icons cancel-icon">filter_{{ (appliedFilters.length - 6) < 10  ? (appliedFilters.length - 6) : 9 }}{{ (appliedFilters.length - 6) < 10 ? "" : "_plus" }}</i> More
+    </div>
+      <button (click)="addNewStaffPanel()" mat-button class="action-button complete add-staff"><span class="add-button-label">ADD NEW STAFF</span></button>
   </div>
-  <div class="more-icon" (click)="utils.filterCardChanged.next(true)" *ngIf="appliedFilters.length > 6">
-    <i class="material-icons cancel-icon">filter_{{ (appliedFilters.length - 6) < 10  ? (appliedFilters.length - 6) : 9 }}{{ (appliedFilters.length - 6) < 10 ? "" : "_plus" }}</i> More</div>
-  <button (click)="addNewStaffPanel()" mat-button class="action-button complete add-staff">ADD NEW STAFF</button>
-</div>
   <div class="table-wrapper">
     <div class="table-container mat-elevation-z8">
       <mat-table #table [dataSource]="dataSource" matSortActive="lastName" matSortDirection="asc" matSort class="table-customisation">
@@ -54,8 +55,7 @@
         <!-- Shifts -->
         <ng-container matColumnDef="shifts">
           <mat-header-cell class="customized-headers-2 header-4" *matHeaderCellDef> SHIFT DAYS & HOURS </mat-header-cell>
-          <mat-cell [innerHTML]="row.shiftDaysString" class="customized-cell-2 column-4" *matCellDef="let row">
-<!--            <div></div>-->
+          <mat-cell [innerHTML]="row.shiftDaysString" class="customized-cell-4 column-4" *matCellDef="let row">
           </mat-cell>
         </ng-container>
 
@@ -68,7 +68,7 @@
         <!-- View -->
         <ng-container matColumnDef="view">
           <mat-header-cell class="customized-headers-3 header-6" *matHeaderCellDef> <button mat-button>Print <mat-icon>print</mat-icon></button></mat-header-cell>
-          <mat-cell class="customized-cell-3 column-6" *matCellDef="let row">
+          <mat-cell class="customized-cell-5 column-6" *matCellDef="let row">
             <span>
               Profile Details <i class="material-icons arrow-icon">arrow_forward_ios</i>
             </span>

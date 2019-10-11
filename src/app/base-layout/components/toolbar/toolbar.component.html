@@ -1,40 +1,75 @@
 <mat-toolbar class="p-0 mat-elevation-z1">
 
-  <div fxFlex fxFill fxLayout="row" fxLayoutAlign="space-between center">
+<div class="toolbar-wrapper">
 
-    <div fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center">
+  <div class="toolbar-menu">
 
-      <!--      <button mat-icon-button class="navbar-toggle-button"-->
-      <!--              (click)="toggleSidebarOpen('navbar')">-->
-      <!--        <mat-icon class="secondary-text">menu</mat-icon>-->
-      <!--      </button>-->
+    <!--      <button mat-icon-button class="navbar-toggle-button"-->
+    <!--              (click)="toggleSidebarOpen('navbar')">-->
+    <!--        <mat-icon class="secondary-text">menu</mat-icon>-->
+    <!--      </button>-->
 
-      <button mat-icon-button class="navbar-toggle-button"
-              (click)="route.navigate(['/home']);">
-        <mat-icon class="secondary-text">menu</mat-icon>
-      </button>
+    <button mat-icon-button class="navbar-toggle-button"
+            (click)="route.navigate(['/home']);">
+      <mat-icon class="secondary-text">menu</mat-icon>
+    </button>
 
 
-      <div fxLayout="row" fxLayoutAlign="start center">
-        <div class="logo ml-16">
-          <span class="current-route">{{ currentRoute | async }}</span>
-        </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div class="logo ml-16">
+        <span class="current-route">{{ currentRoute | async }}</span>
       </div>
-
-    </div>
-
-
-    <div class="filter" fxShow.gt-md="true" *ngIf="(currentRoute | async) !== 'Home'">
-      <div class="filter">
-        <user-filter></user-filter>
-      </div>
-    </div>
-
-
-    <div class="" fxFlex="0 1 auto">
-      <app-chip-icon name="Danielle M"></app-chip-icon>
     </div>
 
   </div>
+
+  <div class="filter" *ngIf="(currentRoute | async) !== 'Home'">
+    <div class="filter">
+      <user-filter></user-filter>
+    </div>
+  </div>
+
+  <div class="toolbar-avatar">
+    <app-chip-icon name="Danielle M"></app-chip-icon>
+  </div>
+
+</div>
+
+<!--  <div fxFlex fxFill fxLayout="row" fxLayoutAlign="space-between center">-->
+
+<!--    <div fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center">-->
+
+<!--      &lt;!&ndash;      <button mat-icon-button class="navbar-toggle-button"&ndash;&gt;-->
+<!--      &lt;!&ndash;              (click)="toggleSidebarOpen('navbar')">&ndash;&gt;-->
+<!--      &lt;!&ndash;        <mat-icon class="secondary-text">menu</mat-icon>&ndash;&gt;-->
+<!--      &lt;!&ndash;      </button>&ndash;&gt;-->
+
+<!--      <button mat-icon-button class="navbar-toggle-button"-->
+<!--              (click)="route.navigate(['/home']);">-->
+<!--        <mat-icon class="secondary-text">menu</mat-icon>-->
+<!--      </button>-->
+
+
+<!--      <div fxLayout="row" fxLayoutAlign="start center">-->
+<!--        <div class="logo ml-16">-->
+<!--          <span class="current-route">{{ currentRoute | async }}</span>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+
+<!--    <div class="filter" fxShow.gt-md="true" *ngIf="(currentRoute | async) !== 'Home'">-->
+<!--      <div class="filter">-->
+<!--        <user-filter></user-filter>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="" fxFlex="0 1 auto">-->
+<!--      <app-chip-icon name="Danielle M"></app-chip-icon>-->
+<!--    </div>-->
+
+<!--  </div>-->
 
 </mat-toolbar>

@@ -1,25 +1,46 @@
 .selectable-button-group {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: flex-start;
+   flex-wrap: wrap;
+   margin: auto;
+   width: 100%;
+   //border: 1px solid red;
 
-  .selectable-button {
-    font-size: 9px;
-    padding: 8px 16px;
-    border-radius: 3px;
-  }
+   &:after {
+     //content: "";
+     flex: auto;
+   }
 
-  .selectable-button {
-    float: left;
-    width: 28%;
-    height: 46px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: normal;
-    letter-spacing: -0.49px;
-    display: inline-block;
-    margin: 0 20px 12px 0;
+   .selectable-button {
+     font-size: 9px;
+     //padding: 8px 16px;
+     border-radius: 3px;
+   }
 
-    ::ng-deep.mat-list-text, ::ng-deep.mat-list-item-content-reverse  {
-      padding: 0 !important;
-    }
-  }
+   .selectable-button {
+     //width: 28%;
+     height: 46px;
+     text-align: center;
+     font-size: 16px;
+     font-weight: normal;
+     letter-spacing: -0.49px;
+     display: inline-block;
+     font-family: OpenSans-Regular, sans-serif;
+     width: calc(1/3*100% - (1 - 1/3)*9px);
+     margin-top: 12px;
+     //margin: 0 20px 12px 0;
 
+     ::ng-deep.mat-list-text, ::ng-deep.mat-list-item-content-reverse  {
+       //padding: 0 !important;
+       padding: 3.5px 3px 3.5px 3px !important;
+     }
+   }
+}
+
+.selectable-button-group:after {
+  content: "";
+  flex: 1 1 100%;
+  max-width: 32%;
 }

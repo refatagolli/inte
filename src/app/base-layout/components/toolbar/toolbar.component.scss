@@ -7,8 +7,51 @@ toolbar {
   display: flex;
   flex: 0 0 auto;
   z-index: 4;
-  padding: 0 50px;
+  //padding: 0 50px;
   background-color: $background-color;
+
+  // Added
+  padding-right: 50px;
+  padding-left: 31px;
+
+  .toolbar-wrapper {
+    display: inline-flex;
+    width: 100%;
+
+    .toolbar-menu {
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+      .current-route {
+        height: 20px;
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        font-family: OpenSans-Bold, sans-serif;
+        font-weight: bold;
+        line-height: 20px;
+      }
+    }
+
+    .filter {
+      //position: absolute;
+      //left: 50%;
+      //top: 4px;
+      //transform: translateX(-50%);
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .toolbar-avatar {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+  }
 
   &.below {
     z-index: 2;
