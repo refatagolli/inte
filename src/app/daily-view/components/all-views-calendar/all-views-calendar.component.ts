@@ -13,16 +13,13 @@ export class AllViewsCalendarComponent implements OnInit {
 
   private static DAY_IN_MILLIS = 24 * 60 * 60 * 1000;
   dateList: number[] = [];
-  currentDate: number = new Date().getTime();
   config: DailyViewConfigModel;
 
   constructor(private _dailyViewService: DailyViewService) {
     this._dailyViewService.dailyViewConfig.subscribe(config => {
       this.config = config;
+      this.getDateList();
     });
-    // temporary code
-    this.getDateList();
-    // this.changeDate(this.currentDate);
   }
 
   ngOnInit() {
@@ -33,13 +30,14 @@ export class AllViewsCalendarComponent implements OnInit {
   }
 
   getDateList() {
-    const current = moment();
+    this.dateList = [];
+    const current = moment(this.config.date.currentDate);
 
-    const weekStart = current.clone().startOf('week');
-    const weekEnd = current.clone().endOf('week');
+    const weekStart = current.clone().startOf('isoWeek');
+    const weekEnd = weekStart.clone().add( 7, 'day');
 
-    const first = weekStart.toDate().getTime() + 2 * AllViewsCalendarComponent.DAY_IN_MILLIS;
-    let last = weekEnd.toDate().getTime() + 2 * AllViewsCalendarComponent.DAY_IN_MILLIS;
+    const first = weekStart.toDate().getTime();
+    let last = weekEnd.toDate().getTime();
 
     while (last > first) {
       last -= AllViewsCalendarComponent.DAY_IN_MILLIS;
@@ -52,8 +50,11 @@ export class AllViewsCalendarComponent implements OnInit {
     this._dailyViewService.dailyViewConfig.next(this.config);
   }
 
-  setToCurrent() {
-    this.config.date.currentDate = this.currentDate;
-    this._dailyViewService.dailyViewConfig.next(this.config);
+  goForward() {
+    this.changeDate(this.config.date.currentDate + AllViewsCalendarComponent.DAY_IN_MILLIS);
+  }
+
+  goBackwards() {
+    this.changeDate(this.config.date.currentDate - AllViewsCalendarComponent.DAY_IN_MILLIS);
   }
 }

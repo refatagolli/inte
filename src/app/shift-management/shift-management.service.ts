@@ -11,11 +11,12 @@ import {FuseSidebarComponent} from '@theme/components/sidebar/sidebar.component'
 export class ShiftManagementService {
   public static TYPE_SHIFT_DETAILS = 'shiftDetails';
   public static TYPE_FILL_SHIFT = 'fillShift';
+  public static TYPE_FILL_SHIFT_RESPONSES = 'fillShiftResponses';
   public static TYPE_SHIFTS_TO_FILL = 'shiftsToFill';
   public static TYPE_REQUESTS = 'requests';
   public static TYPE_REQUEST_INTELYPRO = 'requestIntelypro';
 
-  public shiftChange: Subject<{ shiftDetails?: ShiftDetails, staffMember?: StaffMember, replacing?: StaffMember, viewType: string }> = new Subject();
+  public shiftChange: Subject<{ shiftDetails?: ShiftDetails, staffMember?: StaffMember, requests?: any, replacing?: StaffMember, viewType: string }> = new Subject();
   private _sidebarName = 'shiftManagement';
   private _sidebar: FuseSidebarComponent;
 
@@ -30,6 +31,11 @@ export class ShiftManagementService {
   openFillShiftPanel(shiftDetails: ShiftDetails, replacing?: StaffMember) {
     this._openIfClosed();
     this.shiftChange.next({shiftDetails, replacing, viewType: ShiftManagementService.TYPE_FILL_SHIFT});
+  }
+
+  openFillShiftRequestsPanel(shiftDetails: ShiftDetails, requests: any, replacing?: StaffMember) {
+    this._openIfClosed();
+    this.shiftChange.next({shiftDetails, replacing, requests, viewType: ShiftManagementService.TYPE_FILL_SHIFT_RESPONSES});
   }
 
   openRequests() {

@@ -8,6 +8,7 @@ import {FillShiftModule} from './components/fill-shift/fill-shift.module';
 import {ShiftsToFillModule} from './components/shifts-to-fill/shifts-to-fill.module';
 import {RequestsModule} from './components/requests/requests.module';
 import {RequestIntelyproModule} from './components/request-intelypro/request-intelypro.module';
+import {FillShiftResponsesModule} from './components/fill-shift-responses/fill-shift-responses.module';
 
 @NgModule({
   declarations: [ShiftManagementComponent],
@@ -19,7 +20,8 @@ import {RequestIntelyproModule} from './components/request-intelypro/request-int
     FillShiftModule,
     ShiftsToFillModule,
     RequestsModule,
-    RequestIntelyproModule
+    RequestIntelyproModule,
+    FillShiftResponsesModule
   ],
   exports: [
     ShiftManagementComponent

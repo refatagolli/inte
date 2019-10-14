@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DailyViewService} from '../../../../../services/daily-view.service';
 import {ShiftManagementService} from '../../../../../shift-management/shift-management.service';
 import {ShiftDetails} from '../../../../../models/ShiftDetails';
@@ -42,6 +42,10 @@ export class RequestsComponent implements OnInit {
 
   openRequests() {
     this._shiftManagementService.openRequests();
+  }
+
+  openCurrentRequest() {
+    this._shiftManagementService.openFillShiftRequestsPanel(this.requests[this.current - 1].shift, this.requests[this.current - 1].requests);
   }
 
 }

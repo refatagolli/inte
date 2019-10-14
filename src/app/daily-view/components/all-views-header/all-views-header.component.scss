@@ -34,10 +34,6 @@ $background_blue: rgba(58, 168, 255, 0.3);
   .date-range {
     display: inline-block;
 
-    //.chip-container {
-    //  width: 400px;
-    //  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-
     .title {
       font-size: 18px;
       color: $text_blue;
@@ -59,7 +55,6 @@ $background_blue: rgba(58, 168, 255, 0.3);
       font-weight: normal;
       font-size: 16px;
     }
-    //}
   }
 
   ::ng-deep .mat-button-focus-overlay {
@@ -80,12 +75,5 @@ $background_blue: rgba(58, 168, 255, 0.3);
 
   button {
     width: 400px
-  }
-}
-
-#daterangepicker {
-
-  .e-date-range-wrapper {
-    //display: none;
   }
 }

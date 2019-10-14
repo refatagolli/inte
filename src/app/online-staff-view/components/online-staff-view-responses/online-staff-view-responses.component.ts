@@ -37,28 +37,29 @@ export class OnlineStaffViewResponsesComponent implements OnInit {
     this.showNotification = true;
     this.shiftConfirmed = shift;
     this.operationType = 'accepted';
-    this._cdr.detectChanges();
-    setTimeout(() => this.showNotification = false, 2000);
+    this._cdr.markForCheck();
+    setTimeout(() => this.removeShift(shift), 1500);
   }
 
   declineRequest(shift: ShiftDetails) {
     this.showNotification = true;
     this.shiftConfirmed = shift;
     this.operationType = 'rejected';
-    this._cdr.detectChanges();
-    setTimeout(() => this.showNotification = false, 2000);
+    this._cdr.markForCheck();
+    setTimeout(() => this.removeShift(shift), 1500);
   }
 
   requestShift(shift: ShiftDetails) {
     this.showNotification = true;
     this.shiftConfirmed = shift;
     this.operationType = 'requested';
-    this._cdr.detectChanges();
-    setTimeout(() => this.showNotification = false, 2000);
+    this._cdr.markForCheck();
+    setTimeout(() =>  this.removeShift(shift), 1500);
   }
 
   removeShift(shift: ShiftDetails) {
     this.shiftList.splice(this.shiftList.indexOf(shift), 1);
+    this.showNotification = false;
     this._cdr.detectChanges();
   }
 }

@@ -12,14 +12,16 @@ import {ShiftManagementService} from '../../shift-management.service';
 })
 export class ShiftsToFillComponent implements OnInit {
 
-  openedShifts: Observable<ShiftDetails[]>;
+  openedShifts: ShiftDetails[] = [];
 
   constructor(private _dailyService: DailyViewService,
               private _sdf: ShiftManagementService) {
   }
 
   ngOnInit() {
-    this.openedShifts = this._dailyService.getShiftsToFill();
+    this._dailyService.getShiftsToFill().subscribe(e => {
+      this.openedShifts = e;
+    });
   }
 
   requestStaff(shift: ShiftDetails) {

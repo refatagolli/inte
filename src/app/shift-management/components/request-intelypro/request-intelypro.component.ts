@@ -10,7 +10,7 @@ import {tap} from 'rxjs/operators';
 })
 export class RequestIntelyproComponent implements OnInit {
 
-  openedShifts: ShiftDetails[];
+  openedShifts: ShiftDetails[] = [];
   selectedShifts: ShiftDetails[] = [];
 
   sel = [];

@@ -5,6 +5,7 @@ import {SharedModule} from '../../../shared/shared.module';
 import {MaterialModule} from '../../../shared/material.module';
 import {ViewTypeModule} from '../view-type/view-type.module';
 import {WeeklyDataContainerModule} from './components/weekly-data-container/weekly-data-container.module';
+import {AllViewsHeaderModule} from '../all-views-header/all-views-header.module';
 
 @NgModule({
   declarations: [WeeklyContentComponent],
@@ -13,7 +14,8 @@ import {WeeklyDataContainerModule} from './components/weekly-data-container/week
     SharedModule,
     MaterialModule,
     ViewTypeModule,
-    WeeklyDataContainerModule
+    WeeklyDataContainerModule,
+    AllViewsHeaderModule
   ],
   exports: [
     WeeklyContentComponent

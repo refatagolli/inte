@@ -1,7 +1,7 @@
 <div class="online-staff-view" fxFlex fxLayout="column">
 
   <div class="header">
-    <online-staff-view-header #header [openShifts]="5" [responses]="responses.length"
+    <online-staff-view-header #header [openShifts]="openShifts.length" [responses]="responses.length"
                               [scheduledShifts]="myScheduleList.length"></online-staff-view-header>
   </div>
 
@@ -22,7 +22,7 @@
     </div>
 
     <div class="openShifts" *ngIf="header.selectedTab === 'openShifts'">
-      <online-staff-view-responses [shiftList]="responses" [showPending]="false" [ispending]="false"
+      <online-staff-view-responses [shiftList]="openShifts" [showPending]="false" [ispending]="false"
                                    [dates]="calendar.dateList"></online-staff-view-responses>
 
     </div>

@@ -1,12 +1,17 @@
-<div class="daily-calendar">
-  <div class="daily-calendar-content">
+<div class="daily-calendar" fxLayout="column" fxLayoutGap="30px">
 
-    <div class="calendar-options">
+  <div>
+    <daily-view-header></daily-view-header>
+  </div>
+
+  <div class="daily-calendar-content" fxLayout="row" fxLayoutAlign="space-between">
+
+    <div class="calendar-options" fxFlex="">
       <div class="calendar-options-wrapper" fxFlex fxLayout="row">
         <button mat-button class="date-cell" *ngFor="let date of dateList"
-                fxFlex="auto" [disableRipple]="true" (click)="changeDate(date)"
+                fxFlex [disableRipple]="true" (click)="changeDate(date)"
                 [ngClass]="{selected: areDatesEquals(date, config.date.currentDate)}">
-          <div class="date-option-value-wrapper" fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="center center">
+          <div class="date-option-value-wrapper" fxFlex fxLayout="column" fxLayoutAlign="center center">
             <span class="date-option-value bold-item day" fxLayoutAlign="center center">{{(date | date : 'EEEE')| uppercase }}</span>
             <span class="date-option-value bold-item date" fxLayoutAlign="center center">{{(date | date : 'd') }}</span>
           </div>
@@ -14,11 +19,11 @@
       </div>
     </div>
 
-    <button mat-button class="daily-calendar-action left">
+    <button mat-button class="daily-calendar-action left" (click)="goBackwards()">
       <mat-icon>keyboard_arrow_left</mat-icon>
     </button>
 
-    <button mat-button class="daily-calendar-action right">
+    <button mat-button class="daily-calendar-action right" (click)="goForward()">
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
   </div>

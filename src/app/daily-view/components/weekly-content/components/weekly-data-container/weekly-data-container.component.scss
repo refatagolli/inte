@@ -3,12 +3,12 @@ $background_blue: #F7F9FB;
 .weekly-data-container {
   .primary-data {
     height: 109px;
-    background-color: white;
 
     .data {
       border-right: 2px solid $background_blue;
       height: 109px;
-      padding-top: 42px
+      padding-top: 42px;
+      background-color: transparent !important;
 
     }
     .title {

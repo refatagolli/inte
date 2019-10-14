@@ -21,6 +21,20 @@
 
         ::ng-deep.mat-expansion-panel-body {
           padding: 0;
+
+          .responses-content {
+
+            .responses-wrapper {
+              max-height: 300px;
+              overflow: auto;
+              padding: 0 16px 8px 16px;
+            }
+
+            .actions {
+              border-radius: 0;
+              border: 1px solid rgb(228, 228, 228);
+            }
+          }
         }
 
         .responses {

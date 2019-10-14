@@ -21,7 +21,7 @@
     </div>
 
   </div>
-  <div class="apply-container" fxFlex fxLayoutAlign="end">
+  <div class="apply-container" fxFlex fxLayoutAlign="end" *ngIf="currentRange.start && currentRange.end">
     <button class="apply" mat-button (click)="setRange()">apply</button>
   </div>
 </div>

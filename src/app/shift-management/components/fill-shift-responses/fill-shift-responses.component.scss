@@ -1,0 +1,123 @@
+$background-color: #f7fbff;
+$header_border_color: #cacaca;
+
+.shift-management {
+  height: 100vh;
+
+  .shift-management-wrapper {
+    width: 538px;
+    min-width: 538px;
+    max-width: 538px;
+
+    ::ng-deep.management-top-card {
+
+      .title h2 {
+        color: red;
+      }
+    }
+
+    .content {
+      overflow-y: auto;
+
+      .content-wrapper {
+        padding: 0 10px 20px 10px;
+      }
+    }
+  }
+
+  .actions {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0;
+    border: 1px solid rgb(228, 228, 228);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
+    .action-button {
+      width: 212px !important;
+    }
+  }
+
+  .filter-options {
+
+    .total {
+      color: rgb(0, 117, 173);
+      font-size: 16px;
+      font-weight: 600;
+      height: 44px;
+      letter-spacing: -0.49px;
+    }
+
+    .f-message {
+      padding: 12px 0;
+      font-size: 16px;
+      font-style: italic;
+      color: #999999;
+    }
+
+    .f-option {
+      padding: 12px 0;
+
+      span {
+        color: rgb(159, 197, 58);
+        font-size: 16px;
+        font-weight: 600;
+        height: 22px;
+        letter-spacing: 0;
+      }
+
+      .mat-icon {
+        font-size: 19px;
+        color: #999999;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .useful-options {
+
+    .left {
+      margin-left: 17px;
+      float: left;
+    }
+
+    .right {
+      float: right;
+      margin-right: 8px;
+    }
+  }
+
+  .no-results {
+
+    .no-results-message {
+      color: rgb(114, 128, 138);
+      font-family: Helvetica;
+      font-size: 16px;
+      letter-spacing: 0;
+      text-align: center;
+    }
+  }
+
+}
+
+.requests {
+
+  .requests-total {
+    padding: 16px 0;
+
+    .requests-total-text {
+      color: #0075ad;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.49px;
+    }
+  }
+}
+
+.more-staff {
+
+  .more-staff-text {
+    color: #72808a;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.49px;
+  }
+}
