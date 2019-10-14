@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ChipIconComponent} from './chip-icon.component';
 import {MaterialModule} from '../../material.module';
+import {SharedModule} from '../../shared.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import {MaterialModule} from '../../material.module';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
   exports: [
     ChipIconComponent

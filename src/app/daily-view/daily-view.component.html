@@ -1,5 +1,3 @@
-
-
 <div class="daily-view-wrapper" fxLayout="column" fxLayoutGap="24px">
   <!-- MAIN MENU -->
   <ng-container>
@@ -7,28 +5,23 @@
   </ng-container>
   <!-- / MAIN MENU -->
 
-  <!--  DAILY VIEW HEADER -->
-  <ng-container>
-    <daily-view-header></daily-view-header>
-  </ng-container>
-
   <!--  DAILY VIEW CALENDAR -->
-  <ng-container *ngIf="config.dateRange === 'daily' || config.dateRange === 'today'">
+  <ng-container *ngIf="config.dateRange === 'daily' ">
     <daily-calendar></daily-calendar>
   </ng-container>
 
   <!--  VIEW TYPE CALENDAR -->
-  <ng-container *ngIf="config.dateRange === 'daily' || config.dateRange === 'today'">
+  <ng-container *ngIf="config.dateRange === 'daily'">
     <view-type></view-type>
   </ng-container>
 
   <!--  DAILY VIEW CONTENT -->
-  <ng-container *ngIf="config.dateRange === 'daily' || config.dateRange === 'today'">
+  <ng-container *ngIf="config.dateRange === 'daily' ">
     <daily-content></daily-content>
   </ng-container>
 
   <!--  WEEKLY VIEW CONTENT -->
-  <ng-container *ngIf="config.dateRange !== 'daily' && config.dateRange !== 'today'">
+  <ng-container *ngIf="config.dateRange !== 'daily'">
     <weekly-content></weekly-content>
   </ng-container>
 

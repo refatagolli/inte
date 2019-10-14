@@ -19,11 +19,11 @@ import {PrintViewModule} from './components/print-view/print-view.module';
 import {DailyContentModule} from './components/daily-content/daily-content.module';
 import {RangepickerModalModule} from './components/all-views-header/components/rangepicker-modal/rangepicker-modal.module';
 import {RangepickerModalComponent} from './components/all-views-header/components/rangepicker-modal/rangepicker-modal.component';
+import {AllViewsHeaderModule} from './components/all-views-header/all-views-header.module';
 
 @NgModule({
   declarations: [
     DailyViewComponent,
-    AllViewsHeaderComponent,
     AllViewsCalendarComponent,
   ],
   imports: [
@@ -41,7 +41,8 @@ import {RangepickerModalComponent} from './components/all-views-header/component
     DailyContentModule,
     WeeklyContentModule,
     PrintViewModule,
-    RangepickerModalModule
+    RangepickerModalModule,
+    AllViewsHeaderModule
   ],
   entryComponents: [
     RangepickerModalComponent

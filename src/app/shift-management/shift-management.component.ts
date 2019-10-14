@@ -14,11 +14,12 @@ export class ShiftManagementComponent implements OnInit, OnDestroy {
 
   public TYPE_SHIFT_DETAILS = 'shiftDetails';
   public TYPE_FILL_SHIFT = 'fillShift';
+  public TYPE_FILL_SHIFT_RESPONSES = 'fillShiftResponses';
   public TYPE_SHIFTS_TO_FILL = 'shiftsToFill';
   public TYPE_REQUESTS = 'requests';
   public TYPE_REQUEST_INTELYPRO = 'requestIntelypro';
 
-  public shiftManagementState: { shiftDetails?: ShiftDetails; staffMember?: StaffMember, replacing?: StaffMember, viewType: string };
+  public shiftManagementState: { shiftDetails?: ShiftDetails; staffMember?: StaffMember, requests?: any, replacing?: StaffMember, viewType: string };
   private _unsubscribeAll: Subject<any> = new Subject();
 
   constructor(private _siftManagementService: ShiftManagementService) {

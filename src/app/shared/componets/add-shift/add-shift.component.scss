@@ -1,12 +1,21 @@
 add-shift {
   cursor: pointer;
-
-  .mat-list-item {
+  .add-shift {
     height: 72px;
   }
+
+  .mat-list-item {
+    .mat-list-item-content {
+      height: 72px !important;
+    }
+  }
   .title {
-    color: rgb(114, 128, 138);
+    color: #A2A4A7;
     font-weight: bold;
     font-size: 16px;
+  }
+
+  .mat-icon {
+    color: #59595b;
   }
 }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {UserResponse} from '../../../models/UserResponse';
 import {DailyViewService} from '../../../services/daily-view.service';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'staff-request-responses',
@@ -13,6 +13,7 @@ export class StaffRequestResponsesComponent implements OnInit {
 
   userResponses: Observable<UserResponse[]>;
   selectedItem: UserResponse;
+  total: number;
 
   constructor(private _dailyService: DailyViewService) {
   }
@@ -28,7 +29,8 @@ export class StaffRequestResponsesComponent implements OnInit {
 
   ngOnInit() {
     this.userResponses = this._dailyService.getUserResponses().pipe(
-      map(StaffRequestResponsesComponent.orderResponses)
+      map(StaffRequestResponsesComponent.orderResponses),
+      tap(e => this.total = e.length)
     );
   }
 

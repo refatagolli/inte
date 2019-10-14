@@ -13,7 +13,7 @@
       <range-chip [present]="ratio.present" [total]="ratio.total" [extraText]="'on staff'"></range-chip>
     </mat-expansion-panel-header>
 
-    <div class="staff-grouping-card-content" *ngIf="a.expanded" fxLayout="row" fxLayoutGap="20px" fusePerfectScrollbar
+    <div class="staff-grouping-card-content" fxLayout="row" fxLayoutGap="20px" fusePerfectScrollbar
          [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
 
       <app-staff-column [element]="b" [primaryField]="primaryField" [shiftDetails]="shiftDetails"

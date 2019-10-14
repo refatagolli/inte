@@ -14,8 +14,8 @@
         <div class="sort-indicator">
           <mat-icon class="drag-task" (click)="removeTask(i)">drag_indicator</mat-icon>
         </div>
-        <mat-checkbox (change)="toggleTask(i, false)" [checked]="task.completed"></mat-checkbox>
-        <span class="task-row" [ngClass]="{completed: task.completed}" fxFlex="1 1 auto">{{task.value}}</span>
+        <mat-checkbox (change)="toggleTask(i, false)" [checked]="task.complete"></mat-checkbox>
+        <span class="task-row" [ngClass]="{completed: task.complete}" fxFlex="1 1 auto">{{task.taskname}}</span>
 
         <mat-icon class="remove-task" (click)="removeTask(i)">clear</mat-icon>
       </div>
@@ -49,7 +49,7 @@
 
           <mat-checkbox (change)="toggleTask(i, true)"
                         [checked]="task.completed">
-            <span [ngClass]="{completed: task.completed}">{{task.value}}</span>
+            <span [ngClass]="{completed: task.completed}">{{task.taskname}}</span>
           </mat-checkbox>
 
         </div>

@@ -1,5 +1,5 @@
 $background_color: #f2f5f8;
-$font_color: #2c87b9;
+$font_color: #1885B7;
 
 .chip-icon {
   width: 40px;
@@ -9,9 +9,4 @@ $font_color: #2c87b9;
   color: $font_color;
   font-size: 16px !important;
   font-weight: 600;
-
-  .chip-icon-content {
-    text-align: center;
-    padding-top: 10px;
-  }
 }

@@ -6,6 +6,7 @@ import {from, Observable, of, Subject, zip} from 'rxjs';
 import {ShiftDetails} from '../../../models/ShiftDetails';
 import {StaffMember} from '../../../models/StaffMember';
 import {MatSelect} from '@angular/material';
+import {PerfectScrollbarDirective} from '@theme/directives/perfect-scrollbar/perfect-scrollbar.directive';
 
 @Component({
   selector: 'weekly-content',
@@ -15,13 +16,13 @@ import {MatSelect} from '@angular/material';
 })
 export class WeeklyContentComponent implements OnInit, OnDestroy {
   @ViewChild(MatSelect) select: MatSelect;
-
   elements: any[] = [];
   weekdays = [];
   config: DailyViewConfigModel;
   primaryField: string;
   selectOptions: string[] = [];
   currentDate = new Date().getTime();
+  @ViewChild(PerfectScrollbarDirective) private _container: PerfectScrollbarDirective;
   private _unsubscribeAll: Subject<any> = new Subject();
 
   constructor(private _dailyViewService: DailyViewService,
@@ -52,6 +53,7 @@ export class WeeklyContentComponent implements OnInit, OnDestroy {
       this.setWeekDays();
       this._cdr.markForCheck();
     });
+    // console.log(this._container);
   }
 
   setWeekDays() {
@@ -94,6 +96,40 @@ export class WeeklyContentComponent implements OnInit, OnDestroy {
     const acc = this.config.viewType === 'unit' ? 'value' : 'shiftTime';
     this.selectOptions = e.map(el => el[acc]);
     this.select.value = this.selectOptions[0];
+  }
+
+  changeViewType(viewType: 'shift' | 'unit') {
+    if (viewType !== this.config.viewType) {
+      this.config.viewType = viewType;
+      this._dailyViewService.dailyViewConfig.next(this.config);
+    }
+  }
+
+  moveRight() {
+    this._container.scrollToRight(0, 200);
+  }
+
+  moveLeft() {
+    this._container.scrollToLeft(0, 200);
+  }
+
+  hasOverflow() {
+    return this._container.ps.contentWidth > this._container.ps.containerWidth;
+
+  }
+
+  hasOverflowLeft() {
+    return this.hasOverflow() && this._container.elementRef.nativeElement.scrollLeft > 0;
+  }
+
+  hasOverflowRight() {
+    return this.hasOverflow() && this._container.elementRef.nativeElement.clientWidth +
+      this._container.elementRef.nativeElement.scrollLeft !==
+      this._container.elementRef.nativeElement.scrollWidth;
+  }
+
+  updateCRD() {
+    this._cdr.markForCheck();
   }
 
   private getStaff(config): Observable<any> {

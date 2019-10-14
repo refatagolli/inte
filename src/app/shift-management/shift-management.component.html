@@ -8,7 +8,8 @@
 <!-- FILL SHIFT -->
 <ng-container
   *ngIf="shiftManagementState && shiftManagementState.viewType === TYPE_FILL_SHIFT">
-  <app-fill-shift-component [shiftDetails]="shiftManagementState.shiftDetails" [replacing]="shiftManagementState.replacing"></app-fill-shift-component>
+  <app-fill-shift-component [shiftDetails]="shiftManagementState.shiftDetails"
+                            [replacing]="shiftManagementState.replacing"></app-fill-shift-component>
 </ng-container>
 
 <!-- FILL SHIFT -->
@@ -25,4 +26,9 @@
 <!-- FILL SHIFT -->
 <ng-container *ngIf="shiftManagementState && shiftManagementState.viewType === TYPE_SHIFTS_TO_FILL">
   <shifts-to-fill></shifts-to-fill>
+</ng-container>
+
+<!-- FILL SHIFT RESPONSES -->
+<ng-container *ngIf="shiftManagementState && shiftManagementState.viewType === TYPE_FILL_SHIFT_RESPONSES">
+  <fill-shift-responses [shiftDetails]="shiftManagementState.shiftDetails" [requests]="shiftManagementState.requests"></fill-shift-responses>
 </ng-container>

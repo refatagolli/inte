@@ -48,8 +48,8 @@
     </div>
   </mat-card-content>
 
-  <mat-card-actions align="center" *ngIf="requests.length">
-    <button mat-button class="action-button complete">View</button>
-    <button mat-button class="action-button partial"(click)="openRequests()">View All</button>
+  <mat-card-actions fxLayoutAlign="center center" *ngIf="requests.length">
+    <button mat-button class="action-button complete" (click)="openCurrentRequest()">View</button>
+    <button mat-button class="action-button partial" (click)="openRequests()">View All</button>
   </mat-card-actions>
 </mat-card>

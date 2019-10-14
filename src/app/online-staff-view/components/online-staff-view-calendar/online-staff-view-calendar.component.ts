@@ -13,6 +13,7 @@ export class OnlineStaffViewCalendarComponent implements OnInit {
   monthList: string[];
   dateList: any[] = [];
   currentDate = moment();
+  selectedMonth = this.currentDate.month();
   private config: DailyViewConfigModel;
 
   constructor(private _dailyViewService: DailyViewService) {
@@ -27,7 +28,10 @@ export class OnlineStaffViewCalendarComponent implements OnInit {
   }
 
   areDatesEquals(d) {
-    return new Date(d).getDate() === new Date().getDate();
+    const d1 = moment(d);
+    const dn = moment()
+    return d1.month() === dn.month() &&
+      d1.date() === dn.date();
   }
 
   private getDateList() {
@@ -49,7 +53,14 @@ export class OnlineStaffViewCalendarComponent implements OnInit {
   }
 
   changeWeek(forward: boolean) {
-    this.currentDate.add('week', forward ? 1 : -1);
+    this.currentDate.add( forward ? 1 : -1, 'week');
+    this.selectedMonth = this.currentDate.month();
     this.getDateList();
+  }
+
+  changeMonth(month: number) {
+    console.log(month);
+    this.currentDate = moment().clone().months(month + 1);
+    this.selectedMonth = this.currentDate.month();
   }
 }
