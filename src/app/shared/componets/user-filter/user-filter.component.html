@@ -15,7 +15,9 @@
   <div fxFlex class="content search-staff-wrapper" fxLayout="row">
     <mat-icon class="search-icon">search</mat-icon>
     <input [(ngModel)]="filterText" (keyup)="searchChanged()" class="search-staff-input" placeholder="Search staff..." [formControl]="control" autocomplete="false">
-    <i *ngIf="filterText != ''" (click)="filterText = '';searchChanged();" class="material-icons cancel-icon">cancel</i>
+    <div class="icon-placeholder">
+      <mat-icon *ngIf="filterText != ''" (click)="filterText = '';searchChanged();" class="cancel-icon">cancel</mat-icon>
+    </div>
     <button mat-button class="filter-button" (click)="toggleFilterOptions()">
       <span class="staff-filter-text">FILTER</span>
       <mat-icon class="staff-filter-icon">arrow_drop_down</mat-icon>
@@ -26,46 +28,48 @@
 <mat-card [ngClass]="(usedIn == 'staff-management') ? 'filter-options-staff' : 'filter-options'" fxFlex *ngIf="filterOptions" fxFlex fxLayout="column">
 
   <div *ngIf="shiftOptions" class="wrapper" fxFlex fxLayout="column">
-    <hr *ngIf="shiftBlockName != first" />
+    <hr class="custom-hr" *ngIf="shiftBlockName != first" />
     <h3>{{ shiftBlockName }}</h3>
     <app-selectable-button-group [multiple]="true" [elements]="shiftOptions | async" [selectedFilters]="applyedFilters['shift']"
                                  (valueChange)="subject.next(['shift', $event])"></app-selectable-button-group>
   </div>
 
   <div *ngIf="shiftTypes" class="wrapper" fxFlex fxLayout="column">
-    <hr *ngIf="shiftsBlockName != first" />
+    <hr class="custom-hr" *ngIf="shiftsBlockName != first" />
     <label class="filter-names">{{ shiftsBlockName }}</label>
     <app-selectable-button-group [multiple]="true" [elements]="shiftTypes | async" [selectedFilters]="applyedFilters['shift_type']"
                                  (valueChange)="subject.next(['shift_type', $event])"></app-selectable-button-group>
   </div>
 
   <div *ngIf="unitOptions" class="wrapper" fxFlex fxLayout="column">
-    <hr />
+    <hr class="custom-hr" />
     <h3>{{ unitBlockName }}</h3>
     <app-selectable-button-group [multiple]="true" [elements]="unitOptions | async" [selectedFilters]="applyedFilters['unit']"
                                  (valueChange)="subject.next(['unit', $event])"></app-selectable-button-group>
   </div>
 
   <div *ngIf="dayOptions" class="wrapper" fxFlex fxLayout="column">
-    <hr />
+    <hr class="custom-hr" />
     <span class="filter-names">{{ dayBlockName }}</span>
     <app-selectable-button-group [multiple]="true" [elements]="dayOptions | async" [selectedFilters]="applyedFilters['day']"
                                  (valueChange)="subject.next(['day', $event])"></app-selectable-button-group>
   </div>
 
   <div *ngIf="staffOptions" class="wrapper" fxFlex fxLayout="column">
-    <hr />
+    <hr class="custom-hr" />
     <span class="filter-names">{{ staffBlockName }}</span>
     <app-selectable-button-group [multiple]="true" [elements]="staffOptions | async" [selectedFilters]="applyedFilters['staff']"
                                  (valueChange)="subject.next(['staff', $event])"></app-selectable-button-group>
   </div>
 
   <div *ngIf="employmentOptions" class="wrapper" fxFlex fxLayout="column">
-    <hr />
+    <hr class="custom-hr" />
     <span class="filter-names">{{ employmentBlockName }}</span>
     <app-selectable-button-group [multiple]="true" [elements]="employmentOptions | async" [selectedFilters]="applyedFilters['employmentType']"
                                  (valueChange)="subject.next(['employmentType', $event])"></app-selectable-button-group>
   </div>
+
+<!--  <div style="height: 30px!important;background-color: white!important;"></div>-->
 
 </mat-card>
 
