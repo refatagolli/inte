@@ -12,15 +12,18 @@
     padding: 15px;
     display: inline-flex;
     border-radius: 0px;
+    cursor: pointer;
 
     .check-item-label {
-      float: left;
+      //float: left;
+      display: flex;
       color: rgb(114, 128, 138);
       font-size: 16px;
-      font-family: OpenSans-SemiBold;
-      font-weight: 600;
+      font-family: OpenSans-SemiBold, sans-serif;
+      font-weight: normal;
       letter-spacing: -0.67px;
       padding-left: 13px;
+      cursor: pointer;
 
       input {
         position: absolute;
@@ -34,10 +37,12 @@
       .checkmark {
         position: absolute;
         left: 5px;
+        margin-top: 2px;
         height: 18px;
         width: 18px;
         background-color: white;
         border: 1px solid black;
+        cursor: pointer;
       }
 
       /* On mouse-over, add a grey background color */
@@ -91,8 +96,13 @@
 
   }
 
+  .check-item-wrapper:hover {
+    background-color: #F2F5F8;// #f5f0ff;
+    cursor: pointer;
+  }
+
   .radio-item-wrapper:hover {
-    background-color: #f5f0ff;
+    background-color: #F2F5F8;// #f5f0ff;
     cursor: pointer;
   }
 
@@ -102,16 +112,19 @@
     padding: 15px;
     display: inline-flex;
     border-radius: 0px;
+    cursor: pointer;
 
     .radio-item-label {
       color: yellow;
-      float: left;
+      //float: left;
+      display: flex;
       color: rgb(114, 128, 138);
       font-size: 16px;
-      font-family: OpenSans-SemiBold;
-      font-weight: 600;
+      font-family: OpenSans-SemiBold, sans-serif;
+      font-weight: normal;
       letter-spacing: -0.67px;
       padding-left: 13px;
+      cursor: pointer;
 
       /* Hide the browser's default radio button */
       input {
@@ -128,9 +141,11 @@
         left: 5px;
         height: 18px;
         width: 18px;
+        margin-top: 2px;
         background-color: white;
         border: 1px solid black;
         border-radius: 50%;
+        cursor: pointer;
       }
 
       /* On mouse-over, add a grey background color */

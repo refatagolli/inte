@@ -51,6 +51,8 @@ export class StaffProfileComponent implements OnInit {
   selectedStaffType: string;
   staffTypeOptionOpened = false;
   staffOptions: Observable<any>;
+  tempCheckBoxSelected = [];
+  tempRadioSelected = 0;
   selectedEmpType: string;
   empTypeOptionOpened = false;
   employmentOptions: Observable<any>;
@@ -131,7 +133,8 @@ export class StaffProfileComponent implements OnInit {
   viewShiftsPanel() {
     const dialogRef = this.dialog.open(ShiftDayCombinationsComponent
       , {
-        width: '450px',
+        width: '550px',
+        height: '550px',
         data: {
           shiftTimeDays: this.shiftDays,
           shifts: this.shifts,
@@ -272,6 +275,8 @@ export class StaffProfileComponent implements OnInit {
   }
 
   clearAllCards() {
+    this.tempRadioSelected = 0;
+    this.tempCheckBoxSelected = [];
     this.unitOptionOpened = false;
     this.staffTypeOptionOpened = false;
     this.empTypeOptionOpened = false;
