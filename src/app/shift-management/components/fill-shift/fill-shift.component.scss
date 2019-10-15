@@ -20,13 +20,14 @@ $header_border_color: #cacaca;
       overflow-y: auto;
 
       .content-wrapper {
-        padding: 0 10px 20px 10px;
+        padding: 0 16px 20px 16px;
       }
     }
   }
 
   .actions {
-    background: rgba(255, 255, 255, 0.9);
+    //background: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
     border-radius: 0;
     border: 1px solid rgb(228, 228, 228);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);

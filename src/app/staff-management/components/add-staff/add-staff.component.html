@@ -1,222 +1,295 @@
-<i (click)="closeSidebar()" class="material-icons cancel-icon">cancel</i>
+<!--<i (click)="closeSidebar()" class="material-icons cancel-icon">cancel</i>-->
 <div class="add-staff">
-  <div class="add-staff-wrapper" fxLayout="column" fxLayoutGap="20px">
+  <div class="add-staff-wrapper" fxFlex fxFlexFill fxLayout="column">
+
     <div class="title-wrapper">
       <label class="title-text">
         Add New Staff
       </label>
     </div>
-    <form [formGroup]="staffMemberForm">
-      <div class="main-container-wrapper">
-        <div class="required-block">
-          Required <span [ngClass]="{'required' : submitted  && (staffMemberForm.invalid || validateForm.phone.status == 'INVALID' || validateForm.hireDate.status == 'INVALID')}">*</span>
-        </div>
-        <br />
-        <div style="display: inline-block">
-          <div style="display: inline-block;width: 50%">
+
+    <div class="content" fxFlex="0 1 auto" fxFlexFill>
+
+      <form [formGroup]="staffMemberForm">
+        <div fxLayout="column" class="main-container-wrapper">
+          <div class="required-block">
+            Required <span [ngClass]="{'required' : submitted  && (staffMemberForm.invalid || validateForm.phone.status == 'INVALID' || validateForm.hireDate.status == 'INVALID')}">*</span>
+          </div>
+          <div class="full-name-wrapper">
             <input [ngStyle]="{'border-color' : (submitted && validateForm.name.errors) ? 'red' : ''}" type="text" formControlName="name" placeholder="First Name *" class="custom-text-input-1" />
-<!--            <div *ngIf="submitted && validateForm.name.errors">-->
-<!--              <label style="margin-left: 0px" class="warning-label" *ngIf="validateForm.name.errors.required">Name is mandatory *</label>-->
-<!--            </div>-->
-          </div>
-          <div style="display: inline-block;width: 50%">
+            <!--            <div *ngIf="submitted && validateForm.name.errors">-->
+            <!--              <label style="margin-left: 0px" class="warning-label" *ngIf="validateForm.name.errors.required">Name is mandatory *</label>-->
+            <!--            </div>-->
+
             <input [ngStyle]="{'border-color' : (submitted && validateForm.surname.errors) ? 'red' : ''}" type="text" formControlName="surname" placeholder="Last Name *" class="custom-text-input-2" />
-<!--            <div *ngIf="submitted && validateForm.surname.errors">-->
-<!--              <label class="warning-label" *ngIf="validateForm.surname.errors.required">Surname is mandatory *</label>-->
-<!--            </div>-->
+            <!--            <div *ngIf="submitted && validateForm.surname.errors">-->
+            <!--              <label class="warning-label" *ngIf="validateForm.surname.errors.required">Surname is mandatory *</label>-->
+            <!--            </div>-->
           </div>
-        </div>
-        <br /><br />
-        <div >
+
           <input [ngStyle]="{'border-color' : (submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')) ? 'red' : ''}" type="text" [dropSpecialCharacters]="false" formControlName="phone" [validation]="true" placeholder="Phone Number *" mask='(000) 000-0000' class="custom-text-input-3" />
-<!--          <div *ngIf="submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')">-->
-<!--            <label class="warning-label" *ngIf="validateForm.phone.errors.required">Phone number is mandatory *</label>-->
-<!--            <label class="warning-label" *ngIf="!validateForm.phone.errors.required && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')">Phone format is invalid *</label>-->
-<!--          </div>-->
-          <br /><br />
+          <!--          <div *ngIf="submitted && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')">-->
+          <!--            <label class="warning-label" *ngIf="validateForm.phone.errors.required">Phone number is mandatory *</label>-->
+          <!--            <label class="warning-label" *ngIf="!validateForm.phone.errors.required && (validateForm.phone.errors || validateForm.phone.status == 'INVALID')">Phone format is invalid *</label>-->
+          <!--          </div>-->
+
           <input type="text" [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}" formControlName="email" placeholder="Email Address *" class="custom-text-input-3" />
-<!--          <div *ngIf="submitted && validateForm.email.errors">-->
-<!--            <label class="warning-label" *ngIf="validateForm.email.errors.required">Email is mandatory *</label>-->
-<!--            <label class="warning-label" *ngIf="validateForm.email.errors.email">Please enter an email valid format *</label>-->
-<!--          </div>-->
-        </div>
-        <br />
-        <hr class="customized-divider" />
-        <br />
-        <div class="customized-label">
-          Gender <span [ngClass]="{'required' : (submitted && (!selectedGender || selectedGender.length === 0))}">*</span>
-        </div>
-        <div class="button-options">
-          <app-selectable-button-group [multiple]="false" [elements]="genderOptions | async"
-                                       [selectedFilters]="selectedGender" (valueChange)="selectedGender = $event;">
-          </app-selectable-button-group>
+          <!--          <div *ngIf="submitted && validateForm.email.errors">-->
+          <!--            <label class="warning-label" *ngIf="validateForm.email.errors.required">Email is mandatory *</label>-->
+          <!--            <label class="warning-label" *ngIf="validateForm.email.errors.email">Please enter an email valid format *</label>-->
+          <!--          </div>-->
 
-        </div>
-<!--        <div *ngIf="submitted && (!selectedGender || selectedGender === [])">-->
-<!--          <label class="warning-label">Please select gender *</label>-->
-<!--          <br />-->
-<!--        </div>-->
+          <hr class="customized-divider" />
 
-        <hr class="customized-divider-margined" />
-        <br />
+          <div class="customized-label">
+            Gender <span [ngClass]="{'required' : (submitted && (!selectedGender || selectedGender.length === 0))}">*</span>
+          </div>
 
-        <div class="customized-label">
-          Staff Type <span [ngClass]="{'required' : (submitted && (!selectedStaff || selectedStaff.length === 0))}">*</span>
-        </div>
-        <br />
-        <div class="button-options">
-          <app-selectable-button-group [multiple]="false" [elements]="staffOptions | async"
-                                       [selectedFilters]="selectedStaff" (valueChange)="selectedStaff = $event;"></app-selectable-button-group>
-        </div>
-<!--        <div *ngIf="submitted && (!selectedStaff || selectedStaff === [])">-->
-<!--          <label class="warning-label">Please select a staff type *</label>-->
-<!--          <br />-->
-<!--        </div>-->
+          <div class="button-options">
 
-        <hr class="customized-divider-margined" />
-        <br />
+            <app-selectable-button-group [multiple]="false" [elements]="genderOptions | async"
+                                         [selectedFilters]="selectedGender" (valueChange)="selectedGender = $event;">
+            </app-selectable-button-group>
 
-        <div class="customized-label">
-          Employment Type
-          <span [ngClass]="{'required' : (submitted && (!selectedEmpType || selectedEmpType.length === 0))}">*</span>
-        </div>
-        <br />
-        <div class="button-options">
-          <app-selectable-button-group [multiple]="false" [elements]="employmentOptions | async"
-                                       [selectedFilters]="selectedEmpType" (valueChange)="selectedEmpType = $event;"></app-selectable-button-group>
-        </div>
-<!--        <div *ngIf="submitted && (!selectedEmpType || selectedEmpType === [])">-->
-<!--          <label class="warning-label">Please select an employment type *</label>-->
-<!--          <br />-->
-<!--        </div>-->
+          </div>
+          <!--        <div *ngIf="submitted && (!selectedGender || selectedGender === [])">-->
+          <!--          <label class="warning-label">Please select gender *</label>-->
+          <!--          <br />-->
+          <!--        </div>-->
 
-        <hr class="customized-divider-margined" />
-        <br />
+          <hr class="customized-divider" />
 
-        <div class="customized-label">
-          Shift Day & Time
-        </div>
-        <br />
+          <div class="customized-label">
+            Staff Type <span [ngClass]="{'required' : (submitted && (!selectedStaff || selectedStaff.length === 0))}">*</span>
+          </div>
 
-        <div *ngFor="let shiftDay of eachRowChosenData; index as i;">
-          <i class="material-icons remove-shift-day-combination" (click)="removeShiftDayCombination(shiftDay.id)">cancel</i>
-          <br />
-          <div class="shift-day-wrapper">
-            <div class="customized-optionset margin-left">
-              <button (click)="toggleDayOptions(shiftDay.id)" class="customised-checkbox-group">
-              <span class="button-label">
-                  {{shiftDay.chosenDaysName}}
-                <mat-icon *ngIf="!shiftDay.showDayCard;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+          <div class="button-options">
+            <app-selectable-button-group [multiple]="false" [elements]="staffOptions | async"
+                                         [selectedFilters]="selectedStaff" (valueChange)="selectedStaff = $event;"></app-selectable-button-group>
+          </div>
+          <!--        <div *ngIf="submitted && (!selectedStaff || selectedStaff === [])">-->
+          <!--          <label class="warning-label">Please select a staff type *</label>-->
+          <!--          <br />-->
+          <!--        </div>-->
+
+          <hr class="customized-divider" />
+
+          <div class="customized-label">
+            Employment Type
+            <span [ngClass]="{'required' : (submitted && (!selectedEmpType || selectedEmpType.length === 0))}">*</span>
+          </div>
+
+          <div class="button-options">
+            <app-selectable-button-group [multiple]="false" [elements]="employmentOptions | async"
+                                         [selectedFilters]="selectedEmpType" (valueChange)="selectedEmpType = $event;"></app-selectable-button-group>
+          </div>
+          <!--        <div *ngIf="submitted && (!selectedEmpType || selectedEmpType === [])">-->
+          <!--          <label class="warning-label">Please select an employment type *</label>-->
+          <!--          <br />-->
+          <!--        </div>-->
+
+          <hr class="customized-divider" />
+
+          <div class="customized-label">
+            Shift Day & Time
+          </div>
+
+          <div style="margin-top: 16px;" *ngFor="let shiftDay of eachRowChosenData; index as i;">
+            <div style="margin-top: 0px !important;" class="shift-day-wrapper">
+              <div class="customized-optionset">
+                <button (click)="toggleDayOptions(shiftDay.id)" class="customised-checkbox-group">
+                  <span class="button-label">
+                      {{shiftDay.chosenDaysName}}
+                  </span>
+                  <mat-icon *ngIf="!shiftDay.showDayCard;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+                  <ng-template #dayArrowUp>
+                    <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+                  </ng-template>
+                </button>
+                <mat-card fxFlex *ngIf="shiftDay.showDayCard" class="customized-card checkbox-alignment" fxFlex fxLayout="column">
+                  <div class="customized-card-wrapper" fxFlex fxFlexFill fxLayout="column">
+                    <div class="mat-card-title-wrapper">
+                      <div class="header-top">
+                        <label class="title-text">Shift Day</label>
+                        <i (click)="clearAllCards()" class="material-icons custom-close-icon">close</i>
+                      </div>
+                      <hr class="custom-hr" />
+                    </div>
+
+                    <div class="mat-card-content-wrapper" fxFlex="0 1 auto" fxFlexFill>
+                      <div fxLayout="column" class="mat-card-content">
+                        <app-custom-option-set [multiple]="true" [elements]="dayOptions | async" [selectedCheckBox]="shiftDay.selectedDays"
+                                               (valueChange)="tempSelectedCheckBox = $event;"></app-custom-option-set>
+                      </div>
+                    </div>
+
+                    <div fxFlex="40px" fxLayout="column" fxLayoutAlign="center flex-end">
+                      <a (click)="manageChosenData('check', tempSelectedCheckBox, shiftDay.id);clearAllCards();" ><label class="apply-button">Apply</label></a>
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+              <div class="customized-optionset">
+                <button (click)="toggleShiftOptions(shiftDay.id)" class="customised-radio-group">
+                  <span class="button-label">
+                    {{shiftDay.chosenShiftName}}
+                  </span>
+                  <mat-icon *ngIf="!shiftDay.showStaffCard;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+                  <ng-template #shiftArrowUp>
+                    <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+                  </ng-template>
+                </button>
+
+                <mat-card fxFlex *ngIf="shiftDay.showStaffCard" class="customized-card radio-alignment" fxFlex fxLayout="column">
+                  <div class="customized-card-wrapper" fxFlex fxFlexFill fxLayout="column">
+                    <div class="mat-card-title-wrapper">
+                      <div class="header-top">
+                        <label class="title-text">Shift Time</label>
+                        <i (click)="clearAllCards()" class="material-icons custom-close-icon">close</i>
+                      </div>
+                      <hr class="custom-hr" />
+                    </div>
+
+                    <div class="mat-card-content-wrapper" fxFlex="0 1 auto" fxFlexFill>
+                      <div fxLayout="column" class="mat-card-content">
+                        <app-custom-option-set [multiple]="false" [elements]="shiftOptions | async" [selectedRadioButton]="shiftDay.selectedShifts"
+                                               (valueChange)="tempSelectedRadio = $event;"></app-custom-option-set>
+                      </div>
+                    </div>
+
+                    <div fxFlex="40px" fxLayout="column" fxLayoutAlign="center flex-end">
+                      <a (click)="manageChosenData('radio', tempSelectedRadio, shiftDay.id);clearAllCards();" ><label class="apply-button">Apply</label></a>
+                    </div>
+                  </div>
+
+                </mat-card>
+              </div>
+              <i class="material-icons remove-shift-day-combination" (click)="removeShiftDayCombination(shiftDay.id)">cancel</i>
+            </div>
+          </div>
+
+          <div class="shift-day-wrapper" [ngStyle]="eachRowChosenData.length ? {'padding-right': '28px'} : ''">
+            <div class="customized-optionset">
+              <button (click)="toggleDayOptions()" class="customised-checkbox-group">
+                <span class="button-label">
+                  {{chosenDayName}}
+                </span>
+                <mat-icon *ngIf="!dayOptionsOpened;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
                 <ng-template #dayArrowUp>
                   <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
                 </ng-template>
-              </span>
               </button>
-              <mat-card fxFlex *ngIf="shiftDay.showDayCard" class="customized-card checkbox-alignment" fxFlex fxLayout="column">
-                <app-custom-option-set [multiple]="true" [elements]="dayOptions | async" [selectedCheckBox]="shiftDay.selectedDays"
-                                       (valueChange)="manageChosenData('check', $event, shiftDay.id);"></app-custom-option-set>
+              <mat-card *ngIf="dayOptionsOpened" class="customized-card" fxFlex fxFlexFill fxLayout="column">
+                <div class="customized-card-wrapper" fxFlex fxFlexFill fxLayout="column">
+                  <div class="mat-card-title-wrapper">
+                    <div class="header-top">
+                      <label class="title-text">Shift Day</label>
+                      <i (click)="clearAllCards()" class="material-icons custom-close-icon">close</i>
+                    </div>
+                    <hr class="custom-hr" />
+                  </div>
+
+                  <div class="mat-card-content-wrapper" fxFlex="0 1 auto" fxFlexFill>
+                      <div fxLayout="column" class="mat-card-content">
+                        <app-custom-option-set [multiple]="true" [elements]="dayOptions | async" [selectedCheckBox]="selectedCheckBox"
+                                               (valueChange)="tempSelectedCheckBox = $event;"></app-custom-option-set>
+                      </div>
+                  </div>
+
+                  <div fxFlex="40px" fxLayout="column" fxLayoutAlign="center flex-end">
+                    <a (click)="selectedCheckBox = tempSelectedCheckBox;manageChosenData('check', selectedCheckBox);clearAllCards();" ><label class="apply-button">Apply</label></a>
+                  </div>
+                </div>
               </mat-card>
             </div>
-            <div class="customized-optionset margin-right">
-              <button (click)="toggleShiftOptions(shiftDay.id)" class="customised-radio-group">
-            <span class="button-label">
-              {{shiftDay.chosenShiftName}}
-              <mat-icon *ngIf="!shiftDay.showStaffCard;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
-              <ng-template #shiftArrowUp>
-                <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
-              </ng-template>
-            </span>
-
+            <div class="customized-optionset">
+              <button (click)="toggleShiftOptions()" class="customised-radio-group">
+                <span class="button-label">
+                  {{chosenShiftName}}
+                </span>
+                <mat-icon *ngIf="!shiftOptionsOpened;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
+                <ng-template #shiftArrowUp>
+                  <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
+                </ng-template>
               </button>
+              <mat-card *ngIf="shiftOptionsOpened" class="customized-card" fxFlex fxLayout="column">
+                <div class="customized-card-wrapper" fxFlex fxFlexFill fxLayout="column">
+                  <div class="mat-card-title-wrapper">
+                    <div class="header-top">
+                      <label class="title-text">Shift Time</label>
+                      <i (click)="clearAllCards()" class="material-icons custom-close-icon">close</i>
+                    </div>
+                    <hr class="custom-hr" />
+                  </div>
 
-              <mat-card fxFlex *ngIf="shiftDay.showStaffCard" class="customized-card radio-alignment" fxFlex fxLayout="column">
-                <app-custom-option-set [multiple]="false" [elements]="shiftOptions | async" [selectedRadioButton]="shiftDay.selectedShifts"
-                                       (valueChange)="manageChosenData('radio', $event, shiftDay.id);"></app-custom-option-set>
+                  <div class="mat-card-content-wrapper" fxFlex="0 1 auto" fxFlexFill>
+                    <div fxLayout="column" class="mat-card-content">
+                      <app-custom-option-set [multiple]="false" [elements]="shiftOptions | async" [selectedRadioButton]="selectedRadio"
+                                             (valueChange)="tempSelectedRadio = $event;"></app-custom-option-set>
+                    </div>
+                  </div>
+
+                  <div fxFlex="40px" fxLayout="column" fxLayoutAlign="center flex-end">
+                    <a (click)="selectedRadio = tempSelectedRadio;manageChosenData('radio', selectedRadio);clearAllCards();" ><label class="apply-button">Apply</label></a>
+                  </div>
+                </div>
               </mat-card>
             </div>
           </div>
-          <br />
-        </div>
-        <br />
-        <div class="shift-day-wrapper">
-            <div class="customized-optionset margin-left">
-              <button (click)="toggleDayOptions()" class="customised-checkbox-group">
-            <span class="button-label">
-                {{chosenDayName}}
-              <mat-icon *ngIf="!dayOptionsOpened;else dayArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
-                <ng-template #dayArrowUp>
-                  <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
-                </ng-template>
-              </span>
-              </button>
-              <mat-card *ngIf="dayOptionsOpened" class="customized-card checkbox-alignment" fxFlex fxLayout="column">
-                <app-custom-option-set [multiple]="true" [elements]="dayOptions | async" [selectedCheckBox]="selectedCheckBox"
-                                       (valueChange)="selectedCheckBox = $event;manageChosenData('check', $event);"></app-custom-option-set>
-              </mat-card>
-            </div>
-            <div class="customized-optionset  margin-right">
-              <button (click)="toggleShiftOptions()" class="customised-radio-group">
-            <span class="button-label">
-              {{chosenShiftName}}
-              <mat-icon *ngIf="!shiftOptionsOpened;else shiftArrowUp" class="arrow-drop-up">arrow_drop_down</mat-icon>
-              <ng-template #shiftArrowUp>
-                <mat-icon class="arrow-drop-up">arrow_drop_up</mat-icon>
-              </ng-template>
-            </span>
-              </button>
-              <mat-card *ngIf="shiftOptionsOpened" class="customized-card radio-alignment" fxFlex fxLayout="column">
-                <app-custom-option-set [multiple]="false" [elements]="shiftOptions | async" [selectedRadioButton]="selectedRadio"
-                                       (valueChange)="selectedRadio = $event;manageChosenData('radio', $event);"></app-custom-option-set>
-              </mat-card>
-            </div>
-        </div>
 
-        <div class="overlay" *ngIf="!allCardsCleared" (click)="clearAllCards()"></div>
+          <div class="overlay" *ngIf="!allCardsCleared" (click)="clearAllCards()"></div>
 
-        <div *ngIf="!shiftDayValidated">
-          <label class="warning-label">Please complete above shift day combination first *</label>
-        </div>
+          <div *ngIf="!shiftDayValidated">
+            <label class="warning-label">Please complete above shift day combination first *</label>
+          </div>
 
-        <div *ngIf="shiftAlreadySelected">
-          <label class="warning-label">This shift has already been selected *</label>
-        </div>
+          <div *ngIf="shiftAlreadySelected">
+            <label class="warning-label">This shift has already been selected *</label>
+          </div>
 
-        <br />
-        <br />
+          <div class="customized-label">
+            Add Another Shift&nbsp;&nbsp;<span class="plus-character" (click)="addNewShiftDayCombination()">+</span>
+          </div>
 
-        <div class="customized-label">
-          Add Another Shift&nbsp;&nbsp; <span class="plus-character" (click)="addNewShiftDayCombination()">+</span>
-        </div>
+          <hr class="customized-divider customized-divider-margined" />
 
-        <hr class="customized-divider-margined" />
-        <br />
+          <div class="customized-label">
+            Hire Date
+          </div>
 
-        <div class="customized-label">
-          Hire Date
-        </div>
-        <br />
-
-        <div class="date-wrapper">
-          <mat-form-field appearance="outline" class="date-input">
-            <input [ngStyle]="{'border-color' : (submitted && (validateForm.hireDate.errors || validateForm.hireDate.status == 'INVALID')) ? 'red' : ''}" formControlName="hireDate" matInput placeholder="Choose a date" [matDatepicker]="picker">
+          <div class="custom-date" [ngStyle]="{'border-color' : (submitted && (validateForm.hireDate.errors || validateForm.hireDate.status == 'INVALID')) ? 'red' : ''}">
+            <input (click)="picker.open()" (keypress)="picker.open()" class="custom-date-input" formControlName="hireDate" placeholder="Choose a date" [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-<!--          <div *ngIf="submitted && (validateForm.hireDate.errors || validateForm.hireDate.status == 'INVALID')">-->
-<!--            <label class="warning-label date-validation-label" *ngIf="(validateForm.phone.status == 'INVALID')">Date format is invalid *</label>-->
-<!--          </div>-->
-        </div>
-      </div>
-    </form>
-  </div>
+          </div>
 
-  <div class="actions">
-    <br />
-    <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutGap="8px">
-      <button (click)="saveUser()" mat-button class="action-button sidebar-buttons complete" fxFlexAlign="center">{{ buttonText }}</button>
-      <button (click)="closeSidebar()" mat-button class="action-button sidebar-buttons partial" fxFlexAlign="center">CANCEL</button>
+        </div>
+      </form>
+
+    </div>
+
+    <div class="actions" fxFlex="136px">
+      <div class="actions-wrapper" fxFlex="" fxLayout="column" fxLayoutAlign="center center">
+        <button (click)="saveUser()" style="margin-top: -16px" mat-button class="action-button sidebar-buttons complete"><label class="button-label">{{ buttonText }}</label></button>
+        <button (click)="closeSidebar()" style="margin-top: 16px" mat-button class="action-button sidebar-buttons partial"><label class="button-label">CANCEL</label></button>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

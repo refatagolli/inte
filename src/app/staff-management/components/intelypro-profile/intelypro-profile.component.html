@@ -50,7 +50,7 @@
               <td class="profile-table-data">{{ staffMember.firstName + " " + staffMember.lastName}}</td>
               <td class="profile-table-data">{{ staffMember.gender.name }}</td>
               <td class="profile-table-data">
-                {{ staffMember.birthDate | date: "MM" }} / {{ staffMember.birthDate | date: "dd" }} / {{ staffMember.birthDate | date: "yyyy" }}
+                {{ staffMember.birthDate | date: "MM" }} {{ staffMember.birthDate ? '/' : '' }} {{ staffMember.birthDate | date: "dd" }} {{ staffMember.birthDate ? '/' : '' }} {{ staffMember.birthDate | date: "yyyy" }}
               </td>
               <td class="profile-table-data">{{ staffMember.ssn }}</td>
               <td class="profile-table-data">{{ staffMember.location ? staffMember.location.value : '' }}</td>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
               <td class="profile-table-data top">
-                {{ staffMember.hireDate | date: "MM" }} - {{ staffMember.hireDate | date: "dd" }} - {{ staffMember.hireDate | date: "yyyy" }}
+                {{ staffMember.hireDate | date: "MM" }} {{ staffMember.hireDate ? '-' : '' }} {{ staffMember.hireDate | date: "dd" }} {{ staffMember.hireDate ? '-' : '' }} {{ staffMember.hireDate | date: "yyyy" }}
               </td>
               <td class="profile-table-data top">{{ staffMember.employmentType.employmentTypeName }}</td>
               <td colspan="5" [innerHTML]="staffMember.shiftDaysString" class="profile-table-data"></td>
@@ -85,10 +85,10 @@
           <table class="customized-profile-tables">
             <thead>
               <tr>
-                <th class="contact-table-header">Contact Name</th>
-                <th class="contact-table-header">Contact Type</th>
-                <th class="contact-table-header">Phone Number</th>
-                <th class="contact-table-header">Relationship</th>
+                <th class="contact-table-header columns-with-padding">Contact Name</th>
+                <th class="contact-table-header columns-with-padding">Contact Type</th>
+                <th class="contact-table-header columns-with-padding">Phone Number</th>
+                <th class="contact-table-header columns-with-padding">Relationship</th>
               </tr>
               <tr>
                 <td colspan="100%"></td>
@@ -218,8 +218,8 @@
               <tr>
                 <th class="table-header-labels">Shift Date</th>
                 <th class="table-header-labels">Shift Time</th>
-                <th class="table-header-labels headers-aligned-center">Location</th>
-                <th class="table-header-labels headers-aligned-center">Hours</th>
+                <th class="table-header-labels">Location</th>
+                <th class="table-header-labels">Hours</th>
               </tr>
               <tr>
                 <td colspan="100%"></td>
@@ -241,8 +241,8 @@
               <tr *ngFor="let item of upcomingShifts;">
                 <td class="table-body-custom-1">{{item.shiftDate | date:'mediumDate'}}</td>
                 <td class="table-body-custom-1">{{item.shiftType.shiftTypeName}}</td>
-                <td class="table-body-custom-2">{{item.location.value}}</td>
-                <td class="table-body-custom-2">{{item.shiftType.shiftHours}}</td>
+                <td class="table-body-custom-1">{{item.location.value}}</td>
+                <td class="table-body-custom-1">{{item.shiftType.shiftHours}}</td>
               </tr>
             </tbody>
           </table>
@@ -259,8 +259,8 @@
               <tr>
                 <th class="table-header-labels">Shift Date</th>
                 <th class="table-header-labels">Shift Time</th>
-                <th class="table-header-labels headers-aligned-center">Location</th>
-                <th class="table-header-labels headers-aligned-center">Hours</th>
+                <th class="table-header-labels">Location</th>
+                <th class="table-header-labels">Hours</th>
               </tr>
               <tr>
                 <td colspan="100%"></td>
@@ -282,8 +282,8 @@
               <tr *ngFor="let item of recentShifts;">
                 <td class="table-body-custom-1">{{item.shiftDate | date:'mediumDate'}}</td>
                 <td class="table-body-custom-1">{{item.shiftType.shiftTypeName}}</td>
-                <td class="table-body-custom-2">{{item.location.value}}</td>
-                <td class="table-body-custom-2">{{item.shiftType.shiftHours}}</td>
+                <td class="table-body-custom-1">{{item.location.value}}</td>
+                <td class="table-body-custom-1">{{item.shiftType.shiftHours}}</td>
               </tr>
             </tbody>
           </table>

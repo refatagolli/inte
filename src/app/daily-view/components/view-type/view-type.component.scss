@@ -1,20 +1,24 @@
-$select-color: #9fc53a;
-
 .view-type {
   display: block;
 
   .view-type-toggle {
-    display: inline-block;
-    padding: 0 10px;
+    width: 160px;
+    height: 40px;
+    border: 2px solid #1885B7;
+    margin-right: 4px;
+    border-radius: 3px;
 
-    .mat-slide-toggle {
-      position: relative;
-      top: -5px;
-      margin: 3px 8px;
-    }
+    .toggle-button {
+      width: 50%;
+      font-size: 16px;
+      cursor: pointer;
+      color: #A2A4A7;
+      background-color: transparent;
 
-    .selected {
-      color: $select-color;
+      &.selected {
+        background-color: #1885B7;
+        color: white;
+      }
     }
   }
 }

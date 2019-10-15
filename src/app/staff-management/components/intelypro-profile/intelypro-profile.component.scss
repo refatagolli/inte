@@ -36,7 +36,7 @@
     margin-left: 10px;
     color: rgb(255, 255, 255);
     font-size: 16px;
-    font-family: OpenSans-Regular;
+    font-family: OpenSans-Regular, sans-serif;
     font-weight: normal;
     text-decoration: underline;
     cursor: pointer;
@@ -52,7 +52,8 @@
     height: 24px;
     color: rgba(242, 245, 248, 0.8);
     font-size: 18px;
-    font-family: OpenSans-SemiBoldItalic;
+    font-family: OpenSans-SemiBoldItalic, sans-serif;
+    font-style: italic;
     font-weight: 600;
     letter-spacing: -1px;
   }
@@ -72,7 +73,8 @@
       color: rgb(0, 117, 173);
       border-radius: 50%;
       text-align: center;
-      font-family: OpenSans-SemiBold;
+      font-family: OpenSans-SemiBold, sans-serif;
+      font-weight: normal;
       width: 111px;
       height: 111px;
       padding-top: 35px;
@@ -87,8 +89,8 @@
       left: 179px;
       color: rgb(255, 255, 255);
       font-size: 30px;
-      font-family: OpenSans-SemiBold;
-      font-weight: 600;
+      font-family: OpenSans-SemiBold, sans-serif;
+      font-weight: normal;
       line-height: 24px;
     }
 
@@ -98,7 +100,7 @@
       left: 179px;
       color: rgb(255, 255, 255);
       font-size: 16px;
-      font-family: OpenSans-Regular;
+      font-family: OpenSans-Regular, sans-serif;
       font-weight: normal;
       line-height: 24px;
     }
@@ -131,8 +133,8 @@
         .mat-expansion-panel-header-title {
           color: rgb(89, 89, 91);
           font-size: 16px;
-          font-family: OpenSans-SemiBold;
-          font-weight: 600;
+          font-family: OpenSans-SemiBold, sans-serif;
+          font-weight: normal;
           letter-spacing: 0px;
         }
 
@@ -147,8 +149,8 @@
         .mat-expansion-panel-header-title {
           color: rgb(255, 255, 255)!important;
           font-size: 16px;
-          font-family: OpenSans-SemiBold;
-          font-weight: 600;
+          font-family: OpenSans-SemiBold, sans-serif;
+          font-weight: normal;
           letter-spacing: 0px;
         }
 
@@ -173,11 +175,10 @@
           width: 100%;
 
           .table-header-labels {
-            width: 61px;
-            height: 16px;
             color: rgb(106, 118, 128);
             font-size: 16px;
-            font-family: SoleilBk;
+            font-family: OpenSans-Regular, sans-serif;
+            font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 16px;
           }
@@ -187,24 +188,19 @@
             height: 16px;
             color: rgb(106, 118, 128);
             font-size: 16px;
-            font-family: OpenSans-SemiBold;
+            font-family: OpenSans-SemiBold, sans-serif;
+            font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 16px;
           }
 
           .table-docs-body {
-            width: 98px;
-            height: 16px;
             color: rgb(79, 79, 79);
             font-size: 16px;
-            font-family: OpenSans-SemiBold;
-            font-weight: 600;
+            font-family: OpenSans-SemiBold, sans-serif;
+            font-weight: normal;
             letter-spacing: -0.4px;
-            line-height: 16px;
-          }
-
-          .headers-aligned-center {
-            text-align: center;
+            line-height: 30px;
           }
 
           .table-divider {
@@ -215,22 +211,18 @@
           }
 
           .table-body-custom-1 {
-            width: 108px;
-            height: 16px;
             color: rgb(79, 79, 79);
             font-size: 16px;
-            font-family: OpenSans-SemiBold;
-            font-weight: 600;
+            font-family: OpenSans-SemiBold, sans-serif;
+            font-weight: normal;
             letter-spacing: -0.4px;
-            line-height: 16px;
+            line-height: 30px;
           }
 
           .table-body-custom-2 {
-            width: 44px;
-            height: 16px;
             color: rgb(79, 79, 79);
             font-size: 16px;
-            font-family: OpenSans-Regular;
+            font-family: OpenSans-Regular, sans-serif;
             font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 16px;
@@ -240,13 +232,16 @@
           .contact-table-header {
             //width: 88px;
             width: 25%;
-            height: 16px;
+            //height: 16px;
             color: rgb(106, 118, 128);
             font-size: 16px;
-            font-family: OpenSans-Regular;
+            font-family: OpenSans-Regular, sans-serif;
             font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 16px;
+          }
+
+          .columns-with-padding {
             padding-left: 25px;
             padding-right: 25px;
           }
@@ -256,7 +251,7 @@
             //height: 16px;
             color: rgb(79, 79, 79);
             font-size: 16px;
-            font-family: OpenSans-Regular;
+            font-family: OpenSans-Regular, sans-serif;
             font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 30px;
@@ -283,7 +278,7 @@
           width: 14.3%;
           color: rgb(106, 118, 128);
           font-size: 16px;
-          font-family: OpenSans-Regular;
+          font-family: OpenSans-Regular, sans-serif;
           font-weight: normal;
           letter-spacing: -0.4px;
           line-height: 16px;
@@ -292,8 +287,8 @@
         .profile-table-data {
           color: rgb(79, 79, 79);
           font-size: 16px;
-          font-family: OpenSans-SemiBold;
-          font-weight: 600;
+          font-family: OpenSans-SemiBold, sans-serif;
+          font-weight: normal;
           letter-spacing: -0.89px;
           line-height: 18px;
         }
@@ -323,7 +318,7 @@
   margin-left: 43px;
   color: rgb(114, 128, 138)!important;
   font-size: 16px;
-  font-family: OpenSans-Regular;
+  font-family: OpenSans-Regular, sans-serif;
   font-weight: normal;
   letter-spacing: -0.49px;
 }
@@ -334,8 +329,8 @@
   color: rgb(24, 133, 183)!important;
   margin-left: 43px;
   font-size: 16px;
-  font-family: OpenSans-SemiBold;
-  font-weight: 600;
+  font-family: OpenSans-SemiBold, sans-serif;
+  font-weight: normal;
   letter-spacing: -0.49px;
 }
 

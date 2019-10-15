@@ -80,6 +80,11 @@
       background: rgb(247, 251, 255);
       border: 1px solid rgb(224, 224, 224);
       border-radius: 2px;
+
+      .button-label {
+        text-transform: uppercase;
+        //margin-bottom: 10px;
+      }
     }
 
     .customised-radio-group {
@@ -90,9 +95,7 @@
       border-radius: 2px;
     }
 
-    .button-label {
-      //margin-bottom: 10px;
-    }
+
 
     .arrow-drop-up {
       position: absolute;

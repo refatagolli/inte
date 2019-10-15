@@ -1,5 +1,5 @@
-$header_background_color: #1785B8;
-$header_border_color: #cacaca;
+$header_background_color: #1885B7;
+$header_border_color: #dadcdb;
 $header_font_color: #59595b;
 
 .staff-grouping-card {
@@ -13,6 +13,15 @@ $header_font_color: #59595b;
     border: 1px solid $header_border_color;
     color: $header_font_color;
     border-radius: 2px;
+    padding: 0 24px 0 16px;
+
+    ::ng-deep.mat-expansion-panel-header-title {
+      margin: 0;
+    }
+
+    ::ng-deep.mat-expansion-indicator {
+      display: none;
+    }
 
     .error-case {
       margin-top: 8px;
@@ -20,14 +29,13 @@ $header_font_color: #59595b;
 
       .error-message {
         color: rgb(152, 167, 180);
-        font-family: OpenSans-SemiBoldItalic;
         font-size: 16px;
         font-weight: bold;
         font-style: italic;
         height: 22px;
         letter-spacing: 0;
         width: 96px;
-        margin-left: 12px;
+        margin-left: 16px;
         line-height: 1.5;
       }
     }
@@ -36,15 +44,19 @@ $header_font_color: #59595b;
       background-color: $header_background_color;
       color: white;
 
+      .mat-expansion-panel-header-title {
+        color: white;
+      }
+
       .error-case {
         .error-message {
-          color: white;
+          color: white !important;
         }
       }
     }
 
     ::ng-deep .range-chip {
-      margin-right: 20px;
+      margin-right: 16px;
     }
 
     .staff-grouping-card-header-title {
@@ -63,13 +75,11 @@ $header_font_color: #59595b;
     }
 
     .mat-expansion-panel-content {
-      max-width: calc(100vw - (100px));
+      max-width: calc(100vw - (32px));
       width: inherit;
-      //overflow-x: auto;
 
       .mat-expansion-panel-body {
-        padding: 0;
-        //overflow-y: visible;
+        //padding: 0;
       }
     }
   }

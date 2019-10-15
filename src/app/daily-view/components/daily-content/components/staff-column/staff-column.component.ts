@@ -12,6 +12,9 @@ export class StaffColumnComponent implements OnInit {
   @Input() primaryField: string;
   @Input() shiftDetails: string;
 
+  keepOrder = (a, b) => {
+    return a;
+  }
   constructor() {
   }
 

@@ -15,7 +15,7 @@ $removed_border_color: #ff6c68;
     font-size: 16px;
 
     .title {
-    color: $title_color;
+      color: $title_color;
     }
 
     .subtitle {
@@ -39,6 +39,7 @@ $removed_border_color: #ff6c68;
   }
 
   &.hoverable:hover {
+    background-color: #f2F5F8;
 
     .staff-card-iindicator {
       display: block;
@@ -47,10 +48,18 @@ $removed_border_color: #ff6c68;
     .staff-card-hours {
       display: none;
     }
+
+    ::ng-deep.chip-icon {
+      background-color: #FFFFFF;
+    }
   }
 
   &.clickable {
     cursor: pointer;
+  }
+
+  &clickable:hover {
+
   }
 
   &.removed {

@@ -1,10 +1,9 @@
 <div *ngIf="multiple;else radio" class="custom-optionset-content form-group">
-  <div class="check-item-wrapper" *ngFor="let el of elements " [ngClass]="{selected: checkboxSelected.indexOf(el.value) >= 0}">
+  <div (change)="updateCheckedOptions(el);" (click)="updateCheckedOptions(el);" class="check-item-wrapper" *ngFor="let el of elements " [ngClass]="{selected: checkboxSelected.indexOf(el.value) >= 0}">
     <label class="check-item-label">
       {{el.name}}
-      <input type="checkbox"  name="options" value="{{el.value}}"
-             [checked]="checkboxSelected.indexOf(el.value) >= 0"
-             (change)="updateCheckedOptions(el, $event)" />
+      <input type="checkbox" name="options" value="{{el.value}}"
+             [checked]="checkboxSelected.indexOf(el.value) >= 0" />
       <span class="checkmark"></span>
     </label>
   </div>
@@ -12,7 +11,7 @@
 
 <ng-template #radio>
   <div class="custom-optionset-content">
-    <div (click)="updateRadioOptions(el)" class="radio-item-wrapper" *ngFor="let el of elements " [ngClass]="{selected: radioSelected == el.value}">
+    <div (change)="updateRadioOptions(el);" (click)="updateRadioOptions(el)" class="radio-item-wrapper" *ngFor="let el of elements " [ngClass]="{selected: radioSelected == el.value}">
       <label class="radio-item-label">{{el.name}}
         <input type="radio" class="custom-control-input" [checked]="radioSelected == el.value"
                 value="{{el.value}}" name="custom">

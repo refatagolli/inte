@@ -1,22 +1,32 @@
 <div class="staff-member-card">
-  <mat-expansion-panel [expanded]="expanded" >
-    <mat-expansion-panel-header class="staff-member-card-header" expandedHeight="50px" collapsedHeight="50px">
+  <mat-expansion-panel #a [expanded]="expanded">
+    <mat-expansion-panel-header class="staff-member-card-header" expandedHeight="48px" collapsedHeight="48px">
+      <mat-panel-title>
 
-      <div fxFlex fxLayout="row">
-        <span class="staff-member-card-header-title bold-item">{{title}}</span>
-        <span fxFlex="1 1 auto"></span>
-        <range-chip [present]="ratio.present" [total]="ratio.total"></range-chip>
-      </div>
+        <div fxFlex fxLayout="row">
+          <span class="staff-member-card-header-title bold-item">{{title}}</span>
+          <span fxFlex="1 1 auto"></span>
+          <range-chip [present]="ratio.present" [total]="ratio.total"></range-chip>
+        </div>
 
+        <div class="icon-indicator" fxLayoutAlign="center center">
+          <mat-icon *ngIf="!a.expanded">keyboard_arrow_right</mat-icon>
+          <mat-icon *ngIf="a.expanded">keyboard_arrow_down</mat-icon>
+        </div>
+
+      </mat-panel-title>
     </mat-expansion-panel-header>
 
     <mat-list class="staff-member-card-content" fxFlex fxLayout="column">
 
       <app-staff-card [openShift]="true" *ngIf="addStaff" (fillShiftEvent)="openFillShift()"></app-staff-card>
-      <app-staff-card *ngFor="let s of staffList" [staffMember]="s"
-                      (fillShiftEvent)="openFillShift($event)"
-                      (viewDetailsEvent)="openShiftDetails(s)"
-      ></app-staff-card>
+      <div fxFlex *ngFor="let s of staffList">
+        <app-staff-card [staffMember]="s"
+                        (fillShiftEvent)="openFillShift($event)"
+                        (viewDetailsEvent)="openShiftDetails(s)"
+        ></app-staff-card>
+        <mat-divider></mat-divider>
+      </div>
       <add-shift (addShift)="addStaff = true"></add-shift>
 
     </mat-list>

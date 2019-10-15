@@ -28,7 +28,8 @@
     height: 24px;
     color: rgba(242, 245, 248, 0.8);
     font-size: 18px;
-    font-family: OpenSans-SemiBoldItalic;
+    font-family: OpenSans-SemiBoldItalic, sans-serif;
+    font-style: italic;
     font-weight: 600;
     letter-spacing: -1px;
   }
@@ -48,7 +49,8 @@
       color: rgb(0, 117, 173);
       border-radius: 50%;
       text-align: center;
-      font-family: OpenSans-SemiBold;
+      font-family: OpenSans-SemiBold, sans-serif;
+      font-weight: normal;
       width: 111px;
       height: 111px;
       padding-top: 35px;
@@ -62,8 +64,8 @@
       left: 179px;
       color: rgb(255, 255, 255);
       font-size: 30px;
-      font-family: OpenSans-SemiBold;
-      font-weight: 600;
+      font-family: OpenSans-SemiBold, sans-serif;
+      font-weight: normal;
       line-height: 24px;
     }
 
@@ -73,7 +75,7 @@
       left: 179px;
       color: rgb(255, 255, 255);
       font-size: 16px;
-      font-family: OpenSans-Regular;
+      font-family: OpenSans-Regular, sans-serif;
       font-weight: normal;
       line-height: 24px;
     }
@@ -116,8 +118,8 @@
         .mat-expansion-panel-header-title {
           color: rgb(89, 89, 91);
           font-size: 16px;
-          font-family: OpenSans-SemiBold;
-          font-weight: 600;
+          font-family: OpenSans-SemiBold, sans-serif;
+          font-weight: normal;
           letter-spacing: 0px;
         }
 
@@ -133,8 +135,8 @@
         .mat-expansion-panel-header-title {
           color: rgb(255, 255, 255)!important;
           font-size: 16px;
-          font-family: OpenSans-SemiBold;
-          font-weight: 600;
+          font-family: OpenSans-SemiBold, sans-serif;
+          font-weight: normal;
           letter-spacing: 0px;
         }
 
@@ -161,17 +163,12 @@
           width: 100%;
 
           .table-header-labels {
-            width: 61px;
-            height: 16px;
             color: rgb(106, 118, 128);
             font-size: 16px;
-            font-family: SoleilBk;
+            font-family: OpenSans-Regular, sans-serif;
+            font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 16px;
-          }
-
-          .headers-aligned-center {
-            text-align: center;
           }
 
           .table-divider {
@@ -182,26 +179,21 @@
           }
 
           .table-body-custom-1 {
-            width: 108px;
-            height: 16px;
             color: rgb(79, 79, 79);
             font-size: 16px;
-            font-family: OpenSans-SemiBold;
-            font-weight: 600;
+            font-family: OpenSans-SemiBold, sans-serif;
+            font-weight: normal;
             letter-spacing: -0.4px;
-            line-height: 16px;
+            line-height: 30px;
           }
 
           .table-body-custom-2 {
-            width: 44px;
-            height: 16px;
             color: rgb(79, 79, 79);
             font-size: 16px;
-            font-family: OpenSans-Regular;
+            font-family: OpenSans-Regular, sans-serif;
             font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 16px;
-            text-align: center;
           }
 
           .contact-table-header {
@@ -210,7 +202,7 @@
             height: 16px;
             color: rgb(106, 118, 128);
             font-size: 16px;
-            font-family: OpenSans-Regular;
+            font-family: OpenSans-Regular, sans-serif;
             font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 16px;
@@ -222,7 +214,7 @@
             //height: 16px;
             color: rgb(79, 79, 79);
             font-size: 16px;
-            font-family: OpenSans-Regular;
+            font-family: OpenSans-Regular, sans-serif;
             font-weight: normal;
             letter-spacing: -0.4px;
             line-height: 30px;
@@ -254,7 +246,7 @@
           width: 14.3%;
           color: rgb(106, 118, 128);
           font-size: 16px;
-          font-family: OpenSans-Regular;
+          font-family: OpenSans-Regular, sans-serif;
           font-weight: normal;
           letter-spacing: -0.4px;
           line-height: 16px;
@@ -264,10 +256,45 @@
           color: rgb(79, 79, 79);
           vertical-align: top;
           font-size: 16px;
-          font-family: OpenSans-SemiBold;
-          font-weight: 600;
+          font-family: OpenSans-SemiBold, sans-serif;
+          font-weight: normal;
           letter-spacing: -0.89px;
           line-height: 18px;
+
+          .custom-input {
+            width: 190px;
+            height: 56px;
+            background-color: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 2px;
+          }
+
+          .custom-optionset {
+            width: 170px;
+            height: 56px;
+            background-color: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 2px;
+            cursor: pointer;
+          }
+
+          .custom-date {
+            width: 180px;
+            display: flex;
+            height: 56px;
+            background-color: transparent;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 2px;
+
+            .custom-date-input {
+              width: 100%;
+              background-color: transparent;
+            }
+
+            ::ng-deep .mat-datepicker-toggle .mat-icon-button {
+              margin-top: 8px !important;
+            }
+          }
         }
       }
 
@@ -275,8 +302,8 @@
         margin-left: 25px;
         color: rgb(255, 255, 255);
         font-size: 16px;
-        font-family: OpenSans-SemiBold;
-        font-weight: 600;
+        font-family: OpenSans-SemiBold, sans-serif;
+        font-weight: normal;
         text-align: center;
         text-transform: uppercase;
         letter-spacing: -0.67px;
@@ -286,8 +313,8 @@
         margin-left: 25px;
         color: rgb(25, 134, 185);
         font-size: 16px;
-        font-family: OpenSans-SemiBold;
-        font-weight: 600;
+        font-family: OpenSans-SemiBold, sans-serif;
+        font-weight: normal;
         text-align: center;
         text-transform: uppercase;
         letter-spacing: -0.67px;
@@ -298,8 +325,8 @@
         margin-left: 25px;
         color: rgb(114, 128, 138);
         font-size: 16px;
-        font-family: OpenSans-SemiBold;
-        font-weight: 600;
+        font-family: OpenSans-SemiBold, sans-serif;
+        font-weight: normal;
         letter-spacing: -0.49px;
       }
 
@@ -326,6 +353,102 @@
           height: 50px !important;
           background-color: inherit !important;
           margin-bottom: 23px;
+        }
+      }
+
+      .optionser-wrapper {
+        position: relative;
+
+        .arrow-drop-up {
+          position: absolute;
+          margin-top: -4px;
+        }
+      }
+
+      .customized-card {
+        position: absolute;
+        width: 499px;
+        height: 280px!important;
+        left: -90px;
+        border: 1px solid #1986B9;
+        padding: 0px;
+        margin-top: -50px;
+        z-index: 2;
+        //overflow-y: auto;
+        background: rgb(255, 255, 255);
+        box-shadow: 0px 1px 4px 0px rgb(207, 207, 207);
+        border-radius: 2px;
+
+        .customized-card-wrapper {
+          width: 100%;
+          height: 100%;
+
+          .mat-card-title-wrapper {
+            height: 60px;
+            width: 100%;
+            padding: 10px 10px 0px 10px;
+
+            .header-top {
+              display: flex;
+              flex-wrap: nowrap;
+              justify-content: space-between;
+
+              .title-text {
+                font-size: 16px;
+                font-family: OpenSans-Regular, sans-serif;
+                font-weight: normal;
+                letter-spacing: -0.49px;
+                color: rgb(114, 128, 138);
+              }
+
+              .custom-close-icon {
+                cursor: pointer;
+              }
+            }
+
+            .custom-hr {
+              bottom: 0;
+              color: rgba(0, 0, 0, 0.12) !important;
+            }
+          }
+
+          .mat-card-content-wrapper {
+            border: black;
+            overflow: auto;
+            //height: 400px;
+
+            .mat-card-content {
+              overflow: auto;
+              position: relative;
+            }
+          }
+
+          a {
+            padding-right: 10px;
+            color: #FFFFFF;
+            text-decoration: none;
+            cursor: pointer;
+
+            .apply-button {
+              cursor: pointer;
+              font-size: 16px;
+              text-transform: uppercase;
+              font-family: OpenSans-Regular, sans-serif;
+              font-weight: normal;
+              letter-spacing: -0.49px;
+              color: #1986B9;
+            }
+          }
+        }
+
+        .card-customized-divider {
+          width: 100%;
+          margin-left: 15px;
+          margin-right: 15px;
+        }
+
+        ::ng-deep .checkmark {
+          margin-top: 0px !important;
         }
       }
 
@@ -401,18 +524,6 @@
           max-height: 250px;
           min-width: 200px !important;
           max-width: 250px !important;
-        }
-        .customized-card {
-          position: absolute;
-          margin-left: -20px;
-          margin-top: -10px;
-          padding: 0px;
-          z-index: 2;
-          overflow-y: auto;
-          background: white;
-          border: 1px solid #e0e0e0;
-          box-shadow: 0px 1px 4px 0px #cfcfcf;
-          border-radius: 2px;
         }
       }
 
@@ -490,7 +601,7 @@
   margin-left: 43px;
   color: rgb(114, 128, 138)!important;
   font-size: 16px;
-  font-family: OpenSans-Regular;
+  font-family: OpenSans-Regular, sans-serif;
   font-weight: normal;
   letter-spacing: -0.49px;
 }
@@ -501,8 +612,8 @@
   color: rgb(24, 133, 183)!important;
   margin-left: 43px;
   font-size: 16px;
-  font-family: OpenSans-SemiBold;
-  font-weight: 600;
+  font-family: OpenSans-SemiBold, sans-serif;
+  font-weight: normal;
   letter-spacing: -0.49px;
 }
 
