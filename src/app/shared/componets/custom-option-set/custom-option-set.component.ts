@@ -27,24 +27,30 @@ export class CustomOptionSetComponent implements OnInit {
   ngOnInit() {
 
     if (this.selectedCheckBox && this.multiple) {
-      this.checkboxSelected = this.selectedCheckBox;
+      this.selectedCheckBox.forEach(item => {
+        this.checkboxSelected.push(item);
+      });
+      // this.checkboxSelected = this.selectedCheckBox;
     } else if (this.selectedRadioButton !== 0 && !this.multiple) {
       this.radioSelected = this.selectedRadioButton;
     }
   }
 
-  updateCheckedOptions(option, event) {
-      if (event.target.checked) {
-        this.checkboxSelected.push(option.value);
-      } else {
-        this.elements.forEach(item => {
-          if (item.value === option.value) {
-            this.checkboxSelected.splice(this.checkboxSelected.indexOf(item.value), 1);
-          }
-        });
-      }
+  updateCheckedOptions(option) {
 
-      this.valueChange.next(this.checkboxSelected);
+    let found = false;
+    this.checkboxSelected.forEach(item => {
+      if (item === option.value) {
+        this.checkboxSelected.splice(this.checkboxSelected.indexOf(item), 1);
+        found = true;
+      }
+    });
+
+    if (!found) {
+      this.checkboxSelected.push(option.value);
+    }
+
+    this.valueChange.next(this.checkboxSelected);
   }
 
   updateRadioOptions(option) {

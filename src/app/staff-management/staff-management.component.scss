@@ -15,11 +15,12 @@ $text-color: rgb(250, 250, 250);
   }
 
   .header-padding {
-    padding-left: 20px;
+    padding-left: 40px;
   }
 
   .header-text {
     margin-top: 35px;
+    //margin-left: 20px;
     font-family: OpenSans-SemiBold, sans-serif;
     color: rgb(255, 255, 255);
     font-size: 26px;
@@ -85,12 +86,17 @@ $text-color: rgb(250, 250, 250);
   .arrow-icon {
     cursor: pointer;
     font-size: 12px;
+    padding-right: 10px;
   }
 
   .arrow-up {
     display: block;
     padding-top: 15px;
-    color: rgb(152, 167, 180);;
+    color: rgb(152, 167, 180);
+  }
+
+  .printer-icon {
+    margin-right: 10px;
   }
 
   .arrow-down {
@@ -114,11 +120,12 @@ $text-color: rgb(250, 250, 250);
         height: 66px;
         background: rgb(247, 251, 255)!important;
         border-radius: 0px;
+        border-bottom: 0px !important;
       }
 
       .element-row {
-        margin-left: 10px;
-        margin-right: 16px;
+        margin-left: 16px;
+        margin-right: 20px;
       }
 
       .element-row:hover {
@@ -171,12 +178,14 @@ $text-color: rgb(250, 250, 250);
 
       .user-initials {
         background: rgb(242, 245, 248);
+        //height: 40px;
+        //width: 40px;
         border-radius: 50%;
         padding: 10px;
         color: rgb(0, 117, 173);
         font-size: 16px;
         font-family: OpenSans-SemiBold, sans-serif;
-        font-weight: normal;
+        font-weight: 600;
       }
 
       .customized-cell-1 {
@@ -214,14 +223,12 @@ $text-color: rgb(250, 250, 250);
       }
 
       .customized-cell-4 {
-        width: 199px;
-        //height: 48px;
         display: flex;
         justify-content: center;
         color: rgb(152, 167, 180);
         font-size: 16px;
         text-align: center;
-        line-height: 26px;
+        line-height: 24px;
         font-family: OpenSans-SemiBold, sans-serif;
         font-weight: normal;
       }
@@ -245,6 +252,7 @@ $text-color: rgb(250, 250, 250);
         font-weight: normal;
         text-transform: uppercase;
         text-align: left;
+        padding-left: 40px;
       }
 
       .customized-headers-2 {
@@ -266,38 +274,6 @@ $text-color: rgb(250, 250, 250);
         text-transform: uppercase;
         display: flex;
         justify-content: flex-end;
-      }
-
-      .header-1 .column-1 {
-        text-align: left;
-        width: 19%;
-      }
-
-      .header-2 .column-2 {
-        text-align: center;
-        width: 15%;
-      }
-
-      .header-3 .column-3 {
-        text-align: center;
-        width: 13%;
-      }
-
-      .header-4 .column-4 {
-        text-align: center;
-        width: 23%;
-      }
-
-      .header-5 .column-5 {
-        text-align: center;
-        width: 15%;
-      }
-
-      .header-6 .column-6 {
-        text-align: right;
-        width: 15%;
-        display: flex;
-        justify-content: right;
       }
     }
   }

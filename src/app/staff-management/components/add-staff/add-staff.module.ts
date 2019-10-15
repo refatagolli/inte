@@ -7,6 +7,7 @@ import {SelectableButtonGroupModule} from '../../../shared/componets/selectable-
 import {CustomOptionSetModule} from '../../../shared/componets/custom-option-set/custom-option-set.module';
 import {NgxMaskModule, IConfig} from 'ngx-mask';
 import {ConfirmationDialogModule} from '../confirmation-dialog/confirmation-dialog.module';
+import {MatSnackBarModule} from '@angular/material';
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
@@ -20,6 +21,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
     SelectableButtonGroupModule,
     CustomOptionSetModule,
     NgxMaskModule.forRoot(options),
+    MatSnackBarModule,
     ConfirmationDialogModule
   ],
   exports: [

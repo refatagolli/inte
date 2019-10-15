@@ -11,7 +11,7 @@ import {Gender} from '../../../models/Gender';
 import {EmploymentType} from '../../../models/EmploymentType';
 import {StaffType} from '../../../models/StaffType';
 import {ShiftDaysTypeRelation} from '../../../models/ShiftDaysTypeRelation';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
@@ -43,7 +43,9 @@ export class AddStaffComponent implements OnInit {
   dayOptionsOpened = false;
   allCardsCleared = true;
   selectedCheckBox = [];
+  tempSelectedCheckBox = [];
   selectedRadio = 0;
+  tempSelectedRadio = 0;
   submitted = false;
   staffMemberForm: FormGroup;
   selectedGender: number[];
@@ -51,6 +53,7 @@ export class AddStaffComponent implements OnInit {
   selectedEmpType: number[];
 
   constructor(
+    private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
     private _dailyService: DailyViewService,
@@ -306,7 +309,11 @@ export class AddStaffComponent implements OnInit {
         this.days.forEach(day => {
           e.forEach(item => {
             if (day.id === item) {
-              dayFormatedName += day.name.substr(0, 1) + ', ';
+              if (day.name === 'Thursday' || day.name === 'Saturday' || day.name === 'Sunday') {
+                dayFormatedName += day.name.substr(0, 2) + ', ';
+              } else {
+                dayFormatedName += day.name.substr(0, 1) + ', ';
+              }
             }
           });
         });
@@ -510,19 +517,26 @@ export class AddStaffComponent implements OnInit {
       message = obj.message;
     }
 
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent
-      , {
-      width: '450px',
-      data: {message: message}
+    this.staffManagementService.updateStaffTable.next(true);
+
+    this._snackBar.open(message, '', {
+      duration: 2000,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.staffManagementService.updateStaffTable.next(true);
-    });
+    // const dialogRef = this.dialog.open(ConfirmationDialogComponent
+    //   , {
+    //   width: '450px',
+    //   data: {message: message}
+    // });
+    //
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.staffManagementService.updateStaffTable.next(true);
+    // });
   }
 
-
   clearAllCards() {
+    this.tempSelectedCheckBox = [];
+    this.tempSelectedRadio = 0;
     this.dayOptionsOpened = false;
     this.shiftOptionsOpened = false;
     this.eachRowChosenData.forEach(item => {

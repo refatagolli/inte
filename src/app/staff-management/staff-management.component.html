@@ -26,13 +26,13 @@
             </div>
           </mat-header-cell>
           <mat-cell class="customized-cell-1 column-1" *matCellDef="let row">
-            <label class="user-initials">{{ row.firstName.substring(0, 1) }}{{ row.lastName.substring(0, 1) }}</label>&nbsp;&nbsp;<label>{{ row.firstName + " " + row.lastName }}</label>
+            <label class="user-initials">{{ row.firstName.substring(0, 1) }}{{ row.lastName.substring(0, 1) }}</label>&nbsp;&nbsp;&nbsp;<label style="padding-top: 1px;">{{ row.firstName + " " + row.lastName }}</label>
           </mat-cell>
         </ng-container>
 
         <!-- Employment -->
         <ng-container matColumnDef="employmentType.employmentTypeName">
-          <mat-header-cell class="customized-headers-2 header-2" *matHeaderCellDef mat-sort-header> EMPLOYMENT
+          <mat-header-cell style="margin-left: 16px;" class="customized-headers-2 header-2" *matHeaderCellDef mat-sort-header> EMPLOYMENT
             <div>
               <i class="material-icons arrow-up">arrow_drop_up</i>
               <i class="material-icons arrow-down">arrow_drop_down</i>
@@ -61,13 +61,13 @@
 
         <!-- Phone -->
         <ng-container matColumnDef="phone">
-          <mat-header-cell class="customized-headers-2 header-5" *matHeaderCellDef> PHONE </mat-header-cell>
+          <mat-header-cell style="margin-right: 36px;" class="customized-headers-2 header-5" *matHeaderCellDef> PHONE </mat-header-cell>
           <mat-cell class="customized-cell-2 column-5" *matCellDef="let row"> {{ row.phone }} </mat-cell>
         </ng-container>
 
         <!-- View -->
         <ng-container matColumnDef="view">
-          <mat-header-cell class="customized-headers-3 header-6" *matHeaderCellDef> <button mat-button>Print <mat-icon>print</mat-icon></button></mat-header-cell>
+          <mat-header-cell class="customized-headers-3 header-6" *matHeaderCellDef> <button mat-button>Print <mat-icon class="printer-icon">print</mat-icon></button></mat-header-cell>
           <mat-cell class="customized-cell-5 column-6" *matCellDef="let row">
             <span>
               Profile Details <i class="material-icons arrow-icon">arrow_forward_ios</i>
