@@ -63,10 +63,6 @@
         </div>
 
         <div class="results">
-          <app-staff-card-expandable [staffMembers]="selectedStaff" [control]="true"
-                                     (selectionChange)="selectStaff($event)"
-                                     [selected]="sel"></app-staff-card-expandable>
-
           <app-staff-card-expandable [staffMembers]="staff" [control]="true"
                                      (selectionChange)="selectStaff($event)"
                                      [selected]="sel"></app-staff-card-expandable>
