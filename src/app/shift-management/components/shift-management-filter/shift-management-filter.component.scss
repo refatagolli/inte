@@ -2,8 +2,8 @@
   background: rgb(242, 245, 248);
   border-radius: 2px 0 0 2px;
   border: 1px solid rgb(239, 240, 244);
-  height: fit-content;
   position: relative;
+  height: 40px;
 
   ::ng-deep.mat-form-field {
     background-color: transparent;
@@ -16,16 +16,27 @@
       padding: 0;
       margin: 0;
     }
+
+    .mat-form-field-outline {
+      display: none;
+    }
+
+    .mat-form-field-infix {
+      padding: 2px 0;
+      margin: 0 0 0 12px;
+      border: 0;
+    }
   }
 
   .mat-button {
-    background-color: white;
+    background-color: transparent;
+    border-left: 1px solid #A2A4A7;
   }
 }
 
 .filters {
   position: absolute;
-  top: 60px;
+  top: 40px;
   left: 0;
   z-index: 99999;
   padding: 8px;

@@ -661,5 +661,56 @@
     "notes": [],
     "away": true,
     "employmentType": "Part-Time"
+  },
+  {
+    "phone": "(234) 324-2345",
+    "hireDate": 1568671200000,
+    "shiftHours": "3PM-11PM",
+    "shiftDays": [
+      "Monday",
+      "Friday"
+    ],
+    "gender": "female",
+    "staffType": "Unit Manager",
+    "hoursThisWeek": 40,
+    "fullName": "Samantha Dunbar",
+    "unit": "Unit D",
+    "notes": [],
+    "away": false,
+    "employmentType": "Part-Time"
+  },
+  {
+    "phone": "(234) 324-2345",
+    "hireDate": 1568671200000,
+    "shiftHours": "7AM-3PM",
+    "shiftDays": [
+      "Monday",
+      "Friday"
+    ],
+    "gender": "male",
+    "staffType": "Nurse",
+    "hoursThisWeek": 40,
+    "fullName": "Michael Koan",
+    "unit": "Unit D",
+    "notes": [],
+    "away": false,
+    "employmentType": "Part-Time"
+  },
+  {
+    "phone": "(234) 324-2345",
+    "hireDate": 1568671200000,
+    "shiftHours": "11PM-7AM",
+    "shiftDays": [
+      "Monday",
+      "Friday"
+    ],
+    "gender": "female",
+    "staffType": "CNA",
+    "hoursThisWeek": 40,
+    "fullName": "Michael Thomson",
+    "unit": "Unit D",
+    "notes": [],
+    "away": false,
+    "employmentType": "Part-Time"
   }
 ]

@@ -19,12 +19,13 @@ export class StaffGroupingCardComponent implements OnInit {
   }
 
   get ratio() {
-    console.log(this.element[this.primaryField])
-;    const el = flatten(this.element[this.primaryField].map(a => Object.values(a.staff)));
-    return {
-      total: el.length,
-      present: el.filter((e: { away: boolean }) => !e.away).length
-    };
+    if (this.element[this.primaryField]) {
+      const el = flatten(this.element[this.primaryField].map(a => Object.values(a.staff)));
+      return {
+        total: el.length,
+        present: el.filter((e: { away: boolean }) => !e.away).length
+      };
+    }
   }
 
   get shiftDetails(): ShiftDetails {

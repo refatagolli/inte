@@ -13,7 +13,7 @@ $background_blue: #F2F5F8;
     width: fit-content;
 
     ::ng-deep.side-actions {
-      padding: 10px;
+      padding: 10px 16px;
       border-radius: 0 0 0 20px;
 
       .side-actions-wrapper {
@@ -156,6 +156,7 @@ $background_blue: #F2F5F8;
 }
 
 .weekly-view-options-container {
+  margin-top: 16px;
   width: 100vw;
   position: sticky;
   left: 0;

@@ -1,12 +1,12 @@
 <div fxFlex fxLayout="column" class="shift-management-filter">
 
   <div class="shift-management-filter-wrapper" fxFlex fxLayout="row" fxLayoutGap="0" #trigger>
-    <mat-form-field [appearance]="'outline'" fxFlex>
-      <input matInput class="filter-input" fxFlex="1 1 auto" [formControl]="control">
+    <mat-form-field [appearance]="'outline'" fxFlex fxLayoutAlign="start center">
+      <input matInput class="filter-input" fxFlex [formControl]="control" placeholder="search all staff ...">
       <mat-icon matPrefix>search</mat-icon>
-      <mat-label>
-        search all staff ...
-      </mat-label>
+      <!--<mat-label>-->
+        <!--search all staff ...-->
+      <!--</mat-label>-->
     </mat-form-field>
 
     <button mat-button (click)="toggle()">
