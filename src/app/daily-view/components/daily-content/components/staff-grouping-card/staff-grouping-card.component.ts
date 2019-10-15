@@ -19,7 +19,8 @@ export class StaffGroupingCardComponent implements OnInit {
   }
 
   get ratio() {
-    const el = flatten(this.element[this.primaryField].map(a => Object.values(a.staff)));
+    console.log(this.element[this.primaryField])
+;    const el = flatten(this.element[this.primaryField].map(a => Object.values(a.staff)));
     return {
       total: el.length,
       present: el.filter((e: { away: boolean }) => !e.away).length

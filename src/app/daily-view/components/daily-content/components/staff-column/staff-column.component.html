@@ -10,7 +10,7 @@
     <div class="staff-column-content" fxFlex fxLayout="column" fxLayoutGap="20px">
 
         <app-staff-member-card [ratio]="getRatioStaff(c.value)" [title]="c.key" [expanded]="true" [staffList] = "c.value"
-                               *ngFor="let c of element.staff | keyvalue" [shiftDetails]="getShiftDetails">
+                               *ngFor="let c of element.staff | keyvalue:keepOrder" [shiftDetails]="getShiftDetails">
 
         </app-staff-member-card>
 

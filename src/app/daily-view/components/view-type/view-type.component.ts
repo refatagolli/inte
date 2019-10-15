@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {DailyViewService} from '../../../services/daily-view.service';
-import {FormControl} from '@angular/forms';
 import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'view-type',
@@ -9,24 +10,29 @@ import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
   styleUrls: ['./view-type.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ViewTypeComponent implements OnInit {
-  slideToggleContrl: FormControl = new FormControl(true);
+export class ViewTypeComponent implements OnInit, OnDestroy {
   dailyViewConfig: DailyViewConfigModel;
-
+  private _unsubscribeAll: Subject<any> = new Subject();
 
   constructor(private _dailyViewService: DailyViewService) {
   }
 
   ngOnInit() {
-    this.slideToggleContrl.valueChanges.subscribe(value => {
-      this.dailyViewConfig.viewType = !value ? 'shift' : 'unit';
-      this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
-    });
 
-    this._dailyViewService.dailyViewConfig.subscribe(dailyViewConfig => {
-      this.dailyViewConfig = dailyViewConfig;
-      this.slideToggleContrl.patchValue(dailyViewConfig.viewType !== 'shift', {emitEvent: false});
-    });
+    this._dailyViewService.dailyViewConfig.pipe(
+      takeUntil(this._unsubscribeAll)
+    ).subscribe(e => this.dailyViewConfig = e);
+
   }
 
+  changeViewType(viewType: 'shift' | 'unit') {
+    if (viewType !== this.dailyViewConfig.viewType) {
+      this.dailyViewConfig.viewType = viewType;
+      this._dailyViewService.dailyViewConfig.next(this.dailyViewConfig);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+  }
 }

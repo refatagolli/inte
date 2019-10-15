@@ -1,6 +1,6 @@
 $header_background_color: #f2f5f8;
-$header_border_color: #cacaca;
-$header_font_color: #72808a;
+$header_border_color: #DaDcDb;
+$header_font_color: #A2A4A7;
 
 .staff-member-card {
   width: 465px;
@@ -29,10 +29,6 @@ $header_font_color: #72808a;
     }
   }
 
-  .staff-member-card-content {
-    margin-top: 16px;
-  }
-
   ::ng-deep.mat-expansion-panel-content {
     width: 100%;
 
@@ -40,8 +36,8 @@ $header_font_color: #72808a;
       width: 100%;
       padding: 0;
 
-      .mat-list {
-
+      .mat-list-base {
+        padding: 0;
       }
     }
   }

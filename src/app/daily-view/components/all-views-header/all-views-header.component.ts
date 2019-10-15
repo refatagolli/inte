@@ -28,18 +28,20 @@ export class AllViewsHeaderComponent implements OnInit {
   }
 
   get date() {
-    if (!this.dailyViewConfig.date.to && !this.dailyViewConfig.date.from) {
-      return formatDate(this.dailyViewConfig.date.currentDate, 'EEEE MMM d', 'en');
+    if (this.dailyViewConfig.dateRange === 'daily') {
+      return formatDate(this.dailyViewConfig.date.currentDate, 'EEEE MMMM d', 'en');
+    } else if(this.dailyViewConfig.dateRange === 'monthly') {
+      return formatDate(this.dailyViewConfig.date.currentDate, 'MMMM', 'en');
     } else {
       const f = new Date(this.dailyViewConfig.date.from);
       const l = new Date(this.dailyViewConfig.date.to);
 
       if (f.getMonth() === l.getMonth()) {
-        return formatDate(this.dailyViewConfig.date.currentDate, 'EEE', 'en') + ' '
-          + formatDate(this.dailyViewConfig.date.from, 'MMM d', 'en') + '-'
+        return formatDate(this.dailyViewConfig.date.currentDate, 'EEEE', 'en') + ' '
+          + formatDate(this.dailyViewConfig.date.from, 'MMMM d', 'en') + '-'
           + formatDate(this.dailyViewConfig.date.to, 'd', 'en');
       } else {
-        return formatDate(this.dailyViewConfig.date.from, 'MMM d', 'en') + '-' + formatDate(this.dailyViewConfig.date.to, 'MMM d', 'en');
+        return formatDate(this.dailyViewConfig.date.from, 'MMMM d', 'en') + '-' + formatDate(this.dailyViewConfig.date.to, 'MMMM d', 'en');
       }
     }
   }
@@ -80,7 +82,7 @@ export class AllViewsHeaderComponent implements OnInit {
       panelClass: 'date-range-picker',
       backdropClass: 'invisible-backdrop',
       position: {
-        top: this.getDateRangePickerTopOffset() + 'px'
+        // top: this.getDateRangePickerTopOffset() + 'px'
       },
       data: dialogData
     }).afterClosed().pipe(
@@ -102,6 +104,5 @@ export class AllViewsHeaderComponent implements OnInit {
     // console.log(this.container);
     // console.log(this.container.nativeElement.offsetTop + window.pageYOffset);
     // return this.container.nativeElement.offsetTop + window.pageYOffset;
-    return 450;
   }
 }

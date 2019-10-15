@@ -22,6 +22,10 @@ export class StaffMemberCardComponent implements OnInit {
 
   addStaff: boolean;
 
+  keepOrder = (a, b) => {
+    return a;
+  }
+
   constructor(private _shiftManagementService: ShiftManagementService) {
   }
 
