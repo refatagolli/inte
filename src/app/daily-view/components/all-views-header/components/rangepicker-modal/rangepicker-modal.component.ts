@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, Optional, ViewChild} from '@angular/core';
 import * as moment from 'moment';
-import {MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {CustomDatepickerComponent} from '../../../../../shared/componets/custom-datepicker/custom-datepicker.component';
 
 @Component({
@@ -10,23 +10,28 @@ import {CustomDatepickerComponent} from '../../../../../shared/componets/custom-
 })
 export class RangepickerModalComponent implements OnInit {
 
-  currentRange = {
-    start: 0,
-    end: 0
-  };
+  currentRange ;
   tempRange = 0;
   chooseMonth: boolean;
-  currentDate = moment();
-  nextMonth = this.currentDate.clone().add(1, 'months');
+  currentDate;
+  nextMonth;
 
   @ViewChild('nextMonthDatePicker') private _nextMonthDatePicker: CustomDatepickerComponent;
 
-  constructor(private _dialogRef: MatDialogRef<RangepickerModalComponent>) {
+  constructor(private _dialogRef: MatDialogRef<RangepickerModalComponent>,
+              @Optional() @Inject(MAT_DIALOG_DATA) private _data) {
+
   }
 
   ngOnInit() {
-  }
+    this.currentRange = this._data ?  this._data.range : {
+      start: 0,
+      end: 0
+    };
+    this.currentDate = this._data ? this._data.currentDate : moment();
+    this.nextMonth = this.currentDate.clone().add(1, 'months');
 
+  }
 
   setRange() {
     this._dialogRef.close(this.currentRange);

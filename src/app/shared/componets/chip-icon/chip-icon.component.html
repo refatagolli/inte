@@ -1,6 +1,6 @@
-<div class="chip-icon">
-  <div class="chip-icon-content">
-    <span *ngIf="name">{{ getContent() }}</span>
+<div class="chip-icon" fxFlex  fxLayoutAlign="center center">
+  <div class="chip-icon-content" fxFlex="1 1 auto"  fxLayoutAlign="center center">
+    <span *ngIf="name" fxFlex fxLayoutAlign="center center">{{ getContent() }}</span>
     <mat-icon *ngIf="iconMN">{{icon}}</mat-icon>
   </div>
 </div>

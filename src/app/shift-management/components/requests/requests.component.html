@@ -2,14 +2,14 @@
   <div class="requests-wrapper" fxFlex fxFlexFill fxLayout="column">
 
     <div class="requests-header">
-      <card-system-top-header [title]="'All Requests'" [indicator]="4"
+      <card-system-top-header [title]="'All Requests'" [indicator]="allRequests.length"
                               [subtitle]="'Pending Shifts'"></card-system-top-header>
     </div>
 
     <div class="content" fxFlex="0 1 auto" fxFlexFill>
       <div class="content-wrapper" fxLayout="column" fxLayoutGap="20px">
 
-        <div class="request-entity" fxLayout="column" *ngFor="let request of allRequests | async">
+        <div class="request-entity" fxLayout="column" *ngFor="let request of allRequests; let i = index">
           <card-system-shift-details [shiftDetails]="request.shift" [selectable]="false"></card-system-shift-details>
           <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -25,9 +25,20 @@
                 </span>
               </div>
             </mat-expansion-panel-header>
-
-            <staff-request-responses></staff-request-responses>
-
+            <div class="responses-content" fxLayout="column">
+              <div class="responses-wrapper">
+                <staff-request-responses #res></staff-request-responses>
+              </div>
+              <div class="actions" fxFlex="82px">
+                <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutAlign="center center">
+                  <button class="action-button" mat-button
+                          [disabled]="!res.selectedItem"
+                          [ngClass]="!!res.selectedItem ? 'complete' : 'disabled'"
+                  >Confirm
+                  </button>
+                </div>
+              </div>
+            </div>
           </mat-expansion-panel>
         </div>
 

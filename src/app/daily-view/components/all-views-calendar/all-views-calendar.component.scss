@@ -3,15 +3,13 @@ $background_blue: #F7FBFF;
 $border-color: #afeeee;
 
 .daily-calendar {
-  flex: 1 1 auto;
-  height: fit-content;
+  height: 160px;
   border-radius: 0 0 20px 20px;
   box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, .1);
 
   .daily-calendar-content {
-    flex: 1 1 auto;
     max-width: 100%;
-    height: 109px;
+    height: 71px;
     overflow-x: hidden;
     overflow-y: hidden;
     position: relative;
@@ -43,7 +41,6 @@ $border-color: #afeeee;
       height: inherit;
 
       .date-cell {
-        min-width: calc(100% / 7);
         height: inherit;
         border-radius: 0;
         font-family: OprnSans-SemiBold, sans-serif;

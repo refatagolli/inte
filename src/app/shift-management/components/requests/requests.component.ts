@@ -10,14 +10,16 @@ import {DailyViewService} from '../../../services/daily-view.service';
 })
 export class RequestsComponent implements OnInit {
 
-  allRequests: Observable<{shift: ShiftDetails, requests: any}[]>;
+  allRequests: {shift: ShiftDetails, requests: any}[] = [];
 
   constructor(private _dailyService: DailyViewService) {
   }
 
   ngOnInit() {
 
-    this.allRequests = this._dailyService.getRequests().pipe();
+    this._dailyService.getRequests().subscribe(e => {
+      this.allRequests = e;
+    });
   }
 
 }

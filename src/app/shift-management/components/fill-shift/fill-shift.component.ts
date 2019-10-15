@@ -26,7 +26,6 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   filter = new Subject<any>();
   filterOptions: any = {};
 
-  shiftDetailsExpanded = true;
 
   message: FormControl = new FormControl('', Validators.required);
 
@@ -93,11 +92,6 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   removeFilterOpt(key: string, u) {
     this.filterOptions[key].splice(this.filterOptions[key].indexOf(u), 1);
     this.filter.next(this.filterOptions);
-  }
-
-  onScroll($event) {
-    this.shiftDetailsExpanded = $event.wheelDelta > 0;
-    $event.stopPropagation();
   }
 
   ngOnDestroy(): void {

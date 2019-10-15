@@ -26,7 +26,7 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   @Output() filterChange: EventEmitter<{}> = new EventEmitter();
   @Input() selectedFilter = {};
-  @ViewChild(SelectableButtonGroupComponent) selectableButtonBroup: SelectableButtonGroupComponent;
+  @ViewChild(SelectableButtonGroupComponent) selectableButtonGroup: SelectableButtonGroupComponent;
   searchOpened = false;
   employmentType: Observable<any>;
   shifts: Observable<any>;
@@ -76,6 +76,7 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   toggle() {
     this.searchOpened = !this.searchOpened;
+    // this._dfcs.create(this.selectableButtonGroup, this.selectableButtonGroup);
     this._cdr.markForCheck();
   }
 
@@ -85,7 +86,7 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   forceSetFilter(newValues, pushEvent?: boolean) {
     this.selectedFilter = newValues;
-    this.selectableButtonBroup.forceSetSelected(newValues, pushEvent);
+    this.selectableButtonGroup.forceSetSelected(newValues, pushEvent);
   }
 
 }

@@ -6,8 +6,8 @@
       <mat-icon (click)="changeWeek(false)">keyboard_arrow_left</mat-icon>
 
       <mat-form-field appearance="outline">
-        <mat-select [value]="currentDate.format('MMMM')">
-          <mat-option *ngFor="let m of monthList" [value]="m">{{m | titlecase}}</mat-option>
+        <mat-select [value]="selectedMonth" (selectionChange)="changeMonth($event.value)">
+          <mat-option *ngFor="let m of monthList; let i = index" [value]="i">{{m | titlecase}}</mat-option>
         </mat-select>
       </mat-form-field>
 

@@ -26,20 +26,20 @@
           <div fxLayout="row wrap"
                *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">
           <span
-            class="f-message">{{shiftDetails.staffType}}s not scheduled for this shift who work: &nbsp;</span>
+            class="f-message">{{shiftDetails.staffType}} not scheduled for this shift who work: &nbsp;</span>
 
             <div *ngIf="filterOptions?.shift" fxLayout="row wrap" fxLayoutGap="10px">
               <div class="f-option" *ngFor="let s of filterOptions.shift" fxLayout="row"
-                   fxLayoutAlign="center center" fxLayoutGap="5px">
-                <mat-icon (click)="removeFilterOpt('shift', u)">cancel</mat-icon>
+                   fxLayoutAlign="center center">
+                <mat-icon (click)="removeFilterOpt('shift', u)" fxLayoutAlign="center center">cancel</mat-icon>
                 <span>{{s}}</span>
               </div>
             </div>
 
             <div *ngIf="filterOptions?.employmentType" fxLayout="row wrap" fxLayoutGap="10px">
               <div class="f-option" *ngFor="let u of filterOptions.employmentType" fxLayout="row wrap"
-                   fxLayoutAlign="center center" fxLayoutGap="5px">
-                <mat-icon (click)="removeFilterOpt('employmentType', u)">cancel</mat-icon>
+                   fxLayoutAlign="center center">
+                <mat-icon (click)="removeFilterOpt('employmentType', u)" fxLayoutAlign="center center">cancel</mat-icon>
                 <span>{{u}}</span>
               </div>
             </div>

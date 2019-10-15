@@ -11,18 +11,23 @@ $background_blue: #F7F9FB;
   }
 
   .header {
-    background-color: #F1F5F8;
-    border-top: 1px solid #D3D4D5;
+    background-color: #F2F5F8;
+    border-top: 1px solid #DADCDB;
     border-bottom: 1px solid #D3D4D5;
+    height: 48px;
 
     .header-content {
-      width: 430px !important;
+      width: 441px !important;
       border-right: 2px solid #D3D4D5;
       position: sticky;
+      height: inherit;
       left: 0;
 
       .header-title {
         padding-left: 50px;
+        margin: 0;
+        font-size: 16px;
+        color: #A2A4A7;
       }
       .mat-icon {
         cursor: pointer;
@@ -30,7 +35,8 @@ $background_blue: #F7F9FB;
         height: 50px;
         text-align: center;
         line-height: 47px;
-        margin-right: 30px
+        margin-right: 30px;
+        color: #59595B;
       }
     }
   }
@@ -48,51 +54,60 @@ $background_blue: #F7F9FB;
           cursor: pointer;
         }
 
+        &.clickable:hover {
+          background-color: #E0EEC9;
+        }
+
         .single-day {
-          width: 16px;
-          height: 16px;
-          border-radius: 8px;
+          width: 6px;
+          height: 6px;
+          border-radius: 3px;
           background-color: #9fc53a;
           position: absolute;
 
         }
 
         &.removed-staff {
-          background-color: #FDE8E7;
-          border: 1px solid #F5827E;
+          background-color: #FFE8E7;
+          border: 1px solid #FF6C68 !important;
 
           .single-day {
-            background-color: #D0381E;
+            background-color: #D0021B;
           }
         }
 
+        &.removed-staff:hover {
+          background-color: #FDE8E7;
+        }
+
         .line {
-          height: 12px;
+          height: 6px;
 
           .inner-left {
-            height: 12px;
-            width: 50%;
+            height: 6px;
+            width: 90%;
             background-color: #9fc53a;
             float: left;
-            border-radius: 0 6px 6px 0;
+            border-radius: 0 3px 3px 0;
           }
 
           .inner-right {
-            height: 12px;
-            width: 50%;
+            height: 6px;
+            width: 90%;
             background-color: #9fc53a;
             float: right;
-            border-radius: 6px 0 0 6px;
+            border-radius: 3px 0 0 3px;
           }
           &.middle {
             .inner-left, .inner-right {
               border-radius: unset;
+              width: 50%;
             }
           }
         }
 
         &.isSunday {
-        border-right: 2px solid #F7FBFF;
+          border-right: 2px solid #F7FBFF;
         }
       }
     }

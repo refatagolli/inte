@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {DailyViewService} from '../../../../../services/daily-view.service';
 import {map} from 'rxjs/operators';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import {TaskManagementService} from '../../../../../services/task-management.service';
 
 @Component({
   selector: 'user-tasks',
@@ -18,28 +18,27 @@ export class UserTasksComponent implements OnInit {
   addTask = false;
   @ViewChild('newTask') input: ElementRef;
 
-  constructor(private _dailyService: DailyViewService) {
+  constructor(private _tasksService: TaskManagementService) {
   }
 
   ngOnInit() {
-    this._dailyService.getTasks().pipe(
-      map(e => ({
-        toDo: e.filter(a => !a.completed),
-        completed: e.filter(a => a.completed)
-      }))
-    ).subscribe(e => this.tasks = e);
+    this._getAllTasks();
   }
 
   addNewTask() {
     if (this.input.nativeElement.value) {
-      this.tasks.toDo.unshift({value: this.input.nativeElement.value, selected: false});
-      this.input.nativeElement.value = '';
-      this.addTask = false;
+      this._tasksService.create(this.input.nativeElement.value).subscribe(e => {
+
+        this._getAllTasks();
+        this.input.nativeElement.value = '';
+        this.addTask = false;
+
+      });
     }
   }
 
   toggleTask(taskIndex: number, completed: boolean) {
-    const toToggle: {completed: boolean; value: string} = completed ? this.tasks.completed[taskIndex] : this.tasks.toDo[taskIndex];
+    const toToggle: { completed: boolean; value: string } = completed ? this.tasks.completed[taskIndex] : this.tasks.toDo[taskIndex];
     toToggle.completed = !toToggle.completed;
     if (completed) {
       this.tasks.completed.splice(taskIndex, 1);
@@ -56,5 +55,14 @@ export class UserTasksComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.tasks.toDo, event.previousIndex, event.currentIndex);
+  }
+
+  private _getAllTasks() {
+    this._tasksService.getAllTasks().pipe(
+      map(e => ({
+        toDo: e.filter(a => !a.complete),
+        completed: e.filter(a => a.complete)
+      }))
+    ).subscribe(e => this.tasks = e);
   }
 }
