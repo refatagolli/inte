@@ -49,7 +49,7 @@ input::-ms-clear {
   width: 433px;
   min-width: 433px;
   max-width: 433px;
-  border-right: 2px solid #F7FBFF;
+  border-right: 1px solid #D3D4D5;
   background-color: white;
   position: sticky;
   z-index: 100001;
@@ -62,7 +62,7 @@ input::-ms-clear {
 }
 
 .invisible-backdrop {
-  background-color: rgba(100, 100, 100, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 

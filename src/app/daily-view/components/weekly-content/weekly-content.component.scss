@@ -31,7 +31,6 @@ $background_blue: #F2F5F8;
       .mat-select-value {
         color: #1885B7;
         font-size: 16px;
-        padding-left: 21px;
         font-weight: bold;
       }
 
@@ -71,7 +70,7 @@ $background_blue: #F2F5F8;
   .calendar {
     position: relative;
 
-    .calendar-options-wrapper{
+    .calendar-options-wrapper {
       margin-left: 0;
       margin-right: 0;
 
@@ -92,11 +91,9 @@ $background_blue: #F2F5F8;
     .date-cell {
       height: inherit;
       border-radius: 0;
-      border-right: 1px solid $background_blue;
       overflow: hidden;
       padding: 0;
       min-width: 45px;
-      cursor: pointer;
 
       .date-option-value {
         font-size: 16px;
@@ -123,7 +120,6 @@ $background_blue: #F2F5F8;
     top: 67px;
     background-color: rgba(255, 255, 255, .9);
     width: 36px !important;
-    //max-width: 32px !important;
     min-width: 32px !important;
     height: 75px !important;
     padding: 0;
@@ -136,7 +132,7 @@ $background_blue: #F2F5F8;
       left: 433px;
       border-top-right-radius: 36px;
       border-bottom-right-radius: 36px;
-      box-shadow: 2px 4px 4px 0  #dadada;
+      box-shadow: 2px 4px 4px 0 #dadada;
     }
 
     &.right {
@@ -145,14 +141,32 @@ $background_blue: #F2F5F8;
       //border-bottom-left-radius: 38px;
       border-top-right-radius: 36px;
       border-bottom-right-radius: 36px;
-      box-shadow: 1px 2px 4px 0  #dadada;
+      box-shadow: 1px 2px 4px 0 #dadada;
       transform: scale(-1, 1);
+    }
+  }
+
+  &.monthly-content {
+
+    ::ng-deep.date-cell {
+      border-right: 1px solid $background_blue;
+
+      &.isSunday {
+        border-right: 1px solid #D3D4D5 !important;
+      }
+    }
+  }
+
+  &.weekly-content {
+    ::ng-deep.date-cell {
+      border-right: 1px solid #D3D4D5 !important;
     }
   }
 }
 
 .weekly-view-wrapper {
   width: inherit;
+  min-height: 300px;
 }
 
 .weekly-view-options-container {
@@ -167,3 +181,4 @@ $background_blue: #F2F5F8;
   background-color: #F2F5F8;
   font-size: 16px;
 }
+

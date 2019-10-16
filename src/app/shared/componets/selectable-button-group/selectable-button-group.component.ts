@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {map, tap} from 'rxjs/operators';
 import {CustomFormGroupValidators} from '../../../helpers/custom-validators/CustomFormGroupValidators';
@@ -23,7 +23,7 @@ export class SelectableButtonGroupComponent implements OnInit {
   hasDefaultVal: boolean;
   private _oldValue;
 
-  constructor() {
+  constructor(private _cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -39,6 +39,15 @@ export class SelectableButtonGroupComponent implements OnInit {
       map(value => this._removeIfRequiredNotMultiple(value)),
       tap(e => this.selected = e)
     ).subscribe(e => this.valueChange.next(e));
+  }
+
+  forceSetSelected(newValues, pushEvent?: boolean) {
+    this.selected = newValues ? newValues : [];
+    this.control.setValue(this.selected, {emitEvent: pushEvent});
+    if (pushEvent) {
+      this.valueChange.next(this.selected);
+    }
+    this._cdr.markForCheck();
   }
 
   private _removeIfRequiredNotMultiple(value: string[]) {
@@ -73,12 +82,5 @@ export class SelectableButtonGroupComponent implements OnInit {
     }
 
     return value;
-  }
-
-  forceSetSelected(newValues, pushEvent?: boolean) {
-    this.selected = newValues;
-    if(pushEvent) {
-      this.valueChange.next(this.selected);
-    }
   }
 }

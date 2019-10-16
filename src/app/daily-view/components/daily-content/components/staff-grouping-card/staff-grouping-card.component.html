@@ -25,13 +25,13 @@
 
     </mat-expansion-panel-header>
 
-    <div class="staff-grouping-card-content" fxLayout="row" fxLayoutGap="20px" fusePerfectScrollbar
+    <div class="staff-grouping-card-content" fxLayout="row" fxLayoutGap="24px" fusePerfectScrollbar
          [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
-
-      <app-staff-column [element]="b" [primaryField]="primaryField" [shiftDetails]="shiftDetails"
-                        *ngFor="let b of element[primaryField]">
-      </app-staff-column>
-
+      <div *ngFor="let b of element[primaryField], let i = index"
+           [ngClass]="{'first-element': i === 0, 'last-element': i === (element[primaryField].length -1)}">
+        <app-staff-column [element]="b" [primaryField]="primaryField" [shiftDetails]="shiftDetails">
+        </app-staff-column>
+      </div>
     </div>
 
   </mat-expansion-panel>

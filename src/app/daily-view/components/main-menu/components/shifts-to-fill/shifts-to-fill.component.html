@@ -1,11 +1,11 @@
-<mat-card class="shifts-to-fill">
-  <mat-card-header>
+<mat-card class="shifts-to-fill" fxLayout="column">
+  <mat-card-header fxFlex fxLayoutAlign="start center">
     <mat-icon mat-card-avatar class="test-icon"
               [ngClass]="{danger: shiftsToFill.length}">warning
     </mat-icon>
     <mat-card-title>
       {{shiftsToFill.length}} Shifts To Fill
-      <span class="details">(next 7 days)</span>
+      <span class="details" fxLayoutAlign="start center">(next 7 days)</span>
     </mat-card-title>
   </mat-card-header>
 

@@ -26,6 +26,10 @@ export class StaffGroupingCardComponent implements OnInit {
         present: el.filter((e: { away: boolean }) => !e.away).length
       };
     }
+    return {
+      total: 0,
+      present: 0
+    };
   }
 
   get shiftDetails(): ShiftDetails {

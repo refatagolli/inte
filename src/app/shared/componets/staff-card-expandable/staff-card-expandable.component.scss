@@ -9,7 +9,7 @@ $header_border_color: #cacaca;
     border: 1px solid $header_border_color;
 
     .mat-expansion-panel-header {
-      padding-left: 0;
+      padding-left: 16px;
 
       ::ng-deep.mat-expansion-indicator {
         display: none;
@@ -44,7 +44,7 @@ $header_border_color: #cacaca;
       }
 
       .staff-card-expandable-checkbox {
-        margin: 0 16px 0 24px;
+        margin: 0 24px 0 0;
       }
 
     }
