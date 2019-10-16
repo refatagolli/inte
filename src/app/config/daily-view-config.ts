@@ -8,5 +8,5 @@ export const dailyView: DailyViewConfigModel = {
     currentDate: moment().toDate().getTime()
   },
   dateRange: 'daily',
-  viewType: 'unit'
+  viewType: 'shift'
 };

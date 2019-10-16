@@ -132,6 +132,10 @@ export class WeeklyContentComponent implements OnInit, OnDestroy {
     this._cdr.markForCheck();
   }
 
+  isSunday(date) {
+    return new Date(date).getDay() === 0;
+  }
+
   private getStaff(config): Observable<any> {
     const a = config.viewType === 'unit' ? this._dailyViewService.getUnits() : this._dailyViewService.getShifts();
     const b = config.viewType === 'unit' ? this._dailyViewService.getShifts() : this._dailyViewService.getUnits();

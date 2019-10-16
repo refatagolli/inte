@@ -72,14 +72,22 @@ $header_font_color: #59595b;
 
     .staff-grouping-card-content {
       overflow: auto;
+
+      .first-element {
+        margin-left: 24px;
+      }
+
+      .last-element {
+        padding-right: 24px;
+      }
     }
 
     .mat-expansion-panel-content {
-      max-width: calc(100vw - (32px));
+      //max-width: calc(100vw - (32px));
       width: inherit;
 
       .mat-expansion-panel-body {
-        //padding: 0;
+        padding: 0;
       }
     }
   }

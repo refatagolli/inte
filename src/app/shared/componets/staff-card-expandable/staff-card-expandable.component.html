@@ -1,13 +1,14 @@
-<div class="wrapper" fxLayout="column" fxLayoutGap="12px" >
+<div class="wrapper" fxLayout="column" fxLayoutGap="12px">
 
   <div class="staff-card-expandable" *ngFor="let staffMember of staffMembers; let i = index">
     <mat-expansion-panel #a>
-      <mat-expansion-panel-header collapsedHeight="72px" expandedHeight="72px" [ngClass]="{selected: selected[i] || a.expanded}">
+      <mat-expansion-panel-header collapsedHeight="72px" expandedHeight="72px"
+                                  [ngClass]="{selected: (control ? selected[i] : false) || a.expanded}">
         <div class="header-content" fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="center center">
 
           <div class="staff-card-expandable-checkbox" *ngIf="control" fxLayoutAlign="center center">
             <mat-checkbox (click)="$event.stopPropagation();" (change)="toggleValue($event.checked, staffMember, i)"
-            [checked]="selected[i]"></mat-checkbox>
+                          [checked]="selected[i]"></mat-checkbox>
           </div>
 
           <div class="staff-card-expandable-chip" fxLayoutAlign="center center">

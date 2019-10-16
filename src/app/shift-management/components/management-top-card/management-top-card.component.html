@@ -4,8 +4,6 @@
   <div class="management-top-card-content">
     <div class="management-top-card-content-wrapper" fxFlex fxLayout="column" fxLayoutGap="15px">
 
-      <mat-divider></mat-divider>
-
       <span class="info-header">Shift Details</span>
 
       <div class="replacing-staff" *ngIf="replacing">
@@ -43,14 +41,12 @@
     </div>
   </div>
 
+  <mat-divider></mat-divider>
 
   <div class="management-top-card-title" fxFlex>
     <div class="card-title-wrapper" fxLayout="row">
-      <!--<button mat-icon-button (click)="toggleSidebar()">-->
-      <!--<mat-icon>close</mat-icon>-->
-      <!--</button>-->
-      <div class="title" fxFlex fxLayoutAlign="center">
-        <h2 class="bold-item">{{title | uppercase }}</h2>
+      <div class="title" fxFlex fxLayoutAlign="center cemter">
+        <span class="bold-item">{{title | uppercase }}</span>
       </div>
     </div>
   </div>

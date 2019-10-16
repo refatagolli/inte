@@ -3,11 +3,13 @@
 
   > .ps__rail-x {
     z-index: 99999;
+    height: 10px;
   }
 
   > .ps__rail-y {
     z-index: 99999;
     left: auto !important;
+    width: 10px;
   }
 
   .ps__rail-y:hover, .ps__rail-y.ps--clicking {

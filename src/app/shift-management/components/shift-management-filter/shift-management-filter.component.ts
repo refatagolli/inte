@@ -25,8 +25,11 @@ import {SelectableButtonGroupComponent} from '../../../shared/componets/selectab
 export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
   @Output() filterChange: EventEmitter<{}> = new EventEmitter();
+  @Output() blur: EventEmitter<{}> = new EventEmitter();
+  @Output() focus: EventEmitter<{}> = new EventEmitter();
   @Input() selectedFilter = {};
-  @ViewChild(SelectableButtonGroupComponent) selectableButtonGroup: SelectableButtonGroupComponent;
+  @ViewChild('shiftsOptions') shiftsOptions: SelectableButtonGroupComponent;
+  @ViewChild('employmentTypeOptions') employmentTypeOptions: SelectableButtonGroupComponent;
   searchOpened = false;
   employmentType: Observable<any>;
   shifts: Observable<any>;
@@ -71,12 +74,10 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
 
       this.filterChange.emit(e);
     });
-
   }
 
   toggle() {
     this.searchOpened = !this.searchOpened;
-    // this._dfcs.create(this.selectableButtonGroup, this.selectableButtonGroup);
     this._cdr.markForCheck();
   }
 
@@ -84,9 +85,11 @@ export class ShiftManagementFilterComponent implements OnInit, AfterViewInit {
     this._cdr.markForCheck();
   }
 
-  forceSetFilter(newValues, pushEvent?: boolean) {
+  forceSetFilters(newValues, pushEvent?: boolean) {
     this.selectedFilter = newValues;
-    this.selectableButtonGroup.forceSetSelected(newValues, pushEvent);
+    this.shiftsOptions.forceSetSelected(newValues.shift, pushEvent);
+    this.employmentTypeOptions.forceSetSelected(newValues.employmentType, pushEvent);
+    this._cdr.markForCheck();
   }
 
 }
