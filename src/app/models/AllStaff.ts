@@ -16,10 +16,11 @@ export class AllStaff {
   staffType: StaffType;
   shiftDays: ShiftDaysTypeRelation[];
   shiftDaysString: string;
+  unitsString: string;
   notes: string;
   rating?: number;
   birthDate: string | Date | number;
   ssn: string;
-  location: Unit;
+  location: Unit[];
 }
 

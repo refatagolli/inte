@@ -11,9 +11,9 @@
 
 <ng-template #radio>
   <div class="custom-optionset-content">
-    <div (change)="updateRadioOptions(el);" (click)="updateRadioOptions(el)" class="radio-item-wrapper" *ngFor="let el of elements " [ngClass]="{selected: radioSelected == el.value}">
+    <div (click)="updateRadioOptions(el);" class="radio-item-wrapper" *ngFor="let el of elements " [ngClass]="{selected: radioSelected == el.value}">
       <label class="radio-item-label">{{el.name}}
-        <input type="radio" class="custom-control-input" [checked]="radioSelected == el.value"
+        <input (click)="updateRadioOptions(el);" type="radio" class="custom-control-input" [checked]="radioSelected == el.value"
                 value="{{el.value}}" name="custom">
         <span class="checkmark"></span>
       </label>

@@ -129,7 +129,12 @@ export class AddStaffComponent implements OnInit {
     });
 
     this.employmentOptions = this._dailyService.getEmploymentTypes().pipe(
-      flatMap(e => e),
+      flatMap(e => {
+        e = e.filter(function(value) {
+          return value.employmentTypeName !== 'Intelypro';
+        });
+        return e;
+      }),
       map(e => ({
         name: e.employmentTypeName,
         value: e.employmentTypeId
@@ -523,15 +528,6 @@ export class AddStaffComponent implements OnInit {
       duration: 2000,
     });
 
-    // const dialogRef = this.dialog.open(ConfirmationDialogComponent
-    //   , {
-    //   width: '450px',
-    //   data: {message: message}
-    // });
-    //
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.staffManagementService.updateStaffTable.next(true);
-    // });
   }
 
   clearAllCards() {

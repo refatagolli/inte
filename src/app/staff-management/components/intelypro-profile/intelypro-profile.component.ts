@@ -8,6 +8,7 @@ import {Document} from '../../../models/Document';
 import {MatDialog} from '@angular/material';
 import {ShiftType} from '../../../models/ShiftType';
 import {RatingHistoryComponent} from '../rating-history/rating-history.component';
+import {StaffDeleteConfirmationComponent} from '../staff-delete-confirmation/staff-delete-confirmation.component';
 
 @Component({
   selector: 'app-intelypro-profile',
@@ -84,4 +85,17 @@ export class IntelyproProfileComponent implements OnInit {
     this.selectedContent = this.showContentOptions[e.index];
   }
 
+  removeStaff(staff: AllStaff) {
+    this.dialog.open(StaffDeleteConfirmationComponent, {
+      panelClass: 'custom-dialog-container',
+      width: '578px',
+      height: '377px',
+      data: {
+        id: staff.id,
+        name: staff.firstName,
+        surname: staff.lastName,
+        isIntelypro: true
+      }
+    });
+  }
 }

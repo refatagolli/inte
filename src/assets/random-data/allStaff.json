@@ -14,11 +14,11 @@
     "email": "olivia.evans@yahoo.com",
     "birthDate": "1994-12-27",
     "ssn": "245-343-4346",
-    "location":  {
+    "location":  [{
       "id": 12334567435,
       "value": "Unit B",
       "requiredStaff": 12
-    },
+    }],
     "phone": "(214) 452-9422",
     "hireDate": "2019-06-20",
     "staffType": {
@@ -82,11 +82,11 @@
     },
     "birthDate": "1994-12-27",
     "ssn": "245-343-4346",
-    "location":  {
+    "location":  [{
       "id": 12334567436,
       "value": "Unit C",
       "requiredStaff": 12
-    },
+    }],
     "email": "heather.bloom@yahoo.com",
     "phone": "(343) 524-9521",
     "hireDate": "2019-05-04",
@@ -172,11 +172,11 @@
     "email": "rahul.border@hotmail.com",
     "birthDate": "1994-12-27",
     "ssn": "245-343-4346",
-    "location":  {
+    "location":  [{
       "id": 12334567435,
       "value": "Unit B",
       "requiredStaff": 12
-    },
+    }],
     "phone": "(385) 953-9621",
     "hireDate": "2019-09-18",
     "staffType": {
@@ -263,11 +263,11 @@
     "hireDate": "2019-01-10",
     "birthDate": "1994-12-27",
     "ssn": "245-343-4346",
-    "location":  {
+    "location": [{
       "id": 12334567435,
       "value": "Unit B",
       "requiredStaff": 12
-    },
+    }],
     "staffType": {
       "staffTypeId": 2,
       "staffTypeName": "CNA"
@@ -333,11 +333,11 @@
     "hireDate": "2019-05-25",
     "birthDate": "1994-12-27",
     "ssn": "245-343-4346",
-    "location":  {
+    "location": [{
       "id": 12334567434,
       "value": "Unit A",
       "requiredStaff": 12
-    },
+    }],
     "staffType": {
       "staffTypeId": 2,
       "staffTypeName": "CNA"
