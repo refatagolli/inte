@@ -89,7 +89,7 @@ export class IntelyproProfileComponent implements OnInit {
     this.dialog.open(StaffDeleteConfirmationComponent, {
       panelClass: 'custom-dialog-container',
       width: '578px',
-      height: '377px',
+      height: '422px',
       data: {
         id: staff.id,
         name: staff.firstName,
