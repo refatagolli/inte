@@ -1,6 +1,6 @@
 $header_background_color: #f2f5f8;
-$header_border_color: #cacaca;
-$header_font_color: #72808a;
+$header_border_color: #DaDcDb;
+$header_font_color: #A2A4A7;
 
 .staff-member-card {
   width: 465px;
@@ -9,16 +9,24 @@ $header_font_color: #72808a;
 
   .staff-member-card-header {
     box-shadow: unset;
+    padding: 0 24px 0 16px;
+
+    ::ng-deep.mat-expansion-panel-header-title {
+      margin: 0;
+    }
+
+    ::ng-deep.mat-expansion-indicator {
+      display: none;
+    }
 
     &.mat-expansion-panel-header {
       background-color: $header_background_color;
       border-bottom: 1px solid $header_border_color;
       border-radius: 2px;
-
     }
 
     ::ng-deep .range-chip {
-      margin-right: 20px !important;
+      margin-right: 16px !important;
     }
 
     .staff-member-card-header-title {
@@ -29,10 +37,6 @@ $header_font_color: #72808a;
     }
   }
 
-  .staff-member-card-content {
-    margin-top: 16px;
-  }
-
   ::ng-deep.mat-expansion-panel-content {
     width: 100%;
 
@@ -40,8 +44,8 @@ $header_font_color: #72808a;
       width: 100%;
       padding: 0;
 
-      .mat-list {
-
+      .mat-list-base {
+        padding: 0;
       }
     }
   }

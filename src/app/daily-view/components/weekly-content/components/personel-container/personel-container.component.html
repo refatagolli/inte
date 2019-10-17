@@ -1,11 +1,18 @@
 <div class="data">
   <div class="expansion-panel" fxFlex fxLayout="column">
 
-    <div class="header">
-      <div class="header-content" fxLayoutAlign="center center">
+    <div class="header" fxLayout="row">
+
+      <div class="header-content weekly-left-column" fxLayoutAlign="center center" fxLayout="row">
         <h1 class="header-title" fxFlex="1 1 auto">{{title}}</h1>
-        <mat-icon *ngIf="!expanded" (click)="expanded = true">expand_more</mat-icon>
-        <mat-icon *ngIf="expanded" (click)="expanded = false">expand_less</mat-icon>
+        <mat-icon *ngIf="!expanded" (click)="expanded = true">keyboard_arrow_right</mat-icon>
+        <mat-icon *ngIf="expanded" (click)="expanded = false">keyboard_arrow_down</mat-icon>
+      </div>
+
+      <div fxLayout="row" fxFlex="1 1 auto">
+        <div class="date-cell" fxFlex="1 0 auto" *ngFor="let w of days; let i = index"
+             [ngClass]="{'isSunday': isSunday(w.date) }">
+        </div>
       </div>
     </div>
 
@@ -22,11 +29,12 @@
 
               <div class="right" fxLayout="row" fxFlex>
                 <div class="date-cell" fxFlex="1 0 auto" *ngFor="let w of days; let i = index"
+                     (click)="isAway(el, w)? fillShift(el, w.date) : isPresent(el, w)? openShiftDetails(el, w.date) : ''"
                      [ngClass]="{
-                     'removed-staff':isAway(el, w),isSunday: isSunday(w.date),
+                     'removed-staff':isAway(el, w),
+                     'isSunday': isSunday(w.date),
                      'clickable': isPresent(el, w) || isAway(el, w)
-                     }"
-                     (click)="isAway(el, w)? fillShift(el, w.date) : isPresent(el, w)? openShiftDetails(el, w.date) : ''">
+                     }">
                   <div fxFlex="auto" fxLayoutAlign="center center">
                     <div class="single-day"
                          *ngIf="isAway(el, w) || (isPresent(el, w) && !hasPresentOnRight(el, w, i) && !hasPresentOnLeft(el, w, i)) ||
@@ -49,8 +57,10 @@
             <div class="left weekly-left-column">
               <add-shift (addShift)="addStaff()"></add-shift>
             </div>
-            <div class="right">
-
+            <div class="right" fxLayout="row" fxFlex="1 1 auto">
+              <div class="date-cell" fxFlex="1 0 auto" *ngFor="let w of days; let i = index"
+                   [ngClass]="{'isSunday': isSunday(w.date) }">
+              </div>
             </div>
           </div>
         </mat-list>

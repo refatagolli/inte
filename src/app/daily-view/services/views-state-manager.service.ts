@@ -16,6 +16,7 @@ export class ViewsStateManagerService {
     this._dailyViewService.dailyViewConfig.subscribe(e => {
       this.dailyViewConfig = e;
     });
+    // this.changeDateRange('monthly');
   }
 
   changeDateRange(dateRange: 'daily' | 'weekly' | 'monthly' | 'custom', from?: number, to?: number, current?: number) {

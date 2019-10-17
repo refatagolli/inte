@@ -1,5 +1,8 @@
 <div class="weekly-view" fusePerfectScrollbar (scroll)="updateCRD()"
-     [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+     [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}"
+     [ngClass]="{'monthly-content': (config.dateRange === 'monthly' || 'custom'),
+                'weekly-content': (config.dateRange === 'weekly')
+                  }">
   <div class="weekly-view-wrapper" fxFlex fxLayout="column">
 
     <div class="weekly-view-header" fxFlex fxLayout="column" fxLayoutGap="30px">
@@ -10,7 +13,7 @@
 
       <div class="weekly-view-header-wrapper" fxFlex="1 1 auto">
 
-        <div class="side-actions weekly-left-column" fxFlex fxLayout="row">
+        <div class="side-actions weekly-left-column" fxFlex fxLayout="row" fxLayoutAlign="end center">
           <div class="side-actions-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
 
             <mat-form-field [appearance]="'outline'" fxFlex>
@@ -48,8 +51,8 @@
           >
 
             <div class="date-cell" *ngFor="let date of weekdays" fxLayoutAlign="center"
-                    fxFlex (click)="selectDate(date.date)"
-                    [ngClass]="{selected: areDatesEquals(date.date,currentDate)}">
+                 fxFlex (click)="selectDate(date.date)"
+                 [ngClass]="{selected: areDatesEquals(date.date,currentDate), 'isSunday': isSunday(date.date) }">
               <div class="date-option-value-wrapper" fxFlex fxLayout="column" fxLayoutAlign="start center">
                 <span class="date-option-value bold-item day">
                   {{(weekdays.length > 8 ? (date.date | date : 'EEEE')[0] : (date.date | date : 'EEEE'))| uppercase }}</span>

@@ -1,17 +1,22 @@
 <div fxFlex fxLayout="column" class="shift-management-filter">
 
-  <div class="shift-management-filter-wrapper" fxFlex fxLayout="row" fxLayoutGap="0" #trigger>
-    <mat-form-field [appearance]="'outline'" fxFlex>
-      <input matInput class="filter-input" fxFlex="1 1 auto" [formControl]="control">
+  <div class="shift-management-filter-wrapper" fxFlex fxLayout="row" fxLayoutGap="0" fxLayoutAlign="center center">
+    <mat-form-field [appearance]="'outline'" fxFlex="1 1 auto" fxLayoutAlign="start center">
+      <input matInput class="filter-input" fxFlex [formControl]="control" placeholder="search all staff ..."
+             (blur)="blur.emit($event)"
+             (focus)="focus.emit($event)"
+      >
       <mat-icon matPrefix>search</mat-icon>
-      <mat-label>
-        search all staff ...
-      </mat-label>
+      <!--<mat-label>-->
+      <!--search all staff ...-->
+      <!--</mat-label>-->
     </mat-form-field>
 
     <button mat-button (click)="toggle()">
-      Filter
-      <mat-icon>arrow_drop_down</mat-icon>
+      <span fxFlex fxLayout="row">
+        <span fxLayoutAlign="center center">FILTER</span>
+        <mat-icon>arrow_drop_down</mat-icon>
+      </span>
     </button>
   </div>
 
@@ -22,7 +27,7 @@
 
       <div class="shift" fxLayout="column" fxLayoutGap="12px">
         <span class="shift">Shift Time</span>
-        <app-selectable-button-group [elements]="shifts | async" [multiple]="true"
+        <app-selectable-button-group #shiftsOptions [elements]="shifts | async" [multiple]="true"
                                      [selectedFilters]="selectedFilter.shift"
                                      (valueChange)="subject.next(['shift', $event])"></app-selectable-button-group>
       </div>
@@ -31,11 +36,15 @@
 
       <div class="unit" fxLayout="column" fxLayoutGap="12px">
         <span class="unit">Employment Type</span>
-        <app-selectable-button-group [elements]="employmentType | async" [multiple]="true"
-                                     [selectedFilters]="selectedFilter.unit"
+        <app-selectable-button-group #employmentTypeOptions [elements]="employmentType | async" [multiple]="true"
+                                     [selectedFilters]="selectedFilter.employmentType"
                                      (valueChange)="subject.next(['employmentType', $event])"></app-selectable-button-group>
       </div>
     </div>
 
   </div>
+
+  <div class="filter-overlay" *ngIf="searchOpened" (click)="toggle()">
+  </div>
+
 </div>

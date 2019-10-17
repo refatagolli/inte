@@ -1,5 +1,7 @@
-<div class="daily-content" fxLayout="column" fxLayoutGap="24px">
-  <app-staff-grouping-card [primaryField]="primaryField" [element]="a" [expanded]="true"
-                           *ngFor="let a of elements | async" [shiftDate]="config.date.currentDate">
-  </app-staff-grouping-card>
+<div class="daily-content" fxLayout="column" fxLayoutGap="16px">
+  <div [ngClass]="{'expanded': exp.expanded}" class="staff-group-wrapper" *ngFor="let a of elements | async">
+    <app-staff-grouping-card #exp [primaryField]="primaryField" [element]="a" [expanded]="true"
+                              [shiftDate]="config.date.currentDate">
+    </app-staff-grouping-card>
+  </div>
 </div>

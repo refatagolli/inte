@@ -1,26 +1,32 @@
-<div class="wrapper" fxLayout="column" fxLayoutGap="12px" >
+<div class="wrapper" fxLayout="column" fxLayoutGap="12px">
 
   <div class="staff-card-expandable" *ngFor="let staffMember of staffMembers; let i = index">
-    <mat-expansion-panel>
-      <mat-expansion-panel-header collapsedHeight="60px" expandedHeight="60px">
-        <div class="header-content" fxFlex="1 1 auto" fxLayout="row">
+    <mat-expansion-panel #a>
+      <mat-expansion-panel-header collapsedHeight="72px" expandedHeight="72px"
+                                  [ngClass]="{selected: (control ? selected[i] : false) || a.expanded}">
+        <div class="header-content" fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="center center">
 
-          <div class="staff-card-expandable-checkbox" *ngIf="control">
+          <div class="staff-card-expandable-checkbox" *ngIf="control" fxLayoutAlign="center center">
             <mat-checkbox (click)="$event.stopPropagation();" (change)="toggleValue($event.checked, staffMember, i)"
-            [checked]="selected[i]"></mat-checkbox>
+                          [checked]="selected[i]"></mat-checkbox>
           </div>
 
-          <div class="staff-card-expandable-chip">
+          <div class="staff-card-expandable-chip" fxLayoutAlign="center center">
             <app-chip-icon [name]="staffMember.fullName"></app-chip-icon>
           </div>
 
-          <div class="staff-card-expendable-content" fxFlex="1 1 auto" fxLayout="column">
+          <div class="staff-card-expendable-content" fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="center start">
             <span class="bold-item title">{{staffMember.fullName | titlecase}}</span>
             <span class="subtitle">{{staffMember.employmentType}}</span>
           </div>
 
           <div class="staff-card-hours">
-            <span class="bold-item">{{staffMember.hoursThisWeek}} &nbsp; hours this week</span>
+            <span class="bold-item">{{staffMember.hoursThisWeek}} hrs sched. this week</span>
+          </div>
+
+          <div class="icon-indicator" fxLayoutAlign="center center">
+            <mat-icon *ngIf="!a.expanded">keyboard_arrow_right</mat-icon>
+            <mat-icon *ngIf="a.expanded">keyboard_arrow_down</mat-icon>
           </div>
 
         </div>

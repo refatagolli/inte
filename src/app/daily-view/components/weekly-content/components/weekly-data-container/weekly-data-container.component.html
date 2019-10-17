@@ -4,7 +4,7 @@
     <div class="primary-data" fxFlex>
 
       <div class="data weekly-left-column">
-        <div class="data-wrapper" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div class="data-wrapper" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center">
           <span class="title">{{data[primaryField === 'shift' ? 'shiftTime' : 'value']}}</span>
           <div class="subtitle" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px"
                (mouseover)="census.disabled = false"
@@ -16,7 +16,7 @@
     </div>
 
     <div class="data-container" fxFlex>
-      <div class="data-container" fxFlex fxLayout="column">
+      <div class="data-container-wrapper" fxFlex fxLayout="column">
 
         <personel-container [expanded]="true" [staff]="staff.value" [title]="staff.key"
                             [shiftDetails]="getShiftDetails(staff.key)"

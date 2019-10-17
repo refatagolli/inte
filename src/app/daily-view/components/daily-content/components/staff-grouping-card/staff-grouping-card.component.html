@@ -1,25 +1,37 @@
 <div class="staff-grouping-card">
   <mat-expansion-panel [expanded]="expanded" #a class="staff-grouping">
-    <mat-expansion-panel-header class="staff-grouping-card-header" expandedHeight="50px"
+    <mat-expansion-panel-header class="staff-grouping-card-header" expandedHeight="48px"
                                 [ngClass]="{expanded: a.expanded}"
-                                collapsedHeight="50px" color="primary">
-      <span class="staff-grouping-card-header-title bold-item">{{primaryField ==='unit' ? element.shiftTime : element.value}}</span>
-      <div class="error-case" fxFlex="1 1 auto">
-        <div fxFlex fxLayout="row" *ngIf="ratio.total !== ratio.present">
-          <mat-icon class="test-icon danger">warning</mat-icon>
-          <span class="error-message"> {{ratio.total > ratio.present? 'Understaffed' : 'Overstaffed'}}</span>
+                                collapsedHeight="49px">
+      <mat-panel-title>
+
+        <span class="staff-grouping-card-header-title bold-item">{{primaryField ==='unit' ? element.shiftTime : element.value}}</span>
+
+        <div class="error-case" fxFlex="1 1 auto">
+          <div fxFlex fxLayout="row" *ngIf="ratio.total !== ratio.present">
+            <mat-icon class="test-icon danger">warning</mat-icon>
+            <span class="error-message"> {{ratio.total > ratio.present? 'Understaffed' : 'Overstaffed'}}</span>
+          </div>
         </div>
-      </div>
-      <range-chip [present]="ratio.present" [total]="ratio.total" [extraText]="'on staff'"></range-chip>
+
+        <range-chip [present]="ratio.present" [total]="ratio.total" [extraText]="'on staff'"></range-chip>
+
+        <div class="icon-indicator" fxLayoutAlign="center center">
+          <mat-icon *ngIf="!a.expanded">keyboard_arrow_right</mat-icon>
+          <mat-icon *ngIf="a.expanded">keyboard_arrow_down</mat-icon>
+        </div>
+
+      </mat-panel-title>
+
     </mat-expansion-panel-header>
 
-    <div class="staff-grouping-card-content" fxLayout="row" fxLayoutGap="20px" fusePerfectScrollbar
+    <div class="staff-grouping-card-content" fxLayout="row" fxLayoutGap="24px" fusePerfectScrollbar
          [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
-
-      <app-staff-column [element]="b" [primaryField]="primaryField" [shiftDetails]="shiftDetails"
-                        *ngFor="let b of element[primaryField]">
-      </app-staff-column>
-
+      <div *ngFor="let b of element[primaryField], let i = index"
+           [ngClass]="{'first-element': i === 0, 'last-element': i === (element[primaryField].length -1)}">
+        <app-staff-column [element]="b" [primaryField]="primaryField" [shiftDetails]="shiftDetails">
+        </app-staff-column>
+      </div>
     </div>
 
   </mat-expansion-panel>

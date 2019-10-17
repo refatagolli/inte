@@ -1,9 +1,9 @@
 .shift-management-filter {
-  background: rgb(242, 245, 248);
+  background: #f2f5f8;
   border-radius: 2px 0 0 2px;
-  border: 1px solid rgb(239, 240, 244);
-  height: fit-content;
+  border: 1px solid #eff0f4;
   position: relative;
+  height: 48px;
 
   ::ng-deep.mat-form-field {
     background-color: transparent;
@@ -15,22 +15,51 @@
     .mat-form-field-wrapper {
       padding: 0;
       margin: 0;
+      display: flex;
+      flex: 1 1 auto;
+    }
+
+    .mat-form-field-outline {
+      display: none;
+    }
+
+    .mat-form-field-infix {
+      padding: 0;
+      border: 0;
+    }
+
+    .mat-form-field-prefix {
+
+      .mat-icon {
+        width: 16px;
+        height: 16px;
+        font-size: 18px;
+        color: #72808a;
+      }
     }
   }
 
   .mat-button {
-    background-color: white;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 0;
+    border-left: 1px solid #E1E4E7;
+    color: #72808a;
+
+    .mat-icon {
+      color: #59595B;
+    }
   }
 }
 
 .filters {
   position: absolute;
-  top: 60px;
+  top: 48px;
   left: 0;
   z-index: 99999;
   padding: 8px;
   width: 100%;
-  background: rgba(255, 255, 255, 1);
+  background: #FFFFFF;
   border-radius: 0;
   border: 1px solid rgb(228, 228, 228);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -48,12 +77,12 @@
   }
 }
 
-.test1 {
-  width: 200px;
-  height: 200px;
-  background-color: black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1200;
+.filter-overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom: 0;
+  z-index: 10000;
+  background-color: rgba(255, 255, 255, .5);
 }

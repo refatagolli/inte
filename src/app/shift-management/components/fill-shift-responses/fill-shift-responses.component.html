@@ -12,7 +12,7 @@
         <br/>
 
         <div class="filter" fxFlex="0 1 auto">
-          <shift-management-filter ></shift-management-filter>
+          <shift-management-filter></shift-management-filter>
         </div>
 
 
@@ -27,32 +27,32 @@
 
         <!--<div class="filter-options" fxLayout="column">-->
 
-          <!--&lt;!&ndash;<div fxFlex="1 1 auto">&ndash;&gt;-->
-            <!--&lt;!&ndash;<span class="total">{{staff.length}} Results</span>&ndash;&gt;-->
-          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div fxFlex="1 1 auto">&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="total">{{staff.length}} Results</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-          <!--<div fxLayout="row wrap"-->
-               <!--*ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">-->
-          <!--<span-->
-            <!--class="f-message">{{shiftDetails.staffType}} not scheduled for this shift who work: &nbsp;</span>-->
+        <!--<div fxLayout="row wrap"-->
+        <!--*ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift !==[]) || (filterOptions.unit&& filterOptions.unit !== []))">-->
+        <!--<span-->
+        <!--class="f-message">{{shiftDetails.staffType}} not scheduled for this shift who work: &nbsp;</span>-->
 
-            <!--<div *ngIf="filterOptions?.shift" fxLayout="row wrap" fxLayoutGap="10px">-->
-              <!--<div class="f-option" *ngFor="let s of filterOptions.shift" fxLayout="row"-->
-                   <!--fxLayoutAlign="center center">-->
-                <!--<mat-icon (click)="removeFilterOpt('shift', u)" fxLayoutAlign="center center">cancel</mat-icon>-->
-                <!--<span>{{s}}</span>-->
-              <!--</div>-->
-            <!--</div>-->
+        <!--<div *ngIf="filterOptions?.shift" fxLayout="row wrap" fxLayoutGap="10px">-->
+        <!--<div class="f-option" *ngFor="let s of filterOptions.shift" fxLayout="row"-->
+        <!--fxLayoutAlign="center center">-->
+        <!--<mat-icon (click)="removeFilterOpt('shift', u)" fxLayoutAlign="center center">cancel</mat-icon>-->
+        <!--<span>{{s}}</span>-->
+        <!--</div>-->
+        <!--</div>-->
 
-            <!--<div *ngIf="filterOptions?.employmentType" fxLayout="row wrap" fxLayoutGap="10px">-->
-              <!--<div class="f-option" *ngFor="let u of filterOptions.employmentType" fxLayout="row wrap"-->
-                   <!--fxLayoutAlign="center center">-->
-                <!--<mat-icon (click)="removeFilterOpt('employmentType', u)" fxLayoutAlign="center center">cancel</mat-icon>-->
-                <!--<span>{{u}}</span>-->
-              <!--</div>-->
-            <!--</div>-->
+        <!--<div *ngIf="filterOptions?.employmentType" fxLayout="row wrap" fxLayoutGap="10px">-->
+        <!--<div class="f-option" *ngFor="let u of filterOptions.employmentType" fxLayout="row wrap"-->
+        <!--fxLayoutAlign="center center">-->
+        <!--<mat-icon (click)="removeFilterOpt('employmentType', u)" fxLayoutAlign="center center">cancel</mat-icon>-->
+        <!--<span>{{u}}</span>-->
+        <!--</div>-->
+        <!--</div>-->
 
-          <!--</div>-->
+        <!--</div>-->
         <!--</div>-->
 
         <mat-divider></mat-divider>
@@ -64,14 +64,14 @@
         <div class="useful-options" fxFlex="0 1 auto" *ngIf="sel.length">
           <mat-checkbox class="opt left" [checked]="areAllChecked" (change)="toggleAll($event.checked)">Select All
           </mat-checkbox>
-          <button mat-button class="opt right" [matMenuTriggerFor]="sortBy">Sort By &nbsp;
-            <mat-icon>arrow_drop_down</mat-icon>
-          </button>
-          <mat-menu #sortBy>
-            <button mat-menu-item (click)="sortByField('hours')">Scheduled Hours</button>
-            <button mat-menu-item (click)="sortByField('firstName')">First Name</button>
-            <button mat-menu-item (click)="sortByField('lastName')">Last Name</button>
-          </mat-menu>
+          <!--<button mat-button class="opt right" [matMenuTriggerFor]="sortBy">Sort By &nbsp;-->
+          <!--<mat-icon>arrow_drop_down</mat-icon>-->
+          <!--</button>-->
+          <!--<mat-menu #sortBy>-->
+          <!--<button mat-menu-item (click)="sortByField('hours')">Scheduled Hours</button>-->
+          <!--<button mat-menu-item (click)="sortByField('firstName')">First Name</button>-->
+          <!--<button mat-menu-item (click)="sortByField('lastName')">Last Name</button>-->
+          <!--</mat-menu>-->
         </div>
 
         <div class="results">
@@ -82,27 +82,29 @@
 
 
         <!--<div fxFlex *ngIf="!staff.length" class="no-results" fxLayoutGap="18px"-->
-             <!--fxLayoutAlign="center" fxLayout="column">-->
-          <!--<img src="assets/NoResult.svg">-->
-          <!--<span class="no-results-message">No Results</span>-->
+        <!--fxLayoutAlign="center" fxLayout="column">-->
+        <!--<img src="assets/NoResult.svg">-->
+        <!--<span class="no-results-message">No Results</span>-->
         <!--</div>-->
 
         <!--<div class="message" *ngIf="selectedStaff.length">-->
-          <!--<mat-form-field [appearance]="'outline'" fxFlex="1 1 auto">-->
-            <!--<textarea matInput [rows]="2" [formControl]="message"></textarea>-->
-          <!--</mat-form-field>-->
+        <!--<mat-form-field [appearance]="'outline'" fxFlex="1 1 auto">-->
+        <!--<textarea matInput [rows]="2" [formControl]="message"></textarea>-->
+        <!--</mat-form-field>-->
         <!--</div>-->
       </div>
     </div>
 
     <div class="actions" fxFlex="120px">
       <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutAlign="center" fxLayoutGap="12px">
-        <!--<button mat-button class="action-button" fxFlexAlign="center"-->
-                <!--[ngClass]="!selectedStaff.length && message.valid? 'disabled' : 'complete'"-->
-                <!--[disabled]="!selectedStaff.length && message.valid"-->
-        <!--&gt;Send Request <span *ngIf="selectedStaff.length">({{selectedStaff.length}})</span>-->
-        <!--</button>-->
-        <button mat-button class="action-button partial" fxFlexAlign="center" *ngIf="!res.selectedItem">Request Intelypro</button>
+        <button mat-button class="action-button" fxFlexAlign="center"
+                [ngClass]="!selectedStaff.length? 'disabled' : 'complete'"
+                [disabled]="!selectedStaff.length" *ngIf="!res.selectedItem"
+        >Send To Staff <span *ngIf="selectedStaff.length">({{selectedStaff.length}})</span>
+        </button>
+        <button mat-button class="action-button partial" fxFlexAlign="center" *ngIf="!res.selectedItem">Request
+          Intelypro
+        </button>
         <button mat-button class="action-button complete" fxFlexAlign="center" *ngIf="res.selectedItem">Confirm</button>
       </div>
     </div>

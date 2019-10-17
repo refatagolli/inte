@@ -5,7 +5,6 @@ import {from, Observable, of, Subject, zip} from 'rxjs';
 import {filter, flatMap, groupBy, map, mergeMap, switchMap, takeUntil, toArray} from 'rxjs/operators';
 import {StaffMember} from '../../../models/StaffMember';
 import {ShiftManagementService} from '../../../shift-management/shift-management.service';
-import {ShiftDetails} from '../../../models/ShiftDetails';
 import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
 
 @Component({
@@ -22,6 +21,7 @@ export class DailyContentComponent implements OnInit, OnDestroy {
   config: DailyViewConfigModel;
   private _unsubscribeAll: Subject<any> = new Subject();
   private primaryField: string;
+
 
   constructor(private _dailyViewService: DailyViewService,
               private _shiftManagementService: ShiftManagementService) {

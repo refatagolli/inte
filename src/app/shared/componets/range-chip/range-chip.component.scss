@@ -1,7 +1,8 @@
-$text_color: #84bb28;
-$background_color: #eceec9;
+$text_color: #9FC35A;
+$background_color: #E0EEC9;
 
 .range-chip {
+
   .mat-chip {
     width: fit-content;
     min-width: 56px;
@@ -10,9 +11,14 @@ $background_color: #eceec9;
     color: $text_color;
     background-color: $background_color;
     border-radius: 2px;
+  }
 
-    &.not-complete {
-      color: #D6263C;
+
+  &.not-complete {
+    .mat-chip {
+      background-color: #FFFFFF;
+      color: #D0021B;
+      border: 1px solid #DADCDB;
     }
   }
 }

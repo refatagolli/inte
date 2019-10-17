@@ -6,6 +6,7 @@ import {delay, filter, flatMap, takeUntil, tap, toArray} from 'rxjs/operators';
 import {StaffMember} from '../../../models/StaffMember';
 import {FormControl, Validators} from '@angular/forms';
 import {ShiftManagementFilterComponent} from '../shift-management-filter/shift-management-filter.component';
+import {fuseAnimations} from '@theme/animations';
 
 @Component({
   selector: 'app-fill-shift-component',
@@ -26,7 +27,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   filter = new Subject<any>();
   filterOptions: any = {};
 
-
+  showActions = true;
   message: FormControl = new FormControl('', Validators.required);
 
   private _unsubscribeAll: Subject<any> = new Subject();
@@ -72,7 +73,9 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
     ).subscribe(e => {
       this.staffList = e;
       this.message.setValue(this.getStaffMessage(this.shiftDetails.shiftHours, new Date(this.shiftDetails.shiftDate).toDateString()));
-      this.filter.next({shift: [this.shiftDetails.shiftHours]});
+      this.filter.next({
+        shift: [this.shiftDetails.shiftHours],
+      });
       this._cdr.markForCheck();
     });
   }
@@ -91,7 +94,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   removeFilterOpt(key: string, u) {
     this.filterOptions[key].splice(this.filterOptions[key].indexOf(u), 1);
-    this.filter.next(this.filterOptions);
+    this.shiftManagementFilter.forceSetFilters(this.filterOptions, true);
   }
 
   ngOnDestroy(): void {
@@ -150,12 +153,12 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
       this.staff = e;
       this.sel = e.map(a => false);
       this.selectedStaff = [];
-
+      this.shiftManagementFilter.forceSetFilters(this.filterOptions, false);
       this._cdr.markForCheck();
     });
   }
 
   private _setFilters(e: any) {
-    this.filterOptions = {...this.filterOptions , ...e};
+    this.filterOptions = {...this.filterOptions, ...e};
   }
 }
