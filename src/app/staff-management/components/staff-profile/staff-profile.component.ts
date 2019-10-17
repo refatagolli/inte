@@ -17,6 +17,7 @@ import {flatMap, map, tap, toArray} from 'rxjs/operators';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {ShiftDaysTypeRelation} from '../../../models/ShiftDaysTypeRelation';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {StaffDeleteConfirmationComponent} from '../staff-delete-confirmation/staff-delete-confirmation.component';
 
 @Component({
   selector: 'app-staff-profile',
@@ -170,23 +171,25 @@ export class StaffProfileComponent implements OnInit {
   get validateForm() { return this.staffMemberForm.controls; }
 
   initializeStaffProfileForm() {
-    let locationId = 0;
-    this.selectedUnit = '';
+    const selectedLocations: number[] = [];
+
     if (this.staffMember.location) {
-      locationId = this.staffMember.location.id;
-      this.unitSelected(locationId);
+      this.staffMember.location.forEach(location => {
+        selectedLocations.push(location.id);
+      });
     }
 
     this.genderSelected(this.staffMember.gender.id);
     this.staffSelected(this.staffMember.staffType.staffTypeId);
     this.employmentSelected(this.staffMember.employmentType.employmentTypeId);
+    this.unitSelected(selectedLocations);
 
     this.staffMemberForm = this.formBuilder.group({
       fullName: [this.staffMember.firstName + ' ' + this.staffMember.lastName, [Validators.required]],
       gender: [this.staffMember.gender.id, [Validators.required]],
       birthDate: [this.staffMember.birthDate],
       ssn: [this.staffMember.ssn],
-      location: [locationId],
+      location: [selectedLocations],
       phone: [this.staffMember.phone, [Validators.required]],
       email: [this.staffMember.email, [Validators.required, Validators.email]],
       staffType: [this.staffMember.staffType.staffTypeId, [Validators.required]],
@@ -247,13 +250,18 @@ export class StaffProfileComponent implements OnInit {
     });
   }
 
-  unitSelected(val: number) {
+  unitSelected(val: number[]) {
+    this.selectedUnit = '';
+
     this.unit.forEach(item => {
-      if (item.id === val) {
-        this.selectedUnit = item.value;
-        return;
-      }
+      val.forEach(location => {
+        if (item.id === location) {
+          this.selectedUnit += item.value + ', ';
+        }
+      });
     });
+
+    this.selectedUnit = this.selectedUnit.substr(0, this.selectedUnit.length - 2);
   }
 
   staffSelected(val: number) {
@@ -270,6 +278,20 @@ export class StaffProfileComponent implements OnInit {
       if (item.employmentTypeId === val) {
         this.selectedEmpType = item.employmentTypeName;
         return;
+      }
+    });
+  }
+
+  removeStaff(staff: AllStaff) {
+    this.dialog.open(StaffDeleteConfirmationComponent, {
+      panelClass: 'custom-dialog-container',
+      width: '577px',
+      height: '357px',
+      data: {
+        id: staff.id,
+        name: staff.firstName,
+        surname: staff.lastName,
+        isIntelypro: false
       }
     });
   }
@@ -311,12 +333,14 @@ export class StaffProfileComponent implements OnInit {
       }
     });
 
-    staff.location = null;
+    staff.location = [];
 
     this.unit.forEach(item => {
-      if (this.staffMemberForm.controls.location.value === item.id) {
-        staff.location = item;
-      }
+      this.staffMemberForm.controls.location.value.forEach(location => {
+        if (location === item.id) {
+          staff.location.push(item);
+        }
+      });
     });
 
     const name: string[] = this.staffMemberForm.controls.fullName.value.split(' ');
@@ -328,6 +352,7 @@ export class StaffProfileComponent implements OnInit {
     staff.email = this.staffMemberForm.controls.email.value;
     staff.ssn = this.staffMemberForm.controls.ssn.value;
     staff.shiftDaysString = this.shiftDaysString;
+    staff.unitsString = this.selectedUnit;
     staff.shiftDays = this.shiftDays;
     const obj = this.staffManagementService.updateStaffMember(staff);
 

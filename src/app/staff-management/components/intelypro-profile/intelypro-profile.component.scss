@@ -1,5 +1,5 @@
 .staff-profile {
-  margin-right: 15px !important;
+  margin-right: 19px !important;
   margin-top: 13px !important;
   margin-left: 15px !important;
   padding: 0px!important;
@@ -32,6 +32,21 @@
     }
   }
 
+  .remove-staff-label {
+    position: absolute;
+    top: 67px;
+    display: flex;
+    justify-content: flex-end;
+    right: 100px;
+    font-family: OpenSans-SemiBold, sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    letter-spacing: -0.67px;
+  }
+
   .view-rating {
     margin-left: 10px;
     color: rgb(255, 255, 255);
@@ -40,22 +55,6 @@
     font-weight: normal;
     text-decoration: underline;
     cursor: pointer;
-  }
-
-  .next-shift-label {
-    position: absolute;
-    top: 67px;
-    display: flex;
-    justify-content: flex-end;
-    right: 150px;
-    width: 506px;
-    height: 24px;
-    color: rgba(242, 245, 248, 0.8);
-    font-size: 18px;
-    font-family: OpenSans-SemiBoldItalic, sans-serif;
-    font-style: italic;
-    font-weight: 600;
-    letter-spacing: -1px;
   }
 
   .mat-card-header {
@@ -103,6 +102,13 @@
       font-family: OpenSans-Regular, sans-serif;
       font-weight: normal;
       line-height: 24px;
+
+      .next-shift-label {
+        //color: rgba(242, 245, 248, 0.8);
+        //font-size: 18px;
+        font-family: OpenSans-SemiBoldItalic, sans-serif;
+        font-style: italic;
+      }
     }
   }
 

@@ -104,6 +104,7 @@
   .radio-item-wrapper:hover {
     background-color: #F2F5F8;// #f5f0ff;
     cursor: pointer;
+    z-index: 100;
   }
 
   .radio-item-wrapper {
@@ -115,8 +116,6 @@
     cursor: pointer;
 
     .radio-item-label {
-      color: yellow;
-      //float: left;
       display: flex;
       color: rgb(114, 128, 138);
       font-size: 16px;

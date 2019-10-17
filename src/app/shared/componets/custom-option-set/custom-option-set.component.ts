@@ -30,14 +30,12 @@ export class CustomOptionSetComponent implements OnInit {
       this.selectedCheckBox.forEach(item => {
         this.checkboxSelected.push(item);
       });
-      // this.checkboxSelected = this.selectedCheckBox;
     } else if (this.selectedRadioButton !== 0 && !this.multiple) {
       this.radioSelected = this.selectedRadioButton;
     }
   }
 
   updateCheckedOptions(option) {
-
     let found = false;
     this.checkboxSelected.forEach(item => {
       if (item === option.value) {

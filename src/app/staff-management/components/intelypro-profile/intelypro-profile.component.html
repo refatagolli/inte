@@ -1,9 +1,7 @@
 <div>
   <mat-card class="staff-profile">
     <mat-card-header class="staff-profile-header">
-      <label *ngIf="upcomingShifts && upcomingShifts.length > 0" class="next-shift-label">
-        Next shift: {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'MMMM' }} {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d' }}{{ (upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d')  | dateSuffix }}, {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'yyyy' }}
-      </label>
+      <label (click)="removeStaff(staffMember)" class="remove-staff-label">Remove staff member</label>
       <i class="material-icons cancel-icon" (click)="removed.next({})">cancel</i>
       <div class="header-image">{{ staffMember.firstName.substr(0, 1) + staffMember.lastName.substr(0, 1) }}</div>
       <mat-card-title>
@@ -16,7 +14,17 @@
         </div>
         <a class="view-rating" (click)="viewRatingsPanel()">Rating History</a>
       </mat-card-title>
-      <mat-card-subtitle><span>{{ staffMember.staffType.staffTypeName }}</span><span style='font-size:13px;'> &#8226; </span><span>IntelyPro</span></mat-card-subtitle>
+      <mat-card-subtitle>
+        <span>
+          {{ staffMember.staffType.staffTypeName }}
+        </span>
+        <span style='font-size:13px;'> &#8226; </span>
+        <span> IntelyPro </span>
+        <span style='font-size:13px;'> &#8226; </span>
+        <label *ngIf="upcomingShifts && upcomingShifts.length > 0" class="next-shift-label">
+           Next shift: {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'MMMM' }} {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d' }}{{ (upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d')  | dateSuffix }}, {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'yyyy' }}
+        </label>
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content class="content-tabs">
       <mat-tab-group (selectedTabChange)="handleTabChange($event)">
