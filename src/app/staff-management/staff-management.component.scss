@@ -208,6 +208,15 @@ $text-color: rgb(250, 250, 250);
         display: flex;
         justify-content: center;
         text-align: center;
+
+        .intelypro-icon-wrapper {
+          padding-top: 13px;
+
+          .intelypro-icon {
+            width: 11px;
+            height: 13px;
+          }
+        }
       }
 
       .customized-cell-3 {

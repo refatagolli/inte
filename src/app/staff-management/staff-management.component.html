@@ -38,7 +38,12 @@
               <i class="material-icons arrow-down">arrow_drop_down</i>
             </div>
           </mat-header-cell>
-          <mat-cell class="customized-cell-2 column-2" *matCellDef="let row"> {{ row.employmentType.employmentTypeName }} </mat-cell>
+          <mat-cell class="customized-cell-2 column-2" *matCellDef="let row">
+            {{ row.employmentType.employmentTypeName }}
+            <div *ngIf="row.employmentType.employmentTypeName === 'Intelypro'" class="intelypro-icon-wrapper">
+              &nbsp;<img src="assets/images/intely_y.svg" class="intelypro-icon" alt="IntelyPro" />
+            </div>
+          </mat-cell>
         </ng-container>
 
         <!-- Type -->

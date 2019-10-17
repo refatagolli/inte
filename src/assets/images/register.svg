@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Icon - Schedule</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Create-Account---All-Fields-Filled----iPhone-X" transform="translate(-156.000000, -120.000000)">
+            <g id="Icon---Schedule" transform="translate(158.000000, 122.000000)">
+                <g id="Group-4">
+                    <g id="24px-(12)">
+                        <circle id="Oval" stroke="#DCECF4" stroke-width="3" fill="#EEF8FF" cx="30" cy="30" r="30"></circle>
+                        <polygon id="Path" points="10 10 50 10 50 50 10 50"></polygon>
+                    </g>
+                    <g id="24px-(12)" transform="translate(17.000000, 18.000000)">
+                        <polygon id="Path" points="0 0 26 0 26 26 0 26"></polygon>
+                        <path d="M20.7777778,3.2 L19.6666667,3.2 L19.6666667,1 L17.4444444,1 L17.4444444,3.2 L8.55555556,3.2 L8.55555556,1 L6.33333333,1 L6.33333333,3.2 L5.22222222,3.2 C3.98888889,3.2 3.01111111,4.19 3.01111111,5.4 L3,20.8 C3,22.01 3.98888889,23 5.22222222,23 L20.7777778,23 C22,23 23,22.01 23,20.8 L23,5.4 C23,4.19 22,3.2 20.7777778,3.2 Z M20.7777778,20.8 L5.22222222,20.8 L5.22222222,8.7 L20.7777778,8.7 L20.7777778,20.8 Z M7.44444444,10.9 L13,10.9 L13,16.4 L7.44444444,16.4 L7.44444444,10.9 Z" id="Shape" fill="#1F84B7" fill-rule="nonzero"></path>
+                        <rect id="Rectangle" fill="#9FC53A" x="7" y="11" width="6" height="6"></rect>
+                    </g>
+                    <circle id="Oval" stroke="#DCECF4" fill="#FFFFFF" cx="43" cy="38" r="7"></circle>
+                    <g id="24px-(11)" transform="translate(39.000000, 34.000000)">
+                        <path d="M4,4 C4.82875,4 5.5,3.32875 5.5,2.5 C5.5,1.67125 4.82875,1 4,1 C3.17125,1 2.5,1.67125 2.5,2.5 C2.5,3.32875 3.17125,4 4,4 Z M4,4.75 C2.99875,4.75 1,5.2525 1,6.25 L1,7 L7,7 L7,6.25 C7,5.2525 5.00125,4.75 4,4.75 Z" id="Shape" fill="#59595B" fill-rule="nonzero"></path>
+                        <polygon id="Path" points="0 0 8 0 8 8 0 8"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

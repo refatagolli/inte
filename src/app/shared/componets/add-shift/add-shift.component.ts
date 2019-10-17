@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'add-shift',
@@ -8,8 +8,8 @@ import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angul
 })
 export class AddShiftComponent implements OnInit {
 
-  @Output()
-  addShift: EventEmitter<any> = new EventEmitter();
+  @Output() addShift: EventEmitter<any> = new EventEmitter();
+  @Input() clickable: boolean;
 
   constructor() {
   }
