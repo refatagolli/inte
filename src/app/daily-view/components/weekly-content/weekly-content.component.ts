@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {DailyViewConfigModel} from '../../../models/daily-view-config-model';
 import {DailyViewService} from '../../../services/daily-view.service';
 import {filter, flatMap, groupBy, map, mergeMap, switchMap, takeUntil, tap, toArray} from 'rxjs/operators';
@@ -12,7 +12,8 @@ import {PerfectScrollbarDirective} from '@theme/directives/perfect-scrollbar/per
   selector: 'weekly-content',
   templateUrl: './weekly-content.component.html',
   styleUrls: ['./weekly-content.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  // encapsulation: ViewEncapsulation.None
 })
 export class WeeklyContentComponent implements OnInit, OnDestroy {
   @ViewChild(MatSelect) select: MatSelect;

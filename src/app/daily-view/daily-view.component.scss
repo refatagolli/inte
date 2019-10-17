@@ -3,10 +3,20 @@
   max-width: inherit;
   padding-bottom: 120px;
 
-  daily-view-header, daily-content {
+  view-type {
+    margin: 30px 16px;
   }
 
-  view-type {
+  daily-content {
     margin: 0 16px;
+  }
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    border-radius: 0;
+    background-color: red;
+    opacity: 0.8;
   }
 }

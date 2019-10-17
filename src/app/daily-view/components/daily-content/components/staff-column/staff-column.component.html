@@ -1,18 +1,20 @@
 <div class="staff-column">
   <div class="staff-column-wrapper" fxFlex fxLayout="column">
-    <span class="staff-column-title bold-item">{{primaryField === 'unit' ? element.value : element.shiftTime}}</span>
-    <div class="staff-column-subtitle bold-item" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px"
-         (mouseover)="census.disabled = false"
-         (mouseout)="census.disabled = true">
-      <span>Census :</span><input matInput #census [disabled]="true" value="16" class="census">
+    <div class="staff-column-header" fxLayout="column" fxLayoutGap="8px">
+      <span class="staff-column-title bold-item">{{primaryField === 'unit' ? element.value : element.shiftTime}}</span>
+      <div class="staff-column-subtitle bold-item" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px"
+           (mouseover)="census.disabled = false"
+           (mouseout)="census.disabled = true">
+        <span>Census :</span><input fxLayoutAlign="center center" matInput #census [disabled]="true" value="16"
+                                    class="census">
+      </div>
     </div>
-    <br/>
-    <div class="staff-column-content" fxFlex fxLayout="column" fxLayoutGap="20px">
+    <div class="staff-column-content" fxFlex fxLayout="column" fxLayoutGap="16px">
 
-        <app-staff-member-card [ratio]="getRatioStaff(c.value)" [title]="c.key" [expanded]="true" [staffList] = "c.value"
-                               *ngFor="let c of element.staff | keyvalue:keepOrder" [shiftDetails]="getShiftDetails">
+      <app-staff-member-card [ratio]="getRatioStaff(c.value)" [title]="c.key" [expanded]="true" [staffList]="c.value"
+                             *ngFor="let c of element.staff | keyvalue:keepOrder" [shiftDetails]="getShiftDetails">
 
-        </app-staff-member-card>
+      </app-staff-member-card>
 
     </div>
   </div>

@@ -55,11 +55,12 @@
 
           <div fxFlex class="item-row">
             <div class="left weekly-left-column">
-              <add-shift (addShift)="addStaff()"></add-shift>
+              <add-shift (addShift)="addStaff($event, w)"></add-shift>
             </div>
             <div class="right" fxLayout="row" fxFlex="1 1 auto">
-              <div class="date-cell" fxFlex="1 0 auto" *ngFor="let w of days; let i = index"
-                   [ngClass]="{'isSunday': isSunday(w.date) }">
+              <div class="date-cell" fxFlex="1 0 auto" *ngFor="let w of days; let i = index" (click)="openAddStaff(w.date)"
+                   [ngClass]="{'isSunday': isSunday(w.date), 'removed-staff': hasOpenShift(w.date)}" fxLayoutAlign="center center">
+                <div class="single-day" *ngIf="hasOpenShift(w.date)"></div>
               </div>
             </div>
           </div>

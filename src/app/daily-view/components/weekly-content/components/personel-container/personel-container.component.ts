@@ -1,7 +1,13 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {ShiftDetails} from '../../../../../models/ShiftDetails';
 import {ShiftManagementService} from '../../../../../shift-management/shift-management.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatDialog} from '@angular/material';
+import {WeeklyDatepickerComponent} from '../weekly-datepicker/weekly-datepicker.component';
+import {DailyViewService} from '../../../../../services/daily-view.service';
+import {DailyViewConfigModel} from '../../../../../models/daily-view-config-model';
+import * as moment from 'moment';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'personel-container',
@@ -28,10 +34,20 @@ export class PersonelContainerComponent implements OnInit {
   @Input() days;
   @Input() shiftDetails: ShiftDetails;
 
-  constructor(private _shiftManagementService: ShiftManagementService) {
+  config: DailyViewConfigModel;
+  addingStaff = false;
+
+  private _openShiftDates = [];
+  constructor(private _shiftManagementService: ShiftManagementService,
+              private  _dailyService: DailyViewService,
+              private _cdr: ChangeDetectorRef,
+              private _dialog: MatDialog) {
   }
 
   ngOnInit() {
+    this._dailyService.dailyViewConfig.subscribe(e => {
+      this.config = e;
+    });
   }
 
   fillShift(replacing, shiftDate) {
@@ -42,8 +58,32 @@ export class PersonelContainerComponent implements OnInit {
     this._shiftManagementService.openShiftDetailsPanel({...this.shiftDetails, shiftDate}, staffMember);
   }
 
-  addStaff() {
-    // console.log()
+  addStaff(event: any) {
+    console.log(event.y);
+    this._dialog.open(WeeklyDatepickerComponent, {
+      position: {
+        top: (event.y - (event.y < 250 ? 0 : event.y > 600 ? 300 : 250)) + 'px',
+        left: '434px'
+      },
+      data: {
+        currentDate: moment(this.config.date.currentDate),
+        minDate: this.config.date.from,
+        maxDate: this.config.date.to
+      },
+      backdropClass: 'invisible-backdrop',
+      panelClass: 'date-range-picker'
+    }).afterClosed().pipe(filter(e => !!e)).subscribe(e => {
+      this._openShiftDates.push(e);
+      this._cdr.markForCheck();
+    });
+  }
+
+  hasOpenShift(date: number) {
+    return this._openShiftDates.indexOf(date) > -1;
+  }
+
+  openAddStaff(shiftDate: number) {
+    this._shiftManagementService.openFillShiftPanel({...this.shiftDetails, shiftDate});
   }
 
   isAway(el, w) {
