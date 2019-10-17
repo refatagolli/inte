@@ -1,4 +1,4 @@
-<div class="add-shift" (click)="addShiftOption($event)">
+<div class="add-shift" (click)="clickable ? addShiftOption($event) : ''" [ngClass]="{'clickable': clickable}">
   <mat-list-item fxFlex>
 
     <div class="wrapper" fxFlex fxLayout="row" fxLayoutAlign="center center">
@@ -6,7 +6,7 @@
         <span class="title">Add Staff</span>
       </div>
       <div class="action">
-        <button mat-icon-button><mat-icon>add</mat-icon></button>
+        <button mat-icon-button (click)="clickable ? '' : addShiftOption($event)"><mat-icon>add</mat-icon></button>
       </div>
     </div>
 

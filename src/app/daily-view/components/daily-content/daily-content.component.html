@@ -1,6 +1,6 @@
 <div class="daily-content" fxLayout="column" fxLayoutGap="16px">
   <div [ngClass]="{'expanded': exp.expanded}" class="staff-group-wrapper" *ngFor="let a of elements | async">
-    <app-staff-grouping-card #exp [primaryField]="primaryField" [element]="a" [expanded]="true"
+    <app-staff-grouping-card #exp [primaryField]="primaryField" [element]="a" [expanded]="false"
                               [shiftDate]="config.date.currentDate">
     </app-staff-grouping-card>
   </div>
