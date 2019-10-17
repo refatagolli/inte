@@ -1,4 +1,4 @@
-<div class="daily-view-wrapper" fxLayout="column" fxLayoutGap="30px">
+<div class="daily-view-wrapper" fxLayout="column">
   <!-- MAIN MENU -->
   <ng-container>
     <main-menu></main-menu>
@@ -21,8 +21,14 @@
   </ng-container>
 
   <!--  WEEKLY VIEW CONTENT -->
-  <ng-container *ngIf="config.dateRange !== 'daily'">
-    <weekly-content></weekly-content>
+  <ng-container *ngIf="config.dateRange !== 'daily'" class="weekly-content">
+    <div class="weekly-content-container">
+      <weekly-content></weekly-content>
+    </div>
   </ng-container>
+
+  <button mat-button class="scroll-to-top" *ngIf="showScrollToTop">
+    <mat-icon>keyboard_arrow_up</mat-icon>
+  </button>
 
 </div>

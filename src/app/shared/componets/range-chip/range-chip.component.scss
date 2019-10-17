@@ -5,12 +5,17 @@ $background_color: #E0EEC9;
 
   .mat-chip {
     width: fit-content;
-    min-width: 56px;
+    min-width: fit-content;
     height: 36px;
     font-size: 16px;
     color: $text_color;
     background-color: $background_color;
     border-radius: 2px;
+
+    .chip-icon-text {
+      margin: 0;
+      width: fit-content;
+    }
   }
 
 

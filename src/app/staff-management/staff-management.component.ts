@@ -209,8 +209,15 @@ export class StaffManagementComponent implements OnInit, OnDestroy {
             staff.shiftDaysString += days + ': ' + item.shiftTypeName + '<br />';
           }
         });
-
         staff.shiftDaysString = staff.shiftDaysString.substring(0, staff.shiftDaysString.length - 6);
+
+        staff.unitsString = '';
+        if (staff.location) {
+          staff.location.forEach(item => {
+            staff.unitsString += item.value + ', ';
+          });
+          staff.unitsString = staff.unitsString.substring(0, staff.unitsString.length - 2);
+        }
       });
     });
   }

@@ -58,11 +58,12 @@ input::-ms-clear {
 
 .date-range-picker > .mat-dialog-container {
   padding: 5px;
+  border: 1px solid #D3D4D5;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05) !important;
 }
 
 .invisible-backdrop {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 

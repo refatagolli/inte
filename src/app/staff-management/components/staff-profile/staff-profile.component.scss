@@ -1,5 +1,5 @@
 .staff-profile {
-  margin-right: 15px !important;
+  margin-right: 19px !important;
   margin-top: 13px !important;
   margin-left: 15px !important;
   padding: 0px!important;
@@ -18,20 +18,19 @@
     cursor: pointer;
   }
 
-  .next-shift-label {
+  .remove-staff-label {
     position: absolute;
     top: 67px;
     display: flex;
     justify-content: flex-end;
-    right: 150px;
-    width: 506px;
-    height: 24px;
-    color: rgba(242, 245, 248, 0.8);
-    font-size: 18px;
-    font-family: OpenSans-SemiBoldItalic, sans-serif;
-    font-style: italic;
-    font-weight: 600;
-    letter-spacing: -1px;
+    right: 100px;
+    font-family: OpenSans-SemiBold, sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    letter-spacing: -0.67px;
   }
 
   .mat-card-header {
@@ -78,6 +77,13 @@
       font-family: OpenSans-Regular, sans-serif;
       font-weight: normal;
       line-height: 24px;
+
+      .next-shift-label {
+        //color: rgba(242, 245, 248, 0.8);
+        //font-size: 18px;
+        font-family: OpenSans-SemiBoldItalic, sans-serif;
+        font-style: italic;
+      }
     }
   }
 
@@ -229,6 +235,21 @@
       margin-left: 32px;
       margin-right: 32px;
 
+      .profile-header {
+        padding-top: 12px
+      }
+
+      .edit-wrapper {
+        height: 46px;
+        width: 50px;
+        padding: 12px;
+
+        .edit-text {
+          color: white;
+          cursor: pointer;
+        }
+      }
+
       .profile-table-edit {
         padding-right: 40px;
       }
@@ -362,6 +383,12 @@
         .arrow-drop-up {
           position: absolute;
           margin-top: -4px;
+        }
+
+        .empty-arrow-drop-up {
+          position: absolute;
+          margin-top: -10px;
+          margin-left: -5px;
         }
       }
 

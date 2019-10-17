@@ -6,7 +6,6 @@ import {delay, filter, flatMap, takeUntil, tap, toArray} from 'rxjs/operators';
 import {StaffMember} from '../../../models/StaffMember';
 import {FormControl, Validators} from '@angular/forms';
 import {ShiftManagementFilterComponent} from '../shift-management-filter/shift-management-filter.component';
-import {fuseAnimations} from '@theme/animations';
 
 @Component({
   selector: 'app-fill-shift-component',
@@ -22,7 +21,9 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   staff: StaffMember[] = [];
   staffList: StaffMember[] = [];
   selectedStaff: StaffMember[] = [];
+  unselectedStaff: StaffMember[] = [];
   sel = [];
+  sel1 = [];
 
   filter = new Subject<any>();
   filterOptions: any = {};
@@ -37,7 +38,8 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   get areAllChecked() {
-    return this.sel.filter(e => e).length === this.sel.length;
+    return (this.sel.length > 0 && this.sel.filter(e => e).length === this.sel.length) ||
+      (this.sel1.length > 0 && this.sel1.filter(e => e).length === this.sel1.length);
   }
 
   private static checkShift(s: StaffMember, shift: string[]) {
@@ -86,6 +88,10 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   selectStaff(staff: StaffMember[]) {
     this.selectedStaff = staff;
+    this.sel1 = this.selectedStaff.map(e => true);
+    this.unselectedStaff = this.staff.filter(e => this.selectedStaff.indexOf(e) < 0);
+    this.sel = this.unselectedStaff.map(e => false);
+    console.log(this.selectedStaff, this.unselectedStaff);
   }
 
   getStaffMessage(shift, date: string) {
@@ -102,8 +108,10 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   toggleAll(newValue) {
-    this.sel = this.sel.map(e => newValue);
     this.selectedStaff = newValue ? [...this.staff] : [];
+    this.sel1 = this.selectedStaff.map(e => newValue);
+    this.unselectedStaff = !newValue ? [...this.staff] : [];
+    this.sel = this.unselectedStaff.map(e => newValue);
   }
 
   sortByField(field: string) {
@@ -153,6 +161,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
       this.staff = e;
       this.sel = e.map(a => false);
       this.selectedStaff = [];
+      this.unselectedStaff = e;
       this.shiftManagementFilter.forceSetFilters(this.filterOptions, false);
       this._cdr.markForCheck();
     });

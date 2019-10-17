@@ -4,6 +4,7 @@ import {MaterialModule} from '../../../shared/material.module';
 import {SharedModule} from '../../../shared/shared.module';
 import {NgxMaskModule, IConfig} from 'ngx-mask';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {StaffDeleteConfirmationModule} from '../staff-delete-confirmation/staff-delete-confirmation.module';
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
@@ -14,6 +15,7 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
     MaterialModule,
     SharedModule,
     NgxMaskModule.forRoot(options),
+    StaffDeleteConfirmationModule,
     MatSnackBarModule,
   ]
 })

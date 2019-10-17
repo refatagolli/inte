@@ -126,6 +126,25 @@ export class StaffManagementService {
     return resp;
   }
 
+  removeStaffMember(id: number): any  {
+    let staffs: AllStaff[] = JSON.parse(localStorage.getItem('staffDirectory'));
+
+    if (staffs) {
+      staffs = staffs.filter(function(value) {
+        return value.id !== id;
+      });
+    }
+
+    localStorage.setItem('staffDirectory', JSON.stringify(staffs));
+
+    const resp: any = {
+      success : true,
+      message : 'User was deleted successfully'
+    };
+
+    return resp;
+  }
+
   openAddStaffPanel(shifts: ShiftType[], days: Days[]) {
     this._openIfClosed();
     this.staffChange.next({ staffMember: null, viewType: StaffManagementService.ADD_STAFF, shifts: shifts, days: days });

@@ -17,7 +17,7 @@ export class AddShiftComponent implements OnInit {
   ngOnInit() {
   }
 
-  addShiftOption() {
-    this.addShift.next();
+  addShiftOption(event: any) {
+    this.addShift.next(event);
   }
 }

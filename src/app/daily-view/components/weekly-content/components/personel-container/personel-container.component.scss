@@ -37,6 +37,19 @@ $background_blue: #F7F9FB;
         color: #59595B;
       }
     }
+
+    .date-cell {
+      border: 0 !important;
+
+      &.opened-shift {
+        background-color: #FFE8E7;
+        border: 1px solid #FF6C68 !important;
+
+        .open-shift {
+          background-color: #D0021B;
+        }
+      }
+    }
   }
 
   .item-row {
@@ -68,6 +81,7 @@ $background_blue: #F7F9FB;
         &.removed-staff {
           background-color: #FFE8E7;
           border: 1px solid #FF6C68 !important;
+          cursor: pointer;
 
           .single-day {
             background-color: #D0021B;
@@ -110,3 +124,21 @@ $background_blue: #F7F9FB;
     }
   }
 }
+
+.datepicker-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, .6);
+  z-index: 10000;
+}
+
+.datepicker-container {
+  position: absolute;
+  z-index: 10001;
+  top: 400px;
+  lefT: 400px;
+}
+

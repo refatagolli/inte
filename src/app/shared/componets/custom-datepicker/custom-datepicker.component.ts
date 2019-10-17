@@ -15,6 +15,8 @@ export class CustomDatepickerComponent implements OnInit {
   weeks = [];
   selectedDate;
 
+  @Input() minDate: number;
+  @Input() maxDate: number;
   @Input() selectRange = true;
   @Input() range = {
     start: 0,
@@ -38,6 +40,7 @@ export class CustomDatepickerComponent implements OnInit {
   selectDate(date: number) {
     if (!this.selectRange) {
       this.selectedDate = date;
+      this.dateChange.emit(date);
     } else {
       if (!this.range.start) {
         this.range.start = date;
@@ -107,6 +110,9 @@ export class CustomDatepickerComponent implements OnInit {
   }
 
   isDateDisabled(date: any) {
+    if (!this.selectRange) {
+      return date < this.minDate || date >= this.maxDate;
+    }
     if (this.maxRangeDays) {
       return this.range.start && this.range.start < date - this.maxRangeDays * CustomDatepickerComponent.DAY_LENGTH;
     }

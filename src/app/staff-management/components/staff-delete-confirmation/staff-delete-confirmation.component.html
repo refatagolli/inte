@@ -1,0 +1,33 @@
+<div mat-dialog-content>
+  <div class="content-wrapper">
+    <div class="delete-icon-wrapper">
+      <i class="material-icons custom-delete-icon">delete</i>
+    </div>
+    <div class="main-question">
+      Are you sure?
+    </div>
+    <div class="second-label" *ngIf="!isIntelypro">
+      Are you sure you want to remove {{ staffMemberName + ' ' + staffMemberSurname }} from your directory?
+      This will only remove from this view. Past work history will still
+      be available.
+    </div>
+
+    <div class="second-label" *ngIf="isIntelypro">
+      Are you sure you want to remove {{ staffMemberName + ' ' + staffMemberSurname }} from your directory?
+      This will only remove from this view. Past work history will still be available’.
+      If you do NOT want this IntelyPro to work at your facility again, remove them from...
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="button-wrapper">
+  <button class="action-button danger custom-button-1" (click)="deleteStaffMember()" mat-button [mat-dialog-close]="" cdkFocusInitial>
+    <label class="custom-button-label-1">
+      YES, REMOVE {{ staffMemberName }}
+    </label>
+  </button>
+  <button class="action-button cancel custom-button-2" mat-button [mat-dialog-close]="" cdkFocusInitial>
+    <label class="custom-button-label-2">
+      CANCEL, KEEP {{ staffMemberName }}
+    </label>
+  </button>
+</div>

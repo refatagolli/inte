@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {UtilsService} from '../services/utils/utils.service';
 import {FilterConfiguration} from '../models/FilterConfiguration';
 import {Subject} from 'rxjs';
@@ -20,6 +20,7 @@ export class DailyViewComponent implements OnInit, OnDestroy {
 
   config: DailyViewConfigModel;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
+  private topPosToStartShowing = 150;
 
   constructor(private utils: UtilsService,
               private _dailyViewService: DailyViewService) {
@@ -38,4 +39,15 @@ export class DailyViewComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
   }
 
+  get showScrollToTop() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    // console.log(scrollPosition)
+    return scrollPosition >= this.topPosToStartShowing;
+  }
+
+  @HostListener('window:scroll', [])
+    sdfsdfsdf(){
+  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+  console.log(scrollPosition);
+  }
 }

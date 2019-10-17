@@ -1,15 +1,21 @@
 <div>
   <mat-card class="staff-profile">
     <mat-card-header class="staff-profile-header">
-      <label *ngIf="upcomingShifts && upcomingShifts.length > 0" class="next-shift-label">
-        Next shift: {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'MMMM' }} {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d' }}{{ (upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d')  | dateSuffix }}, {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'yyyy' }}
-      </label>
+      <label (click)="removeStaff(staffMember)" class="remove-staff-label">Remove Staff Member</label>
       <i  class="material-icons cancel-icon" (click)="removed.next({})">cancel</i>
       <div class="header-image">
         {{ staffMember.firstName.substr(0, 1) + staffMember.lastName.substr(0, 1) }}
       </div>
       <mat-card-title>{{ staffMember.firstName + " " + staffMember.lastName }}</mat-card-title>
-      <mat-card-subtitle>{{ staffMember.staffType.staffTypeName }}</mat-card-subtitle>
+      <mat-card-subtitle>
+        {{ staffMember.staffType.staffTypeName }}
+
+        <span style='font-size:13px;'> &#8226; </span>
+
+        <label *ngIf="upcomingShifts && upcomingShifts.length > 0" class="next-shift-label">
+          Next shift: {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'MMMM' }} {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d' }}{{ (upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'d')  | dateSuffix }}, {{ upcomingShifts[upcomingShifts.length - 1].shiftDate  | date:'yyyy' }}
+        </label>
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content class="content-tabs">
       <mat-tab-group (selectedTabChange)="handleTabChange($event)">
@@ -21,11 +27,13 @@
       <div *ngIf="selectedContent == 'Profile'">
         <mat-expansion-panel [expanded]="true" class="custom-collapsed custom-collapsed-profile">
           <mat-expansion-panel-header [collapsedHeight]="'48px'" [expandedHeight]="'48px'">
-            <mat-panel-title>
+            <mat-panel-title class="profile-header">
               Profile
             </mat-panel-title>
             <mat-panel-description>
-              <u (click)="editPressed=true;$event.stopPropagation();" style="color: white;cursor: pointer">Edit</u>
+              <div class="edit-wrapper" (click)="editPressed=true;$event.stopPropagation();" >
+                <u class="edit-text">Edit</u>
+              </div>
             </mat-panel-description>
           </mat-expansion-panel-header>
           <table *ngIf="!editPressed;else editProfile" class="profile-table">
@@ -48,7 +56,7 @@
                 {{ staffMember.birthDate | date: "MM" }} {{ staffMember.birthDate ? '/' : '' }} {{ staffMember.birthDate | date: "dd" }} {{ staffMember.birthDate ? '/' : '' }} {{ staffMember.birthDate | date: "yyyy" }}
               </td>
               <td class="profile-table-data">{{ staffMember.ssn }}</td>
-              <td class="profile-table-data">{{ staffMember.location ? staffMember.location.value : '' }}</td>
+              <td class="profile-table-data">{{ staffMember.unitsString }}</td>
               <td class="profile-table-data">{{ staffMember.phone }}</td>
               <td class="profile-table-data">{{ staffMember.email }}</td>
             </tr>
@@ -151,18 +159,22 @@
                 </td>
                 <td class="profile-table-data">
                   <div class="optionser-wrapper">
-                    <button (click)="unitOptionOpened = !unitOptionOpened;allCardsCleared = false" class="custom-optionset">
+                    <button style="width: 180px !important" class="custom-optionset"
+                            (click)="unitOptionOpened = !unitOptionOpened;allCardsCleared = false">
                       <span class="button-label">
-                        {{selectedUnit}}
-                        <mat-icon class="arrow-drop-up">arrow_drop_down</mat-icon>
+                        {{ selectedUnit | slice:0:15 }} {{ selectedUnit.length > 15 ? '...' : '' }}
+                        <mat-icon *ngIf="selectedUnit != ''; else emptyIcon" class="arrow-drop-up">arrow_drop_down</mat-icon>
+                        <ng-template #emptyIcon>
+                          <mat-icon class="empty-arrow-drop-up">arrow_drop_down</mat-icon>
+                        </ng-template>
                       </span>
                     </button>
 
-                    <mat-card *ngIf="unitOptionOpened" class="customized-card" fxFlex fxLayout="column">
+                    <mat-card *ngIf="unitOptionOpened" class="customized-card" fxFlex fxFlexFill fxLayout="column">
                       <div class="customized-card-wrapper" fxFlex fxFlexFill fxLayout="column">
                         <div class="mat-card-title-wrapper">
                           <div class="header-top">
-                            <label class="title-text">Unit</label>
+                            <label class="title-text">Shift Day</label>
                             <i (click)="clearAllCards()" class="material-icons custom-close-icon">close</i>
                           </div>
                           <hr class="custom-hr" />
@@ -170,16 +182,39 @@
 
                         <div class="mat-card-content-wrapper" fxFlex="0 1 auto" fxFlexFill>
                           <div fxLayout="column" class="mat-card-content">
-                            <app-custom-option-set [multiple]="false" [required]="false" [elements]="unitOptions | async" [selectedRadioButton]="staffMemberForm.controls.location.value"
-                                                   (valueChange)="tempRadioSelected = $event"></app-custom-option-set>
+                            <app-custom-option-set [multiple]="true" [elements]="unitOptions | async" [selectedCheckBox]="staffMemberForm.controls.location.value"
+                                                   (valueChange)="tempCheckBoxSelected = $event;"></app-custom-option-set>
                           </div>
                         </div>
 
                         <div fxFlex="40px" fxLayout="column" fxLayoutAlign="center flex-end">
-                          <a (click)="manageChosenData('unit', tempRadioSelected);" ><label class="apply-button">Apply</label></a>
+                          <a (click)="manageChosenData('unit', tempCheckBoxSelected);clearAllCards();" ><label class="apply-button">Apply</label></a>
                         </div>
                       </div>
                     </mat-card>
+
+<!--                    <mat-card *ngIf="unitOptionOpened" class="customized-card" fxFlex fxLayout="column">-->
+<!--                      <div class="customized-card-wrapper" fxFlex fxFlexFill fxLayout="column">-->
+<!--                        <div class="mat-card-title-wrapper">-->
+<!--                          <div class="header-top">-->
+<!--                            <label class="title-text">Unit</label>-->
+<!--                            <i (click)="clearAllCards()" class="material-icons custom-close-icon">close</i>-->
+<!--                          </div>-->
+<!--                          <hr class="custom-hr" />-->
+<!--                        </div>-->
+
+<!--                        <div class="mat-card-content-wrapper" fxFlex="0 1 auto" fxFlexFill>-->
+<!--                          <div fxLayout="column" class="mat-card-content">-->
+<!--                            <app-custom-option-set [multiple]="false" [required]="false" [elements]="unitOptions | async" [selectedRadioButton]="staffMemberForm.controls.location.value"-->
+<!--                                                   (valueChange)="tempRadioSelected = $event"></app-custom-option-set>-->
+<!--                          </div>-->
+<!--                        </div>-->
+
+<!--                        <div fxFlex="40px" fxLayout="column" fxLayoutAlign="center flex-end">-->
+<!--                          <a (click)="manageChosenData('unit', tempRadioSelected);" ><label class="apply-button">Apply</label></a>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </mat-card>-->
                   </div>
                 </td>
                 <td class="profile-table-data">
