@@ -1,0 +1,32 @@
+.weekly-datepicker {
+  position: relative;
+
+  .weekly-datepicker-header {
+    padding: 16px;
+
+    .month-container {
+      border-radius: 2px;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      height: 48px;
+      padding: 12px;
+      font-size: 16px;
+      width: 115px;
+      color: rgb(25, 134, 185);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+
+  .apply-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .apply {
+      color: #1986b9;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+  }
+}

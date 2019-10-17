@@ -1,0 +1,20 @@
+<div class="weekly-datepicker">
+<div class="weekly-datepicker-wrapper" fxLayout="column">
+
+  <div class="weekly-datepicker-header" fxFlex fxLayoutAlign="center center">
+    <div class="month-container" fxLayoutAlign="center center">
+      <span class="month">{{currentDate | date : 'MMMM' | uppercase}}</span>
+    </div>
+  </div>
+
+  <div class="weekly-date-picker-content">
+    <custom-datepicker [currentDate]="currentDate.clone()" [selectRange]="false"
+                       [minDate]="minDate" [maxDate]="maxDate"
+                       (dateChange)="onDateChange($event)"></custom-datepicker>
+  </div>
+
+  <div class="apply-container" fxFlex fxLayoutAlign="end" *ngIf="!!selectedDate">
+    <button class="apply" mat-button (click)="selectDate()">apply</button>
+  </div>
+</div>
+</div>
