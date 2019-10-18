@@ -62,11 +62,11 @@
 
         <div class="results" fxLayout="column" fxLayoutGap="12px">
           <app-staff-card-expandable [staffMembers]="selectedStaff" [control]="true"
-                                     (selectionChange)="selectStaff($event)"
+                                     (selectionChange)="selectStaff($event)" [selectedValues]="selectedStaff"
                                      [selected]="sel1"></app-staff-card-expandable>
 
           <app-staff-card-expandable [staffMembers]="unselectedStaff" [control]="true"
-                                     (selectionChange)="selectStaff($event)"
+                                     (selectionChange)="selectStaff($event)" [selectedValues]="[]"
                                      [selected]="sel"></app-staff-card-expandable>
         </div>
 

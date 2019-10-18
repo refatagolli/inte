@@ -44,7 +44,7 @@ $border-color: #afeeee;
       .date-cell {
         height: inherit;
         border-radius: 0;
-        font-family: OprnSans-SemiBold, sans-serif;
+        font-family: OprnSans-Regular, sans-serif;
 
         .date-option-value {
           font-size: 16px;
@@ -61,7 +61,8 @@ $border-color: #afeeee;
 
         .day {
           color: #A2A4A7;
-          margin-bottom: 6px
+          margin-bottom: 6px;
+          font-weight: 400;
         }
 
         .mat-icon {

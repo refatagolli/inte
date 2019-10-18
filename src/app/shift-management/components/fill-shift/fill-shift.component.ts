@@ -38,8 +38,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   get areAllChecked() {
-    return (this.sel.length > 0 && this.sel.filter(e => e).length === this.sel.length) ||
-      (this.sel1.length > 0 && this.sel1.filter(e => e).length === this.sel1.length);
+    return (this.staff.length > 0 && this.sel.length === 0);
   }
 
   private static checkShift(s: StaffMember, shift: string[]) {
@@ -91,7 +90,6 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
     this.sel1 = this.selectedStaff.map(e => true);
     this.unselectedStaff = this.staff.filter(e => this.selectedStaff.indexOf(e) < 0);
     this.sel = this.unselectedStaff.map(e => false);
-    console.log(this.selectedStaff, this.unselectedStaff);
   }
 
   getStaffMessage(shift, date: string) {
@@ -115,8 +113,8 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   sortByField(field: string) {
-    const a = this.staff.sort((first, next) => this._sortCondition(first, next, field));
-    this.staff = [...a];
+    const a = this.unselectedStaff.sort((first, next) => this._sortCondition(first, next, field));
+    this.unselectedStaff = [...a];
     this._cdr.detectChanges();
   }
 
