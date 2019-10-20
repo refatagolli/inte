@@ -13,7 +13,7 @@
   </ng-container>
   <!-- / TOOLBAR: Above fixed -->
 
-  <div id="container-1" class="container" fusePerfectScrollbar
+  <div id="container-1" class="container" fusePerfectScrollbar (scroll)="onContentScroll($event)"
        [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
 
     <!-- TOOLBAR: Above static -->
@@ -60,6 +60,10 @@
 
     </div>
 
+    <button mat-button class="scroll-to-top" *ngIf="showScrollToTop" (click)="scrollContainerToTop()">
+      <mat-icon>keyboard_arrow_up</mat-icon>
+    </button>
+
   </div>
 
 
@@ -94,3 +98,4 @@
   </fuse-sidebar>
 </ng-template>
 <!-- / LEFT NAVBAR -->
+

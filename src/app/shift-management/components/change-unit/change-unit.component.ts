@@ -12,6 +12,7 @@ export class ChangeUnitComponent implements OnInit {
   @Output() unitMoved: EventEmitter<any> = new EventEmitter();
   public elements: Observable<any>;
   public unitToMove: any;
+  changeUnit = false;
   private _oldValue: string;
 
   constructor(private _dailyViewService: DailyViewService) {
@@ -19,10 +20,6 @@ export class ChangeUnitComponent implements OnInit {
 
   ngOnInit() {
     this.elements = this._dailyViewService.getUnits();
-
-    // this.unitToMove.valueChanges.pipe(
-    //   tap(e => this._removeIfMoreThenOne(e)),
-    // ).subscribe(e => console.log(e));
   }
 
   public moveToUnit() {
@@ -36,5 +33,9 @@ export class ChangeUnitComponent implements OnInit {
       this.unitToMove.setValue(value);
     }
     this._oldValue = value[0];
+  }
+
+  toggleChangeUnit(){
+    this.changeUnit = !this.changeUnit;
   }
 }

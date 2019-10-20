@@ -67,13 +67,6 @@ export class WeeklyContentComponent implements OnInit, OnDestroy {
     return {shiftHours, unit};
   }
 
-  changeViewType(viewType: 'shift' | 'unit') {
-    if (viewType !== this.config.viewType) {
-      this.config.viewType = viewType;
-      this._dailyViewService.dailyViewConfig.next(this.config);
-    }
-  }
-
   updateCRD() {
     this._cdr.markForCheck();
   }

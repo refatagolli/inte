@@ -1,9 +1,10 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 import {navigation} from '../../../config/navigation';
 import {FuseConfigService} from '@theme/services/config.service';
+import {PerfectScrollbarDirective} from '@theme/directives/perfect-scrollbar/perfect-scrollbar.directive';
 
 @Component({
   selector: 'vertical-layout-2',
@@ -14,7 +15,8 @@ import {FuseConfigService} from '@theme/services/config.service';
 export class VerticalLayout2Component implements OnInit, OnDestroy {
   fuseConfig: any;
   navigation: any;
-
+  showScrollToTop = false;
+  @ViewChild(PerfectScrollbarDirective) private _container: PerfectScrollbarDirective;
   // Private
   private _unsubscribeAll: Subject<any>;
 
@@ -56,5 +58,13 @@ export class VerticalLayout2Component implements OnInit, OnDestroy {
     // Unsubscribe from all subscriptions
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
+  }
+
+  onContentScroll(event) {
+    this.showScrollToTop = event.srcElement.scrollTop > 800;
+  }
+
+  scrollContainerToTop() {
+    this._container.scrollToTop(0, 200);
   }
 }

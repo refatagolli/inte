@@ -9,6 +9,7 @@ import {QuickPanelModule} from '../../components/quick-panel/quick-panel.module'
 import {ToolbarModule} from '../../components/toolbar/toolbar.module';
 import {VerticalLayout2Component} from './layout-2.component';
 import {MainMenuModule} from '../../../daily-view/components/main-menu/main-menu.module';
+import {MatButtonModule, MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import {MainMenuModule} from '../../../daily-view/components/main-menu/main-menu
     NavbarModule,
     QuickPanelModule,
     ToolbarModule,
-    MainMenuModule
+    MainMenuModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     VerticalLayout2Component
