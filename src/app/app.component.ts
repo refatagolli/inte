@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +10,10 @@ export class AppComponent {
 
   constructor() { }
 
-
+  @HostListener('window:scroll', ['$event'])
+  sdfsdfsdf($event){
+    // const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    console.log(event);
+    console.log('asd');
+  }
 }

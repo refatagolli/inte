@@ -1,0 +1,76 @@
+<div class="weekly-view-wrapper" fxFlex fxLayout="column"
+     [ngClass]="{'monthly-content': (config.dateRange === 'monthly' || 'custom'),
+                'weekly-content': (config.dateRange === 'weekly')
+                  }">
+
+  <div class="weekly-view-header" fxFlex fxLayout="column" fxLayoutGap="30px">
+
+    <div class="weekly-view-options-container">
+      <daily-view-header></daily-view-header>
+    </div>
+
+    <div class="weekly-view-header-wrapper" fxFlex="1 1 auto" #container
+         fusePerfectScrollbar (scroll)="onHeaderScroll($event)"
+         [fusePerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+      <div class="side-actions weekly-left-column" fxFlex fxLayout="row" fxLayoutAlign="end center">
+        <div class="side-actions-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+          <mat-form-field [appearance]="'outline'" fxFlex>
+            <mat-select [(ngModel)]="selectedField">
+              <mat-option *ngFor="let el of selectOptions" [value]="el">{{el}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="view-type-toggle" fxLayoutAlign="row">
+            <div class="toggle-button toggle-shift" fxLayoutAlign="center center"
+                 [ngClass]="{selected: config.viewType === 'shift'}"
+                 (click)="changeViewType('shift')"
+            >
+              Shift Time
+            </div>
+            <div class="toggle-button toggle-unit" fxLayoutAlign="center center"
+                 [ngClass]="{selected: config.viewType === 'unit'}"
+                 (click)="changeViewType('unit')"
+            >
+              Unit
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="calendar" fxFlex>
+
+
+        <div class="calendar-options-wrapper" fxFlex fxLayout="row"
+             [ngClass]="{'overflow-left': hasOverflowLeft(),'overflow-right': hasOverflowRight()}"
+        >
+
+          <div class="date-cell" *ngFor="let date of weekdays" fxLayoutAlign="center"
+               [ngClass]="{'isSunday': isSunday(date.date) }" fxFlex>
+            <div class="date-option-value-wrapper" fxFlex fxLayout="column" fxLayoutAlign="start center">
+                <span class="date-option-value bold-item day">
+                  {{(weekdays.length > 8 ? (date.date | date : 'EEEE')[0] : (date.date | date : 'EEEE'))| uppercase }}</span>
+              <span class="date-option-value bold-item date"
+                    fxLayoutAlign="center center">{{(date.date | date : 'd') }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<button mat-button class="calendar-action left" fxLayoutAlign="center center" (click)="moveLeft()"
+        *ngIf="hasOverflowLeft()">
+  <mat-icon>keyboard_arrow_left</mat-icon>
+</button>
+
+<button mat-button class="calendar-action right" fxLayoutAlign="center center" (click)="moveRight()"
+        *ngIf="hasOverflowRight()">
+  <mat-icon>keyboard_arrow_left</mat-icon>
+</button>

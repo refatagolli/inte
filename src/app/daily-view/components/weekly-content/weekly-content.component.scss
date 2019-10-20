@@ -1,160 +1,17 @@
 $background_blue: #F2F5F8;
 
 .weekly-view {
-  overflow: auto;
+  overflow-x: hidden;
   width: 100vw;
   margin-right: 100vw;
   position: relative;
   //max-height: 100vh;
 
-  .weekly-view-header {
-    border-radius: 0 0 20px 20px;
-    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, .1);
-    height: 160px;
-    width: fit-content;
-    //position: sticky;
-    top: 0;
-    z-index: 10000001;
-    background-color: white;
-
-    ::ng-deep.side-actions {
-      padding: 10px 16px;
-      border-radius: 0 0 0 20px;
-
-      .side-actions-wrapper {
-        background-color: $background_blue;
-        border: 1px solid #DADDE1;
-        border-radius: 3px;
-        height: 48px;
-      }
-
-      .mat-form-field-wrapper {
-        padding-bottom: 0;
-        margin: 0;
-      }
-
-      .mat-select-value {
-        color: #1885B7;
-        font-size: 16px;
-        font-weight: bold;
-      }
-
-      .mat-form-field-infix {
-        border-top: 4px transparent;
-        padding: 0;
-      }
-
-      .mat-form-field-outline {
-        display: none;
-      }
-
-      .view-type-toggle {
-        width: 160px;
-        height: 40px;
-        border: 2px solid #1885B7;
-        margin-right: 4px;
-        border-radius: 3px;
-
-        .toggle-button {
-          width: 50%;
-          font-size: 16px;
-          cursor: pointer;
-          color: #A2A4A7;
-          background-color: transparent;
-
-          &.selected {
-            background-color: #1885B7;
-            color: white;
-          }
-        }
-      }
-
-    }
-  }
-
-  .calendar {
-    position: relative;
-
-    .calendar-options-wrapper {
-      margin-left: 0;
-      margin-right: 0;
-
-      &.overflow-left {
-
-        &:not(.overflow-right) {
-          margin-left: -32px !important;
-          margin-right: 0;
-        }
-      }
-
-      &.overflow-right {
-        margin-right: -32px !important;
-        margin-left: 0;
-      }
-    }
-
-    .date-cell {
-      height: inherit;
-      border-radius: 0;
-      overflow: hidden;
-      padding: 0;
-      min-width: 45px;
-
-      .date-option-value {
-        font-size: 16px;
-        padding: 0;
-
-      }
-
-      .date {
-        width: 26px;
-        height: 26px;
-        margin-bottom: 5px;
-        color: #59595B;
-      }
-
-      .day {
-        color: #A2A4A7;
-        margin-bottom: 6px
-      }
-    }
-  }
-
-  .calendar-action {
-    position: sticky;
-    top: 67px;
-    background-color: rgba(255, 255, 255, .9);
-    width: 36px !important;
-    min-width: 32px !important;
-    height: 75px !important;
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
-    z-index: 10001;
-    border: 1px solid #dadada;
-
-    &.left {
-      left: 433px;
-      border-top-right-radius: 36px;
-      border-bottom-right-radius: 36px;
-      box-shadow: 2px 4px 4px 0 #dadada;
-    }
-
-    &.right {
-      right: 0;
-      //border-top-left-radius: 38px;
-      //border-bottom-left-radius: 38px;
-      border-top-right-radius: 36px;
-      border-bottom-right-radius: 36px;
-      box-shadow: 1px 2px 4px 0 #dadada;
-      transform: scale(-1, 1);
-    }
-  }
 
   &.monthly-content {
 
     ::ng-deep.date-cell {
-      border-right: 1px solid $background_blue;
+      border-right: 1px solid #F2F5F8;
 
       &.isSunday {
         border-right: 1px solid #D3D4D5;
@@ -172,13 +29,6 @@ $background_blue: #F2F5F8;
 .weekly-view-wrapper {
   width: inherit;
   min-height: 300px;
-}
-
-.weekly-view-options-container {
-  margin-top: 16px;
-  width: 100vw;
-  position: sticky;
-  left: 0;
 }
 
 .mat-option.mat-selected {

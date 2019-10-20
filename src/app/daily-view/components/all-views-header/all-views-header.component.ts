@@ -101,8 +101,8 @@ export class AllViewsHeaderComponent implements OnInit {
   }
 
   getDateRangePickerTopOffset() {
-    // console.log(this.container);
-    // console.log(this.container.nativeElement.offsetTop + window.pageYOffset);
-    // return this.container.nativeElement.offsetTop + window.pageYOffset;
+    // console.log(this._container);
+    // console.log(this._container.nativeElement.offsetTop + window.pageYOffset);
+    // return this._container.nativeElement.offsetTop + window.pageYOffset;
   }
 }

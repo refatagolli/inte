@@ -242,7 +242,7 @@ export class PerfectScrollbarDirective implements AfterViewInit, OnDestroy {
 
     // Update the scrollbar on document click..
     // This isn't the most elegant solution but there is no other way
-    // of knowing when the contents of the scrollable container changes.
+    // of knowing when the contents of the scrollable _container changes.
     // Therefore, we update scrollbars on every document click.
     this.ps.update();
   }
