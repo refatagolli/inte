@@ -2,66 +2,117 @@
 
   <div class="user-form-wrapper">
 
-    <div class="user-management-header">
-      <p>
-        Good afternoon! You need to create an account.
-        <br/>
-        <label class="sub-title">‘{{ facilityName }}’ has invited you to join this facility as a nurse.</label>
-      </p>
+    <div class="header-wrapper">
+      <div class="header-icon-wrapper">
+        <img src="assets/images/register.svg" class="custom-icon" alt="No Result" />
+      </div>
+
+      <div class="user-management-header-wrapper">
+        <div class="user-management-header">
+          <label class="header-label-1">
+            Hi {{ staffName }}!
+          </label>
+          <br />
+          <label class="header-label-2">
+            {{ facilityName }} has invited you
+          </label>
+          <br />
+          <label class="header-label-2">
+            to view your schedule.
+          </label>
+          <br />
+          <br />
+          <label class="header-label-3">
+            Create an Account
+          </label>
+        </div>
+      </div>
     </div>
 
     <form [formGroup]="registerForm">
       <div class="user-management-body">
-        <div class="input-wrapper">
-          <label class="form-labels">Email address</label>
-          <input formControlName="email" placeholder="you@intelycare.com" type="text" class="form-inputs"
-                 [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}" />
+
+        <div [ngStyle]="{'border-color' : checkBorderColumn('email')}" class="input-wrapper">
+          <label [ngStyle]="{'color' : emailFocused ? 'rgb(23, 133, 184)' : '' }" class="form-labels">Email address</label>
+          <div [ngClass]="givenEmail != '' ? 'disabled-email' : ''">
+            <input [ngStyle]="{'width' : givenEmail != '' ? 'calc(100% - 37px)' : '100%'}" formControlName="email" [attr.disabled]="givenEmail != '' ? true : null" placeholder="you@intelycare.com" type="text" class="form-inputs"
+                   [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"
+                   (focus)="emailFocused = true" (focusout)="emailFocused = false" />
+            <img *ngIf="givenEmail != ''" src="assets/images/lock.png" alt="Locked" class="locker-icon" />
+          </div>
         </div>
 
-        <br />
-
-        <div class="input-wrapper">
-          <label class="form-labels">Password</label>
-          <input formControlName="password" placeholder="Enter password" type="password" class="form-inputs"
-                 [ngStyle]="{'border-color' : (submitted && validateForm.password.errors) ? 'red' : ''}" />
+        <div [ngStyle]="{'border-color' : checkBorderColumn('password')}" class="input-wrapper">
+          <label [ngStyle]="{'color' : passwordFocused ? 'rgb(23, 133, 184)' : '' }" class="form-labels">Password</label>
+          <div>
+            <input formControlName="password" placeholder="Enter password" (keyup)="validatePassword();passwordMatches();"
+                   [type]="!showPass ? 'password' : 'text'" class="form-inputs"
+                   (focus)="passwordFocused = true" (focusout)="passwordFocused = false" />
+            <img *ngIf="showPass; else eyeIcon" (click)="showPass = !showPass" src="assets/images/eye-off.png" alt="Hide" class="eye-icon" />
+            <ng-template #eyeIcon>
+              <img (click)="showPass = !showPass" src="assets/images/eye.png" alt="Show" class="eye-icon" />
+            </ng-template>
+          </div>
         </div>
 
-        <br />
-
-        <div class="forgot-password-wrapper">
-          <a routerLink="/forgotPass" class="forgot-password">Forgot password?</a>
+        <div [ngStyle]="{'border-color' : checkBorderColumn('confirmPassword')}" class="input-wrapper">
+          <label [ngStyle]="{'color' : confirmPasswordFocused ? 'rgb(23, 133, 184)' : '' }" class="form-labels">Confirm Password</label>
+          <div>
+            <input formControlName="confirmPassword" placeholder="Enter password" (keyup)="passwordMatches()"
+                   [type]="!showConfirmPass ? 'password' : 'text'" class="form-inputs"
+                   (focus)="confirmPasswordFocused = true" (focusout)="confirmPasswordFocused = false" />
+            <img *ngIf="showConfirmPass; else eyeIconConfirm" (click)="showConfirmPass = !showConfirmPass" src="assets/images/eye-off.png" alt="Hide" class="eye-icon" />
+            <ng-template #eyeIconConfirm>
+              <img (click)="showConfirmPass = !showConfirmPass" src="assets/images/eye.png" alt="Show" class="eye-icon" />
+            </ng-template>
+          </div>
         </div>
 
-        <br /><br /><br />
+        <div class="validation-wrapper">
+          <label class="validation-header">Must Contain</label>
+          <table>
+            <tbody>
+              <tr>
+                <td class="validation-label">At least 6 characters</td>
+                <td class="margined">
+                  <img *ngIf="passValidLength" src="assets/images/check.png" alt="Check" class="check-icon" />
+                </td>
+              </tr>
+              <tr>
+                <td class="validation-label">A number</td>
+                <td class="margined">
+                  <img *ngIf="passContainsNumber" src="assets/images/check.png" alt="Check" class="check-icon" />
+                </td>
+              </tr>
+              <tr>
+                <td class="validation-label">Uppercase letter</td>
+                <td class="margined">
+                  <img *ngIf="passContainsCapital" src="assets/images/check.png" alt="Check" class="check-icon" />
+                </td>
+              </tr>
+              <tr>
+                <td class="validation-label">Passwords match</td>
+                <td class="margined">
+                  <img *ngIf="passMatch" src="assets/images/check.png" alt="Check" class="check-icon" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div class="button-wrapper">
-          <button class="main-button action-button complete" type="button" (click)="register()" >
+          <button class="main-button complete" type="button" (click)="register()" >
             <label class="main-button-label">
-              Join ‘{{ facilityName }}’
+              CREATE ACCOUNT
             </label>
           </button>
         </div>
+
+        <br />
+        <br />
+
       </div>
     </form>
-
-    <div class="user-management-footer">
-
-      <br />
-
-      <div class="divider-wrapper">
-        <span class="divider-label" >
-          OR
-        </span>
-      </div>
-
-      <br />
-
-      <div class="footer-text">
-        Have an existing account?  <div class="join"><a routerLink="/login" [queryParams]="{facility: facilityName}" >Join</a></div>
-      </div>
-
-    </div>
-
   </div>
 
 </div>
