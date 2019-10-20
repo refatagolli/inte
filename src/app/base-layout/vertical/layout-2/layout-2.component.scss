@@ -46,3 +46,20 @@ vertical-layout-2 {
         }
     }
 }
+
+
+.scroll-to-top {
+  position: fixed !important;
+  bottom: 30px;
+  right: 30px;
+  width: 30px !important;
+  min-width: 30px !important;
+  height: 30px !important;
+  border-radius: 2px !important;
+  background-color: #1785B7!important;
+  opacity: 0.8 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  text-align: center !important;
+  z-index: 100001 !important;
+}

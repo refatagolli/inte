@@ -1,35 +1,96 @@
 $background-color: #f7fbff;
 $header_border_color: #cacaca;
 
-.move {
-  box-shadow: none !important;
+.move-shift-toggle {
   border: 0;
 
-  .mat-expansion-panel-header {
+  .move-shift-toggle-wrapper {
+    cursor: pointer;
     background-color: $background-color;
     border: 1px solid $header_border_color;
     border-radius: 0;
-  }
+    height: 48px;
+    padding: 16px 24px 16px 16px;
 
-  ::ng-deep.mat-expansion-panel-content {
-    border: 1px solid $header_border_color;
+    .toggle-title {
+      color: #72808a;
+      font-size: 16px;
+    font-weight: 500;
+      letter-spacing: -0.4px;
+    }
 
-    .mat-expansion-panel-body {
-      padding-top: 16px !important;
-
-      .mat-card {
-        box-shadow: unset;
-        border: 1px solid $header_border_color
-      }
-
-      .title {
-        color: rgb(114, 128, 138);
-        font-family: OpenSans-SemiBold;
-        font-size: 18px;
-        font-weight: 600;
-        height: 24px;
-        letter-spacing: -0.55px;
-      }
+    .mat-icon {
+      color: #59595b;
     }
   }
+
+}
+
+.change-shift-panel {
+  padding: 16px;
+  margin: 16px;
+  position: absolute;
+  background-color: white;
+  top: calc(50vh - 150px);
+  left: 0;
+  right: 0;
+  max-height: 500px;
+  overflow: auto;
+  border-radius: 2px;
+  border: 1px solid #D3D4D5;
+  z-index: 1001;
+
+  .change-shift-panel-header {
+    padding: 0 16px 0 0;
+
+    .change-shift-panel-header-title {
+      color: #72808a;
+      font-size: 16px;
+    font-weight: 500;
+      letter-spacing: -0.4px;
+    }
+
+    .mat-icon {
+      cursor: pointer;
+      color: #59595b;
+    }
+  }
+
+  .mat-card {
+    box-shadow: unset;
+    border: 1px solid $header_border_color
+  }
+
+  .title {
+    color: rgb(114, 128, 138);
+    font-size: 16px;
+  font-weight: 500;
+    height: 24px;
+    letter-spacing: -0.55px;
+  }
+
+  ::ng-deep.mat-form-field {
+    margin-top: 8px;
+    
+    .mat-form-field-wrapper {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  ::ng-deep.mat-selection-list {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.change-shift-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, .8);
+  z-index: 1000;
+  overflow: hidden;
 }

@@ -39,6 +39,13 @@ export class WeeklyViewHeaderComponent implements OnInit, OnDestroy {
     this._cdr.detectChanges();
   }
 
+  changeViewType(viewType: 'shift' | 'unit') {
+    if (viewType !== this.config.viewType) {
+      this.config.viewType = viewType;
+      this._dailyViewService.dailyViewConfig.next(this.config);
+    }
+  }
+
   ngOnDestroy(): void {
     this._unsubscribeAll.next();
   }

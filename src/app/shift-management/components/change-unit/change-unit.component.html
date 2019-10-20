@@ -1,24 +1,49 @@
-<mat-expansion-panel class="move">
-  <mat-expansion-panel-header expandedHeight="48px">
-    Change Unit
-  </mat-expansion-panel-header>
-  <div class="change-unit-body" fxLayout="column" fxLayoutGap="12px">
-    <mat-radio-group [(ngModel)]="unitToMove">
-      <mat-list role="list" fxLayout="column">
-        <mat-list-item role="listitem" *ngFor="let el of elements | async">
-          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
-            <mat-radio-button [value]="el.value">{{ el.value }}</mat-radio-button>
-          </div>
-        </mat-list-item>
-      </mat-list>
-    </mat-radio-group>
-    <div class="actions">
-      <div class="actions-wrapper" fxFlex fxLayoutAlign="center">
-        <button mat-button class="action-button" [disabled]="!unitToMove"
-                [ngClass]="unitToMove ? 'complete' : 'disabled'" (click)="moveToUnit()"
-        >Move
-        </button>
+<div class="move-unit-toggle" fxFlex fxLayoutAlign="column">
+
+  <div class="move-unit-toggle-header" fxFlex fxLayoutAlign="start center" fxLayout="row" (click)="toggleChangeUnit()">
+    <div class="move-unit-toggle-title" fxFlex="1 1 auto">
+      Change Unit
+    </div>
+    <div class="move-unit-toggle-actions">
+      <mat-icon>edit</mat-icon>
+    </div>
+  </div>
+
+
+  <div class="move-unit-panel" *ngIf="changeUnit" fxFlex fxLayout="column" fxLayoutGap="16px">
+
+    <div class="move-unit-panel-header" fxFlex>
+      <div class="move-unit-header-title" fxFlex="1 1 auto">
+        Change Unit
+      </div>
+      <div class="move-unit-header-actions">
+        <mat-icon (click)="toggleChangeUnit()">close</mat-icon>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="change-unit-body" fxLayout="column" fxLayoutGap="12px">
+      <mat-radio-group [(ngModel)]="unitToMove">
+        <mat-list role="list" fxLayout="column">
+          <mat-list-item role="listitem" *ngFor="let el of elements | async">
+            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+              <mat-radio-button [value]="el.value">{{ el.value }}</mat-radio-button>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-radio-group>
+      <div class="actions">
+        <div class="actions-wrapper" fxFlex fxLayoutAlign="center">
+          <button mat-button class="action-button" [disabled]="!unitToMove"
+                  [ngClass]="unitToMove ? 'complete' : 'disabled'" (click)="moveToUnit()"
+          >Move
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</mat-expansion-panel>
+
+</div>
+
+<div class="change-unit-overlay" *ngIf="changeUnit" (click)="toggleChangeUnit()"></div>

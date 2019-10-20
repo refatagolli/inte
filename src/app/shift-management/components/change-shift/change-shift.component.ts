@@ -13,6 +13,7 @@ export class ChangeShiftComponent implements OnInit {
 
   @Input() currentShift: string;
   elements: Observable<any>;
+  changeShift = false;
 
   constructor(private _dailyViewService: DailyViewService) {
   }
@@ -27,5 +28,9 @@ export class ChangeShiftComponent implements OnInit {
       })),
       toArray(),
     );
+  }
+
+  toggleChangeShift() {
+    this.changeShift = !this.changeShift;
   }
 }

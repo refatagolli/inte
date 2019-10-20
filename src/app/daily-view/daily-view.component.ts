@@ -27,7 +27,6 @@ export class DailyViewComponent implements OnInit, OnDestroy {
 
   config: DailyViewConfigModel;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
-  private topPosToStartShowing = 150;
 
   constructor(private utils: UtilsService,
               private _dailyViewService: DailyViewService,
@@ -44,12 +43,6 @@ export class DailyViewComponent implements OnInit, OnDestroy {
     });
   }
 
-  get showScrollToTop() {
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-    // console.log(scrollPosition)
-    return scrollPosition >= this.topPosToStartShowing;
-  }
-
   private static _setStaffField(e) {
     e[0]['staff'] = {...e[1]};
     return {...e[0]};
@@ -63,13 +56,6 @@ export class DailyViewComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this._unsubscribeAll.next();
   }
-
-  @HostListener('scroll', ['$event'])
-  sdfsdfsdf($event) {
-    // const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-    console.log(event);
-  }
-
 
   setSelectOptions(e: any[]) {
     const acc = this.config.viewType === 'unit' ? 'value' : 'shiftTime';
@@ -132,7 +118,7 @@ export class DailyViewComponent implements OnInit, OnDestroy {
     const unit = viewType === 'unit' ? sub.value : e.value;
     return zip(of(e), this._groupStaff(staff, unit, shift)).pipe(
       map(DailyViewComponent._setStaffField)
-      );
+    );
   }
 
   private _groupStaff(staff: StaffMember[], unit: string, shift: string) {

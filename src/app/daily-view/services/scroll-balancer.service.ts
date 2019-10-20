@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +11,5 @@ export class ScrollBalancerService {
   public scrollToRight: Subject<any> = new Subject();
 
   constructor() {
-  }
-
-  get scrollChange(): Observable<any> {
-    return this.scroll.asObservable();
   }
 }

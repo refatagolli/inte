@@ -1,32 +1,53 @@
-<mat-expansion-panel class="move">
-  <mat-expansion-panel-header expandedHeight="48px">
-    Change Shift Date And Time
-  </mat-expansion-panel-header>
+<div class="move-shift-toggle" fxFlex fxLayout="column">
 
-  <div fxFlex fxLayout="column" fxLayoutGap="20px">
-    <div fxFlex fxLayout="column">
-      <span class="title"> Change Date </span>
-      <mat-form-field fxFlex [appearance]="'outline'">
-        <input matInput [matDatepicker]="myDatepicker">
-        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #myDatepicker></mat-datepicker>
-      </mat-form-field>
+  <div class="move-shift-toggle-wrapper" expandedHeight="48px" fxLayoutAlign="center center"
+       (click)="toggleChangeShift()">
+    <div class="toggle-title" fxFlex="1 1 auto" fxLayoutAlign="start center">
+      Change Shift Date And Time
+    </div>
+    <div class="toggle-actions">
+      <mat-icon>edit</mat-icon>
+    </div>
+  </div>
+
+  <div class="change-shift-panel" *ngIf="changeShift" fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="16px">
+
+    <div class="change-shift-panel-header" fxLayout="row">
+      <div class="change-shift-panel-header-title" fxFlex="1 1 auto">
+        Change Shift Date And Time
+      </div>
+      <mat-icon (click)="toggleChangeShift()">close</mat-icon>
     </div>
 
-    <div>
-      <span class="title"> Shift Time </span>
-      <app-selectable-button-group #shiftTime [elements]="elements | async"
-                                   [multiple]="false" [maximumSelections]="1"
-      ></app-selectable-button-group>
-    </div>
+    <mat-divider></mat-divider>
 
-    <div class="actions">
-      <div class="actions-wrapper" fxFlex fxLayoutAlign="center">
-        <button mat-button class="action-button" [disabled]="!shiftTime.control.valid"
-                [ngClass]="shiftTime.control.valid ? 'complete' : 'disabled'">Move
-        </button>
+    <div fxFlex fxLayout="column" fxLayoutGap="16px">
+      <div fxFlex fxLayout="column">
+        <span class="title"> Change Date </span>
+        <mat-form-field fxFlex [appearance]="'outline'">
+          <input matInput [matDatepicker]="myDatepicker">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <span class="title"> Shift Time </span>
+        <app-selectable-button-group #shiftTime [elements]="elements | async"
+                                     [multiple]="false" [maximumSelections]="1"
+        ></app-selectable-button-group>
+      </div>
+
+      <div class="actions">
+        <div class="actions-wrapper" fxFlex fxLayoutAlign="center">
+          <button mat-button class="action-button" [disabled]="!shiftTime.control.valid"
+                  [ngClass]="shiftTime.control.valid ? 'complete' : 'disabled'">Move
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</mat-expansion-panel>
 
+</div>
+
+<div class="change-shift-overlay" *ngIf="changeShift" (click)="toggleChangeShift()"></div>
