@@ -15,6 +15,15 @@
     <view-type></view-type>
   </ng-container>
 
+  <!--  WEEKLY VIEW CONTENT -->
+  <ng-container *ngIf="config.dateRange !== 'daily'">
+    <div class="weekly-header-container">
+      <app-weekly-view-header [weekdays]="weekdays" [selectedField]="selectedValue"
+                              [selectOptions]="selectOptions"></app-weekly-view-header>
+    </div>
+
+  </ng-container>
+
   <!--  DAILY VIEW CONTENT -->
   <ng-container *ngIf="config.dateRange === 'daily' ">
     <daily-content></daily-content>
@@ -23,7 +32,8 @@
   <!--  WEEKLY VIEW CONTENT -->
   <ng-container *ngIf="config.dateRange !== 'daily'" class="weekly-content">
     <div class="weekly-content-container">
-      <weekly-content></weekly-content>
+      <weekly-content [selectedField]="selectedValue" [weekdays]="weekdays" [selectOptions]="selectOptions"
+                      [primaryField]="primaryField" [elements]="elements"></weekly-content>
     </div>
   </ng-container>
 

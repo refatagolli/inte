@@ -87,7 +87,7 @@ export class IntelyproProfileComponent implements OnInit {
 
   removeStaff(staff: AllStaff) {
     this.dialog.open(StaffDeleteConfirmationComponent, {
-      panelClass: 'custom-dialog-container',
+      panelClass: 'custom-dialog-_container',
       width: '578px',
       height: '422px',
       data: {

@@ -19,4 +19,11 @@
     background-color: red;
     opacity: 0.8;
   }
+
+  .weekly-header-container {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1000001;
+  }
 }

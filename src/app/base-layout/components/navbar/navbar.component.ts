@@ -23,7 +23,7 @@ export class NavbarComponent
     )
     {
         // Set the private defaults
-        this._variant = 'vertical-style-1';
+        this._variant = 'vertical-style-2';
     }
 
     // -----------------------------------------------------------------------------------------------------

@@ -284,7 +284,7 @@ export class StaffProfileComponent implements OnInit {
 
   removeStaff(staff: AllStaff) {
     this.dialog.open(StaffDeleteConfirmationComponent, {
-      panelClass: 'custom-dialog-container',
+      panelClass: 'custom-dialog-_container',
       width: '577px',
       height: '357px',
       data: {
