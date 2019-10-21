@@ -65,8 +65,8 @@
 
       .input-wrapper {
         width: 100%;
-        height: 56px;
-        border: 1px solid rgb(220, 226, 231);
+        height: 52px;
+        border: 2px solid rgb(162, 164, 167);
         margin-top: 34px;
         border-radius: 2px;
 
@@ -75,7 +75,6 @@
           margin: -10px 0px 0px 14px;
           padding: 0px 3px 0px 3px;
           background-color: white;
-          color: rgb(162, 164, 167);
           font-size: 12px;
           font-family: OpenSans-Regular, sans-serif;
           font-weight: normal;
@@ -83,7 +82,7 @@
         }
 
         .form-inputs {
-          height: 54px;
+          height: 48px;
         }
 
         .form-inputs:disabled {
@@ -94,17 +93,21 @@
           position: absolute;
           float: right;
           right: 30px;
-          margin-top: 15px;
+          margin-top: 12px;
         }
 
         .disabled-email {
           display: flex;
 
+          input {
+            color: rgb(218, 220, 219);
+          }
+
           .locker-icon {
             position: absolute;
-            float: right;
             right: 30px;
-            margin-top: 15px;
+            color: rgb(218, 220, 219);
+            margin-top: 12px;
           }
         }
 
@@ -127,7 +130,7 @@
           font-family: OpenSans-Regular, sans-serif;
           font-weight: normal;
           letter-spacing: -0.27px;
-          line-height: 24px;
+          line-height: 20px;
         }
 
         .margined {

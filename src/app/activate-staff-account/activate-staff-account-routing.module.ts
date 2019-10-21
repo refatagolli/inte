@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MobileForgotPasswordComponent} from './mobile-forgot-password.component';
+import {ActivateStaffAccountComponent} from './activate-staff-account.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: MobileForgotPasswordComponent}
+  {path: '', pathMatch: 'full', component: ActivateStaffAccountComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MobileForgotPasswordRoutingModule {
+export class ActivateStaffAccountRoutingModule {
 }

@@ -3,7 +3,7 @@ import {FuseConfigService} from '@theme/services/config.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UtilsService} from '../services/utils/utils.service';
 import {MatSnackBar} from '@angular/material';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ManageUsersAccountService} from '../services/manage-users-account.service';
 
 @Component({
@@ -16,17 +16,17 @@ export class ManageMobileUserComponent implements OnInit {
   config: any;
   submitted = false;
   registerForm: FormGroup;
-  givenEmail = ''; // emanuel
+  givenEmail = '';
   registrationlinkid: number;
   facilityName = '';
-  staffName = 'Test';
+  staffFirstName = '';
+  staffLastName = '';
   showPass = false;
   showConfirmPass = false;
   passValidLength = false;
   passContainsNumber = false;
   passContainsCapital = false;
   passMatch = false;
-  validPass = false;
   emailFocused = false;
   passwordFocused = false;
   confirmPasswordFocused = false;
@@ -35,6 +35,7 @@ export class ManageMobileUserComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private _fuseConfigService: FuseConfigService,
     private _utils: UtilsService,
     private _accountService: ManageUsersAccountService
@@ -49,8 +50,6 @@ export class ManageMobileUserComponent implements OnInit {
       .subscribe(params => {
         this.registrationlinkid = params['registrationlinkid'];
       });
-
-    _accountService.checkUrl();
   }
 
   ngOnInit() {
@@ -65,6 +64,8 @@ export class ManageMobileUserComponent implements OnInit {
         Validators.pattern('(?=\\D*\\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{6,30}')
       ]]
     });
+
+    this.getStaffData();
   }
 
   get validateForm() { return this.registerForm.controls; }
@@ -76,17 +77,27 @@ export class ManageMobileUserComponent implements OnInit {
       return;
     }
 
-    const response = this._utils.registerUser(this.registerForm.controls.email.value, this.registerForm.controls.password.value);
+    // const response = this._utils.registerUser(this.registerForm.controls.email.value, this.registerForm.controls.password.value);
 
-    if (response.responseCode === 200) {
-      this._snackBar.open(response.message, '', {
+    this._accountService.saveStaffMemberAccount(
+      this.registrationlinkid, this.registerForm.controls.email.value, this.registerForm.controls.password.value
+    ).pipe().subscribe(response => {
+
+      // if (response.code === 200) {
+      //
+      // } else {
+      //
+      // }
+
+      const snackBar = this._snackBar.open('Your account was created successfully!', '', {
         duration: 2000,
+        panelClass: ['mobile-blue-snackbar']
       });
-    } else {
-      this._snackBar.open(response.message, '', {
-        duration: 2000,
+
+      snackBar.afterDismissed().pipe().subscribe(val => {
+        this.router.navigateByUrl('/activate');
       });
-    }
+    });
   }
 
   checkBorderColumn(field: string) {
@@ -96,8 +107,10 @@ export class ManageMobileUserComponent implements OnInit {
           return 'red';
         } else if (this.emailFocused) {
           return 'rgb(23, 133, 184)';
+        } else if (this.givenEmail !== '') {
+          return 'rgb(218, 220, 219)';
         } else {
-          return '';
+          return 'rgb(162, 164, 167)';
         }
         break;
 
@@ -107,7 +120,7 @@ export class ManageMobileUserComponent implements OnInit {
         } else if (this.passwordFocused) {
           return 'rgb(23, 133, 184)';
         } else {
-          return '';
+          return 'rgb(162, 164, 167)';
         }
         break;
 
@@ -117,7 +130,7 @@ export class ManageMobileUserComponent implements OnInit {
         } else if (this.confirmPasswordFocused) {
           return 'rgb(23, 133, 184)';
         } else {
-          return '';
+          return 'rgb(162, 164, 167)';
         }
         break;
     }
@@ -151,5 +164,16 @@ export class ManageMobileUserComponent implements OnInit {
     } else {
       this.passMatch = false;
     }
+  }
+
+  getStaffData() {
+    this._accountService.retrieveStaffMemberData(this.registrationlinkid).pipe().subscribe(item => {
+      this.givenEmail = item.data.email;
+      // this.givenEmail = 'emanuel_idrizi@hotmail.com';
+      this.registerForm.controls.email.patchValue(this.givenEmail);
+      this.staffFirstName = item.data.firstname;
+      this.staffLastName = item.data.lastname;
+      this.facilityName = item.data.clientname;
+    });
   }
 }
