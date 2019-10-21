@@ -10,7 +10,7 @@
       <div class="user-management-header-wrapper">
         <div class="user-management-header">
           <label class="header-label-1">
-            Hi {{ staffName }}!
+            Hi {{ staffFirstName }}!
           </label>
           <br />
           <label class="header-label-2">
@@ -33,17 +33,19 @@
       <div class="user-management-body">
 
         <div [ngStyle]="{'border-color' : checkBorderColumn('email')}" class="input-wrapper">
-          <label [ngStyle]="{'color' : emailFocused ? 'rgb(23, 133, 184)' : '' }" class="form-labels">Email address</label>
+          <label [ngStyle]="{'color' : checkBorderColumn('email')}" class="form-labels">Email address</label>
           <div [ngClass]="givenEmail != '' ? 'disabled-email' : ''">
-            <input [ngStyle]="{'width' : givenEmail != '' ? 'calc(100% - 37px)' : '100%'}" formControlName="email" [attr.disabled]="givenEmail != '' ? true : null" placeholder="you@intelycare.com" type="text" class="form-inputs"
+            <input [ngStyle]="{'width' : givenEmail != '' ? 'calc(100% - 37px)' : '100%'}"
+                   formControlName="email" [attr.disabled]="givenEmail != '' ? true : null"
+                   placeholder="you@intelycare.com" type="text" class="form-inputs"
                    [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"
                    (focus)="emailFocused = true" (focusout)="emailFocused = false" />
-            <img *ngIf="givenEmail != ''" src="assets/images/lock.png" alt="Locked" class="locker-icon" />
+            <i *ngIf="givenEmail != ''" class="material-icons locker-icon">lock</i>
           </div>
         </div>
 
         <div [ngStyle]="{'border-color' : checkBorderColumn('password')}" class="input-wrapper">
-          <label [ngStyle]="{'color' : passwordFocused ? 'rgb(23, 133, 184)' : '' }" class="form-labels">Password</label>
+          <label [ngStyle]="{'color' : checkBorderColumn('password')}" class="form-labels">Password</label>
           <div>
             <input formControlName="password" placeholder="Enter password" (keyup)="validatePassword();passwordMatches();"
                    [type]="!showPass ? 'password' : 'text'" class="form-inputs"
@@ -56,7 +58,7 @@
         </div>
 
         <div [ngStyle]="{'border-color' : checkBorderColumn('confirmPassword')}" class="input-wrapper">
-          <label [ngStyle]="{'color' : confirmPasswordFocused ? 'rgb(23, 133, 184)' : '' }" class="form-labels">Confirm Password</label>
+          <label [ngStyle]="{'color' : checkBorderColumn('confirmPassword')}" class="form-labels">Confirm Password</label>
           <div>
             <input formControlName="confirmPassword" placeholder="Enter password" (keyup)="passwordMatches()"
                    [type]="!showConfirmPass ? 'password' : 'text'" class="form-inputs"

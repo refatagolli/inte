@@ -8,8 +8,9 @@ const routes: Routes = [
   {path: 'online', loadChildren: './online-staff-view/online-staff-view.module#OnlineStaffViewModule'},
   {path: 'home', loadChildren: './staff-management/staff-management.module#StaffManagementModule'},
   {path: 'register', loadChildren: './manage-mobile-user/manage-mobile-user.module#ManageMobileUserModule'},
+  {path: 'activate', loadChildren: './activate-staff-account/activate-staff-account.module#ActivateStaffAccountModule'},
   {path: 'login', loadChildren: './mobile-login/mobile-login.module#MobileLoginModule'},
-  {path: 'forgotPass', loadChildren: './mobile-forgot-password/mobile-forgot-password.module#MobileForgotPasswordModule'}
+  {path: 'reset', loadChildren: './mobile-forgot-password/mobile-forgot-password.module#MobileForgotPasswordModule'}
 ];
 
 @NgModule({

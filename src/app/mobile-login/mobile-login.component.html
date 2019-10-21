@@ -1,54 +1,71 @@
-<div class="user-form">
+<div class="login-form">
 
-  <div class="user-form-wrapper">
+  <div class="login-form-wrapper">
 
-    <div class="user-management-header">
-      <p>
-        Good afternoon!
-        <br/>
-        <label class="sub-title">‘{{ facilityName }}’ has invited you to join this facility as a nurse.</label>
-      </p>
+    <div class="header-wrapper">
+      <div class="header-icon-wrapper">
+        <img src="assets/images/register.svg" class="custom-icon" alt="No Result" />
+      </div>
+
+      <div class="user-management-header-wrapper">
+        <div class="user-management-header">
+          <label class="header-label-1">
+            Hello!
+          </label>
+          <br />
+          <br />
+          <label class="header-label-2">
+            Sign In
+          </label>
+        </div>
+      </div>
     </div>
 
     <form [formGroup]="loginForm">
       <div class="user-management-body">
-        <div class="input-wrapper">
-          <label class="form-labels">Email address</label>
-          <div [ngClass]="isIntelypro ? 'disabled-email' : ''">
-            <input formControlName="email" [attr.disabled]="isIntelypro == true ? true : null" placeholder="you@intelycare.com" type="text" class="form-inputs"
-                   [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}" />
-            <i *ngIf="isIntelypro" class="material-icons locker-icon">lock</i>
+
+        <div [ngStyle]="{'border-color' : checkBorderColumn('email')}" class="input-wrapper">
+          <label [ngStyle]="{'color' : checkBorderColumn('email')}" class="form-labels">Email address</label>
+          <div [ngClass]="defaultEmail != '' ? 'disabled-email' : ''">
+            <input [ngStyle]="{'width' : defaultEmail != '' ? 'calc(100% - 37px)' : '100%'}"
+                   formControlName="email" [attr.disabled]="defaultEmail != '' ? true : null"
+                   placeholder="you@intelycare.com" type="text" class="form-inputs"
+                   [ngStyle]="{'border-color' : (submitted && validateForm.email.errors) ? 'red' : ''}"
+                   (focus)="emailFocused = true" (focusout)="emailFocused = false" />
+            <i *ngIf="defaultEmail != ''" class="material-icons locker-icon">lock</i>
           </div>
         </div>
 
-        <br />
-
-        <div class="input-wrapper">
-          <label class="form-labels">Password</label>
-          <input formControlName="password" placeholder="Enter password" type="password" class="form-inputs"
-                 [ngStyle]="{'border-color' : (submitted && validateForm.password.errors) ? 'red' : ''}" />
+        <div [ngStyle]="{'border-color' : checkBorderColumn('password')}" class="input-wrapper">
+          <label [ngStyle]="{'color' : checkBorderColumn('password')}" class="form-labels">Password</label>
+          <div>
+            <input formControlName="password" placeholder="Enter password" (keyup)="validatePassword();"
+                   [type]="!showPass ? 'password' : 'text'" class="form-inputs"
+                   (focus)="passwordFocused = true" (focusout)="passwordFocused = false" />
+            <img *ngIf="showPass; else eyeIcon" (click)="showPass = !showPass" src="assets/images/eye-off.png" alt="Hide" class="eye-icon" />
+            <ng-template #eyeIcon>
+              <img (click)="showPass = !showPass" src="assets/images/eye.png" alt="Show" class="eye-icon" />
+            </ng-template>
+          </div>
         </div>
-
-        <br />
 
         <div class="forgot-password-wrapper">
-          <a routerLink="/forgotPass" class="forgot-password">Forgot password?</a>
+          <a routerLink="/reset" class="forgot-password">Forgot password?</a>
         </div>
 
-        <br /><br /><br />
+        <br />
+        <br />
 
         <div class="button-wrapper">
           <button class="main-button action-button complete" type="button" (click)="login()" >
             <label class="main-button-label">
-              Join ‘{{ facilityName }}’
+              Log In
             </label>
           </button>
         </div>
       </div>
     </form>
-
   </div>
-
 </div>
 
 
