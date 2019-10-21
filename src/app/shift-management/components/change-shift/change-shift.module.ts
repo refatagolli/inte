@@ -10,7 +10,6 @@ import {SelectableButtonGroupModule} from '../../../shared/componets/selectable-
     SharedModule,
     MaterialModule,
     SelectableButtonGroupModule
-
   ],
   exports: [ChangeShiftComponent]
 })

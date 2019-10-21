@@ -7,9 +7,6 @@
              (focus)="focus.emit($event)"
       >
       <mat-icon matPrefix>search</mat-icon>
-      <!--<mat-label>-->
-      <!--search all staff ...-->
-      <!--</mat-label>-->
     </mat-form-field>
 
     <button mat-button (click)="toggle()">
@@ -44,7 +41,7 @@
 
   </div>
 
-  <div class="filter-overlay" *ngIf="searchOpened" (click)="toggle()">
-  </div>
+</div>
 
+<div class="filter-overlay" *ngIf="searchOpened" (click)="toggle()">
 </div>

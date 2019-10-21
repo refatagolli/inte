@@ -2,44 +2,44 @@
 
 
   <div class="management-top-card-content">
-    <div class="management-top-card-content-wrapper" fxFlex fxLayout="column" fxLayoutGap="15px">
+    <div class="management-top-card-content-wrapper" fxFlex fxLayout="column" fxLayoutGap="16px">
 
       <span class="info-header">Shift Details</span>
 
-      <div class="replacing-staff" *ngIf="replacing">
-        <div class="replacing-staff-wrapper" fxLayout="row" fxLayoutGap="20px">
-          <app-chip-icon [name]="replacing.fullName"></app-chip-icon>
-          <div class="staff-data">
-            <div class="user-data-wrapper" fxFlex fxLayout="column">
-              <span class="title">{{replacing.fullName}}</span>
-              <span class="subtitle">{{replacing.staffType}}</span>
+      <div class="shift-details-wrapper" fxLayout="row" fxFlex fxLayoutGap="{{ replacing ? '16px' : '24px'}}">
+
+        <div class="replacing-staff" *ngIf="replacing" fxFlex>
+          <div class="replacing-staff-wrapper" fxLayout="column" fxLayoutGap="16px">
+            <!--<app-chip-icon [name]="replacing.fullName"></app-chip-icon>-->
+            <mat-icon class="icon">person</mat-icon>
+            <div class="staff-data">
+              <div class="user-data-wrapper" fxFlex fxLayout="column" fxLayoutGap="8px">
+                <span class="title">{{replacing.fullName}}</span>
+                <span class="subtitle">{{'sick' | titlecase}}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="top-card-line shift" fxFlex fxLayout="row" fxLayoutGap="20px">
-        <mat-icon class="icon">today</mat-icon>
-        <span class="bold-item">{{shiftDetails.shiftDate | date: ' EEEE MMMM dd, yyyy'}}</span>
-      </div>
+        <div class="shift-info" fxFlex fxLayout="column" fxLayoutGap="16px">
+          <mat-icon class="icon">person_pin</mat-icon>
+          <div class="top-card-line unit" fxFlex fxLayout="column" fxLayoutGap="8px">
+            <span class="bold-item">{{shiftDetails.unit}}</span>
+            <span class="bold-item">{{shiftDetails.staffType}}</span>
+          </div>
+        </div>
 
-      <div class="top-card-line shift" fxFlex fxLayout="row" fxLayoutGap="20px">
-        <mat-icon class="icon">access_time</mat-icon>
-        <span class="bold-item">{{shiftDetails.shiftHours}}</span>
-      </div>
+        <div class="shift-dates" fxFlex fxLayout="column" fxLayoutGap="16px">
+          <mat-icon class="icon">today</mat-icon>
+          <div class="top-card-line shift" fxFlex fxLayout="column" fxLayoutGap="8px">
+            <span class="bold-item">{{shiftDetails.shiftDate | date: ' EEEE MMMM dd, yyyy'}}</span>
+            <span class="bold-item">{{shiftDetails.shiftHours}}</span>
+          </div>
+        </div>
 
-      <div class="top-card-line unit" fxFlex fxLayout="row" fxLayoutGap="20px">
-        <mat-icon class="icon">person_pin</mat-icon>
-        <span class="bold-item">{{shiftDetails.unit}}</span>
       </div>
-
-      <div class="top-card-line  shiftType" fxFlex fxLayout="row" fxLayoutGap="20px">
-        <mat-icon class="icon">people</mat-icon>
-        <span class="bold-item">{{shiftDetails.staffType}}</span>
-      </div>
-
-      <div class="remove-shift-container" fxFlex>
-      <button mat-button class="action-button cancel">DELETE SHIFT</button>
+      <div class="remove-shift-container" fxFlex fxLayoutAlign="center center">
+        <button mat-button class="action-button cancel">DELETE SHIFT</button>
       </div>
     </div>
   </div>
@@ -48,8 +48,8 @@
 
   <div class="management-top-card-title" fxFlex>
     <div class="card-title-wrapper" fxLayout="row">
-      <div class="title" fxFlex fxLayoutAlign="center cemter">
-        <span class="bold-item">{{title | uppercase }}</span>
+      <div class="title" fxFlex fxLayoutAlign="center center">
+        <span class="bold-item">{{title}}</span>
       </div>
     </div>
   </div>
