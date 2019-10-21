@@ -1,0 +1,66 @@
+<div class="activate-form">
+
+  <div class="activate-form-wrapper">
+
+    <div class="header-wrapper">
+      <div class="header-icon-wrapper">
+        <img src="assets/images/verify.svg" class="custom-icon" alt="Verify" />
+      </div>
+
+      <div class="user-management-header-wrapper">
+        <div class="user-management-header">
+          <label class="header-label-1">
+            Almost done!
+          </label>
+          <br />
+          <label class="header-label-2">
+            Verify your account.
+          </label>
+          <br />
+          <br />
+          <label class="header-label-3">
+            To keep your account safe, We sent a
+          </label>
+          <br />
+          <label class="header-label-3">
+            code to: <b style="color: black">{{ givenEmail }}</b>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-management-body">
+
+        <div [ngStyle]="{'border-color' : verificationCodeFocus ? 'rgb(23, 133, 184)' : 'rgb(162, 164, 167)'}" class="input-wrapper">
+          <label [ngStyle]="{'color' : verificationCodeFocus ? 'rgb(23, 133, 184)' : 'rgb(162, 164, 167)'}" class="form-labels">Enter Code</label>
+          <div>
+            <input placeholder="Activation Code" type="text" class="form-inputs" (keyup)="checkActivationCode(code)"
+                   [ngStyle]="{'width' : verified ? 'calc(100% - 37px)' : '100%'}" [(ngModel)]="code"
+                   (focus)="verificationCodeFocus = true" (focusout)="verificationCodeFocus = false" />
+            <img *ngIf="verified" src="assets/images/check.png" alt="Check" class="check-icon" />
+          </div>
+        </div>
+
+        <div class="resend-code-wrapper">
+          <label class="resend-code-label">
+            I didn’t recieve an email message
+          </label>
+          <br />
+          <label class="resend-button" (click)="getNewCode()">
+            Re-send code
+          </label>
+        </div>
+
+        <br />
+        <br />
+
+      </div>
+
+  </div>
+
+</div>
+
+
+
+
+
