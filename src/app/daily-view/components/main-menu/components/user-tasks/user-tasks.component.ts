@@ -22,7 +22,8 @@ export class UserTasksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._getAllTasks();
+    // this._getAllTasks();
+    this._tasksService.getAllStaff().subscribe(e => console.log(e));
   }
 
   addNewTask() {

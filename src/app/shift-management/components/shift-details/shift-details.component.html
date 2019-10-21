@@ -15,7 +15,7 @@
 
         <app-change-unit *ngIf="!removingFromStaff"></app-change-unit>
 
-        <app-change-shift [currentShift]="staffMember.shiftHours" *ngIf="!removingFromStaff"></app-change-shift>
+        <app-change-shift [currentShift]="staffMember.shiftHours" [currentDate]="shiftDetails.shiftDate" *ngIf="!removingFromStaff"></app-change-shift>
 
         <div class="remove-div" [ngClass]="{hidden : !removingFromStaff}"
              fxFlex fxLayout="column" fxLayoutGap="20px">

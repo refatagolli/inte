@@ -11,10 +11,20 @@
     margin: 0 16px;
   }
 
-  .weekly-header-container {
+  .weekly-header-container, .daily-header-container {
     position: sticky;
     top: 0;
     background-color: white;
     z-index: 1000001;
   }
+
+  //.view-type-container {
+  //    position: sticky;
+  //    top: 160px;
+  //    z-index: 1000001;
+  //
+  //  view-type {
+  //    background-color: white;
+  //  }
+  //}
 }

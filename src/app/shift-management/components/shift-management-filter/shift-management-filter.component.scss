@@ -78,11 +78,13 @@
 }
 
 .filter-overlay {
-  position: fixed;
+  position: absolute;
+  height: 100vh;
+  overflow: hidden;
   top:0;
   left:0;
   right:0;
   bottom: 0;
   z-index: 10000;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .8);
 }

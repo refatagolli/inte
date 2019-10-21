@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  SERVER_URI: 'http://virtserver.swaggerhub.com/Intelycare'
+  SERVER_URI: 'https://api.intelycare.net'
 };
 
 /*
