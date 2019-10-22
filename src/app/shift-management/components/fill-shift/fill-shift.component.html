@@ -13,19 +13,20 @@
 
         <div class="filter" fxFlex="0 1 auto">
           <shift-management-filter (filterChange)="filter.next($event)"
-                                   (blur)="showActions = true"
-                                   (focus)="showActions = false"
+                                   (blur)="showSuggestions()"
+                                   (focus)="hideSuggestions()"
+                                   (searchChange)="search.next($event)"
                                    [selectedFilter]="filterOptions"></shift-management-filter>
         </div>
 
         <div class="filter-options" fxLayout="column">
 
-          <div fxFlex="1 1 auto">
-            <span class="total">{{staff.length}} Results</span>
+          <div fxFlex="1 1 auto" *ngIf="!(searching && !searchCriteria)">
+            <span class="total">{{selectedStaff.length + unselectedStaff.length}} Results</span>
           </div>
 
           <div fxLayout="row wrap" fxLayoutGap="10px"
-               *ngIf="filterOptions && ((filterOptions.shift&&filterOptions.shift.length > 0) ||
+               *ngIf="!searching && filterOptions && ((filterOptions.shift&&filterOptions.shift.length > 0) ||
                (filterOptions.employmentType&& filterOptions.employmentType.length > 0 ))">
 
           <span class="f-message">{{shiftDetails.staffType}} not scheduled for this shift who work:</span>
@@ -45,12 +46,12 @@
 
         </div>
 
-        <mat-divider></mat-divider>
+        <mat-divider *ngIf="!(searching && !searchCriteria)"></mat-divider>
 
-        <div class="useful-options" fxFlex="0 1 auto" *ngIf="sel.length || sel1.length">
+        <div class="useful-options" fxFlex="0 1 auto" *ngIf="unselectedStaff.length || selectedStaff.length">
           <mat-checkbox class="opt left" [checked]="areAllChecked" (change)="toggleAll($event.checked)">Select All
           </mat-checkbox>
-          <button mat-button class="opt right" [matMenuTriggerFor]="sortBy">Sort By &nbsp;
+          <button mat-button class="opt right" [matMenuTriggerFor]="sortBy" *ngIf="unselectedStaff.length">Sort By &nbsp;
             <mat-icon>arrow_drop_down</mat-icon>
           </button>
           <mat-menu #sortBy>
@@ -60,21 +61,26 @@
           </mat-menu>
         </div>
 
-        <div class="results" fxLayout="column" fxLayoutGap="12px">
-          <app-staff-card-expandable [staffMembers]="selectedStaff" [control]="true"
-                                     (selectionChange)="selectStaff($event)" [selectedValues]="selectedStaff"
-                                     [selected]="sel1"></app-staff-card-expandable>
+        <div class="results" fxFlex fxLayout="column" fxLayoutGap="12px">
+          <div class="selected-staff-members" fxFlex fxLayout="row wrap">
+            <div class="selected-entity" *ngFor="let staff of selectedStaff" [title]="staff.fullName">
+              <app-chip-icon [name]="staff.fullName"></app-chip-icon>
+              <mat-icon (click)="removeSelected(staff)">cancel</mat-icon>
+            </div>
+          </div>
 
           <app-staff-card-expandable [staffMembers]="unselectedStaff" [control]="true"
-                                     (selectionChange)="selectStaff($event)" [selectedValues]="[]"
-                                     [selected]="sel"></app-staff-card-expandable>
+                                     (selectionChange)="selectStaff($event)"></app-staff-card-expandable>
         </div>
 
-
-        <div fxFlex *ngIf="!staff.length" class="no-results" fxLayoutGap="18px"
+        <div fxFlex *ngIf="searching && !!searchCriteria && !unselectedStaff.length" class="no-results" fxLayoutGap="16px"
              fxLayoutAlign="center" fxLayout="column">
           <img src="assets/NoResult.svg">
           <span class="no-results-message">No Results</span>
+        </div>
+
+        <div fxFlex *ngIf="searching && !searchCriteria" class="no-results">
+          <span class="start-typing-message"  fxFlex fxLayoutAlign="center center">start typing to search all users...</span>
         </div>
 
         <div class="message" *ngIf="selectedStaff.length">
@@ -85,7 +91,7 @@
       </div>
     </div>
 
-    <div class="actions" fxFlex="120px" *ngIf="showActions">
+    <div class="actions" fxFlex="120px" *ngIf="!searching">
       <div class="actions-wrapper" fxFlex fxLayout="column" fxLayoutAlign="center" fxLayoutGap="12px">
         <button mat-button class="action-button" fxFlexAlign="center"
                 [ngClass]="!selectedStaff.length && message.valid? 'disabled' : 'complete'"
