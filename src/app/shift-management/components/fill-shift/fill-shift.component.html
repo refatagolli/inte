@@ -62,7 +62,7 @@
         </div>
 
         <div class="results" fxFlex fxLayout="column" fxLayoutGap="12px">
-          <div class="selected-staff-members" fxFlex fxLayout="row wrap">
+          <div class="selected-staff-members" fxFlex fxLayout="row wrap" *ngIf="!selectAllPressed">
             <div class="selected-entity" *ngFor="let staff of selectedStaff" [title]="staff.fullName">
               <app-chip-icon [name]="staff.fullName"></app-chip-icon>
               <mat-icon (click)="removeSelected(staff)" *ngIf="!selectAllPressed">cancel</mat-icon>
