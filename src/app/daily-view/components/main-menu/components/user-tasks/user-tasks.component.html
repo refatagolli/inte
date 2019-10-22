@@ -48,8 +48,8 @@
           <div class="sort-indicator"></div>
 
           <mat-checkbox (change)="toggleTask(i, true)"
-                        [checked]="task.completed">
-            <span [ngClass]="{completed: task.completed}">{{task.taskname}}</span>
+                        [checked]="task.complete">
+            <span [ngClass]="{completed: task.complete}">{{task.taskname}}</span>
           </mat-checkbox>
 
         </div>

@@ -34,6 +34,7 @@ $header_border_color: #cacaca;
 
     .action-button {
       width: 212px !important;
+      text-transform: uppercase;
     }
   }
 
@@ -88,7 +89,7 @@ $header_border_color: #cacaca;
     position: sticky;
     top: 0;
     background-color: #FFFFFF;
-    z-index: 10001;
+    z-index: 100;
 
     .selected-entity {
       position: relative;

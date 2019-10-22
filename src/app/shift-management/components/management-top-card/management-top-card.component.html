@@ -4,7 +4,7 @@
   <div class="management-top-card-content">
     <div class="management-top-card-content-wrapper" fxFlex fxLayout="column" fxLayoutGap="16px">
 
-      <span class="info-header">Shift Details</span>
+      <span class="info-header" *ngIf="title !== 'Shift Details'">Shift Details</span>
 
       <div class="shift-details-wrapper" fxLayout="row" fxFlex fxLayoutGap="{{ replacing ? '16px' : '24px'}}">
 

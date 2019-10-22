@@ -8,12 +8,7 @@ toolbar {
   flex: 0 0 auto;
   z-index: 4;
   background-color: $background-color;
-  height: 48px;
   padding: 0 16px;
-
-  .mat-toolbar {
-    height: 48px;
-  }
 
   .toolbar-wrapper {
     display: inline-flex;
@@ -39,7 +34,6 @@ toolbar {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 4px;
     }
 
     .toolbar-avatar {
@@ -82,10 +76,11 @@ toolbar {
   .navigation {
 
     .navigation-item {
-      font-size: 16px;
+      font-size: 14px;
       height: 30px;
       cursor: pointer;
       color: #A4CEE3;
+      font-weight: normal;
       text-transform: uppercase;
 
       &.active {

@@ -6,6 +6,7 @@ import {delay, filter, flatMap, takeUntil, tap, toArray} from 'rxjs/operators';
 import {StaffMember} from '../../../models/StaffMember';
 import {FormControl, Validators} from '@angular/forms';
 import {ShiftManagementFilterComponent} from '../shift-management-filter/shift-management-filter.component';
+import {StaffCardExpandableComponent} from '../../../shared/componets/staff-card-expandable/staff-card-expandable.component';
 
 @Component({
   selector: 'app-fill-shift-component',
@@ -18,10 +19,13 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() shiftDetails: ShiftDetails;
   @Input() replacing: StaffMember;
   @ViewChild(ShiftManagementFilterComponent) shiftManagementFilter: ShiftManagementFilterComponent;
+  @ViewChild(StaffCardExpandableComponent) staffCardExpandable: StaffCardExpandableComponent;
 
   staff: StaffMember[] = [];
   selectedStaff: StaffMember[] = [];
   unselectedStaff: StaffMember[] = [];
+  total: number;
+  selectAllPressed = false;
 
   filter = new Subject<any>();
   filterOptions: any = {};
@@ -87,9 +91,8 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
     this._cdr.detectChanges();
   }
 
-  selectStaff(staff: StaffMember) {
-    this.selectedStaff.push(staff);
-    this.unselectedStaff = this.staff.filter(e => this.selectedStaff.indexOf(e) < 0);
+  selectStaff(staff: StaffMember[]) {
+    this.selectedStaff = staff;
   }
 
   getStaffMessage(shift, date: string) {
@@ -106,8 +109,10 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   toggleAll(newValue) {
-    this.selectedStaff = newValue ? [...this.selectedStaff, ...this.unselectedStaff] : [];
-    this.unselectedStaff = !newValue ? [...this.selectedStaff, ...this.unselectedStaff] : [];
+    this.selectAllPressed = newValue;
+    this.selectedStaff = newValue ? [...this.unselectedStaff] : [];
+    this.staffCardExpandable.hardsetSelected(this.selectedStaff);
+    this._cdr.detectChanges();
   }
 
   sortByField(field: string) {
@@ -134,7 +139,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   removeSelected(staff: StaffMember) {
     this.selectedStaff.splice(this.selectedStaff.indexOf(staff), 1);
-    this.unselectedStaff.push(staff);
+    // this.unselectedStaff.push(staff);
   }
 
   private _sortCondition(first: StaffMember, next: StaffMember, field: string) {
@@ -175,6 +180,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
         toArray()))
     ).subscribe((e: StaffMember[]) => {
       this.unselectedStaff = e;
+      this.total = e.length;
       this.shiftManagementFilter.forceSetFilters(this.filterOptions, false);
       this._cdr.markForCheck();
     });
@@ -198,6 +204,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
         toArray()))
     ).subscribe(e => {
       this.unselectedStaff = e;
+      this.total = e.length;
       this._cdr.markForCheck();
     });
   }

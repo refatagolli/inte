@@ -23,19 +23,18 @@
       <div class="content-wrapper" fxFlex fxFlexFill fxLayoutAlign="center center" fxLayout="column">
 
         <div fxLayout="column" fxFlexFill fxLayoutAlign="center center">
-          <span class="bold-item">{{requests[current -1].shift.shiftDate | date: 'EEEE MMMM dd, yyyy'}}</span>
+          <span class="bold-item">{{requests[current -1].shift.shiftDate | date: 'EEEE MMMM d, yyyy'}}</span>
           <span class="bold-item">{{requests[current -1].shift.shiftHours}}</span>
         </div>
 
-        <div class="responses" fxFlex fxLayout="row" fxLayoutGap="10px">
-          <span class="rejected" *ngIf="requests[current -1].requests.rejected">
-            {{requests[current -1].requests.rejected}} REJECTED
-          </span>
-          <span class="pending" *ngIf="requests[current -1].requests.pending">
-            {{requests[current -1].requests.pending}} PENDING
-          </span>
+        <div class="responses" fxFlex fxLayout="row" fxLayoutGap="16px">
           <span class="accepted" *ngIf="requests[current -1].requests.accepted">
             {{requests[current -1].requests.accepted}} ACCEPTED
+          </span><span class="pending" *ngIf="requests[current -1].requests.pending">
+            {{requests[current -1].requests.pending}} PENDING
+          </span>
+          <span class="rejected" *ngIf="requests[current -1].requests.rejected">
+            {{requests[current -1].requests.rejected}} REJECTED
           </span>
         </div>
       </div>
