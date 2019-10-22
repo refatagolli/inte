@@ -17,13 +17,13 @@ export class FillShiftResponsesComponent implements OnInit {
   staff: StaffMember[] = [];
   staffList: StaffMember[] = [];
   selectedStaff: StaffMember[] = [];
-  sel = [];
+  unselectedStaff: StaffMember[] = [];
 
   constructor(private _dailyService: DailyViewService) {
   }
 
   get areAllChecked() {
-    return this.sel.filter(e => e).length === this.sel.length;
+    return this.selectedStaff.length > 0 && this.unselectedStaff.length > 0;
   }
 
   ngOnInit() {
@@ -37,18 +37,14 @@ export class FillShiftResponsesComponent implements OnInit {
     ).subscribe(e => {
       this.staffList = e;
       this.staff = e;
-      this.sel = e.map(a => false);
-      // this.filter.next({shift: [this.shiftDetails.shiftHours]});
-      // this._cdr.markForCheck();
     });
   }
 
-  selectStaff(staff: StaffMember[]) {
-    this.selectedStaff = staff;
+  selectStaff(staff: StaffMember) {
+    this.selectedStaff.push(staff);
   }
 
   toggleAll(newValue) {
-    this.sel = this.sel.map(e => newValue);
     this.selectedStaff = newValue ? [...this.staff] : [];
   }
 

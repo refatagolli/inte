@@ -66,4 +66,16 @@ input::-ms-clear {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+::ng-deep.user-menu {
+  margin-top: 8px !important;
+  padding: 0 16px !important;
+  background-color: red !important;
+
+  .divider {
+    height: 1px !important;
+    width: 100%;
+    margin: 20px ;
+    background-color: red !important;
+  }
+}
 

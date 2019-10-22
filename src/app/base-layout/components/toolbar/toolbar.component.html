@@ -1,74 +1,54 @@
 <mat-toolbar class="p-0 mat-elevation-z1">
 
-<div class="toolbar-wrapper">
+  <div class="toolbar-wrapper">
 
-  <div class="toolbar-menu">
+    <div class="toolbar-menu" fxLayoutGap="24px" fxLayoutAlign="start center">
 
-    <!--      <button mat-icon-button class="navbar-toggle-button"-->
-    <!--              (click)="toggleSidebarOpen('navbar')">-->
-    <!--        <mat-icon class="secondary-text">menu</mat-icon>-->
-    <!--      </button>-->
+      <!--<button mat-icon-button class="navbar-toggle-button"-->
+      <!--(click)="route.navigate(['/home']);">-->
+      <!--<mat-icon class="secondary-text">menu</mat-icon>-->
+      <!--</button>-->
 
-    <button mat-icon-button class="navbar-toggle-button"
-            (click)="route.navigate(['/home']);">
-      <mat-icon class="secondary-text">menu</mat-icon>
-    </button>
+      <!--<div fxLayout="row" fxLayoutAlign="start center">-->
+      <!--<div class="logo ml-16">-->
+      <!--<span class="current-route">{{ currentRoute | async }}</span>-->
+      <!--</div>-->
+      <!--</div>-->
+      <div class="itelycare-logo" fxLayoutAlign="start center">
+        <img src="assets/images/intelycare _logo.svg">
+      </div>
 
-    <div fxLayout="row" fxLayoutAlign="start center">
-      <div class="logo ml-16">
-        <span class="current-route">{{ currentRoute | async }}</span>
+      <div class="navigation" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+        <span class="navigation-item" routerLink="/daily" routerLinkActive="active">Schedule</span>
+        <span class="navigation-item" routerLink="/home" routerLinkActive="active">Staff Directory</span>
+      </div>
+
+
+    </div>
+
+    <div class="filter" *ngIf="(currentRoute | async) !== 'Home'">
+      <div class="filter">
+        <user-filter></user-filter>
       </div>
     </div>
 
-  </div>
-
-  <div class="filter" *ngIf="(currentRoute | async) !== 'Home'">
-    <div class="filter">
-      <user-filter></user-filter>
+    <div class="toolbar-avatar">
+      <app-chip-icon name="Danielle M" [matMenuTriggerFor]="userMenu"></app-chip-icon>
     </div>
+
+    <mat-menu #userMenu="matMenu" class="user-menu" panelClass="user-menu">
+      <div fxFlex fxLayout="column">
+        <div class="user-info" fxFlex fxLayout="column" fxLayoutGap="4px" (click)="$event.stopPropagation()">
+          <span class="user-fullname">Danielle Miozza</span>
+          <span class="user-email">DMiozza@charwellhc.com</span>
+        </div>
+        <span class="user-menu-divider" fxFlex="1 1 auto"></span>
+        <div class="logout" fxFlex>
+          <button class="logout-button" mat-button fxFlex>Sign Out</button>
+        </div>
+      </div>
+    </mat-menu>
+
   </div>
-
-  <div class="toolbar-avatar">
-    <app-chip-icon name="Danielle M"></app-chip-icon>
-  </div>
-
-</div>
-
-<!--  <div fxFlex fxFill fxLayout="row" fxLayoutAlign="space-between center">-->
-
-<!--    <div fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center">-->
-
-<!--      &lt;!&ndash;      <button mat-icon-button class="navbar-toggle-button"&ndash;&gt;-->
-<!--      &lt;!&ndash;              (click)="toggleSidebarOpen('navbar')">&ndash;&gt;-->
-<!--      &lt;!&ndash;        <mat-icon class="secondary-text">menu</mat-icon>&ndash;&gt;-->
-<!--      &lt;!&ndash;      </button>&ndash;&gt;-->
-
-<!--      <button mat-icon-button class="navbar-toggle-button"-->
-<!--              (click)="route.navigate(['/home']);">-->
-<!--        <mat-icon class="secondary-text">menu</mat-icon>-->
-<!--      </button>-->
-
-
-<!--      <div fxLayout="row" fxLayoutAlign="start center">-->
-<!--        <div class="logo ml-16">-->
-<!--          <span class="current-route">{{ currentRoute | async }}</span>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--    </div>-->
-
-
-<!--    <div class="filter" fxShow.gt-md="true" *ngIf="(currentRoute | async) !== 'Home'">-->
-<!--      <div class="filter">-->
-<!--        <user-filter></user-filter>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-<!--    <div class="" fxFlex="0 1 auto">-->
-<!--      <app-chip-icon name="Danielle M"></app-chip-icon>-->
-<!--    </div>-->
-
-<!--  </div>-->
 
 </mat-toolbar>
