@@ -4,7 +4,7 @@
     <div class="content" fxFlexFill fxFlex="0 1 auto" fxLayout="column" fxLayoutGap="16px">
 
       <div class="header" fxFlex="0 1 auto">
-        <app-management-top-card [title]="!!replacing ? 'FIll Cancelled Shift' : 'Fill Open Shift'"
+        <app-management-top-card [title]="!!replacing ? 'Fill Cancelled Shift' : 'Fill Open Shift'"
                                  [shiftDetails]="shiftDetails" [replacing]="replacing">
         </app-management-top-card>
       </div>
@@ -22,7 +22,7 @@
         <div class="filter-options" fxLayout="column">
 
           <div fxFlex="1 1 auto" *ngIf="!(searching && !searchCriteria)">
-            <span class="total">{{selectedStaff.length + unselectedStaff.length}} Results</span>
+            <span class="total">{{total}} Results</span>
           </div>
 
           <div fxLayout="row wrap" fxLayoutGap="10px"
@@ -65,7 +65,7 @@
           <div class="selected-staff-members" fxFlex fxLayout="row wrap">
             <div class="selected-entity" *ngFor="let staff of selectedStaff" [title]="staff.fullName">
               <app-chip-icon [name]="staff.fullName"></app-chip-icon>
-              <mat-icon (click)="removeSelected(staff)">cancel</mat-icon>
+              <mat-icon (click)="removeSelected(staff)" *ngIf="!selectAllPressed">cancel</mat-icon>
             </div>
           </div>
 
@@ -79,7 +79,7 @@
           <span class="no-results-message">No Results</span>
         </div>
 
-        <div fxFlex *ngIf="searching && !searchCriteria" class="no-results">
+        <div fxFlex *ngIf="searching && !searchCriteria && !selectedStaff.length" class="no-results">
           <span class="start-typing-message"  fxFlex fxLayoutAlign="center center">start typing to search all users...</span>
         </div>
 

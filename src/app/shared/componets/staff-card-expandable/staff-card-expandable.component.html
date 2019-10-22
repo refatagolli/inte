@@ -7,8 +7,8 @@
         <div class="header-content" fxFlex="1 1 auto" fxLayout="row" fxLayoutAlign="center center">
 
           <div class="staff-card-expandable-checkbox" *ngIf="control" fxLayoutAlign="center center">
-            <mat-checkbox (click)="$event.stopPropagation();" (change)="selectionChange.emit(staffMember)"
-                          ></mat-checkbox>
+            <mat-checkbox #b (click)="$event.stopPropagation();" (change)="selectItem(b.checked, staffMember)"
+                          [checked]="getIndexOf(staffMember) > -1"></mat-checkbox>
           </div>
 
           <div class="staff-card-expandable-chip" fxLayoutAlign="center center">
