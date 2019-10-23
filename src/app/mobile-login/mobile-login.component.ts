@@ -116,6 +116,9 @@ export class MobileLoginComponent implements OnInit {
     this._accountService.login(
       this.loginForm.controls.email.value, this.loginForm.controls.password.value
     ).pipe().subscribe(response => {
+      console.log(response);
+
+
 
       // if (response.code === 200) {
       //

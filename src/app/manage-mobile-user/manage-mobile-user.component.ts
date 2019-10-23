@@ -167,13 +167,20 @@ export class ManageMobileUserComponent implements OnInit {
   }
 
   getStaffData() {
-    this._accountService.retrieveStaffMemberData(this.registrationlinkid).pipe().subscribe(item => {
-      this.givenEmail = item.data.email;
-      // this.givenEmail = 'emanuel_idrizi@hotmail.com';
-      this.registerForm.controls.email.patchValue(this.givenEmail);
-      this.staffFirstName = item.data.firstname;
-      this.staffLastName = item.data.lastname;
-      this.facilityName = item.data.clientname;
-    });
+    if (this.registrationlinkid) {
+      // this._accountService.getPayLoad().pipe().subscribe(response => {
+      //   console.log(response);
+      // });
+
+      this._accountService.retrieveStaffMemberData(this.registrationlinkid).pipe().subscribe(response => {
+        console.log(response)
+        this.givenEmail = response.data.email;
+        // this.givenEmail = 'emanuel_idrizi@hotmail.com';
+        this.registerForm.controls.email.patchValue(this.givenEmail);
+        this.staffFirstName = response.data.firstname;
+        this.staffLastName = response.data.lastname;
+        this.facilityName = response.data.clientname;
+      });
+    }
   }
 }

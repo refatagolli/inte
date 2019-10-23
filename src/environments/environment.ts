@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  // https://api.intelycare.net
-  // http://virtserver.swaggerhub.com/Intelycare/UserManagement/1.0.0/user/signup
+  // https://api.intelycare.net,
+  // http://virtserver.swaggerhub.com/Intelycare/UserManagement/1.0.0/user/signup,
   SERVER_URI: 'http://virtserver.swaggerhub.com/Intelycare',
-  BASE_URL: 'http://virtserver.swaggerhub.com/Intelycare/UserManagement/1.0.0'
+  BASE_URL: 'https://api.intelycare.net'
 };
 
 /*

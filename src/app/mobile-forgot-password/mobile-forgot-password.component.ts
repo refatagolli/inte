@@ -129,6 +129,7 @@ export class MobileForgotPasswordComponent implements OnInit {
     // const response = this._utils.sendRecoveryEmail(this.forgotPassForm.controls.email.value);
 
     this._accountService.sendRecoveryCode(email).pipe().subscribe(response => {
+      console.log(response);
 
       // if (response.code === 200) {
       //

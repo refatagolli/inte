@@ -9,7 +9,8 @@ import {DailyViewModule} from './daily-view/daily-view.module';
 import {ThemeModule} from '@theme/theme.module';
 import {theme_config} from './config/theme_config';
 import {BaseLayoutModule} from './base-layout/base-layout.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {JwtInterceptor} from './helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import {HttpClientModule} from '@angular/common/http';
     BaseLayoutModule,
     DailyViewModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
