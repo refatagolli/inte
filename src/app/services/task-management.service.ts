@@ -32,4 +32,37 @@ export class TaskManagementService {
     const payload = {...this._request, taskid: taskId};
     return this._http.put(`${this._baseUri}/complete`, payload);
   }
+
+  getAllStaff() {
+    const par = {
+      'firstname': 'string',
+      'lastname': 'string',
+      'email': 'string',
+      'ssn': 'string',
+      'birthday': '2019-10-21',
+      'gender': 'string',
+      'phonenumber': 'string',
+      'stafftypeid': 1,
+      'staffsubtypeid': 1,
+      'employmenttypeid': 1,
+      'clientid': 1,
+      'skillsets': [
+        {
+          'skillsetid': 1
+        }
+      ],
+      'shifts': [
+        {
+          'censusid': 0,
+          'firstshiftday': '2019-10-21',
+          'weekstillnextshift': 1
+        }
+      ],
+      'hiredate': '2019-10-21',
+      'service': 'iSchedule'
+    };
+    console.log(par);
+    this._http.get('https://api.intelycare.net/staff').subscribe(e => console.log(e));
+    return this._http.post('https://api.intelycare.net/staff', par);
+  }
 }

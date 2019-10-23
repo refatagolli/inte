@@ -61,7 +61,7 @@
           <span class="more-staff-text">More Available Staff</span>
         </div>
 
-        <div class="useful-options" fxFlex="0 1 auto" *ngIf="sel.length">
+        <div class="useful-options" fxFlex="0 1 auto" *ngIf="unselectedStaff.length">
           <mat-checkbox class="opt left" [checked]="areAllChecked" (change)="toggleAll($event.checked)">Select All
           </mat-checkbox>
           <!--<button mat-button class="opt right" [matMenuTriggerFor]="sortBy">Sort By &nbsp;-->
@@ -77,7 +77,7 @@
         <div class="results">
           <app-staff-card-expandable [staffMembers]="staff" [control]="true"
                                      (selectionChange)="selectStaff($event)"
-                                     [selected]="sel"></app-staff-card-expandable>
+          ></app-staff-card-expandable>
         </div>
 
 

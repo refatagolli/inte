@@ -7,7 +7,7 @@ $background-color: #f7fbff;
   .management-top-card-title {
     z-index: 1000;
     padding: 16px;
-    font-size: 20px;
+    font-size: 18px;
 
     .title {
       height: 24px;
@@ -15,13 +15,12 @@ $background-color: #f7fbff;
   }
 
   .management-top-card-content-wrapper {
-    padding: 16px;
+    padding: 16px 16px 16px 24px;
 
     .bold-item {
       color: #72808a;
       font-size: 16px;
       font-weight: 600;
-      height: 22px;
       letter-spacing: -0.67px
     }
 
@@ -29,7 +28,6 @@ $background-color: #f7fbff;
       color: #72808a;
       font-size: 18px;
       font-weight: 600;
-      height: 24px;
       letter-spacing: -0.75px;
     }
   }
@@ -47,7 +45,6 @@ $background-color: #f7fbff;
         color: #f45551;
         font-size: 16px;
         font-weight: 600;
-        height: 24px;
         line-height: 24px;
         text-decoration: line-through;
       }
@@ -56,9 +53,12 @@ $background-color: #f7fbff;
         color: #f4504b;
         font-size: 16px;
         font-weight: normal;
-        height: 20px;
         line-height: 20px;
       }
     }
+  }
+
+  .replacing-staff, .shift-info {
+    border-right: 1px solid #D5DBE5;
   }
 }

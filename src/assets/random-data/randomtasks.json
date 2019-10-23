@@ -1,19 +1,19 @@
 [
   {
-    "value": "Finish October Schedule",
-    "completed": true
+    "taskname": "Finish October Schedule",
+    "complete": true
   },
   {
-    "value": "Add 'name' to staff directory",
-    "completed": true
+    "taskname": "Add 'name' to staff directory",
+    "complete": true
   },
   {
-    "value": "Remove 'name' from staff directory",
-    "completed": true
+    "taskname": "Remove 'name' from staff directory",
+    "complete": true
   },
   {
-    "value": "Approve vacation time",
-    "completed": false
+    "taskname": "Approve vacation time",
+    "complete": false
   }
 ]
 

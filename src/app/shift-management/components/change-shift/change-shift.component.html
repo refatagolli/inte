@@ -24,16 +24,16 @@
     <div fxFlex fxLayout="column" fxLayoutGap="16px">
       <div fxFlex fxLayout="column">
         <span class="title"> Change Date </span>
-        <mat-form-field fxFlex [appearance]="'outline'">
-          <input matInput [matDatepicker]="myDatepicker">
+        <mat-form-field fxFlex [appearance]="'outline'" class="shift-date-picker">
+          <input matInput [matDatepicker]="myDatepicker" [formControl]="dateFormControl">
           <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-          <mat-datepicker #myDatepicker></mat-datepicker>
+          <mat-datepicker [startAt]="currentDate" #myDatepicker></mat-datepicker>
         </mat-form-field>
       </div>
 
       <div>
         <span class="title"> Shift Time </span>
-        <app-selectable-button-group #shiftTime [elements]="elements | async"
+        <app-selectable-button-group #shiftTime [elements]="elements | async" [selectedFilters]="[currentShift]"
                                      [multiple]="false" [maximumSelections]="1"
         ></app-selectable-button-group>
       </div>

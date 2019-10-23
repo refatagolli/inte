@@ -2,7 +2,6 @@
   background: #f2f5f8;
   border-radius: 2px 0 0 2px;
   border: 1px solid #eff0f4;
-  position: relative;
   height: 48px;
 
   ::ng-deep.mat-form-field {
@@ -54,15 +53,16 @@
 
 .filters {
   position: absolute;
-  top: 48px;
+  top: calc(50vh - 200px);
   left: 0;
   z-index: 99999;
-  padding: 8px;
-  width: 100%;
+  padding: 16px;
+  margin: 16px;
+  width: calc(100% - 32px);
   background: #FFFFFF;
   border-radius: 0;
   border: 1px solid rgb(228, 228, 228);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 
   span {
     color: rgb(114, 128, 138);
@@ -78,11 +78,13 @@
 }
 
 .filter-overlay {
-  position: fixed;
-  top:0;
-  left:0;
-  right:0;
+  position: absolute;
+  height: 100vh;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
   z-index: 10000;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .8);
 }

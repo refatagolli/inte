@@ -6,6 +6,7 @@ import {delay, filter, flatMap, takeUntil, tap, toArray} from 'rxjs/operators';
 import {StaffMember} from '../../../models/StaffMember';
 import {FormControl, Validators} from '@angular/forms';
 import {ShiftManagementFilterComponent} from '../shift-management-filter/shift-management-filter.component';
+import {StaffCardExpandableComponent} from '../../../shared/componets/staff-card-expandable/staff-card-expandable.component';
 
 @Component({
   selector: 'app-fill-shift-component',
@@ -18,17 +19,22 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() shiftDetails: ShiftDetails;
   @Input() replacing: StaffMember;
   @ViewChild(ShiftManagementFilterComponent) shiftManagementFilter: ShiftManagementFilterComponent;
+  @ViewChild(StaffCardExpandableComponent) staffCardExpandable: StaffCardExpandableComponent;
+
   staff: StaffMember[] = [];
-  staffList: StaffMember[] = [];
   selectedStaff: StaffMember[] = [];
   unselectedStaff: StaffMember[] = [];
-  sel = [];
-  sel1 = [];
+  total: number;
+  selectAllPressed = false;
 
   filter = new Subject<any>();
   filterOptions: any = {};
 
-  showActions = true;
+  search = new Subject<any>();
+  searchCriteria = '';
+  searching = false;
+
+  showFilters = true;
   message: FormControl = new FormControl('', Validators.required);
 
   private _unsubscribeAll: Subject<any> = new Subject();
@@ -38,7 +44,7 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   get areAllChecked() {
-    return (this.staff.length > 0 && this.sel.length === 0);
+    return this.selectedStaff.length > 0 && this.unselectedStaff.length === 0;
   }
 
   private static checkShift(s: StaffMember, shift: string[]) {
@@ -55,9 +61,13 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
     return employmentType.indexOf(s.employmentType) > -1;
   }
 
+  private static checkStaffType(s: StaffMember, staffType: string) {
+    return s.staffType.toLocaleLowerCase() === staffType.toLocaleLowerCase();
+  }
+
   private static checkQ(s: StaffMember, q: string) {
     if (!q) {
-      return true;
+      return false;
     }
     return s.fullName.toLocaleLowerCase().indexOf(q.toLocaleLowerCase()) > -1;
   }
@@ -65,14 +75,10 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
 
     this._subscribeToFilterChanges();
+    this._subscribeToSearchChanges();
 
-    this._dailyService.getStaff().pipe(
-      flatMap(e => e),
-      filter(s =>
-        s.staffType.toLocaleLowerCase() === this.shiftDetails.staffType.toLocaleLowerCase()),
-      toArray()
-    ).subscribe(e => {
-      this.staffList = e;
+    this._dailyService.getStaff().subscribe(e => {
+      this.staff = e;
       this.message.setValue(this.getStaffMessage(this.shiftDetails.shiftHours, new Date(this.shiftDetails.shiftDate).toDateString()));
       this.filter.next({
         shift: [this.shiftDetails.shiftHours],
@@ -87,9 +93,6 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   selectStaff(staff: StaffMember[]) {
     this.selectedStaff = staff;
-    this.sel1 = this.selectedStaff.map(e => true);
-    this.unselectedStaff = this.staff.filter(e => this.selectedStaff.indexOf(e) < 0);
-    this.sel = this.unselectedStaff.map(e => false);
   }
 
   getStaffMessage(shift, date: string) {
@@ -106,16 +109,37 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   toggleAll(newValue) {
-    this.selectedStaff = newValue ? [...this.staff] : [];
-    this.sel1 = this.selectedStaff.map(e => newValue);
-    this.unselectedStaff = !newValue ? [...this.staff] : [];
-    this.sel = this.unselectedStaff.map(e => newValue);
+    this.selectAllPressed = newValue;
+    this.selectedStaff = newValue ? [...this.unselectedStaff] : [];
+    this.staffCardExpandable.hardsetSelected(this.selectedStaff);
+    this._cdr.detectChanges();
   }
 
   sortByField(field: string) {
     const a = this.unselectedStaff.sort((first, next) => this._sortCondition(first, next, field));
     this.unselectedStaff = [...a];
     this._cdr.detectChanges();
+  }
+
+  hideSuggestions() {
+    this.searching = true;
+    this.showFilters = false;
+    if (!this.searchCriteria) {
+      this.unselectedStaff = [];
+    }
+  }
+
+  showSuggestions() {
+    this.searching = false;
+    if (!this.searchCriteria) {
+      this.showFilters = true;
+      this.filter.next(this.filterOptions);
+    }
+  }
+
+  removeSelected(staff: StaffMember) {
+    this.selectedStaff.splice(this.selectedStaff.indexOf(staff), 1);
+    // this.unselectedStaff.push(staff);
   }
 
   private _sortCondition(first: StaffMember, next: StaffMember, field: string) {
@@ -142,24 +166,21 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _subscribeToFilterChanges() {
     this.filter.pipe(
-      tap(console.log),
-      filter(e => this.staffList.length > 0),
       takeUntil(this._unsubscribeAll),
+      filter(e => this.staff.length > 0),
       tap(e => this._setFilters(e)),
-      flatMap(e => of(this.staffList).pipe(
+      flatMap(e => of(this.staff).pipe(
         flatMap(as => as),
         delay(150),
         filter(s => {
-          return FillShiftComponent.checkQ(s, this.filterOptions.q) &&
+          return FillShiftComponent.checkStaffType(s, this.shiftDetails.staffType) &&
             FillShiftComponent.checkEmploymentType(s, this.filterOptions.employmentType) &&
             FillShiftComponent.checkShift(s, this.filterOptions.shift);
         }),
         toArray()))
     ).subscribe((e: StaffMember[]) => {
-      this.staff = e;
-      this.sel = e.map(a => false);
-      this.selectedStaff = [];
       this.unselectedStaff = e;
+      this.total = e.length;
       this.shiftManagementFilter.forceSetFilters(this.filterOptions, false);
       this._cdr.markForCheck();
     });
@@ -167,5 +188,24 @@ export class FillShiftComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _setFilters(e: any) {
     this.filterOptions = {...this.filterOptions, ...e};
+  }
+
+  private _subscribeToSearchChanges() {
+    this.search.pipe(
+      takeUntil(this._unsubscribeAll),
+      tap(e => this.searchCriteria = e),
+      tap(e => console.log('searched...', e)),
+      flatMap(e => of(this.staff).pipe(
+        flatMap(as => as),
+        delay(150),
+        filter(s => {
+          return FillShiftComponent.checkQ(s, this.searchCriteria);
+        }),
+        toArray()))
+    ).subscribe(e => {
+      this.unselectedStaff = e;
+      this.total = e.length;
+      this._cdr.markForCheck();
+    });
   }
 }

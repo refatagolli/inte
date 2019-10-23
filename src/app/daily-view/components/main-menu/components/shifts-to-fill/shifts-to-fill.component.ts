@@ -2,6 +2,7 @@ import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewEncapsulation} 
 import {ShiftDetails} from '../../../../../models/ShiftDetails';
 import {DailyViewService} from '../../../../../services/daily-view.service';
 import {ShiftManagementService} from '../../../../../shift-management/shift-management.service';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'shifts-to-fill',
@@ -40,7 +41,7 @@ export class ShiftsToFillComponent implements OnInit {
     return c ? `
     You need to fill the <span class="bold-item">${c.shiftHours}</span>
     <span class="bold-item">${c.staffType} shift </span> for 
-    <span class="bold-item">${c.shiftDate} shift </span> in 
+    <span class="bold-item">${formatDate(new Date(c.shiftDate), 'EEEE MMMM d, yyyy', 'en')} shift </span> in 
     <span class="bold-item">${c.unit} </span> 
     ` : '';
   }

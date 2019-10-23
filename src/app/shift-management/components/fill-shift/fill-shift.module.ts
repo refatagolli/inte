@@ -7,6 +7,7 @@ import {ManagementTopCardModule} from '../management-top-card/management-top-car
 import {ShiftManagementFilterModule} from '../shift-management-filter/shift-management-filter.module';
 import {StaffCardCheckboxModule} from '../../../shared/componets/staff-card-checkbox/staff-card-checkbox.module';
 import {StaffCardExpandableModule} from '../../../shared/componets/staff-card-expandable/staff-card-expandable.module';
+import {ChipIconModule} from '../../../shared/componets/chip-icon/chip-icon.module';
 
 @NgModule({
   declarations: [FillShiftComponent],
@@ -17,7 +18,8 @@ import {StaffCardExpandableModule} from '../../../shared/componets/staff-card-ex
     ManagementTopCardModule,
     ShiftManagementFilterModule,
     StaffCardCheckboxModule,
-    StaffCardExpandableModule
+    StaffCardExpandableModule,
+    ChipIconModule
   ],
   exports: [
     FillShiftComponent

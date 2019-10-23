@@ -4,7 +4,7 @@ import {filter, map, takeUntil} from 'rxjs/operators';
 
 import {FuseConfigService} from '@theme/services/config.service';
 import {FuseSidebarService} from '@theme/components/sidebar/sidebar.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 
 
 @Component({

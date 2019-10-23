@@ -15,6 +15,7 @@
       height: 23px;
       letter-spacing: 0;
       line-height: 19px;
+      margin: 0;
     }
   }
 
@@ -79,5 +80,9 @@
       letter-spacing: 0;
       text-align: center;
     }
+  }
+
+  .action-button {
+    text-transform: uppercase;
   }
 }

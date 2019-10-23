@@ -7,12 +7,16 @@
 
   <!--  DAILY VIEW CALENDAR -->
   <ng-container *ngIf="config.dateRange === 'daily' ">
-    <daily-calendar></daily-calendar>
+    <div class="daily-header-container">
+      <daily-calendar></daily-calendar>
+    </div>
   </ng-container>
 
   <!--  VIEW TYPE CALENDAR -->
   <ng-container *ngIf="config.dateRange === 'daily'">
-    <view-type></view-type>
+    <div class="view-type-container">
+      <view-type></view-type>
+    </div>
   </ng-container>
 
   <!--  WEEKLY VIEW CONTENT -->

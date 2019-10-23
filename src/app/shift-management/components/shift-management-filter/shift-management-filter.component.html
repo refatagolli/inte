@@ -3,15 +3,12 @@
   <div class="shift-management-filter-wrapper" fxFlex fxLayout="row" fxLayoutGap="0" fxLayoutAlign="center center">
     <mat-form-field [appearance]="'outline'" fxFlex="1 1 auto" fxLayoutAlign="start center">
       <input matInput class="filter-input" fxFlex [formControl]="control" placeholder="search all staff ..."
+             type="search"
              (blur)="blur.emit($event)"
              (focus)="focus.emit($event)"
       >
       <mat-icon matPrefix>search</mat-icon>
-      <!--<mat-label>-->
-      <!--search all staff ...-->
-      <!--</mat-label>-->
     </mat-form-field>
-
     <button mat-button (click)="toggle()">
       <span fxFlex fxLayout="row">
         <span fxLayoutAlign="center center">FILTER</span>
@@ -44,7 +41,7 @@
 
   </div>
 
-  <div class="filter-overlay" *ngIf="searchOpened" (click)="toggle()">
-  </div>
+</div>
 
+<div class="filter-overlay" *ngIf="searchOpened" (click)="toggle()">
 </div>
