@@ -28,7 +28,7 @@
     "@syncfusion/ej2-angular-calendars": "^17.2.49",
     "@types/moment": "^2.13.0",
     "core-js": "^2.5.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "hammerjs": "^2.0.8",
     "lodash": "latest",
     "material-design-icons-iconfont": "^5.0.1",
